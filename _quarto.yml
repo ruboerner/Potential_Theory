@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: docs
+
+lang: de
+
+book:
+  title: "Potential Theory"
+  author: "Dr. Ralph-Uwe Börner"
+  date: today
+  chapters: 
+    - index.qmd
+    - part: "Introduction"
+ 
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+  pdf: 
+    documentclass: scrreport
+    papersize: a4
+
+editor: visual
+

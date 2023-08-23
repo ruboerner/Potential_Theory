@@ -1,0 +1,72 @@
+---
+title: "Potential Theory"
+jupyter:
+  kernelspec: 
+    name: "pg"
+    language: python
+    display_name: "pygimli"
+---
+
+This is a Quarto book.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import pygimli as pg
+from pygimli.frameworks.lsqrinversion import LSQRInversion
+from pygimli.physics.ert import VESModelling
+```
+
+```{python}
+nlay = 4
+lam = 200.0
+errPerc = 3.0
+ab2 = np.logspace(-1, 2, 50)
+mn2 = ab2 / 3.0
+f = VESModelling(ab2=ab2, mn2=mn2, nLayers=nlay)
+synres = [100., 500., 20., 800.]  # synthetic resistivity
+synthk = [0.5, 3.5, 6.]  # synthetic thickness (nlay-th layer is infinite)
+rhoa = f(synthk+synres)
+rhoa = rhoa * (pg.randn(len(rhoa)) * errPerc / 100. + 1.)
+pg.plt.loglog(rhoa, ab2, "x-");
+```
+
+```{python}
+tLog = pg.trans.TransLog()
+inv = LSQRInversion(fop=f, verbose=False)
+inv.LSQRiter = 20
+# inv = pg.Inversion(fop=f)
+inv.dataTrans = tLog
+inv.modelTrans = tLog
+startModel = pg.cat(pg.Vector(nlay-1, 8), pg.Vector(nlay, pg.median(rhoa)))
+inv.inv.setMarquardtScheme()
+model1 = inv.run(rhoa, pg.Vector(len(rhoa), errPerc/100), lam=1000, startModel=startModel)
+print(model1)
+print(inv.chi2(), inv.relrms(), pg.sum(inv.model[:nlay-1]))
+G = pg.Matrix(rows=1, cols=len(startModel))
+for i in range(3):
+    G.setVal(0, i, 1)
+
+c = pg.Vector(1, pg.sum(synthk))
+inv.setParameterConstraints(G, c, 100)
+model2 = inv.run(rhoa, pg.Vector(len(rhoa), errPerc/100), lam=1000, startModel=startModel)
+print(model2)
+print(inv.chi2(), inv.relrms(), pg.sum(inv.model[:nlay-1]))
+```
+
+```{python}
+fig, ax = pg.plt.subplots()
+ax.loglog(rhoa, ab2, "x")
+ax.loglog(inv.response, ab2, "-")
+ax.grid(True)
+```
+
+```{python}
+fig, ax = pg.plt.subplots()
+pg.viewer.mpl.drawModel1D(ax, synthk, synres, plot="semilogx", label="synth")
+pg.viewer.mpl.drawModel1D(ax, model=model1, label="unconstrained")
+pg.viewer.mpl.drawModel1D(ax, model=model2, label="constrained")
+ax.set_ylim(15, 0)
+ax.grid(True)
+ax.legend();
+```
