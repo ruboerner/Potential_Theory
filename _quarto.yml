@@ -10,8 +10,24 @@ book:
   date: today
   chapters: 
     - index.qmd
-    - part: "Introduction"
- 
+    - part: "Prerequisites"
+    - part: "Mathematical foundations"
+      chapters: 
+        - fields.qmd
+    - part: "Newton potential"
+      chapters: 
+        - pointmass.qmd
+        - poisson_equation.qmd
+        - mass_distribution.qmd
+        - shell_theorem.qmd
+        - legendre.qmd
+        - circular_disc.qmd
+        - geophysical_application.qmd
+        
+    - part: "Two-dimensional problems"
+    - part: "Dipole potential"
+    - part: "Spherical harmonics"
+    - part: "Boundary value problems"
 
 format:
   html:

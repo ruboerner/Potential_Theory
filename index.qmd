@@ -1,10 +1,14 @@
 ---
-title: "Potential Theory"
+title: "Introduction"
 jupyter:
   kernelspec: 
     name: "pg"
     language: python
     display_name: "pygimli"
+code-fold: true
+execute: 
+  freeze: true
+  eval: false
 ---
 
 This is work in progress!

@@ -4,6 +4,90 @@
     "href": "index.html",
     "title": "Potential Theory",
     "section": "",
-    "text": "This is work in progress!\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport pygimli as pg\nfrom pygimli.frameworks.lsqrinversion import LSQRInversion\nfrom pygimli.physics.ert import VESModelling\n\n\nnlay = 4\nlam = 200.0\nerrPerc = 3.0\nab2 = np.logspace(-1, 2, 50)\nmn2 = ab2 / 3.0\nf = VESModelling(ab2=ab2, mn2=mn2, nLayers=nlay)\nsynres = [100., 500., 20., 800.]  # synthetic resistivity\nsynthk = [0.5, 3.5, 6.]  # synthetic thickness (nlay-th layer is infinite)\nrhoa = f(synthk+synres)\nrhoa = rhoa * (pg.randn(len(rhoa)) * errPerc / 100. + 1.)\npg.plt.loglog(rhoa, ab2, \"x-\");\n\n\n\n\n\ntLog = pg.trans.TransLog()\ninv = LSQRInversion(fop=f, verbose=False)\ninv.LSQRiter = 20\n# inv = pg.Inversion(fop=f)\ninv.dataTrans = tLog\ninv.modelTrans = tLog\nstartModel = pg.cat(pg.Vector(nlay-1, 8), pg.Vector(nlay, pg.median(rhoa)))\ninv.inv.setMarquardtScheme()\nmodel1 = inv.run(rhoa, pg.Vector(len(rhoa), errPerc/100), lam=1000, startModel=startModel)\nprint(model1)\nprint(inv.chi2(), inv.relrms(), pg.sum(inv.model[:nlay-1]))\nG = pg.Matrix(rows=1, cols=len(startModel))\nfor i in range(3):\n    G.setVal(0, i, 1)\n\nc = pg.Vector(1, pg.sum(synthk))\ninv.setParameterConstraints(G, c, 100)\nmodel2 = inv.run(rhoa, pg.Vector(len(rhoa), errPerc/100), lam=1000, startModel=startModel)\nprint(model2)\nprint(inv.chi2(), inv.relrms(), pg.sum(inv.model[:nlay-1]))\n\n23/08/23 - 13:11:35 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:35 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:35 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:36 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:37 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n23/08/23 - 13:11:38 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.\n\n\n\n\n7 [0.4958032004834833, 3.1944228003581694, 10.455469129860017, 100.65419694411747, 513.2671597071054, 34.38785545745408, 779.6373324129925]\n0.9218055408693335 2.8639539009438013 14.14569513070167\n\n\n7 [0.4880130793319744, 3.501649354774239, 6.082450075788653, 100.50302179630481, 486.11391343869496, 20.528134177885732, 709.6926556492791]\n0.9870625644051995 2.9483358529546146 10.072112509894867\n\n\n\nfig, ax = pg.plt.subplots()\nax.loglog(rhoa, ab2, \"x\")\nax.loglog(inv.response, ab2, \"-\")\nax.grid(True)\n\n\n\n\n\nfig, ax = pg.plt.subplots()\npg.viewer.mpl.drawModel1D(ax, synthk, synres, plot=\"semilogx\", label=\"synth\")\npg.viewer.mpl.drawModel1D(ax, model=model1, label=\"unconstrained\")\npg.viewer.mpl.drawModel1D(ax, model=model2, label=\"constrained\")\nax.set_ylim(15, 0)\nax.grid(True)\nax.legend();"
+    "text": "This is work in progress!\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport pygimli as pg\nfrom pygimli.frameworks.lsqrinversion import LSQRInversion\nfrom pygimli.physics.ert import VESModelling\n\n\n\n\nCode\nnlay = 4\nlam = 200.0\nerrPerc = 3.0\nab2 = np.logspace(-1, 2, 50)\nmn2 = ab2 / 3.0\nf = VESModelling(ab2=ab2, mn2=mn2, nLayers=nlay)\nsynres = [100., 500., 20., 800.]  # synthetic resistivity\nsynthk = [0.5, 3.5, 6.]  # synthetic thickness (nlay-th layer is infinite)\nrhoa = f(synthk+synres)\nrhoa = rhoa * (pg.randn(len(rhoa)) * errPerc / 100. + 1.)\npg.plt.loglog(rhoa, ab2, \"x-\");\n\n\n\n\nCode\ntLog = pg.trans.TransLog()\ninv = LSQRInversion(fop=f, verbose=False)\ninv.LSQRiter = 20\n# inv = pg.Inversion(fop=f)\ninv.dataTrans = tLog\ninv.modelTrans = tLog\nstartModel = pg.cat(pg.Vector(nlay-1, 8), pg.Vector(nlay, pg.median(rhoa)))\ninv.inv.setMarquardtScheme()\nmodel1 = inv.run(rhoa, pg.Vector(len(rhoa), errPerc/100), lam=1000, startModel=startModel)\nprint(model1)\nprint(inv.chi2(), inv.relrms(), pg.sum(inv.model[:nlay-1]))\nG = pg.Matrix(rows=1, cols=len(startModel))\nfor i in range(3):\n    G.setVal(0, i, 1)\n\nc = pg.Vector(1, pg.sum(synthk))\ninv.setParameterConstraints(G, c, 100)\nmodel2 = inv.run(rhoa, pg.Vector(len(rhoa), errPerc/100), lam=1000, startModel=startModel)\nprint(model2)\nprint(inv.chi2(), inv.relrms(), pg.sum(inv.model[:nlay-1]))\n\n\n\n\nCode\nfig, ax = pg.plt.subplots()\nax.loglog(rhoa, ab2, \"x\")\nax.loglog(inv.response, ab2, \"-\")\nax.grid(True)\n\n\n\n\nCode\nfig, ax = pg.plt.subplots()\npg.viewer.mpl.drawModel1D(ax, synthk, synres, plot=\"semilogx\", label=\"synth\")\npg.viewer.mpl.drawModel1D(ax, model=model1, label=\"unconstrained\")\npg.viewer.mpl.drawModel1D(ax, model=model2, label=\"constrained\")\nax.set_ylim(15, 0)\nax.grid(True)\nax.legend();"
+  },
+  {
+    "objectID": "fields.html#potential-fields",
+    "href": "fields.html#potential-fields",
+    "title": "2  Fields",
+    "section": "2.1 Potential fields",
+    "text": "2.1 Potential fields"
+  },
+  {
+    "objectID": "fields.html#density",
+    "href": "fields.html#density",
+    "title": "2  Fields",
+    "section": "2.2 Density",
+    "text": "2.2 Density"
+  },
+  {
+    "objectID": "fields.html#point-sources",
+    "href": "fields.html#point-sources",
+    "title": "2  Fields",
+    "section": "2.3 Point sources",
+    "text": "2.3 Point sources"
+  },
+  {
+    "objectID": "fields.html#poisson-equation",
+    "href": "fields.html#poisson-equation",
+    "title": "2  Fields",
+    "section": "2.4 Poisson equation",
+    "text": "2.4 Poisson equation"
+  },
+  {
+    "objectID": "fields.html#properties-of-potentials",
+    "href": "fields.html#properties-of-potentials",
+    "title": "2  Fields",
+    "section": "2.5 Properties of potentials",
+    "text": "2.5 Properties of potentials"
+  },
+  {
+    "objectID": "fields.html#complex-analysis",
+    "href": "fields.html#complex-analysis",
+    "title": "2  Fields",
+    "section": "2.6 Complex analysis",
+    "text": "2.6 Complex analysis"
+  },
+  {
+    "objectID": "fields.html#examples",
+    "href": "fields.html#examples",
+    "title": "2  Fields",
+    "section": "2.7 Examples",
+    "text": "2.7 Examples"
+  },
+  {
+    "objectID": "geophysical_application.html",
+    "href": "geophysical_application.html",
+    "title": "9  Geophysical Application",
+    "section": "",
+    "text": "9.0.1 PREM\n\n\n9.0.2 Bouguer reduction\n\n\n9.0.3 Gravitational attraction of a spherical body"
+  },
+  {
+    "objectID": "geophysical_application.html#prem",
+    "href": "geophysical_application.html#prem",
+    "title": "9  Geophysical Application",
+    "section": "9.1 PREM",
+    "text": "9.1 PREM"
+  },
+  {
+    "objectID": "geophysical_application.html#bouguer-reduction",
+    "href": "geophysical_application.html#bouguer-reduction",
+    "title": "9  Geophysical Application",
+    "section": "9.2 Bouguer reduction",
+    "text": "9.2 Bouguer reduction"
+  },
+  {
+    "objectID": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
+    "href": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
+    "title": "9  Geophysical Application",
+    "section": "9.3 Gravitational attraction of a spherical body",
+    "text": "9.3 Gravitational attraction of a spherical body"
+  },
+  {
+    "objectID": "geophysical_application.html#planetary-density-models",
+    "href": "geophysical_application.html#planetary-density-models",
+    "title": "9  Geophysical Application",
+    "section": "9.1 Planetary density models",
+    "text": "9.1 Planetary density models"
   }
 ]
