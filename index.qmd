@@ -7,7 +7,7 @@ jupyter:
     display_name: "pygimli"
 ---
 
-This is a Quarto book.
+This is work in progress!
 
 ```{python}
 import numpy as np
