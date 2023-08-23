@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.330">
@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr.&nbsp;Ralph-Uwe Börner">
+<meta name="dcterms.date" content="2023-08-23">
 
 <title>Potential Theory</title>
 <style>
@@ -87,16 +88,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "s"
   ],
   "language": {
-    "search-no-results-text": "Keine Treffer",
-    "search-matching-documents-text": "Treffer",
-    "search-copy-link-title": "Link in die Suche kopieren",
-    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
-    "search-more-match-text": "weitere Treffer in diesem Dokument",
-    "search-more-matches-text": "weitere Treffer in diesem Dokument",
-    "search-clear-button-title": "Zurücksetzen",
-    "search-detached-cancel-button-title": "Abbrechen",
-    "search-submit-button-title": "Abschicken",
-    "search-label": "Suchen"
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -110,11 +111,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Potential Theory</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -133,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Suchen"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -169,16 +170,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Autor:in</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Dr.&nbsp;Ralph-Uwe Börner </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23. August 2023</p>
+      <p class="date">August 23, 2023</p>
     </div>
   </div>
   
@@ -190,14 +191,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>This is a Quarto book.</p>
-<div id="ee1986c1" class="cell" data-execution_count="1">
+<div id="87edc117" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pygimli <span class="im">as</span> pg</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygimli.frameworks.lsqrinversion <span class="im">import</span> LSQRInversion</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygimli.physics.ert <span class="im">import</span> VESModelling</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygimli.physics.ert <span class="im">import</span> VESModelling</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4a5e7f06" class="cell" data-execution_count="2">
+<div id="9180387e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nlay <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="fl">200.0</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>errPerc <span class="op">=</span> <span class="fl">3.0</span></span>
@@ -208,12 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>synthk <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">3.5</span>, <span class="fl">6.</span>]  <span class="co"># synthetic thickness (nlay-th layer is infinite)</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>rhoa <span class="op">=</span> f(synthk<span class="op">+</span>synres)</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>rhoa <span class="op">=</span> rhoa <span class="op">*</span> (pg.randn(<span class="bu">len</span>(rhoa)) <span class="op">*</span> errPerc <span class="op">/</span> <span class="fl">100.</span> <span class="op">+</span> <span class="fl">1.</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pg.plt.loglog(rhoa, ab2, <span class="st">"x-"</span>)<span class="op">;</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pg.plt.loglog(rhoa, ab2, <span class="st">"x-"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-html/cell-3-output-1.png" width="580" height="412"></p>
 </div>
 </div>
-<div id="d4f74f87" class="cell" data-execution_count="3">
+<div id="846691f0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tLog <span class="op">=</span> pg.trans.TransLog()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>inv <span class="op">=</span> LSQRInversion(fop<span class="op">=</span>f, verbose<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>inv.LSQRiter <span class="op">=</span> <span class="dv">20</span></span>
@@ -233,57 +234,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>inv.setParameterConstraints(G, c, <span class="dv">100</span>)</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> inv.run(rhoa, pg.Vector(<span class="bu">len</span>(rhoa), errPerc<span class="op">/</span><span class="dv">100</span>), lam<span class="op">=</span><span class="dv">1000</span>, startModel<span class="op">=</span>startModel)</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model2)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inv.chi2(), inv.relrms(), pg.<span class="bu">sum</span>(inv.model[:nlay<span class="op">-</span><span class="dv">1</span>]))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inv.chi2(), inv.relrms(), pg.<span class="bu">sum</span>(inv.model[:nlay<span class="op">-</span><span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:58 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
-23/08/23 - 13:00:59 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.</code></pre>
+<pre><code>23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:13 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:14 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.
+23/08/23 - 13:09:15 - pyGIMLi - WARNING - Multiprocess Jacobian currently unavailable for Win32 and Mac.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-7 [0.511383248793946, 3.111524211048805, 10.500624609309906, 100.23625759956695, 521.1846840075258, 36.86284124493713, 620.2219676473762]
-0.8264534465846244 2.739943753698084 14.123532069152656
+7 [0.4937320819915976, 3.370781257178004, 11.863253437946202, 100.244873681884, 492.5077484604116, 37.28200242608787, 1045.9704195687327]
+0.9116070650973334 2.8871842012948012 15.727766777115804
 
 
-7 [0.502877125989404, 3.3615625992359974, 6.158761328603345, 100.20956538400078, 504.5440801193752, 22.35255841570603, 568.6713349806693]
-0.8416792083783732 2.76455887296661 10.023201053828746</code></pre>
+7 [0.48251903575283134, 3.774936430815615, 5.819316774128112, 100.07046215540682, 462.4530830287375, 18.878951248500222, 894.798506720426]
+0.9810996731541719 2.9790719041838205 10.07677224069656</code></pre>
 </div>
 </div>
-<div id="03369c31" class="cell" data-execution_count="4">
+<div id="bc0b6b79" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> pg.plt.subplots()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.loglog(rhoa, ab2, <span class="st">"x"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.loglog(inv.response, ab2, <span class="st">"-"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-html/cell-5-output-1.png" width="580" height="412"></p>
 </div>
 </div>
-<div id="ce7bb526" class="cell" data-execution_count="5">
+<div id="ae66a6a0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> pg.plt.subplots()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pg.viewer.mpl.drawModel1D(ax, synthk, synres, plot<span class="op">=</span><span class="st">"semilogx"</span>, label<span class="op">=</span><span class="st">"synth"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pg.viewer.mpl.drawModel1D(ax, model<span class="op">=</span>model1, label<span class="op">=</span><span class="st">"unconstrained"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>pg.viewer.mpl.drawModel1D(ax, model<span class="op">=</span>model2, label<span class="op">=</span><span class="st">"constrained"</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">15</span>, <span class="dv">0</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax.legend()<span class="op">;</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-html/cell-6-output-1.png" width="585" height="438"></p>
 </div>
@@ -346,12 +345,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Kopiert");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Kopiert");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
