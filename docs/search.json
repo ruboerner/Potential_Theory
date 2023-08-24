@@ -28,11 +28,11 @@
     "text": "2.3 Point sources"
   },
   {
-    "objectID": "fields.html#poisson-equation",
-    "href": "fields.html#poisson-equation",
+    "objectID": "fields.html#solution-of-the-laplace-and-poisson-equations",
+    "href": "fields.html#solution-of-the-laplace-and-poisson-equations",
     "title": "2  Fields",
-    "section": "2.4 Poisson equation",
-    "text": "2.4 Poisson equation\nWe consider the second-order differential equations\n\\[\n\\dv[2]{y}{x}\n\\]\n\\[\n\\frac{\\dd^2}{\\ddx^2}y(x) = 0\n\\]\n(Laplace equation) and \\[\n\\frac{d^2}{dx^2}y(x) = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n(Poisson equation) for \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\n\n\nCode\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot\n\nu = Function('u')\nresult = dsolve(diff(u(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x), u(x), ics={u(0): 1, u(1): 0})\nplot(result.rhs, (x, 0., 1.), ylim=(-1.1,1.1), ylabel='u(x)');"
+    "section": "2.4 Solution of the Laplace and Poisson equations",
+    "text": "2.4 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n(Laplace equation) and\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n(Poisson equation) for \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\nplt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.4, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.4, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2);\n\n\n\n\n\n2.4.1 What can we observe in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\nIt has no curvature\nThe solution of the Poisson equation has local minima and maxima\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary"
   },
   {
     "objectID": "fields.html#properties-of-potentials",
@@ -56,18 +56,11 @@
     "text": "2.7 Examples"
   },
   {
-    "objectID": "geophysical_application.html",
-    "href": "geophysical_application.html",
+    "objectID": "geophysical_application.html#planetary-density-models",
+    "href": "geophysical_application.html#planetary-density-models",
     "title": "9  Geophysical Application",
-    "section": "",
-    "text": "9.0.1 PREM\n\n\n9.0.2 Bouguer reduction\n\n\n9.0.3 Gravitational attraction of a spherical body"
-  },
-  {
-    "objectID": "geophysical_application.html#prem",
-    "href": "geophysical_application.html#prem",
-    "title": "9  Geophysical Application",
-    "section": "9.1 PREM",
-    "text": "9.1 PREM"
+    "section": "9.1 Planetary density models",
+    "text": "9.1 Planetary density models"
   },
   {
     "objectID": "geophysical_application.html#bouguer-reduction",
@@ -82,19 +75,5 @@
     "title": "9  Geophysical Application",
     "section": "9.3 Gravitational attraction of a spherical body",
     "text": "9.3 Gravitational attraction of a spherical body"
-  },
-  {
-    "objectID": "geophysical_application.html#planetary-density-models",
-    "href": "geophysical_application.html#planetary-density-models",
-    "title": "9  Geophysical Application",
-    "section": "9.1 Planetary density models",
-    "text": "9.1 Planetary density models"
-  },
-  {
-    "objectID": "fields.html#solution-of-the-laplace-and-poisson-equations",
-    "href": "fields.html#solution-of-the-laplace-and-poisson-equations",
-    "title": "2  Fields",
-    "section": "2.4 Solution of the Laplace and Poisson equations",
-    "text": "2.4 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n(Laplace equation) and\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n(Poisson equation) for \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\nplt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.4, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.4, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2);\n\n\n\n\n\n2.4.1 What can we observe in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\nIt has no curvature\nThe solution of the Poisson equation has local minima and maxima\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary"
   }
 ]
