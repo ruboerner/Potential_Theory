@@ -34,6 +34,18 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    include-in-header:
+      - text: |
+          <script>
+          window.MathJax = {
+            loader: {
+              load: ['[tex]/physics']
+            },
+            tex: {
+              packages: {'[+]': ['physics']}
+            }
+          };
+          </script>
   pdf: 
     documentclass: scrreport
     papersize: a4
