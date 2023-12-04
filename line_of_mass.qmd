@@ -102,7 +102,6 @@ plot(V.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 5), (yprime, 0)]),
   xlabel='y', ylabel=r'$V(y)$', ylim=(-4, -3), xlim=(-5, 5), axis_center=(-5, -4))
 ```
 
-
 ```{python}
 #| code-fold: true
 #| fig-cap: "Vertical attraction $g_z$ of an infinite wire at $y=0$ and $z=5$, $f \\rho_L = 1$."
@@ -113,39 +112,27 @@ plot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 5), (yprime, 0)]),
 
 ## Attraction of a plane lamina
 
-The vertical component of attraction due to an element of area $\mathrm{d}S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is 
-$$
+The vertical component of attraction due to an element of area $\mathrm{d}S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is $$
 \mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega 
-$$ 
-where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$.
+$$ where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$.
 
 ![](images/hubbert_01.png)
 
-It holds 
-$$
+It holds $$
 \mathrm{d}\Omega = \frac{\mathrm{d}S \sin \alpha}{r^{2}.}
 $$
 
-If we now consider a finite area $S$ of arbitrary shape, the attraction at the origin due to the enclosed mass will be 
-$$
+If we now consider a finite area $S$ of arbitrary shape, the attraction at the origin due to the enclosed mass will be $$
 g = f \mathrm{d}z \int _{S} \rho \, \mathrm{d}\Omega 
-$$ 
-or, if $\rho$ is constant over $S$, this simplifies to 
-$$
+$$ or, if $\rho$ is constant over $S$, this simplifies to $$
 g = f \rho \Omega \mathrm{d}z.
-$$ 
-For a given solid angle $\Omega$, the attraction of the matter enclosed between two horizontal planes at $z=z_{1}$ and $z=z_{2}$ will be obtained by integrating 
-$$
+$$ For a given solid angle $\Omega$, the attraction of the matter enclosed between two horizontal planes at $z=z_{1}$ and $z=z_{2}$ will be obtained by integrating $$
 g = f \Omega \int_{z_{1}}^{z_{2}} \rho \, \mathrm{d}z 
-$$ 
-and if $\rho=\mathrm{const.}$ this becomes 
-$$
+$$ and if $\rho=\mathrm{const.}$ this becomes $$
 g = f \rho \Omega (z_{2} - z_{1})
-$$ 
-For the infinite horizontal plane the solid angle is $2 \pi$, such that the attraction of an infinite plate will be $$
+$$ For the infinite horizontal plane the solid angle is $2 \pi$, such that the attraction of an infinite plate will be $$
 g = 2 \pi f \rho (z_{2} - z_{1})
-$$ 
-which is the vertical attraction of the Bouguer plate of thickness $z_{2} - z_{1}$ and density $\rho$.
+$$ which is the vertical attraction of the Bouguer plate of thickness $z_{2} - z_{1}$ and density $\rho$.
 
 ## The $\mathrm{d}\Theta\mathrm{d}z$ solenoid
 
@@ -155,33 +142,18 @@ First, we consider the attraction at the origin which will result from a narrow 
 
 The attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle $\mathrm{d}\Omega$ between two planes intersecting at an angle $\mathrm{d}\Theta$ will bear the same ratio to the total solid angle which the plane angle $\mathrm{d}\Theta$ bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or $4 \pi$, and the total plane angle is $2 \pi$. Thus $$
 \frac{\mathrm{d}\Omega}{4 \pi} = \frac{\mathrm{d}\Theta}{2 \pi}
-$$ 
-or 
-$$
+$$ or $$
 \mathrm{d}\Omega = 2 \mathrm{d}\Theta.
-$$ 
-Introducing this to the result obtained above gives 
-$$
+$$ Introducing this to the result obtained above gives $$
 \mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
-$$ 
-which is the *fundamental differential equation of the attraction of a two-dimensional mass*. The intersection of the two planes $\Theta$ and $\Theta + \mathrm{d}\Theta$ with the planes $z$ and $z+\mathrm{d}z$ defines an elementary prism or solenoid of infinite length and cross-section $\mathrm{d}\Theta\mathrm{d}z$. For a finite area in the plane of integration 
-$$
+$$ which is the *fundamental differential equation of the attraction of a two-dimensional mass*. The intersection of the two planes $\Theta$ and $\Theta + \mathrm{d}\Theta$ with the planes $z$ and $z+\mathrm{d}z$ defines an elementary prism or solenoid of infinite length and cross-section $\mathrm{d}\Theta\mathrm{d}z$. For a finite area in the plane of integration $$
 g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-$$ 
-Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Traversing the circuit in counter-clockwise direction, the resulting integral will be 
-$$
+$$ Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Traversing the circuit in counter-clockwise direction, the resulting integral will be $$
 \oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
-$$ 
-Over a finite area $S$ we may obtain $\iint \mathrm{d}\Theta \mathrm{d}z$ by 
-$$
+$$ Over a finite area $S$ we may obtain $\iint \mathrm{d}\Theta \mathrm{d}z$ by $$
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
-$$ 
-When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, 
-$$
+$$ When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, $$
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.
-$$ 
-The attraction of a finite mass of constant density is obtained by 
-$$
+$$ The attraction of a finite mass of constant density is obtained by $$
 g = 2 f \rho \oint_{s} \Theta \mathrm{d}z.
-$$
----
+$$ ---
