@@ -27,6 +27,7 @@ book:
     - part: "Two-dimensional problems"
       chapters: 
         - line_of_mass.qmd
+        - talwani.qmd
     - part: "Dipole potential"
     - part: "Spherical harmonics"
     - part: "Boundary value problems"
