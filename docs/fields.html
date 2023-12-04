@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.330">
+<meta name="generator" content="quarto-1.4.510">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,12 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -123,11 +124,11 @@ window.MathJax = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fields.html">Mathematical foundations</a></li><li class="breadcrumb-item"><a href="./fields.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -138,7 +139,7 @@ window.MathJax = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Potential Theory</a> 
@@ -232,8 +233,21 @@ window.MathJax = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Two-dimensional problems</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Two-dimensional problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -250,7 +264,7 @@ window.MathJax = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -260,13 +274,8 @@ window.MathJax = {
   <li><a href="#potential-fields" id="toc-potential-fields" class="nav-link active" data-scroll-target="#potential-fields"><span class="header-section-number">2.1</span> Potential fields</a></li>
   <li><a href="#density" id="toc-density" class="nav-link" data-scroll-target="#density"><span class="header-section-number">2.2</span> Density</a></li>
   <li><a href="#point-sources" id="toc-point-sources" class="nav-link" data-scroll-target="#point-sources"><span class="header-section-number">2.3</span> Point sources</a></li>
-  <li><a href="#solution-of-the-laplace-and-poisson-equations" id="toc-solution-of-the-laplace-and-poisson-equations" class="nav-link" data-scroll-target="#solution-of-the-laplace-and-poisson-equations"><span class="header-section-number">2.4</span> Solution of the Laplace and Poisson equations</a>
-  <ul class="collapse">
-  <li><a href="#what-can-we-observe-in-the-1-d-case" id="toc-what-can-we-observe-in-the-1-d-case" class="nav-link" data-scroll-target="#what-can-we-observe-in-the-1-d-case"><span class="header-section-number">2.4.1</span> What can we observe in the 1-D case?</a></li>
-  </ul></li>
-  <li><a href="#properties-of-potentials" id="toc-properties-of-potentials" class="nav-link" data-scroll-target="#properties-of-potentials"><span class="header-section-number">2.5</span> Properties of potentials</a></li>
-  <li><a href="#complex-analysis" id="toc-complex-analysis" class="nav-link" data-scroll-target="#complex-analysis"><span class="header-section-number">2.6</span> Complex analysis</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="header-section-number">2.7</span> Examples</a></li>
+  <li><a href="#solution-of-the-laplace-and-poisson-equations" id="toc-solution-of-the-laplace-and-poisson-equations" class="nav-link" data-scroll-target="#solution-of-the-laplace-and-poisson-equations"><span class="header-section-number">2.4</span> Solution of the Laplace and Poisson equations</a></li>
+  <li><a href="#what-can-be-observed-in-the-1-d-case" id="toc-what-can-be-observed-in-the-1-d-case" class="nav-link" data-scroll-target="#what-can-be-observed-in-the-1-d-case"><span class="header-section-number">2.5</span> What can be observed in the 1-D case?</a></li>
   </ul>
 </nav>
     </div>
@@ -290,6 +299,7 @@ window.MathJax = {
 
 
 </header>
+
 
 <section id="potential-fields" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="potential-fields"><span class="header-section-number">2.1</span> Potential fields</h2>
@@ -320,12 +330,14 @@ window.MathJax = {
 <li>The desired solution is <code>y(x)</code></li>
 <li>Boundary conditions can be enforced by the values following the keyword <code>ics</code>. In the example, <code>y(0)=1</code> and <code>y(1)=0</code>.</li>
 </ul>
-<div id="536958be" class="cell" data-execution_count="1">
+<div id="b248e71a" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Function, dsolve, diff, cos, sin</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.abc <span class="im">import</span> x</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.plotting <span class="im">import</span> plot, PlotGrid</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'fivethirtyeight'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.style.use('fivethirtyeight')</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> Function(<span class="st">'y'</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>eq_poisson <span class="op">=</span> diff(y(x), x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> cos(<span class="dv">4</span> <span class="op">*</span> x) <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> sin(<span class="dv">8</span> <span class="op">*</span> x)</span>
@@ -333,40 +345,40 @@ window.MathJax = {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>result_poisson <span class="op">=</span> dsolve(eq_poisson, y(x), ics<span class="op">=</span>{y(<span class="dv">0</span>): <span class="dv">1</span>, y(<span class="dv">1</span>): <span class="dv">0</span>})</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>result_laplace <span class="op">=</span> dsolve(eq_laplace, y(x), ics<span class="op">=</span>{y(<span class="dv">0</span>): <span class="dv">1</span>, y(<span class="dv">1</span>): <span class="dv">0</span>})</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> plot(result_poisson.rhs, (x, <span class="dv">0</span>, <span class="dv">1</span>), </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.4</span>, <span class="fl">1.2</span>), </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>), </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      ylabel<span class="op">=</span><span class="st">'y(x)'</span>, </span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      axis_center<span class="op">=</span><span class="st">'auto'</span>,</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      show<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span><span class="st">'Poisson equation'</span>)<span class="op">;</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> plot(result_laplace.rhs, (x, <span class="dv">0</span>, <span class="dv">1</span>), </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.4</span>, <span class="fl">1.2</span>), </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>), </span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      ylabel<span class="op">=</span><span class="st">'y(x)'</span>, </span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      axis_center<span class="op">=</span><span class="st">'auto'</span>,</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      show<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span><span class="st">'Laplace equation'</span>)<span class="op">;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>PlotGrid(<span class="dv">1</span>, <span class="dv">2</span>, p1, p2)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>PlotGrid(<span class="dv">1</span>, <span class="dv">2</span>, p1, p2, size<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">3</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
-<p><img src="fields_files/figure-html/cell-2-output-1.png" width="652" height="459"></p>
+<div>
+<figure class="figure">
+<p><img src="fields_files/figure-html/cell-2-output-1.png" width="656" height="275" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<section id="what-can-we-observe-in-the-1-d-case" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="what-can-we-observe-in-the-1-d-case"><span class="header-section-number">2.4.1</span> What can we observe in the 1-D case?</h3>
+</div>
+</section>
+<section id="what-can-be-observed-in-the-1-d-case" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="what-can-be-observed-in-the-1-d-case"><span class="header-section-number">2.5</span> What can be observed in the 1-D case?</h2>
 <ul>
-<li>The solution of the <em>Laplace equation</em> does not exhibit local extrema</li>
+<li>The solution of the <em>Laplace equation</em> does not exhibit local extrema
+<ul>
 <li>It has no curvature</li>
-<li>The solution of the <em>Poisson equation</em> has local minima and maxima</li>
+</ul></li>
+<li>The solution of the <em>Poisson equation</em> has local minima and maxima
+<ul>
 <li>Its extrema might get larger or smaller than those of the Dirichlet values at the boundary</li>
+</ul></li>
 </ul>
-</section>
-</section>
-<section id="properties-of-potentials" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="properties-of-potentials"><span class="header-section-number">2.5</span> Properties of potentials</h2>
-</section>
-<section id="complex-analysis" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="complex-analysis"><span class="header-section-number">2.6</span> Complex analysis</h2>
-</section>
-<section id="examples" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="examples"><span class="header-section-number">2.7</span> Examples</h2>
 
 
 </section>
@@ -500,15 +512,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
+        typesetMath(container);
         return container.innerHTML
       } else {
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -517,6 +559,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
@@ -559,6 +602,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -634,7 +700,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
@@ -718,12 +783,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link  aria-label=" &lt;span="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./pointmass.html" class="pagination-link">
+      <a href="./pointmass.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Point Mass</span>">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

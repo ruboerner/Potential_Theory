@@ -4,76 +4,185 @@
     "href": "index.html",
     "title": "Potential Theory",
     "section": "",
-    "text": "This is work in progress!"
+    "text": "This is work in progress!",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "fields.html#potential-fields",
     "href": "fields.html#potential-fields",
     "title": "2  Fields",
     "section": "2.1 Potential fields",
-    "text": "2.1 Potential fields"
+    "text": "2.1 Potential fields",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   },
   {
     "objectID": "fields.html#density",
     "href": "fields.html#density",
     "title": "2  Fields",
     "section": "2.2 Density",
-    "text": "2.2 Density"
+    "text": "2.2 Density",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   },
   {
     "objectID": "fields.html#point-sources",
     "href": "fields.html#point-sources",
     "title": "2  Fields",
     "section": "2.3 Point sources",
-    "text": "2.3 Point sources"
+    "text": "2.3 Point sources",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   },
   {
     "objectID": "fields.html#solution-of-the-laplace-and-poisson-equations",
     "href": "fields.html#solution-of-the-laplace-and-poisson-equations",
     "title": "2  Fields",
     "section": "2.4 Solution of the Laplace and Poisson equations",
-    "text": "2.4 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n(Laplace equation) and\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n(Poisson equation) for \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\nplt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.4, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.4, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2);\n\n\n\n\n\n2.4.1 What can we observe in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\nIt has no curvature\nThe solution of the Poisson equation has local minima and maxima\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary"
+    "text": "2.4 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n(Laplace equation) and\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n(Poisson equation) for \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\n\nCode\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\n# plt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2, size=(7,3));",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   },
   {
     "objectID": "fields.html#properties-of-potentials",
     "href": "fields.html#properties-of-potentials",
     "title": "2  Fields",
     "section": "2.5 Properties of potentials",
-    "text": "2.5 Properties of potentials"
+    "text": "2.5 Properties of potentials",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   },
   {
     "objectID": "fields.html#complex-analysis",
     "href": "fields.html#complex-analysis",
     "title": "2  Fields",
     "section": "2.6 Complex analysis",
-    "text": "2.6 Complex analysis"
+    "text": "2.6 Complex analysis",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   },
   {
     "objectID": "fields.html#examples",
     "href": "fields.html#examples",
     "title": "2  Fields",
     "section": "2.7 Examples",
-    "text": "2.7 Examples"
+    "text": "2.7 Examples",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "shell_theorem.html",
+    "href": "shell_theorem.html",
+    "title": "6  Newton’s Shell Theorem",
+    "section": "",
+    "text": "Code\nx, y, z, xprime, yprime, zprime, f, rho = symbols('x y z xprime yprime zprime f rho', real=True)\n# I = integrate(exp(x**2), x)\ng_z = integrate(f * rho * diff(1 / sqrt(xprime**2 + (y - yprime)**2 + (z - zprime)**2), z), (xprime, -oo, oo))\ndisplay(simplify(g_z))\n\n\n\\[\\begin{equation}- \\frac{2 f \\rho \\left(z - {z}'\\right)}{\\left(y - {y}'\\right)^{2} + \\left(z - {z}'\\right)^{2}}\\end{equation}\\]",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Newton's Shell Theorem</span>"
+    ]
   },
   {
     "objectID": "geophysical_application.html#planetary-density-models",
     "href": "geophysical_application.html#planetary-density-models",
     "title": "9  Geophysical Application",
     "section": "9.1 Planetary density models",
-    "text": "9.1 Planetary density models"
+    "text": "9.1 Planetary density models",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
   },
   {
     "objectID": "geophysical_application.html#bouguer-reduction",
     "href": "geophysical_application.html#bouguer-reduction",
     "title": "9  Geophysical Application",
     "section": "9.2 Bouguer reduction",
-    "text": "9.2 Bouguer reduction"
+    "text": "9.2 Bouguer reduction",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
   },
   {
     "objectID": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
     "href": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
     "title": "9  Geophysical Application",
     "section": "9.3 Gravitational attraction of a spherical body",
-    "text": "9.3 Gravitational attraction of a spherical body"
+    "text": "9.3 Gravitational attraction of a spherical body",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html#a-horizontal-straight-line-of-mass",
+    "href": "line_of_mass.html#a-horizontal-straight-line-of-mass",
+    "title": "10  2-D mass distributions",
+    "section": "10.1 A horizontal straight line of mass",
+    "text": "10.1 A horizontal straight line of mass\nAs usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.\nFor an \\(x\\)-directed straight wire of density \\(\\rho_L\\) we obtain for the gravitational attraction in the plane \\(x=0\\)\n\\[\n\\mathbf g(0, y, z) = f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\nabla \\frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \\mathrm{d}x'\n\\tag{10.1}\\]\nSymPy is a Python library for symbolic mathematics. It yields the following result for the \\(z\\)-component of \\(\\mathbf g\\), i.e.,\n\\[\ng_z(0, y, z) = f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\frac{\\partial}{\\partial z} \\frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \\mathrm{d}x'\n\\]\n\n\nCode\nx, y, z, xprime, yprime, zprime, f, rho_L = symbols('x y z xprime yprime zprime f rho_L', real=True)\ng_z = integrate(f * rho_L * diff(1 / sqrt(xprime**2 + (y - yprime)**2 + (z - zprime)**2), z), (xprime, -oo, oo))\n# display(simplify(g_z))\ndisplay(Math(f' g_z(y,z) = {latex(simplify(g_z))}'))\n\n\n\\(\\displaystyle g_z(y,z) = - \\frac{2 f \\rho_{L} \\left(z - {z}'\\right)}{\\left(y - {y}'\\right)^{2} + \\left(z - {z}'\\right)^{2}}\\)\n\n\nWe recognize that\n\\[\ng_z(y,z) = - 2 f \\rho_L \\frac{z - z'}{(y - y')^2 + (z - z')^2}\n\\]\nThe interesting point is here that the numerator is the derivative of the denominator, i.e.,\n\\[\nf'(z) = 2(z - z')\n\\]\nand\n\\[\nf(z) = (y - y')^2 + (z - z')^2\n\\]\nWith the logarithmic derivative\n\\[\n\\int \\frac{f'(z)}{f(z)} \\mathrm dz = \\ln f(z) + C\n\\]\nwe obtain the logarithmic potential by integrating with respect to \\(z\\), which yields\n\\[\nV(y,z) = -2 f \\rho_L \\ln \\sqrt{(y - y')^2 + (z - z')^2} + C\n\\]\nor\n\n\n\\[ \\ln r^2 = 2 \\ln r \\] \\[ \\ln r = -\\ln \\frac{1}{r} \\]\n\\[\nV(y,z) = 2 f \\rho_L \\ln \\frac{1}{r}\n\\]\nNote that we set \\(C = 0 = 2 f \\rho_L \\ln 1\\).\nThus, with a proper choice of \\(C\\), we can shift the potential such that \\(V\\) takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the finite distance of \\(r=1\\), and not at infinity as it would be the case for finite bodies where \\(V \\sim 1/r\\). In the 2-D case, the masses extend to infinity.\n\n\nCode\nV = -2 * f * rho_L * log(sqrt((y- yprime)**2 + (z - zprime)**2))\n# display(V)\nplot(V.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 5), (yprime, 0)]),\n  (y, -5, 5), size=(4, 3),\n  xlabel='y', ylabel=r'$V(y)$', ylim=(-4, -3), xlim=(-5, 5), axis_center=(-5, -4))\n\n\n\n\n\nPotential \\(V\\) of an infinite wire at \\(y=0\\) and \\(z=5\\), \\(f \\rho_L = 1\\).\n\n\n\n\n\n\nCode\nplot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 5), (yprime, 0)]), \n  (y, -5, 5), size=(4, 3),\n  xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,0.5), xlim=(-5,5))\n\n\n\n\n\nVertical attraction \\(g_z\\) of an infinite wire at \\(y=0\\) and \\(z=5\\), \\(f \\rho_L = 1\\).",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html#attraction-of-a-plane-lamina",
+    "href": "line_of_mass.html#attraction-of-a-plane-lamina",
+    "title": "10  2-D mass distributions",
+    "section": "10.2 Attraction of a plane lamina",
+    "text": "10.2 Attraction of a plane lamina\nThe vertical component of attraction due to an element of area \\(\\mathrm{d}S\\) on an infinite horizontal plane lamina with density \\(\\rho\\) bounded by the planes \\(z\\) and \\(z+\\mathrm{d}z\\) is \\[\n\\mathrm{d}g = f \\rho \\mathrm{d}z \\mathrm{d}\\Omega\n\\] where \\(\\mathrm{d}\\Omega\\) is the solid angle subtended at the origin by the area \\(\\mathrm{d}S\\).\n\nIt holds \\[\n\\mathrm{d}\\Omega = \\frac{\\mathrm{d}S \\sin \\alpha}{r^{2}.}\n\\]\nIf we now consider a finite area \\(S\\) of arbitrary shape, the attraction at the origin due to the enclosed mass will be \\[\ng = f \\mathrm{d}z \\int _{S} \\rho \\, \\mathrm{d}\\Omega\n\\] or, if \\(\\rho\\) is constant over \\(S\\), this simplifies to \\[\ng = f \\rho \\Omega \\mathrm{d}z.\n\\] For a given solid angle \\(\\Omega\\), the attraction of the matter enclosed between two horizontal planes at \\(z=z_{1}\\) and \\(z=z_{2}\\) will be obtained by integrating \\[\ng = f \\Omega \\int_{z_{1}}^{z_{2}} \\rho \\, \\mathrm{d}z\n\\] and if \\(\\rho=\\mathrm{const.}\\) this becomes \\[\ng = f \\rho \\Omega (z_{2} - z_{1})\n\\] For the infinite horizontal plane the solid angle is \\(2 \\pi\\), such that the attraction of an infinite plate will be \\[\ng = 2 \\pi f \\rho (z_{2} - z_{1})\n\\] which is the vertical attraction of the Bouguer plate of thickness \\(z_{2} - z_{1}\\) and density \\(\\rho\\).",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html#the-mathrmdthetamathrmdz-solenoid",
+    "href": "line_of_mass.html#the-mathrmdthetamathrmdz-solenoid",
+    "title": "10  2-D mass distributions",
+    "section": "10.3 The \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) solenoid",
+    "text": "10.3 The \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) solenoid\nFirst, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the \\(x\\)-axis. Such a strip will be defined by the area on the plane \\(z=\\mathrm{const.}\\) lying between two inclined planes which intersect on the \\(x\\)-axis and make with the \\(y\\)-axis the angles of \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\).\n\nThe attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle \\(\\mathrm{d}\\Omega\\) between two planes intersecting at an angle \\(\\mathrm{d}\\Theta\\) will bear the same ratio to the total solid angle which the plane angle \\(\\mathrm{d}\\Theta\\) bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or \\(4 \\pi\\), and the total plane angle is \\(2 \\pi\\). Thus \\[\n\\frac{\\mathrm{d}\\Omega}{4 \\pi} = \\frac{\\mathrm{d}\\Theta}{2 \\pi}\n\\] or \\[\n\\mathrm{d}\\Omega = 2 \\mathrm{d}\\Theta.\n\\] Introducing this to the result obtained above gives \\[\n\\mathrm{d}g = 2 f \\rho \\mathrm{d}\\Theta \\mathrm{d}z\n\\] which is the fundamental differential equation of the attraction of a two-dimensional mass. The intersection of the two planes \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\) with the planes \\(z\\) and \\(z+\\mathrm{d}z\\) defines an elementary prism or solenoid of infinite length and cross-section \\(\\mathrm{d}\\Theta\\mathrm{d}z\\). For a finite area in the plane of integration \\[\ng = 2 f \\iint \\rho \\mathrm{d}\\Theta \\mathrm{d}z\n\\] Around an elementary prism \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) bounded by the lines \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\), and \\(z\\) and \\(z+\\mathrm{d}z\\), consider the line integral \\(\\oint \\Theta \\mathrm{d}z\\). Traversing the circuit in counter-clockwise direction, the resulting integral will be \\[\n\\oint \\Theta \\mathrm{d}z = 0 + (\\Theta + \\mathrm{d}\\Theta)\\mathrm{d}z + 0 - \\Theta \\mathrm{d}z = \\mathrm{d}\\Theta \\mathrm{d}z.\n\\] Over a finite area \\(S\\) we may obtain \\(\\iint \\mathrm{d}\\Theta \\mathrm{d}z\\) by \\[\n\\iint_{S} \\mathrm{d}\\Theta \\mathrm{d}z = \\iint_{S} \\left[\\oint \\Theta \\mathrm{d}z \\right].\n\\] When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, \\[\n\\iint_{S} \\mathrm{d}\\Theta \\mathrm{d}z = \\oint_{s} \\Theta \\mathrm{d}z.\n\\] The attraction of a finite mass of constant density is obtained by \\[\ng = 2 f \\rho \\oint_{s} \\Theta \\mathrm{d}z.\n\\]\n\n\n\n\n\nHubbert, M. King. 1948. “A LINE-INTEGRAL METHOD OF COMPUTING THE GRAVIMETRIC EFFECTS OF TWO-DIMENSIONAL MASSES.” GEOPHYSICS 13 (2): 215–25. https://doi.org/10.1190/1.1437395.\n\n\nTalwani, Manik, J. Lamar Worzel, and Mark Landisman. 1959. “Rapid Gravity Computations for Two-Dimensional Bodies with Application to the Mendocino Submarine Fracture Zone.” Journal of Geophysical Research 64 (1): 49–59. https://doi.org/10.1029/JZ064i001p00049.",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#what-do-we-observe-in-the-1-d-case",
+    "href": "fields.html#what-do-we-observe-in-the-1-d-case",
+    "title": "2  Fields",
+    "section": "2.5 What do we observe in the 1-D case?",
+    "text": "2.5 What do we observe in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\nIt has no curvature\nThe solution of the Poisson equation has local minima and maxima\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#what-can-be-observed-in-the-1-d-case",
+    "href": "fields.html#what-can-be-observed-in-the-1-d-case",
+    "title": "2  Fields",
+    "section": "2.5 What can be observed in the 1-D case?",
+    "text": "2.5 What can be observed in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\n\nIt has no curvature\n\nThe solution of the Poisson equation has local minima and maxima\n\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   }
 ]

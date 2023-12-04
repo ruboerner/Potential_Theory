@@ -43,11 +43,12 @@ The signature of the function can be understood as follows:
 -   Boundary conditions can be enforced by the values following the keyword `ics`. In the example, `y(0)=1` and `y(1)=0`.
 
 ```{python}
+#| code-fold: true
 from sympy import Function, dsolve, diff, cos, sin
 from sympy.abc import x
 from sympy.plotting import plot, PlotGrid
 import matplotlib.pyplot as plt
-plt.style.use('fivethirtyeight')
+# plt.style.use('fivethirtyeight')
 
 y = Function('y')
 eq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)
@@ -55,29 +56,22 @@ eq_laplace = diff(y(x), x, 2)
 result_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})
 result_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})
 p1 = plot(result_poisson.rhs, (x, 0, 1), 
-      ylim=(-0.4, 1.2), 
+      ylim=(-0.2, 1.2), 
       ylabel='y(x)', 
       axis_center='auto',
       show=False,
       title='Poisson equation');
 p2 = plot(result_laplace.rhs, (x, 0, 1), 
-      ylim=(-0.4, 1.2), 
+      ylim=(-0.2, 1.2), 
       ylabel='y(x)', 
       axis_center='auto',
       show=False,
       title='Laplace equation');
-PlotGrid(1, 2, p1, p2);
+PlotGrid(1, 2, p1, p2, size=(7,3));
 ```
-### What can we observe in the 1-D case?
+## What can be observed in the 1-D case?
 
 -   The solution of the *Laplace equation* does not exhibit local extrema
--   It has no curvature
+    -   It has no curvature
 -   The solution of the *Poisson equation* has local minima and maxima
--   Its extrema might get larger or smaller than those of the Dirichlet values at the boundary
-
-
-## Properties of potentials
-
-## Complex analysis
-
-## Examples
+    -   Its extrema might get larger or smaller than those of the Dirichlet values at the boundary
