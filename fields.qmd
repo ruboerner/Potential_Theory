@@ -1,0 +1,77 @@
+---
+title: "Fields"
+jupyter:
+  kernelspec: 
+    name: "python3"
+    language: python
+    display_name: "python3"
+code-fold: false
+---
+
+## Potential fields
+
+## Density
+
+## Point sources
+
+## Solution of the Laplace and Poisson equations
+
+We consider the second-order differential equations
+
+$$
+\dv[2]{y}{x} = 0
+$$
+
+(*Laplace equation*) and 
+
+$$
+\dv[2]{y}{x} = -4\cos(4x) - 8 \sin(8 x)
+$$
+
+(*Poisson equation*) for $x \in [0, 1]$ subject to the boundary conditions $y(0)=1$ and $y(1)=0$.
+
+To obtain the solution to the above PDEs, we employ the `Python` package `sympy`, which is a powerful library for symbolic mathematics.
+
+Symbolic functions which depend on symbolic variables have to be defined with the function `Function`.
+
+The solution of the differential equations can be obtained by a call to the `dsolve` function.
+
+The signature of the function can be understood as follows:
+
+-   Solve the symbolic equation given by the expressions `eq_poisson` and `eq_laplace`, resp.
+-   The desired solution is `y(x)`
+-   Boundary conditions can be enforced by the values following the keyword `ics`. In the example, `y(0)=1` and `y(1)=0`.
+
+```{python}
+#| code-fold: true
+from sympy import Function, dsolve, diff, cos, sin
+from sympy.abc import x
+from sympy.plotting import plot, PlotGrid
+import matplotlib.pyplot as plt
+# plt.style.use('fivethirtyeight')
+
+y = Function('y')
+eq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)
+eq_laplace = diff(y(x), x, 2)
+result_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})
+result_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})
+p1 = plot(result_poisson.rhs, (x, 0, 1), 
+      ylim=(-0.2, 1.2), 
+      ylabel='y(x)', 
+      axis_center='auto',
+      show=False,
+      title='Poisson equation');
+p2 = plot(result_laplace.rhs, (x, 0, 1), 
+      ylim=(-0.2, 1.2), 
+      ylabel='y(x)', 
+      axis_center='auto',
+      show=False,
+      title='Laplace equation');
+PlotGrid(1, 2, p1, p2, size=(7,3));
+```
+## What can be observed in the 1-D case?
+
+-   The solution of the *Laplace equation* does not exhibit local extrema
+    -   It has no curvature
+-   The solution of the *Poisson equation* has local minima and maxima
+    -   Its extrema might get larger or smaller than those of the Dirichlet values at the boundary

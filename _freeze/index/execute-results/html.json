@@ -1,0 +1,11 @@
+{
+  "hash": "adbac5536b491ff7c1a94c72376d2d66",
+  "result": {
+    "markdown": "---\ntitle: Introduction\ncode-fold: true\nexecute:\n  freeze: true\n  eval: false\n---\n\nThis is work in progress!\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
