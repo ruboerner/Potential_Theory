@@ -28,6 +28,7 @@ book:
       chapters: 
         - line_of_mass.qmd
         - talwani.qmd
+        - Talwani-Implementation.qmd
     - part: "Dipole potential"
     - part: "Spherical harmonics"
     - part: "Boundary value problems"

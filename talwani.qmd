@@ -16,13 +16,13 @@ init_printing(use_latex="mathjax", latex_mode="equation")
 Recall that the vertical component of the gravitational attraction caused by an elongated prismatic body of cross section $S$ is
 
 $$
-g_z(x,z) = \frac{\partial}{\partial z}V(x,z) = -2 f \Delta \rho \int\limits_S \frac{(z - z')\, dx' \,dz'}{(x-x')^2 + (z-z')^2}.
+g_z(x,z) = \frac{\partial}{\partial z}V(x,z) = -2 f \Delta \rho \int\limits_S \frac{(z - z')\, dx' \,dz'}{\sqrt{(x-x')^2 + (z-z')^2}}.
 $$
 
 If the point of observation is at the origin, we obtain
 
 $$
-g_z(0,0) = \frac{\partial}{\partial z}V(0,0) = 2 f \Delta \rho \int\limits_S \frac{z\, dx \, dz}{x^2 + z^2}.
+g_z(0,0) = \frac{\partial}{\partial z}V(0,0) = 2 f \Delta \rho \int\limits_S \frac{z\, dx \, dz}{\sqrt{x^2 + z^2}}.
 $$
 
 It can be shown that this surface integral can be equivalently replaced by a line integral taken along the periphery of $S$.
@@ -111,3 +111,12 @@ Z = solve([tan(theta) * x - z, (x - a) * tan(phi) - z], [x, z], dict=True)
 Z[0][z]
 simplify(integrate(Z[0][z], theta))
 ```
+Note that with
+$$
+\log\left( \frac{1}{\cos^2\theta}\right) = - 2 \log \cos\theta
+$$
+and after combining the $\log$ terms we obtain the desired integral taken in the limit of integration, i.e., $\theta_i$ and $\theta_{i+1}$
+$$
+Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
+$$
+which is the equation for $Z_i$ given in @talwani1959, p. 50.

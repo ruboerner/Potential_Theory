@@ -1,9 +1,0 @@
----
-title: "Geophysical Application"
----
-
-## Planetary density models
-
-## Bouguer reduction
-
-## Gravitational attraction of a spherical body

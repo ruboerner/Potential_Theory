@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.510">
+<meta name="generator" content="quarto-1.4.466">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -340,7 +340,7 @@ window.MathJax = {
 <p><span class="math display">\[
 g_z(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \mathrm{d}x'
 \]</span></p>
-<div id="679a253c" class="cell" data-execution_count="2">
+<div id="2ef0026d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -381,7 +381,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 \]</span></p>
 <p>Note that we set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
 <p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
-<div id="c399520b" class="cell" data-execution_count="3">
+<div id="3613315f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(sqrt((y<span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
@@ -399,7 +399,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 </div>
 </div>
 </div>
-<div id="72fdc5d4" class="cell" data-execution_count="4">
+<div id="362200b9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="dv">5</span>), (yprime, <span class="dv">0</span>)]), </span>
@@ -624,15 +624,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
         }
         typesetMath(container);
         return container.innerHTML

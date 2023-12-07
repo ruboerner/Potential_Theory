@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.510">
+<meta name="generator" content="quarto-1.4.466">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -336,7 +336,7 @@ window.MathJax = {
 <li>The desired solution is <code>y(x)</code></li>
 <li>Boundary conditions can be enforced by the values following the keyword <code>ics</code>. In the example, <code>y(0)=1</code> and <code>y(1)=0</code>.</li>
 </ul>
-<div id="2195be56" class="cell" data-execution_count="1">
+<div id="81f93761" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Function, dsolve, diff, cos, sin</span>
@@ -365,11 +365,7 @@ window.MathJax = {
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>PlotGrid(<span class="dv">1</span>, <span class="dv">2</span>, p1, p2, size<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">3</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="fields_files/figure-html/cell-2-output-1.png" width="656" height="275" class="figure-img"></p>
-</figure>
-</div>
+<p><img src="fields_files/figure-html/cell-2-output-1.png" width="656" height="275"></p>
 </div>
 </div>
 </section>
@@ -543,15 +539,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
         }
         typesetMath(container);
         return container.innerHTML

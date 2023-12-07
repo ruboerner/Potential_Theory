@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.510">
+<meta name="generator" content="quarto-1.4.466">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -84,6 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./Talwani-Implementation.html" rel="next">
 <link href="./line_of_mass.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -272,6 +273,12 @@ window.MathJax = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -328,11 +335,11 @@ window.MathJax = {
 <h2 data-number="11.1" class="anchored" data-anchor-id="problem-description"><span class="header-section-number">11.1</span> Problem description</h2>
 <p>Recall that the vertical component of the gravitational attraction caused by an elongated prismatic body of cross section <span class="math inline">\(S\)</span> is</p>
 <p><span class="math display">\[
-g_z(x,z) = \frac{\partial}{\partial z}V(x,z) = -2 f \Delta \rho \int\limits_S \frac{(z - z')\, dx' \,dz'}{(x-x')^2 + (z-z')^2}.
+g_z(x,z) = \frac{\partial}{\partial z}V(x,z) = -2 f \Delta \rho \int\limits_S \frac{(z - z')\, dx' \,dz'}{\sqrt{(x-x')^2 + (z-z')^2}}.
 \]</span></p>
 <p>If the point of observation is at the origin, we obtain</p>
 <p><span class="math display">\[
-g_z(0,0) = \frac{\partial}{\partial z}V(0,0) = 2 f \Delta \rho \int\limits_S \frac{z\, dx \, dz}{x^2 + z^2}.
+g_z(0,0) = \frac{\partial}{\partial z}V(0,0) = 2 f \Delta \rho \int\limits_S \frac{z\, dx \, dz}{\sqrt{x^2 + z^2}}.
 \]</span></p>
 <p>It can be shown that this surface integral can be equivalently replaced by a line integral taken along the periphery of <span class="math inline">\(S\)</span>.</p>
 </section>
@@ -387,7 +394,7 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </section>
 <section id="implementation" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="implementation"><span class="header-section-number">11.3</span> Implementation</h2>
-<div id="2f0d7287" class="cell" data-execution_count="2">
+<div id="67a2ad94" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, x, z, phi, theta, Z <span class="op">=</span> symbols(<span class="st">'a x z phi theta Z'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> solve([tan(theta) <span class="op">*</span> x <span class="op">-</span> z, (x <span class="op">-</span> a) <span class="op">*</span> tan(phi) <span class="op">-</span> z], [x, z], <span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Z[<span class="dv">0</span>][z]</span>
@@ -396,6 +403,11 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 <p><span class="math display">\[\begin{equation}\frac{a \left(- 2 \theta - 2 \log{\left(- \tan{\left(\phi \right)} + \tan{\left(\theta \right)} \right)} \tan{\left(\phi \right)} + \log{\left(\frac{1}{\cos^{2}{\left(\theta \right)}} \right)} \tan{\left(\phi \right)}\right) \cos^{2}{\left(\phi \right)} \tan{\left(\phi \right)}}{2}\end{equation}\]</span></p>
 </div>
 </div>
+<p>Note that with <span class="math display">\[
+\log\left( \frac{1}{\cos^2\theta}\right) = - 2 \log \cos\theta
+\]</span> and after combining the <span class="math inline">\(\log\)</span> terms we obtain the desired integral taken in the limit of integration, i.e., <span class="math inline">\(\theta_i\)</span> and <span class="math inline">\(\theta_{i+1}\)</span> <span class="math display">\[
+Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
+\]</span> which is the equation for <span class="math inline">\(Z_i\)</span> given in <span class="citation" data-cites="talwani1959">Talwani, Worzel, and Landisman (<a href="#ref-talwani1959" role="doc-biblioref">1959</a>)</span>, p.&nbsp;50.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -562,15 +574,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
         }
         typesetMath(container);
         return container.innerHTML
@@ -813,6 +818,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./Talwani-Implementation.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span>">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
