@@ -334,13 +334,17 @@ window.MathJax = {
 <p>As usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.</p>
 <p>For an <span class="math inline">\(x\)</span>-directed straight wire of density <span class="math inline">\(\rho_L\)</span> we obtain for the gravitational attraction in the plane <span class="math inline">\(x=0\)</span></p>
 <p><span id="eq-attraction-line"><span class="math display">\[
-\mathbf g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \nabla \frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \mathrm{d}x'
+\mathbf g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \nabla \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
 \tag{10.1}\]</span></span></p>
 <p><em>SymPy</em> is a Python library for symbolic mathematics. It yields the following result for the <span class="math inline">\(z\)</span>-component of <span class="math inline">\(\mathbf g\)</span>, i.e.,</p>
 <p><span class="math display">\[
-g_z(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \mathrm{d}x'
+g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
 \]</span></p>
+<<<<<<< Updated upstream
 <div id="2ef0026d" class="cell" data-execution_count="2">
+=======
+<div id="2ae7d816" class="cell" data-execution_count="2">
+>>>>>>> Stashed changes
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -356,6 +360,7 @@ g_z(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial
 <p><span class="math display">\[
 g_z(y,z) = - 2 f \rho_L \frac{z - z'}{(y - y')^2 + (z - z')^2}
 \]</span></p>
+<p>The attraction of the infinite line of mass is inversely proportional to the distance from the line to the point of observation.</p>
 <p>The interesting point is here that the numerator is the derivative of the denominator, i.e.,</p>
 <p><span class="math display">\[
 f'(z) = 2(z - z')
@@ -381,36 +386,44 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 \]</span></p>
 <p>Note that we set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
 <p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
+<<<<<<< Updated upstream
 <div id="3613315f" class="cell" data-execution_count="3">
+=======
+<div id="66786e7c" class="cell" data-execution_count="3">
+>>>>>>> Stashed changes
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(sqrt((y<span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># display(V)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plot(V.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="dv">5</span>), (yprime, <span class="dv">0</span>)]),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plot(V.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]),</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  (y, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$V(y)$'</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">3</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$V(y)$'</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">2</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="line_of_mass_files/figure-html/cell-4-output-1.png" width="371" height="276" class="figure-img"></p>
-<figcaption>Potential <span class="math inline">\(V\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
+<p><img src="line_of_mass_files/figure-html/cell-4-output-1.png" width="373" height="277" class="figure-img"></p>
+<figcaption>Potential <span class="math inline">\(V\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=0.5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<<<<<<< Updated upstream
 <div id="362200b9" class="cell" data-execution_count="4">
+=======
+<div id="9ca70e35" class="cell" data-execution_count="4">
+>>>>>>> Stashed changes
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="dv">5</span>), (yprime, <span class="dv">0</span>)]), </span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (y, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$g_z(y)$'</span>, axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">0</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="fl">0.5</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$g_z(y)$'</span>, axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">0</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">5</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="line_of_mass_files/figure-html/cell-5-output-1.png" width="371" height="276" class="figure-img"></p>
-<figcaption>Vertical attraction <span class="math inline">\(g_z\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
+<p><img src="line_of_mass_files/figure-html/cell-5-output-1.png" width="373" height="277" class="figure-img"></p>
+<figcaption>Vertical attraction <span class="math inline">\(g_z\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=0.5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -449,7 +462,7 @@ g = 2 \pi f \rho (z_{2} - z_{1})
 \mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
 \]</span> which is the <em>fundamental differential equation of the attraction of a two-dimensional mass</em>. The intersection of the two planes <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span> with the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> defines an elementary prism or solenoid of infinite length and cross-section <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span>. For a finite area in the plane of integration <span class="math display">\[
 g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-\]</span> Around an elementary prism <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> bounded by the lines <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>, and <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span>, consider the line integral <span class="math inline">\(\oint \Theta \mathrm{d}z\)</span>. Traversing the circuit in counter-clockwise direction, the resulting integral will be <span class="math display">\[
+\]</span> Around an elementary prism <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> bounded by the lines <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>, and <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span>, consider the line integral <span class="math inline">\(\oint \Theta \mathrm{d}z\)</span>. Starting at the point <span class="math inline">\((\Theta, z)\)</span> and traversing the circuit in counter-clockwise direction, the resulting integral will be <span class="math display">\[
 \oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
 \]</span> Over a finite area <span class="math inline">\(S\)</span> we may obtain <span class="math inline">\(\iint \mathrm{d}\Theta \mathrm{d}z\)</span> by <span class="math display">\[
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
@@ -457,7 +470,14 @@ g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.
 \]</span> The attraction of a finite mass of constant density is obtained by <span class="math display">\[
 g = 2 f \rho \oint_{s} \Theta \mathrm{d}z.
-\]</span> —</p>
+\]</span></p>
+<p>As an alternative, one could also consider the integral <span class="math inline">\(\oint z \mathrm d \theta\)</span>. Traversing the integral in the sense <span class="math inline">\(\theta, z + \mathrm d z, \theta + \mathrm d \theta, z\)</span> we obtain</p>
+<p><span class="math display">\[
+\oint z \mathrm{d}\Theta  = 0 + (z + \mathrm{d}z)\mathrm{d}\Theta + 0 - z \mathrm{d}\Theta = \mathrm{d}\Theta \mathrm{d}z.
+\]</span> and <span class="math display">\[
+g = 2 f \rho \oint_{s} z \mathrm{d}\Theta.
+\]</span></p>
+<hr>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

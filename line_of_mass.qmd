@@ -13,7 +13,10 @@ bibliography: references.bib
 #| echo: false
 from IPython.display import display, Math
 from sympy import *
+import matplotlib.pyplot as plt
 init_printing(use_latex="mathjax", latex_mode="equation")
+#print(plt.style.available)
+plt.style.use('ggplot')
 ```
 
 We consider an elongated mass with a lateral extension that is much larger than any profile crossing it at a right angle. Those mass distributions are invariant along one of the horizontal Cartesian axes.
@@ -31,13 +34,13 @@ As usual, we depart from a simple geometry. Later we integrate over a cross sect
 For an $x$-directed straight wire of density $\rho_L$ we obtain for the gravitational attraction in the plane $x=0$
 
 $$
-\mathbf g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \nabla \frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \mathrm{d}x'
+\mathbf g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \nabla \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
 $$ {#eq-attraction-line}
 
 *SymPy* is a Python library for symbolic mathematics. It yields the following result for the $z$-component of $\mathbf g$, i.e.,
 
 $$
-g_z(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{{x'}^2 + (y - y')^2 + (z - z')^2} \mathrm{d}x'
+g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
 $$
 
 ```{python}
@@ -53,6 +56,8 @@ We recognize that
 $$
 g_z(y,z) = - 2 f \rho_L \frac{z - z'}{(y - y')^2 + (z - z')^2}
 $$
+
+The attraction of the infinite line of mass is inversely proportional to the distance from the line to the point of observation.
 
 The interesting point is here that the numerator is the derivative of the denominator, i.e.,
 
@@ -94,20 +99,20 @@ Thus, with a proper choice of $C$, we can shift the potential such that $V$ take
 
 ```{python}
 #| code-fold: true
-#| fig-cap: "Potential $V$ of an infinite wire at $y=0$ and $z=5$, $f \\rho_L = 1$."
-V = -2 * f * rho_L * log(sqrt((y- yprime)**2 + (z - zprime)**2))
+#| fig-cap: "Potential $V$ of an infinite wire at $y=0$ and $z=0.5$, $f \\rho_L = 1$."
+V = 2 * f * rho_L * log(1 / sqrt((y - yprime)**2 + (z - zprime)**2))
 # display(V)
-plot(V.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 5), (yprime, 0)]),
+plot(V.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]),
   (y, -5, 5), size=(4, 3),
-  xlabel='y', ylabel=r'$V(y)$', ylim=(-4, -3), xlim=(-5, 5), axis_center=(-5, -4))
+  xlabel='y', ylabel=r'$V(y)$', ylim=(-4, 2), xlim=(-5, 5), axis_center=(-5, -4))
 ```
 
 ```{python}
 #| code-fold: true
-#| fig-cap: "Vertical attraction $g_z$ of an infinite wire at $y=0$ and $z=5$, $f \\rho_L = 1$."
-plot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 5), (yprime, 0)]), 
+#| fig-cap: "Vertical attraction $g_z$ of an infinite wire at $y=0$ and $z=0.5$, $f \\rho_L = 1$."
+plot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]), 
   (y, -5, 5), size=(4, 3),
-  xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,0.5), xlim=(-5,5))
+  xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,5), xlim=(-5,5))
 ```
 
 ## Attraction of a plane lamina
@@ -148,12 +153,26 @@ $$ Introducing this to the result obtained above gives $$
 \mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
 $$ which is the *fundamental differential equation of the attraction of a two-dimensional mass*. The intersection of the two planes $\Theta$ and $\Theta + \mathrm{d}\Theta$ with the planes $z$ and $z+\mathrm{d}z$ defines an elementary prism or solenoid of infinite length and cross-section $\mathrm{d}\Theta\mathrm{d}z$. For a finite area in the plane of integration $$
 g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-$$ Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Traversing the circuit in counter-clockwise direction, the resulting integral will be $$
+$$ Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Starting at the point $(\Theta, z)$ and traversing the circuit in counter-clockwise direction, the resulting integral will be $$
 \oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
 $$ Over a finite area $S$ we may obtain $\iint \mathrm{d}\Theta \mathrm{d}z$ by $$
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
 $$ When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, $$
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.
-$$ The attraction of a finite mass of constant density is obtained by $$
+$$ 
+The attraction of a finite mass of constant density is obtained by 
+$$
 g = 2 f \rho \oint_{s} \Theta \mathrm{d}z.
-$$ ---
+$$
+
+As an alternative, one could also consider the integral $\oint z \mathrm d \theta$. Traversing the integral in the sense $\theta, z + \mathrm d z, \theta + \mathrm d \theta, z$ we obtain
+
+$$
+\oint z \mathrm{d}\Theta  = 0 + (z + \mathrm{d}z)\mathrm{d}\Theta + 0 - z \mathrm{d}\Theta = \mathrm{d}\Theta \mathrm{d}z.
+$$
+and
+$$
+g = 2 f \rho \oint_{s} z \mathrm{d}\Theta.
+$$
+
+------------------------------------------------------------------------

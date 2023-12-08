@@ -394,7 +394,11 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </section>
 <section id="implementation" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="implementation"><span class="header-section-number">11.3</span> Implementation</h2>
+<<<<<<< Updated upstream
 <div id="67a2ad94" class="cell" data-execution_count="2">
+=======
+<div id="757cb000" class="cell" data-execution_count="2">
+>>>>>>> Stashed changes
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, x, z, phi, theta, Z <span class="op">=</span> symbols(<span class="st">'a x z phi theta Z'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> solve([tan(theta) <span class="op">*</span> x <span class="op">-</span> z, (x <span class="op">-</span> a) <span class="op">*</span> tan(phi) <span class="op">-</span> z], [x, z], <span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Z[<span class="dv">0</span>][z]</span>
