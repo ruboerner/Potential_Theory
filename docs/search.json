@@ -73,7 +73,7 @@
     "text": "12.1 Sort the vertices\nFirst, we have to sort the vertices in the case that they are given in an arbitrary order.\nTo this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.\n\n\nCode\npoly = Polygon(x, z, 500)\n\n\n\n\nCode\nfig, ax = plt.subplots()\nplt.plot(poly.x, poly.z, marker='.')\nax.set_aspect('equal', 'box');\n\n\n\n\n\n\n\n\n\n\n\nCode\ncylinder(np.array([-10., 0.]), poly.density * np.pi * radius**2, np.array([0., 10.]))\n\n\narray([1.04834947e-08, 1.04834947e-08])\n\n\n\n\nCode\ntalwani([-50, 0], poly)\n\n\n8.043842124376165e-10\n\n\n\n\nCode\nprofile = np.linspace(start=-40, stop=40, num=81)\nnpts = profile.size\ngtal = np.zeros(npts)\ngcyl = np.zeros(npts)\nmass = poly.density * np.pi * radius**2\nfor k in range(npts):\n    gtal[k] = talwani(np.array([profile[k], 0]), poly)\n    gcyl[k] = cylinder(np.array([profile[k], 0]), mass, np.array([xc, zc]))[1]\n\n\n\n\nCode\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.plot(profile, gtal, marker='.')\nax1.plot(profile, gcyl, marker='.');\nax2.plot(profile, gcyl - gtal, marker='.');\n\n\n\n\n\n\n\n\n\n\n\nCode\nnorm(gtal - gcyl) / norm(gcyl)\n\n\n0.002516090288496242",
     "crumbs": [
       "Two-dimensional problems",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Implementation of the TALWANI approach</span>"
     ]
   }
 ]

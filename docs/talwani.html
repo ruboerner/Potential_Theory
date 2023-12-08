@@ -277,7 +277,7 @@ window.MathJax = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
@@ -395,14 +395,14 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </section>
 <section id="implementation" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="implementation"><span class="header-section-number">11.3</span> Implementation</h2>
-<div id="744e46d4" class="cell" data-execution_count="2">
+<div id="a34aa359" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, x, z, phi, theta, Z <span class="op">=</span> symbols(<span class="st">'a x z phi theta Z'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> solve(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    [tan(theta) <span class="op">*</span> x <span class="op">-</span> z, (x <span class="op">-</span> a) <span class="op">*</span> tan(phi) <span class="op">-</span> z], </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    [x, z], <span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Z[0][z]</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>simplify(integrate(Z[<span class="dv">0</span>][z], theta))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
 <p><span class="math display">\[\begin{equation}\frac{a \left(- 2 \theta - 2 \log{\left(- \tan{\left(\phi \right)} + \tan{\left(\theta \right)} \right)} \tan{\left(\phi \right)} + \log{\left(\frac{1}{\cos^{2}{\left(\theta \right)}} \right)} \tan{\left(\phi \right)}\right) \cos^{2}{\left(\phi \right)} \tan{\left(\phi \right)}}{2}\end{equation}\]</span></p>
 </div>
 </div>
@@ -829,8 +829,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Talwani-Implementation.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span>">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Talwani-Implementation.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Implementation of the TALWANI approach</span>">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
