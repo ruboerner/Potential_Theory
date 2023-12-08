@@ -107,8 +107,10 @@ It remains to solve the integral in the expression for $Z_i$. To this end, we us
 
 ```{python}
 a, x, z, phi, theta, Z = symbols('a x z phi theta Z', real=True)
-Z = solve([tan(theta) * x - z, (x - a) * tan(phi) - z], [x, z], dict=True)
-Z[0][z]
+Z = solve(
+    [tan(theta) * x - z, (x - a) * tan(phi) - z], 
+    [x, z], dict=True)
+# Z[0][z]
 simplify(integrate(Z[0][z], theta))
 ```
 Note that with
@@ -120,3 +122,4 @@ $$
 Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
 $$
 which is the equation for $Z_i$ given in @talwani1959, p. 50.
+---

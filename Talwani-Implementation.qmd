@@ -1,11 +1,11 @@
 ---
-title: Implementation of the TALWANI approach for the gravity computation of 2-D bodies
+title: Implementation of the TALWANI approach
 jupyter: python3
 ---
 
 
 ```{python}
-#| tags: []
+#| echo: false
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy import isclose
@@ -13,6 +13,7 @@ from numpy.linalg import norm
 ```
 
 ```{python}
+#| code-fold: true
 class Polygon:
     def __init__(self, x, z, density):
         xc = np.mean(x)
@@ -35,13 +36,14 @@ class Polygon:
 ```
 
 ```{python}
+#| code-fold: true
 def cylinder(obs, mass, axis):
     g = -2 * 6.674e-11 * mass / np.linalg.norm(obs - axis)**2 * (obs - axis)
     return g
 ```
 
 ```{python}
-#| tags: []
+#| code-fold: true
 def talwani(obs, polygon):
     gz = 0.0
     density = polygon.density
@@ -102,7 +104,7 @@ $$
 We define a cylinder of radius $r=1$ that will be approximated in the $x-z$-plane by a sufficiently large number of line segments around its enclosing circle. 
 
 ```{python}
-#| tags: []
+#| code-fold: true
 n = 51
 xc = 0.0
 zc = 10.0
@@ -114,7 +116,7 @@ z = np.array([zc + radius * np.sin(0.01 + 2 * np.pi * k / n) for k in np.linspac
 ```
 
 ```{python}
-#| tags: []
+#| code-fold: true
 fig, ax = plt.subplots()
 plt.plot(x, z, marker='.')
 ax.set_aspect('equal', 'box');
@@ -126,31 +128,30 @@ First, we have to sort the vertices in the case that they are given in an arbitr
 To this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.
 
 ```{python}
+#| code-fold: true
 poly = Polygon(x, z, 500)
 ```
 
-```{python}
-#| tags: []
-# print(poly)
-```
 
 ```{python}
-#| tags: []
+#| code-fold: true
 fig, ax = plt.subplots()
 plt.plot(poly.x, poly.z, marker='.')
 ax.set_aspect('equal', 'box');
 ```
 
 ```{python}
+#| code-fold: true
 cylinder(np.array([-10., 0.]), poly.density * np.pi * radius**2, np.array([0., 10.]))
 ```
 
 ```{python}
-#| tags: []
+#| code-fold: true
 talwani([-50, 0], poly)
 ```
 
 ```{python}
+#| code-fold: true
 profile = np.linspace(start=-40, stop=40, num=81)
 npts = profile.size
 gtal = np.zeros(npts)
@@ -162,6 +163,7 @@ for k in range(npts):
 ```
 
 ```{python}
+#| code-fold: true
 fig, (ax1, ax2) = plt.subplots(1, 2)
 ax1.plot(profile, gtal, marker='.')
 ax1.plot(profile, gcyl, marker='.');
@@ -169,6 +171,7 @@ ax2.plot(profile, gcyl - gtal, marker='.');
 ```
 
 ```{python}
+#| code-fold: true
 norm(gtal - gcyl) / norm(gcyl)
 ```
 
