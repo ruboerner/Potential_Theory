@@ -75,5 +75,93 @@
       "Two-dimensional problems",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Implementation of the TALWANI approach</span>"
     ]
+  },
+  {
+    "objectID": "geophysical_application.html",
+    "href": "geophysical_application.html",
+    "title": "9  Geophysical Application",
+    "section": "",
+    "text": "9.1 Planetary density models",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "geophysical_application.html#bouguer-reduction",
+    "href": "geophysical_application.html#bouguer-reduction",
+    "title": "9  Geophysical Application",
+    "section": "9.2 Bouguer reduction",
+    "text": "9.2 Bouguer reduction",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
+    "href": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
+    "title": "9  Geophysical Application",
+    "section": "9.3 Gravitational attraction of a spherical body",
+    "text": "9.3 Gravitational attraction of a spherical body",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html",
+    "href": "fields.html",
+    "title": "2  Fields",
+    "section": "",
+    "text": "2.1 Potential fields",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#density",
+    "href": "fields.html#density",
+    "title": "2  Fields",
+    "section": "2.2 Density",
+    "text": "2.2 Density",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#point-sources",
+    "href": "fields.html#point-sources",
+    "title": "2  Fields",
+    "section": "2.3 Point sources",
+    "text": "2.3 Point sources",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#solution-of-the-laplace-and-poisson-equations",
+    "href": "fields.html#solution-of-the-laplace-and-poisson-equations",
+    "title": "2  Fields",
+    "section": "2.4 Solution of the Laplace and Poisson equations",
+    "text": "2.4 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\n\n\n\n\n\nLaplace equation\n\n\n\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n\n\nand\n\n\n\n\n\n\nPoisson equation\n\n\n\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n\n\nfor \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\n\nCode\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\n# plt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2, size=(7,3));",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#what-can-be-observed-in-the-1-d-case",
+    "href": "fields.html#what-can-be-observed-in-the-1-d-case",
+    "title": "2  Fields",
+    "section": "2.5 What can be observed in the 1-D case?",
+    "text": "2.5 What can be observed in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\n\nIt has no curvature\n\nThe solution of the Poisson equation has local minima and maxima\n\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
   }
 ]
