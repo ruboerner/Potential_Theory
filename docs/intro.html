@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Theory of Potential Field Methods in Geophysics</title>
+<title>1&nbsp; Introduction – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="prev">
+<link href="./fields.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,6 +79,35 @@ window.MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -110,7 +121,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,7 +154,7 @@ window.MathJax = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -266,7 +277,7 @@ window.MathJax = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -275,15 +286,34 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-is-potential-theory-important" id="toc-why-is-potential-theory-important" class="nav-link active" data-scroll-target="#why-is-potential-theory-important"><span class="header-section-number">1.1</span> Why is Potential Theory important?</a></li>
+  <li><a href="#what-are-fields" id="toc-what-are-fields" class="nav-link" data-scroll-target="#what-are-fields"><span class="header-section-number">1.2</span> What are fields?</a></li>
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions"><span class="header-section-number">1.3</span> Definitions</a>
+  <ul class="collapse">
+  <li><a href="#the-scalar-potential-function" id="toc-the-scalar-potential-function" class="nav-link" data-scroll-target="#the-scalar-potential-function"><span class="header-section-number">1.3.1</span> The Scalar Potential Function</a></li>
+  <li><a href="#laplaces-equation" id="toc-laplaces-equation" class="nav-link" data-scroll-target="#laplaces-equation"><span class="header-section-number">1.3.2</span> Laplace’s Equation</a></li>
+  <li><a href="#poissons-equation" id="toc-poissons-equation" class="nav-link" data-scroll-target="#poissons-equation"><span class="header-section-number">1.3.3</span> Poisson’s Equation</a></li>
+  <li><a href="#boundary-conditions" id="toc-boundary-conditions" class="nav-link" data-scroll-target="#boundary-conditions"><span class="header-section-number">1.3.4</span> Boundary Conditions</a></li>
+  <li><a href="#greens-function-and-the-inverse-problem" id="toc-greens-function-and-the-inverse-problem" class="nav-link" data-scroll-target="#greens-function-and-the-inverse-problem"><span class="header-section-number">1.3.5</span> Green’s Function and the Inverse Problem</a></li>
+  <li><a href="#spherical-harmonics-for-global-representations" id="toc-spherical-harmonics-for-global-representations" class="nav-link" data-scroll-target="#spherical-harmonics-for-global-representations"><span class="header-section-number">1.3.6</span> Spherical Harmonics for Global Representations</a></li>
+  <li><a href="#upward-and-downward-continuation" id="toc-upward-and-downward-continuation" class="nav-link" data-scroll-target="#upward-and-downward-continuation"><span class="header-section-number">1.3.7</span> Upward and Downward Continuation</a></li>
+  <li><a href="#anomalies-and-signal-separation" id="toc-anomalies-and-signal-separation" class="nav-link" data-scroll-target="#anomalies-and-signal-separation"><span class="header-section-number">1.3.8</span> Anomalies and Signal Separation</a></li>
+  </ul></li>
+  <li><a href="#summary-of-key-equations" id="toc-summary-of-key-equations" class="nav-link" data-scroll-target="#summary-of-key-equations"><span class="header-section-number">1.4</span> Summary of Key Equations:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
 </div>
 
 
@@ -300,15 +330,137 @@ window.MathJax = {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-blakely1995" class="csl-entry" role="listitem">
-Blakely, R.J., 1995. <em>Potential <span>Theory</span> in
-<span>Gravity</span> and <span>Magnetic Applications</span></em>, 1st
-ed., Cambridge University Press. doi:<a href="https://doi.org/10.1017/CBO9780511549816">10.1017/CBO9780511549816</a>
-</div>
-</div>
+<p>These lecture notes cover the following topics:</p>
+<ul>
+<li>Potential fields in gravity and magnetics</li>
+<li>Boundary value problems</li>
+<li>Potential fields and their application in the DC resistivity method.</li>
+</ul>
+<p>We will discover problems such as</p>
+<ul>
+<li>Calculation of the anomalous gravitational attraction and magnetic field caused by solid bodies of arbitrary shape in 2-D and 3-D</li>
+<li>Understanding Earth’s density models</li>
+<li>Purpose of Complex Analysis to solve problems in potential theory, e.g., the Hilbert transform</li>
+<li>Use of Spherical Harmonic Analysis to model the Earth’s magnetic field</li>
+<li>Application of potential theory to the solution of problems arising in the DC resistivity method</li>
+</ul>
+<section id="why-is-potential-theory-important" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="why-is-potential-theory-important"><span class="header-section-number">1.1</span> Why is Potential Theory important?</h2>
+<p>Potential theory is essential in geophysics because it provides a mathematical framework for understanding and analyzing natural physical fields, such as gravity and magnetism, that originate from the Earth’s subsurface. These fields are governed by the principles of potential theory, allowing geophysicists to interpret variations in these fields to infer the distribution of subsurface properties like density and magnetization. Potential theory forms the basis for various geophysical methods, such as gravity and magnetic surveys, which are non-invasive and cost-effective techniques for exploring natural resources, studying tectonic structures, and assessing geological hazards. Its mathematical tools, like Laplace’s and Poisson’s equations, also facilitate solving complex inverse problems to reconstruct the hidden subsurface structures from field data.</p>
+</section>
+<section id="what-are-fields" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-are-fields"><span class="header-section-number">1.2</span> What are fields?</h2>
+<p>In physics and geophysics, a <strong>field</strong> refers to a physical quantity that has a value at every point in space and time. Fields can be scalar, vector, or tensor quantities, depending on their nature. For example, temperature is a scalar field, while gravitational and magnetic fields are vector fields, meaning they have both magnitude and direction at each point. Fields represent how forces, like gravity or magnetism, extend through space and interact with matter. In geophysics, fields are used to describe the behavior of, e.g., Earth’s gravity and magnetic forces, which can be measured to study the properties of the subsurface.</p>
+<p>We depart from a very general idea of a <em>field</em>:</p>
+<p>A <em>field</em> describes the spatial distribution of a physical quantity. Such quantities can be</p>
+<ul>
+<li>pressure, density, temperatur</li>
+<li>acceleration, velocity, flux, electric field, magnetic flux density, etc.</li>
+</ul>
+<p>We observe an important difference between the two examples.</p>
+<p>The first examples are representatives of <em>scalar fields</em>, while the second examples represent <em>vector fields</em>.</p>
+<p>Scalar fields can be visualized by isoline maps.</p>
+<p>Vector fields can be visualized by arrows or field lines.</p>
+</section>
+<section id="definitions" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="definitions"><span class="header-section-number">1.3</span> Definitions</h2>
+<p>Potential field methods are fundamental in geophysics for studying Earth’s subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving potential field equations to interpret subsurface structures or properties.</p>
+<section id="the-scalar-potential-function" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="the-scalar-potential-function"><span class="header-section-number">1.3.1</span> The Scalar Potential Function</h3>
+<ul>
+<li><p><strong>Potential Field</strong>: A potential field <span class="math inline">\(\Phi(\mathbf{r})\)</span> is a scalar field where the field intensity (such as gravitational acceleration <span class="math inline">\(\mathbf{g}\)</span> or magnetic field <span class="math inline">\(\mathbf{B}\)</span>) can be derived as the gradient of the potential: <span class="math display">\[
+\mathbf{F}(\mathbf{r}) = -\nabla \Phi(\mathbf{r})
+\]</span> where <span class="math inline">\(\mathbf{F}(\mathbf{r})\)</span> represents the force field (e.g., gravitational or magnetic), and <span class="math inline">\(\nabla \Phi(\mathbf{r})\)</span> is the gradient of the potential function.</p></li>
+<li><p><strong>Gravitational Potential</strong> <span class="math inline">\(\Phi_g\)</span>: The gravitational potential <span class="math inline">\(\Phi_g\)</span> at a point <span class="math inline">\(\mathbf{r}\)</span> due to a mass distribution <span class="math inline">\(\rho(\mathbf{r})\)</span> is given by: <span class="math display">\[
+\Phi_g(\mathbf{r}) = G \int_V \frac{\rho(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} \dd V'
+\]</span> where <span class="math inline">\(G\)</span> is the gravitational constant, <span class="math inline">\(\rho(\mathbf{r'})\)</span> is the density at point <span class="math inline">\(\mathbf{r'}\)</span>, and <span class="math inline">\(dV'\)</span> is the volume element.</p></li>
+<li><p><strong>Magnetic Scalar Potential</strong> <span class="math inline">\(\Phi_m\)</span>: In the absence of currents, the magnetic field <span class="math inline">\(\mathbf{B}\)</span> can be represented by a magnetic scalar potential: <span class="math display">\[
+\mathbf{B} = -\nabla \Phi_m
+\]</span> where <span class="math inline">\(\Phi_m\)</span> is analogous to the gravitational potential.</p></li>
+</ul>
+</section>
+<section id="laplaces-equation" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="laplaces-equation"><span class="header-section-number">1.3.2</span> Laplace’s Equation</h3>
+<ul>
+<li>In regions where there are no sources (e.g., mass or magnetic charge), the potential satisfies <strong>Laplace’s equation</strong>: <span class="math display">\[
+\nabla^2 \Phi = 0
+\]</span> Laplace’s equation is central to potential field methods because it defines how potential behaves in source-free regions, like in free space above the Earth’s surface in gravity or magnetic surveys.</li>
+</ul>
+</section>
+<section id="poissons-equation" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="poissons-equation"><span class="header-section-number">1.3.3</span> Poisson’s Equation</h3>
+<ul>
+<li>When sources are present (mass or magnetization), the potential satisfies <strong>Poisson’s equation</strong>:
+<ul>
+<li><strong>Gravitational Potential</strong>: <span class="math display">\[
+\nabla^2 \Phi_g = 4\pi G \rho
+\]</span></li>
+<li><strong>Magnetic Potential</strong>: <span class="math display">\[
+\nabla^2 \Phi_m = -\mu_0 \nabla \cdot \mathbf{M}
+\]</span> where <span class="math inline">\(\rho\)</span> is the density, <span class="math inline">\(\mu_0\)</span> is the magnetic permeability, and <span class="math inline">\(\mathbf{M}\)</span> is the magnetization.</li>
+</ul></li>
+</ul>
+</section>
+<section id="boundary-conditions" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="boundary-conditions"><span class="header-section-number">1.3.4</span> Boundary Conditions</h3>
+<ul>
+<li>Solutions to the potential field equations must satisfy boundary conditions that depend on the physical properties of the medium and the field.
+<ul>
+<li>For gravity, the potential at infinity often approaches zero: <span class="math display">\[
+\Phi_g(\infty) = 0
+\]</span></li>
+<li>For the magnetic field, the tangential components of <span class="math inline">\(\mathbf{B}\)</span> and normal components of <span class="math inline">\(\mathbf{H}\)</span> must be continuous across boundaries.</li>
+</ul></li>
+</ul>
+</section>
+<section id="greens-function-and-the-inverse-problem" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="greens-function-and-the-inverse-problem"><span class="header-section-number">1.3.5</span> Green’s Function and the Inverse Problem</h3>
+<ul>
+<li><p><strong>Green’s Function</strong>: For solving Poisson’s or Laplace’s equation in a specific geometry, Green’s functions are often used to represent the solution in terms of the source distribution. <span class="math display">\[
+\Phi(\mathbf{r}) = \int_V G(\mathbf{r}, \mathbf{r'}) \rho(\mathbf{r'})\, \dd V'
+\]</span> where <span class="math inline">\(G(\mathbf{r}, \mathbf{r'})\)</span> is the Green’s function for the particular boundary conditions of the problem.</p></li>
+<li><p><strong>Inverse Problem</strong>: In geophysical surveys, the goal is often to infer the source distribution (e.g., mass or magnetization) from potential field measurements. This involves solving the inverse problem, which is often ill-posed and requires regularization techniques like Tikhonov regularization or the use of constraints (e.g., smoothness or sparsity) to stabilize the solution.</p></li>
+</ul>
+</section>
+<section id="spherical-harmonics-for-global-representations" class="level3" data-number="1.3.6">
+<h3 data-number="1.3.6" class="anchored" data-anchor-id="spherical-harmonics-for-global-representations"><span class="header-section-number">1.3.6</span> Spherical Harmonics for Global Representations</h3>
+<ul>
+<li>When dealing with global geophysical fields, such as the Earth’s gravity or magnetic field, spherical harmonics are commonly used to express the potential, e.g.: <span class="math display">\[
+\Phi(r, \theta, \phi) = \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \left( a_{lm} r^l + \frac{b_{lm}}{r^{l+1}} \right) Y_{lm}(\theta, \phi)
+\]</span> where <span class="math inline">\(Y_{lm}(\theta, \phi)\)</span> are the spherical harmonics, and <span class="math inline">\(a_{lm}, b_{lm}\)</span> are the coefficients determined from measurements.</li>
+</ul>
+</section>
+<section id="upward-and-downward-continuation" class="level3" data-number="1.3.7">
+<h3 data-number="1.3.7" class="anchored" data-anchor-id="upward-and-downward-continuation"><span class="header-section-number">1.3.7</span> Upward and Downward Continuation</h3>
+<ul>
+<li><strong>Upward Continuation</strong>: This is a technique used to smooth potential field data by calculating the field at a higher elevation than the measurement plane. It is commonly used to reduce noise and remove near-surface effects.</li>
+<li><strong>Downward Continuation</strong>: The inverse of upward continuation, used to estimate the potential field at a lower elevation, which can be unstable due to noise amplification.</li>
+</ul>
+</section>
+<section id="anomalies-and-signal-separation" class="level3" data-number="1.3.8">
+<h3 data-number="1.3.8" class="anchored" data-anchor-id="anomalies-and-signal-separation"><span class="header-section-number">1.3.8</span> Anomalies and Signal Separation</h3>
+<ul>
+<li><strong>Residual Field</strong>: The measured potential field typically consists of a regional (background) component and an anomalous (local) component. The anomaly is what is typically of interest, as it reflects subsurface structures. <span class="math display">\[
+\Phi_{\text{measured}} = \Phi_{\text{regional}} + \Phi_{\text{anomaly}}
+\]</span></li>
+<li>Signal separation techniques like trend surface analysis or filtering in the Fourier domain are used to isolate the anomaly from the regional field.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="summary-of-key-equations" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="summary-of-key-equations"><span class="header-section-number">1.4</span> Summary of Key Equations:</h2>
+<ul>
+<li><strong>Gravitational Field</strong>: <span class="math inline">\(\mathbf{g} = -\nabla \Phi_g\)</span></li>
+<li><strong>Magnetic Field</strong>: <span class="math inline">\(\mathbf{B} = -\nabla \Phi_m\)</span></li>
+<li><strong>Laplace’s Equation</strong>: <span class="math inline">\(\nabla^2 \Phi = 0\)</span></li>
+<li><strong>Poisson’s Equation</strong> (gravity): <span class="math inline">\(\nabla^2 \Phi_g = 4\pi G \rho\)</span></li>
+<li><strong>Poisson’s Equation</strong> (magnetic): <span class="math inline">\(\nabla^2 \Phi_m = -\mu_0 \nabla \cdot \mathbf{M}\)</span></li>
+</ul>
+<p>These general formulations provide a robust theoretical framework for potential field methods in geophysics.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -733,11 +885,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Summary</span>
+      <a href="./index.html" class="pagination-link" aria-label="Prerequisites">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prerequisites</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./fields.html" class="pagination-link" aria-label="Fields">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

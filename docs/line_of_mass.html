@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.520">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Potential Theory - 10&nbsp; 2-D mass distributions</title>
+<title>10&nbsp; 2-D mass distributions – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -133,8 +133,35 @@ window.MathJax = {
 };
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -145,13 +172,13 @@ window.MathJax = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./line_of_mass.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -163,7 +190,7 @@ window.MathJax = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Potential Theory</a> 
+      <a href="./">Theory of Potential Field Methods in Geophysics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -176,22 +203,24 @@ window.MathJax = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prerequisites</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Prerequisites</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Mathematical foundations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fields.html" class="sidebar-item-text sidebar-link">
@@ -202,13 +231,13 @@ window.MathJax = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Newton potential</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
@@ -255,13 +284,13 @@ window.MathJax = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Two-dimensional problems</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link active">
@@ -277,7 +306,7 @@ window.MathJax = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach for the gravity computation of 2-D bodies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
@@ -294,6 +323,18 @@ window.MathJax = {
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Boundary value problems</span></span>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -335,7 +376,7 @@ window.MathJax = {
 <p>We consider an elongated mass with a lateral extension that is much larger than any profile crossing it at a right angle. Those mass distributions are invariant along one of the horizontal Cartesian axes.</p>
 <p>If we consider the <span class="math inline">\(x\)</span>-direction as the <em>strike direction</em>, then we can restrict our derivations to a single arbitrary <span class="math inline">\(x\)</span>-plane, e.g., the plane <span class="math inline">\(x=0\)</span>. Thus, any field configuration observed in the <span class="math inline">\(y-z\)</span>-plane is invariant with respect to a shift in the <span class="math inline">\(x\)</span>-direction.</p>
 <p>First, we derive an expression for the gravitational attraction of a simple horizontal line, e.g., an infinite wire.</p>
-<p>Next, we make the transition to a polar coordinate system which is much better suited for the purpose of numerical implementation. To this end, we follow the work of <span class="citation" data-cites="hubbert1948">Hubbert (<a href="#ref-hubbert1948" role="doc-biblioref">1948</a>)</span> and <span class="citation" data-cites="talwani1959">Talwani, Worzel, and Landisman (<a href="#ref-talwani1959" role="doc-biblioref">1959</a>)</span>.</p>
+<p>Next, we make the transition to a polar coordinate system which is much better suited for the purpose of numerical implementation. To this end, we follow the work of <span class="citation" data-cites="hubbert1948">Hubbert (<a href="references.html#ref-hubbert1948" role="doc-biblioref">1948</a>)</span> and <span class="citation" data-cites="talwani1959">Talwani <em>et al.</em> (<a href="references.html#ref-talwani1959" role="doc-biblioref">1959</a>)</span>.</p>
 <section id="a-horizontal-straight-line-of-mass" class="level2 page-columns page-full" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="a-horizontal-straight-line-of-mass"><span class="header-section-number">10.1</span> A horizontal straight line of mass</h2>
 <p>As usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.</p>
@@ -347,7 +388,7 @@ window.MathJax = {
 <p><span class="math display">\[
 g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
 \]</span></p>
-<div id="236d6ada" class="cell" data-execution_count="2">
+<div id="5476c54d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -356,7 +397,7 @@ g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="ss">f' g_z(y,z) = </span><span class="sc">{</span>latex(simplify(g_z))<span class="sc">}</span><span class="ss">'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(\displaystyle g_z(y,z) = - \frac{2 f \rho_{L} \left(z - {z}'\right)}{\left(y - {y}'\right)^{2} + \left(z - {z}'\right)^{2}}\)</span></p>
+<p><span class="math inline">\(\displaystyle  g_z(y,z) = - \frac{2 f \rho_{L} \left(z - {z}'\right)}{\left(y - {y}'\right)^{2} + \left(z - {z}'\right)^{2}}\)</span></p>
 </div>
 </div>
 <p>We recognize that</p>
@@ -389,7 +430,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 \]</span></p>
 <p>Note that we set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
 <p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
-<div id="356bdf9a" class="cell" data-execution_count="3">
+<div id="4d21d0b9" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
@@ -407,7 +448,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 </div>
 </div>
 </div>
-<div id="af10621d" class="cell" data-execution_count="4">
+<div id="679c66e1" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
@@ -475,12 +516,12 @@ g = 2 f \rho \oint_{s} z \mathrm{d}\Theta.
 <hr>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-hubbert1948" class="csl-entry" role="listitem">
-Hubbert, M. King. 1948. <span>“A LINE<span>-</span>INTEGRAL METHOD OF COMPUTING THE GRAVIMETRIC EFFECTS OF TWO<span>-</span>DIMENSIONAL MASSES.”</span> <em>GEOPHYSICS</em> 13 (2): 215–25. <a href="https://doi.org/10.1190/1.1437395">https://doi.org/10.1190/1.1437395</a>.
+Hubbert, M.K., 1948. A LINE<span>-</span>INTEGRAL METHOD OF COMPUTING THE GRAVIMETRIC EFFECTS OF TWO<span>-</span>DIMENSIONAL MASSES. <em>GEOPHYSICS</em>, <strong>13</strong>, 215–225. doi:<a href="https://doi.org/10.1190/1.1437395">10.1190/1.1437395</a>
 </div>
 <div id="ref-talwani1959" class="csl-entry" role="listitem">
-Talwani, Manik, J. Lamar Worzel, and Mark Landisman. 1959. <span>“Rapid Gravity Computations for Two-Dimensional Bodies with Application to the Mendocino Submarine Fracture Zone.”</span> <em>Journal of Geophysical Research</em> 64 (1): 49–59. <a href="https://doi.org/10.1029/JZ064i001p00049">https://doi.org/10.1029/JZ064i001p00049</a>.
+Talwani, M., Worzel, J.L. &amp; Landisman, M., 1959. Rapid gravity computations for two-dimensional bodies with application to the Mendocino submarine fracture zone. <em>Journal of Geophysical Research</em>, <strong>64</strong>, 49–59. doi:<a href="https://doi.org/10.1029/JZ064i001p00049">10.1029/JZ064i001p00049</a>
 </div>
 </div>
 </section>
@@ -521,18 +562,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -564,7 +594,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -599,7 +669,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -614,27 +688,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -649,10 +702,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -661,8 +718,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -885,12 +949,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./geophysical_application.html" class="pagination-link  aria-label=" &lt;span="" application&lt;="" span&gt;"="">
+      <a href="./geophysical_application.html" class="pagination-link" aria-label="Geophysical Application">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./talwani.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>Gravitational attraction of a prism</span>">
+      <a href="./talwani.html" class="pagination-link" aria-label="Gravitational attraction of a prism">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

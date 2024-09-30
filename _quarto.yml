@@ -5,11 +5,12 @@ project:
 lang: en
 
 book:
-  title: "Potential Theory"
+  title: "Theory of Potential Field Methods in Geophysics"
   author: "Dr. Ralph-Uwe Börner"
   date: today
   chapters: 
     - index.qmd
+    - intro.qmd
     - part: "Mathematical foundations"
       chapters: 
         - fields.qmd

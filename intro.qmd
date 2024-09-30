@@ -1,0 +1,134 @@
+---
+title: Introduction
+engine: julia
+---
+
+These lecture notes cover the following topics:
+
+-   Potential fields in gravity and magnetics
+-   Boundary value problems
+-   Potential fields and their application in the DC resistivity method.
+
+We will discover problems such as
+
+-   Calculation of the anomalous gravitational attraction and magnetic field caused by solid bodies of arbitrary shape in 2-D and 3-D
+-   Understanding Earth’s density models
+-   Purpose of Complex Analysis to solve problems in potential theory, e.g., the
+Hilbert transform
+-   Use of Spherical Harmonic Analysis to model the Earth’s magnetic field
+-   Application of potential theory to the solution of problems arising in the DC resistivity method
+
+## Why is Potential Theory important?
+
+Potential theory is essential in geophysics because it provides a mathematical framework for understanding and analyzing natural physical fields, such as gravity and magnetism, that originate from the Earth’s subsurface. These fields are governed by the principles of potential theory, allowing geophysicists to interpret variations in these fields to infer the distribution of subsurface properties like density and magnetization. Potential theory forms the basis for various geophysical methods, such as gravity and magnetic surveys, which are non-invasive and cost-effective techniques for exploring natural resources, studying tectonic structures, and assessing geological hazards. Its mathematical tools, like Laplace’s and Poisson’s equations, also facilitate solving complex inverse problems to reconstruct the hidden subsurface structures from field data.
+
+## What are fields?
+
+In physics and geophysics, a **field** refers to a physical quantity that has a value at every point in space and time.
+Fields can be scalar, vector, or tensor quantities, depending on their nature.
+For example, temperature is a scalar field, while gravitational and magnetic fields are vector fields, meaning they have both magnitude and direction at each point. Fields represent how forces, like gravity or magnetism, extend through space and interact with matter. In geophysics, fields are used to describe the behavior of, e.g., Earth's gravity and magnetic forces, which can be measured to study the properties of the subsurface.
+
+We depart from a very general idea of a _field_:
+
+A _field_ describes the spatial distribution of a physical quantity. Such quantities can be 
+
+-   pressure, density, temperatur
+-   acceleration, velocity, flux, electric field, magnetic flux density, etc.
+
+We observe an important difference between the two examples.
+
+The first examples are representatives of _scalar fields_, while the second examples represent _vector fields_.
+
+Scalar fields can be visualized by isoline maps.
+
+Vector fields can be visualized by arrows or field lines.
+
+## Definitions
+
+Potential field methods are fundamental in geophysics for studying Earth's subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving potential field equations to interpret subsurface structures or properties.
+
+### The Scalar Potential Function
+   - **Potential Field**: A potential field $\Phi(\mathbf{r})$ is a scalar field where the field intensity (such as gravitational acceleration $\mathbf{g}$ or magnetic field $\mathbf{B}$) can be derived as the gradient of the potential:
+     $$
+     \mathbf{F}(\mathbf{r}) = -\nabla \Phi(\mathbf{r})
+     $$
+     where $\mathbf{F}(\mathbf{r})$ represents the force field (e.g., gravitational or magnetic), and $\nabla \Phi(\mathbf{r})$ is the gradient of the potential function.
+
+   - **Gravitational Potential** $\Phi_g$: The gravitational potential $\Phi_g$ at a point $\mathbf{r}$ due to a mass distribution $\rho(\mathbf{r})$ is given by:
+     $$
+     \Phi_g(\mathbf{r}) = G \int_V \frac{\rho(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} \dd V'
+     $$
+     where $G$ is the gravitational constant, $\rho(\mathbf{r'})$ is the density at point $\mathbf{r'}$, and $dV'$ is the volume element.
+
+   - **Magnetic Scalar Potential** $\Phi_m$: In the absence of currents, the magnetic field $\mathbf{B}$ can be represented by a magnetic scalar potential:
+     $$
+     \mathbf{B} = -\nabla \Phi_m
+     $$
+     where $\Phi_m$ is analogous to the gravitational potential.
+
+### Laplace's Equation
+   - In regions where there are no sources (e.g., mass or magnetic charge), the potential satisfies **Laplace’s equation**:
+     $$
+     \nabla^2 \Phi = 0
+     $$
+     Laplace’s equation is central to potential field methods because it defines how potential behaves in source-free regions, like in free space above the Earth's surface in gravity or magnetic surveys.
+
+### Poisson's Equation
+   - When sources are present (mass or magnetization), the potential satisfies **Poisson’s equation**:
+     - **Gravitational Potential**:
+       $$
+       \nabla^2 \Phi_g = 4\pi G \rho
+       $$
+     - **Magnetic Potential**:
+       $$
+       \nabla^2 \Phi_m = -\mu_0 \nabla \cdot \mathbf{M}
+       $$
+     where $\rho$ is the density, $\mu_0$ is the magnetic permeability, and $\mathbf{M}$ is the magnetization.
+
+### Boundary Conditions
+   - Solutions to the potential field equations must satisfy boundary conditions that depend on the physical properties of the medium and the field.
+     - For gravity, the potential at infinity often approaches zero:
+       $$
+       \Phi_g(\infty) = 0
+       $$
+     - For the magnetic field, the tangential components of $\mathbf{B}$ and normal components of $\mathbf{H}$ must be continuous across boundaries.
+
+### Green's Function and the Inverse Problem
+   - **Green’s Function**: For solving Poisson’s or Laplace’s equation in a specific geometry, Green’s functions are often used to represent the solution in terms of the source distribution.
+     $$
+     \Phi(\mathbf{r}) = \int_V G(\mathbf{r}, \mathbf{r'}) \rho(\mathbf{r'})\, \dd V'
+     $$
+     where $G(\mathbf{r}, \mathbf{r'})$ is the Green’s function for the particular boundary conditions of the problem.
+
+   - **Inverse Problem**: In geophysical surveys, the goal is often to infer the source distribution (e.g., mass or magnetization) from potential field measurements. This involves solving the inverse problem, which is often ill-posed and requires regularization techniques like Tikhonov regularization or the use of constraints (e.g., smoothness or sparsity) to stabilize the solution.
+
+### Spherical Harmonics for Global Representations
+   - When dealing with global geophysical fields, such as the Earth's gravity or magnetic field, spherical harmonics are commonly used to express the potential, e.g.:
+     $$
+     \Phi(r, \theta, \phi) = \sum_{l=0}^{\infty} \sum_{m=-l}^{l} \left( a_{lm} r^l + \frac{b_{lm}}{r^{l+1}} \right) Y_{lm}(\theta, \phi)
+     $$
+     where $Y_{lm}(\theta, \phi)$ are the spherical harmonics, and $a_{lm}, b_{lm}$ are the coefficients determined from measurements.
+
+### Upward and Downward Continuation
+-   **Upward Continuation**: This is a technique used to smooth potential field data by calculating the field at a higher elevation than the measurement plane. It is commonly used to reduce noise and remove near-surface effects.
+-   **Downward Continuation**: The inverse of upward continuation, used to estimate the potential field at a lower elevation, which can be unstable due to noise amplification.
+
+### Anomalies and Signal Separation
+-   **Residual Field**: The measured potential field typically consists of a regional (background) component and an anomalous (local) component. The anomaly is what is typically of interest, as it reflects subsurface structures.
+     $$
+     \Phi_{\text{measured}} = \Phi_{\text{regional}} + \Phi_{\text{anomaly}}
+     $$
+-    Signal separation techniques like trend surface analysis or filtering in the Fourier domain are used to isolate the anomaly from the regional field.
+
+---
+
+## Summary of Key Equations:
+
+- **Gravitational Field**: $\mathbf{g} = -\nabla \Phi_g$
+- **Magnetic Field**: $\mathbf{B} = -\nabla \Phi_m$
+- **Laplace's Equation**: $\nabla^2 \Phi = 0$
+- **Poisson's Equation** (gravity): $\nabla^2 \Phi_g = 4\pi G \rho$
+- **Poisson's Equation** (magnetic): $\nabla^2 \Phi_m = -\mu_0 \nabla \cdot \mathbf{M}$
+
+These general formulations provide a robust theoretical framework for potential field methods in geophysics.
+
