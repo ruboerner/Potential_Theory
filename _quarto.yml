@@ -10,7 +10,6 @@ book:
   date: today
   chapters: 
     - index.qmd
-    - part: "Prerequisites"
     - part: "Mathematical foundations"
       chapters: 
         - fields.qmd
@@ -32,6 +31,11 @@ book:
     - part: "Dipole potential"
     - part: "Spherical harmonics"
     - part: "Boundary value problems"
+    - summary.qmd
+    - references.qmd
+
+bibliography: references/literatur.bib
+csl: https://www.zotero.org/styles/geophysical-journal-international
 
 format:
   html:
