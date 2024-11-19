@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Point Mass – Theory of Potential Field Methods in Geophysics</title>
+<title>3&nbsp; Point mass – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,17 +30,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./poisson_equation.html" rel="next">
+<link href="./mass_distribution.html" rel="next">
 <link href="./fields.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3fbf620316015237a6991a5ebc2a9eb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -79,6 +79,35 @@ window.MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -92,7 +121,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./pointmass.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./pointmass.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,43 +187,43 @@ window.MathJax = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poisson_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Poisson Equation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shell_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+  <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./geophysical_application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -227,6 +256,10 @@ window.MathJax = {
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Three-dimensional problems</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -263,9 +296,9 @@ window.MathJax = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./pointmass.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./pointmass.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></h1>
 </div>
 
 
@@ -282,6 +315,38 @@ window.MathJax = {
 </header>
 
 
+<p>We introduce <em>point sources</em>.</p>
+<p>However, the difficulty is that, e.g., for a point mass there is no proper definition of a density in the sense of a <em>mass per volume</em>.</p>
+<p>Difficulties arise when we have to integrate the Poisson’s equation with point sources.</p>
+<p>To this end, we introduce a generalized function with the desired property that it provides finite integral values for unbounded integrands.</p>
+<p>We define</p>
+<p><span class="math display">\[
+\delta(\vb x) = \lim_{\epsilon \to 0} h_{\epsilon}(\vb x) =
+\begin{cases}
+\infty  &amp; \qif \vb x = \vb 0 \\
+0 &amp; \qif \vb x \ne \vb 0
+\end{cases}
+\]</span> with the function <span class="math display">\[
+h_{\epsilon}(\vb x) =
+\begin{cases}
+\frac{3}{4 \pi \epsilon^3}  &amp; \qif |\vb x| \le \epsilon \\
+0 &amp; \qif |\vb x| \gt \epsilon 0
+\end{cases}
+\]</span> which describes a unit mass distributed over a small sphere of ardius <span class="math inline">\(\epsilon\)</span>.</p>
+<p><span class="math inline">\(\delta(\vb x)\)</span> is the limit of the sequence of functions <span class="math inline">\(h_\epsilon(\vb x)\)</span> for <span class="math inline">\(\epsilon \to 0\)</span>.</p>
+<p>We are now able to evaluate the density of the sphere as <span class="math inline">\(\rho(\vb x) = m h_\epsilon(\vb x)\)</span>.</p>
+<p>Further, the integral over a domain <span class="math inline">\(G\)</span> containing the point <span class="math inline">\(\vb x\)</span> is finite, i.e.,</p>
+<p><span class="math display">\[
+\int_G h_\epsilon(\vb x) \, \dd {\vb x} = 1.
+\]</span></p>
+<p>We calculate the <em>weak limit</em> of the function sequence <span class="math inline">\(h_\epsilon(\vb x)\)</span> for <span class="math inline">\(\epsilon \to 0\)</span> and any continuous test function <span class="math inline">\(\Phi(\vb x)\)</span></p>
+<p><span class="math display">\[
+\lim_{\epsilon \to 0} \int \Phi(\vb x) h_\epsilon(\vb x) \, \dd {\vb x} = \Phi(0)
+\]</span></p>
+<p>The functional which assigns to each continuous function <span class="math inline">\(\Phi(\vb x)\)</span> its value at the point <span class="math inline">\(\vb x = 0\)</span>, i.e., <span class="math inline">\(\Phi(0)\)</span>, is called the <em>weak limit</em> of the function <span class="math inline">\(h_\epsilon(\vb x), \epsilon \to 0\)</span>. This functional can be used to define the density <span class="math inline">\(\delta(\vb x)\)</span>.</p>
+<p>It holds <span class="math display">\[
+\int_G \delta(\vb x) \, \dd {\vb x} = 1 \qif \vb x = \vb 0 \in G.
+\]</span></p>
 
 
 
@@ -713,8 +778,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./poisson_equation.html" class="pagination-link" aria-label="Poisson Equation">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Poisson Equation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./mass_distribution.html" class="pagination-link" aria-label="Mass distribution">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

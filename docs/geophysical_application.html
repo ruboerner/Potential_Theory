@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Geophysical Application – Theory of Potential Field Methods in Geophysics</title>
+<title>13&nbsp; Geophysical Application – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3fbf620316015237a6991a5ebc2a9eb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -92,7 +92,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./geophysical_application.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./geophysical_application.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Geophysical Application</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,6 +144,18 @@ window.MathJax = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubberband.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rubberband</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pde_example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Example</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -158,43 +170,55 @@ window.MathJax = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./poisson_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Poisson Equation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Poisson equation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shell_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./geophysical_application.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Geophysical Application</span></span></a>
   </div>
 </li>
       </ul>
@@ -211,22 +235,26 @@ window.MathJax = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Three-dimensional problems</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -262,18 +290,18 @@ window.MathJax = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#planetary-density-models" id="toc-planetary-density-models" class="nav-link active" data-scroll-target="#planetary-density-models"><span class="header-section-number">9.1</span> Planetary density models</a></li>
-  <li><a href="#bouguer-reduction" id="toc-bouguer-reduction" class="nav-link" data-scroll-target="#bouguer-reduction"><span class="header-section-number">9.2</span> Bouguer reduction</a></li>
-  <li><a href="#gravitational-attraction-of-a-spherical-body" id="toc-gravitational-attraction-of-a-spherical-body" class="nav-link" data-scroll-target="#gravitational-attraction-of-a-spherical-body"><span class="header-section-number">9.3</span> Gravitational attraction of a spherical body</a></li>
+  <li><a href="#planetary-density-models" id="toc-planetary-density-models" class="nav-link active" data-scroll-target="#planetary-density-models"><span class="header-section-number">13.1</span> Planetary density models</a></li>
+  <li><a href="#bouguer-reduction" id="toc-bouguer-reduction" class="nav-link" data-scroll-target="#bouguer-reduction"><span class="header-section-number">13.2</span> Bouguer reduction</a></li>
+  <li><a href="#gravitational-attraction-of-a-spherical-body" id="toc-gravitational-attraction-of-a-spherical-body" class="nav-link" data-scroll-target="#gravitational-attraction-of-a-spherical-body"><span class="header-section-number">13.3</span> Gravitational attraction of a spherical body</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./geophysical_application.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./geophysical_application.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Geophysical Application</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Geophysical Application</span></h1>
 </div>
 
 
@@ -290,14 +318,14 @@ window.MathJax = {
 </header>
 
 
-<section id="planetary-density-models" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="planetary-density-models"><span class="header-section-number">9.1</span> Planetary density models</h2>
+<section id="planetary-density-models" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="planetary-density-models"><span class="header-section-number">13.1</span> Planetary density models</h2>
 </section>
-<section id="bouguer-reduction" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="bouguer-reduction"><span class="header-section-number">9.2</span> Bouguer reduction</h2>
+<section id="bouguer-reduction" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="bouguer-reduction"><span class="header-section-number">13.2</span> Bouguer reduction</h2>
 </section>
-<section id="gravitational-attraction-of-a-spherical-body" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="gravitational-attraction-of-a-spherical-body"><span class="header-section-number">9.3</span> Gravitational attraction of a spherical body</h2>
+<section id="gravitational-attraction-of-a-spherical-body" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="gravitational-attraction-of-a-spherical-body"><span class="header-section-number">13.3</span> Gravitational attraction of a spherical body</h2>
 
 
 </section>
@@ -726,12 +754,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./circular_disc.html" class="pagination-link" aria-label="Circular Disc">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circular Disc</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./line_of_mass.html" class="pagination-link" aria-label="2-D mass distributions">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,6 +1,6 @@
 ---
 title: Introduction
-engine: julia
+# jupyter: julia-1.10
 ---
 
 These lecture notes cover the following topics:
@@ -50,26 +50,26 @@ Potential field methods are fundamental in geophysics for studying Earth's subsu
 ### The Scalar Potential Function
    - **Potential Field**: A potential field $\Phi(\mathbf{r})$ is a scalar field where the field intensity (such as gravitational acceleration $\mathbf{g}$ or magnetic field $\mathbf{B}$) can be derived as the gradient of the potential:
      $$
-     \mathbf{F}(\mathbf{r}) = -\nabla \Phi(\mathbf{r})
+     \mathbf{F}(\mathbf{r}) = -\grad \Phi(\mathbf{r})
      $$
-     where $\mathbf{F}(\mathbf{r})$ represents the force field (e.g., gravitational or magnetic), and $\nabla \Phi(\mathbf{r})$ is the gradient of the potential function.
+     where $\mathbf{F}(\mathbf{r})$ represents the force field (e.g., gravitational or magnetic), and $\grad \Phi(\mathbf{r})$ is the gradient of the potential function.
 
    - **Gravitational Potential** $\Phi_g$: The gravitational potential $\Phi_g$ at a point $\mathbf{r}$ due to a mass distribution $\rho(\mathbf{r})$ is given by:
      $$
-     \Phi_g(\mathbf{r}) = G \int_V \frac{\rho(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} \dd V'
+     \Phi_g(\mathbf{r}) = f \int_V \frac{\rho(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} \dd V'
      $$
-     where $G$ is the gravitational constant, $\rho(\mathbf{r'})$ is the density at point $\mathbf{r'}$, and $dV'$ is the volume element.
+     where $f$ is the gravitational constant, $\rho(\mathbf{r'})$ is the density at point $\mathbf{r'}$, and $\dd V'$ is the volume element.
 
    - **Magnetic Scalar Potential** $\Phi_m$: In the absence of currents, the magnetic field $\mathbf{B}$ can be represented by a magnetic scalar potential:
      $$
-     \mathbf{B} = -\nabla \Phi_m
+     \mathbf{B} = -\grad \Phi_m
      $$
      where $\Phi_m$ is analogous to the gravitational potential.
 
 ### Laplace's Equation
    - In regions where there are no sources (e.g., mass or magnetic charge), the potential satisfies **Laplace’s equation**:
      $$
-     \nabla^2 \Phi = 0
+     \laplacian \Phi = 0
      $$
      Laplace’s equation is central to potential field methods because it defines how potential behaves in source-free regions, like in free space above the Earth's surface in gravity or magnetic surveys.
 
@@ -77,11 +77,11 @@ Potential field methods are fundamental in geophysics for studying Earth's subsu
    - When sources are present (mass or magnetization), the potential satisfies **Poisson’s equation**:
      - **Gravitational Potential**:
        $$
-       \nabla^2 \Phi_g = 4\pi G \rho
+       \laplacian \Phi_g = 4\pi f \rho
        $$
      - **Magnetic Potential**:
        $$
-       \nabla^2 \Phi_m = -\mu_0 \nabla \cdot \mathbf{M}
+       \laplacian \Phi_m = -\mu_0 \div \mathbf{M}
        $$
      where $\rho$ is the density, $\mu_0$ is the magnetic permeability, and $\mathbf{M}$ is the magnetization.
 
@@ -124,11 +124,11 @@ Potential field methods are fundamental in geophysics for studying Earth's subsu
 
 ## Summary of Key Equations:
 
-- **Gravitational Field**: $\mathbf{g} = -\nabla \Phi_g$
-- **Magnetic Field**: $\mathbf{B} = -\nabla \Phi_m$
-- **Laplace's Equation**: $\nabla^2 \Phi = 0$
-- **Poisson's Equation** (gravity): $\nabla^2 \Phi_g = 4\pi G \rho$
-- **Poisson's Equation** (magnetic): $\nabla^2 \Phi_m = -\mu_0 \nabla \cdot \mathbf{M}$
+- **Gravitational Field**: $\mathbf{g} = -\grad \Phi_g$
+- **Magnetic Field**: $\mathbf{B} = -\grad \Phi_m$
+- **Laplace's Equation**: $\laplacian \Phi = 0$
+- **Poisson's Equation** (gravity): $\laplacian \Phi_g = 4\pi f \rho$
+- **Poisson's Equation** (magnetic): $\laplacian \Phi_m = -\mu_0 \div \mathbf{M}$
 
 These general formulations provide a robust theoretical framework for potential field methods in geophysics.
 

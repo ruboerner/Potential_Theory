@@ -1,0 +1,111 @@
+---
+jupyter: julia-1.11
+---
+# Rubberband
+
+We solve the rubberband example problem with the Finite Element (FE) method.
+
+FE is a standard tool for the numerical solution of PDE's. We employ `Julia`'s poweful `Gridap` FE package to solve the rubberband problem.
+
+## Problem statement
+
+Let's describe the location of the rubberband as a function $y = y(x)$.
+
+We place a rubberband between two walls at $x=0$ and $x=1$.
+The position of the two endpoint is $y(0)=1$ and $y(1)=0$.
+External forces acting in $y$-direction are defined by the function$f = f(x)$.
+
+The mathematical model can be formulated as follows:
+
+Find $y(x)$ such that
+$$
+\begin{align}
+-\pdv[2]{}{x}y(x) &= f(x) \qin 0 < x < 1 \\
+y(0) &= 1 \\ 
+y(1) &= 0
+\end{align}
+$$
+
+The conditions for $x=0$ and $x=1$ a re referred to as _Dirichlet boundary conditions_, which guarantee the uniqueness of the solution of the PDE by fixing the solution at the doamin boundaries.
+
+```{julia}
+using Gridap
+using Gridap.Geometry
+using GridapMakie
+using CairoMakie
+```
+
+We consider a one-dimensional problem. To this end, we take the interval $0 \le x \le 1$ and partition it into $n = 100$ cells with equal length.
+
+These cells are _finite elements_ on which _piecewise polynomials_ of a given order are defined. How exactly those polynomials are defined depends on the choice of the family of finite elements. We choose real-valued _Lagrange_ elements of first order.
+Further, the FE space needs to know the type of continuity at the interior boundaries as well as the domain boundary conditions. All this can be defined by the function `TestFESpace`.
+
+The Dirichlet values can be evaluated programmatically using the function $g(x) = 1 - x$.
+
+Finally, the function $f(x) = 0$ states that there are no external forces that act on the rubber band.
+
+## Numerical scheme
+
+FE methods typically formulate a PDE in a _weak form_ by multiplying with a test function and integrating over the elements, which yields the weak formulation:
+
+Find $u \in \mathcal U$ such that
+$$
+\int_\Omega \grad v \cdot \grad u \, \dd{\Omega} = \int_\Omega v f \, \dd{\Omega}
+$$
+for all $v \in \mathcal V$ where $\mathcal U$ and $\mathcal V$ are the subset of functions in $H^1(\Omega)$ that fulfill the Dirchlet boundary conditions.
+
+The problem is solved numerically by approximating the spaces $\mathcal U$ and 
+$\mathcal V$​ by their discrete counterparts associated with a FE mesh of the computational domain $\Omega$.
+```{julia}
+model = CartesianDiscreteModel((0,1), 100)
+order = 1
+reffe = ReferenceFE(lagrangian, Float64, 1)
+V = TestFESpace(model, reffe, conformity=:H1,dirichlet_tags="boundary")
+g(x) = 1 - x[1]
+U = TrialFESpace(V, g)
+degree = 2 * order
+Ω = Triangulation(model)
+dΩ = Measure(Ω, degree)
+a(u,v) = ∫( ∇(v)⋅∇(u) )*dΩ
+b(v) = ∫( v*f )*dΩ;
+```
+
+## No external forces: Laplace problem
+
+We set $f(x) = 0$.
+
+```{julia}
+f(x) = 0.0
+
+op = AffineFEOperator(a,b,U,V)
+
+uh = solve(op)
+fig, ax = lines(uh; axis = (; xlabel = "x"), label="u(x)"  )
+scatter!([0, 1], [1, 0], color=:red, markersize=16, label="Dirichlet")
+axislegend(ax)
+fig
+```
+
+## With external forces: Poisson problem
+
+We set $f(x) = 1 - x + 15 \sin(3 \pi x)$.
+
+```{julia}
+f(x) = 1 - x[1] + 15 * sin(3 * pi * x[1])
+
+op = AffineFEOperator(a,b,U,V)
+
+uh = solve(op)
+
+fig, ax = lines(uh; axis = (; xlabel = "x"), label="u(x)" );
+scatter!([0, 1], [1, 0], color=:red, markersize=16, label="Dirichlet");
+axislegend(ax);
+fig;
+```
+
+## Observations
+
+-   The solution of the *Laplace equation* does not exhibit local extrema
+    -   It has no curvature
+-   The solution of the *Poisson equation* has local minima and maxima
+    -   Its extrema might attain larger or smaller values than those of the Dirichlet values at the boundary.

@@ -16,7 +16,7 @@ from sympy import *
 import matplotlib.pyplot as plt
 init_printing(use_latex="mathjax", latex_mode="equation")
 #print(plt.style.available)
-plt.style.use('ggplot')
+#plt.style.use('ggplot')
 ```
 
 We consider an elongated mass with a lateral extension that is much larger than any profile crossing it at a right angle. Those mass distributions are invariant along one of the horizontal Cartesian axes.
@@ -31,17 +31,62 @@ Next, we make the transition to a polar coordinate system which is much better s
 
 As usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.
 
+![An infinite horizontal line of mass.](images/line_of_mass.excalidraw.png){#fig-lineofmass}
+
 For an $x$-directed straight wire of density $\rho_L$ we obtain for the gravitational attraction in the plane $x=0$
 
 $$
-\mathbf g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \nabla \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
+\vb g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \grad \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x'
 $$ {#eq-attraction-line}
 
 *SymPy* is a Python library for symbolic mathematics. It yields the following result for the $z$-component of $\mathbf g$, i.e.,
 
 $$
-g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
+g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x'
 $$
+
+::: {.callout-note}
+
+We solve this problem as follows:
+
+The $z$-derivative of the integrand is
+$$
+\pdv{}{z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} = - \frac{z - z'}{\sqrt{x'^2 + (y - y')^2 + (z - z')^2}^3}
+$$
+With the substitution
+$$
+x' = \sqrt{(y - y')^2 + (z - z')^2} \tan\alpha
+$$
+we get
+$$
+\dd x' = \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha) \dd \alpha = \sqrt{(y - y')^2 + (z - z')^2} \frac{ 1 }{ \cos^2\alpha} \dd \alpha
+$$
+
+So,
+$$
+\begin{align}
+g(y,z) & = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x' \\
+& = -f \rho_L \int\limits_{x'=-\infty}^\infty\frac{z - z'}{\sqrt{x'^2 + (y - y')^2 + (z - z')^2}^3} \, \dd x' \\
+\end{align}
+$$
+
+After substitution we see that the integrand gets
+$$
+\begin{align}
+-\frac{  (z-z') \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha)}{\sqrt{ ((y - y')^2 + (z - z')^2) \tan^2\alpha + (y - y')^2 + (z - z')^2   }^3 } = \\
+- \frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \frac{ 1 + \tan^2 \alpha }{ \sqrt{ 1 + \tan^2 \alpha }^3} = \\
+- \frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \frac{ 1 }{ \sqrt{ 1 + \tan^2 \alpha } } = \\
+- \frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \cos\alpha
+\end{align}
+$$
+
+which finally yields
+
+$$
+g(y,z) = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \int\limits_{-\pi/2}^{\pi/2} \cos\alpha \, \dd \alpha = -2f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 }
+$$
+
+:::
 
 ```{python}
 #| code-fold: true
@@ -49,6 +94,10 @@ x, y, z, xprime, yprime, zprime, f, rho_L = symbols('x y z xprime yprime zprime 
 g_z = integrate(f * rho_L * diff(1 / sqrt(xprime**2 + (y - yprime)**2 + (z - zprime)**2), z), (xprime, -oo, oo))
 # display(simplify(g_z))
 display(Math(f' g_z(y,z) = {latex(simplify(g_z))}'))
+```
+
+```{python}
+integrate(-diff(-f * rho_L / sqrt(x**2 + y**2 + z**2), z), (x, -oo, oo))
 ```
 
 We recognize that
@@ -74,7 +123,7 @@ $$
 With the *logarithmic derivative*
 
 $$
-\int \frac{f'(z)}{f(z)} \mathrm dz = \ln f(z) + C
+\int \frac{f'(z)}{f(z)} \dd z = \ln f(z) + C
 $$
 
 we obtain the *logarithmic potential* by integrating with respect to $z$, which yields
@@ -86,16 +135,21 @@ $$
 or
 
 ::: column-margin
-$$ \ln r^2 = 2 \ln r $$ $$ \ln r = -\ln \frac{1}{r} $$
+$$
+\ln r^2 = 2 \ln r $$ $$ \ln r = -\ln \frac{1}{r}
+$$
+
 :::
 
 $$
 V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 $$
 
-Note that we set $C = 0 = 2 f \rho_L \ln 1$.
+Note that we have set $C = 0 = 2 f \rho_L \ln 1$.
 
-Thus, with a proper choice of $C$, we can shift the potential such that $V$ takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the *finite* distance of $r=1$, and not at infinity as it would be the case for finite bodies where $V \sim 1/r$. In the 2-D case, the masses extend to infinity.
+Thus, with a proper choice of $C$, we can shift the potential such that $V$ takes a desired value at a given distance from the line of mass. 
+
+In our case, the potential is zero at the *finite* distance of $r=1$, and not at infinity as it would be the case for finite bodies where $V \sim 1/r$. In the 2-D case, the masses extend to infinity.
 
 ```{python}
 #| code-fold: true
@@ -115,16 +169,26 @@ plot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]),
   xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,5), xlim=(-5,5))
 ```
 
+
 ## Attraction of a plane lamina
 
-The vertical component of attraction due to an element of area $\mathrm{d}S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is $$
+The vertical component of attraction due to an element of area $\mathrm{d}S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is
+
+$$
 \mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega 
-$$ where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$.
+$$ 
+
+where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$.
 
 ![](images/hubbert_01.png)
 
 It holds $$
-\mathrm{d}\Omega = \frac{\mathrm{d}S \sin \alpha}{r^{2}.}
+\mathrm{d} g = \frac{ f \dd m }{ r^2} \sin\alpha = \frac{f \rho \dd z \dd S }{r^{2} }\sin \alpha.
+$$
+
+Further,
+$$
+\frac{ \dd S \sin\alpha }{r^2 } = \dd \Omega.
 $$
 
 If we now consider a finite area $S$ of arbitrary shape, the attraction at the origin due to the enclosed mass will be $$
@@ -153,9 +217,15 @@ $$ Introducing this to the result obtained above gives $$
 \mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
 $$ which is the *fundamental differential equation of the attraction of a two-dimensional mass*. The intersection of the two planes $\Theta$ and $\Theta + \mathrm{d}\Theta$ with the planes $z$ and $z+\mathrm{d}z$ defines an elementary prism or solenoid of infinite length and cross-section $\mathrm{d}\Theta\mathrm{d}z$. For a finite area in the plane of integration $$
 g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-$$ Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Starting at the point $(\Theta, z)$ and traversing the circuit in counter-clockwise direction, the resulting integral will be $$
+$$ Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Starting at the point $(\Theta, z)$ and traversing the circuit in counter-clockwise direction, the resulting integral will be
+
+$$
 \oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
-$$ Over a finite area $S$ we may obtain $\iint \mathrm{d}\Theta \mathrm{d}z$ by $$
+$$ 
+
+![Sketch of the line integral about a $\dd \theta \dd z$-solenoidal.](images/umlauf.png){#fig-umlauf}
+
+Over a finite area $S$ we may obtain $\iint \mathrm{d}\Theta \mathrm{d}z$ by $$
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
 $$ When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, $$
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.

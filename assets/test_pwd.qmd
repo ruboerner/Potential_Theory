@@ -1,0 +1,42 @@
+---
+#jupyter: julia-1.10
+engine: julia
+---
+Hallo.
+```{julia}
+using Gridap
+using GridapGmsh
+```
+
+```{julia}
+model = GmshDiscreteModel("circle.msh")
+```
+
+
+```{julia}
+pwd()
+
+# opening a file in read_mode
+# r is the default mode
+
+f = open("circle.msh", "r")
+
+# to count total lines in the file
+line_count = 0			
+
+for lines in readlines(f)
+
+	# increment line_count
+	global line_count += 1
+
+	# print the line
+	#println(lines)	 
+
+end
+
+# total lines in file
+println("line count is $line_count")
+
+close(f)
+
+```

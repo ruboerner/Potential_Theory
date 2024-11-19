@@ -1,5 +1,318 @@
 [
   {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Why is Potential Theory important?\nThese lecture notes cover the following topics:\nWe will discover problems such as\nPotential theory is essential in geophysics because it provides a mathematical framework for understanding and analyzing natural physical fields, such as gravity and magnetism, that originate from the Earth’s subsurface. These fields are governed by the principles of potential theory, allowing geophysicists to interpret variations in these fields to infer the distribution of subsurface properties like density and magnetization. Potential theory forms the basis for various geophysical methods, such as gravity and magnetic surveys, which are non-invasive and cost-effective techniques for exploring natural resources, studying tectonic structures, and assessing geological hazards. Its mathematical tools, like Laplace’s and Poisson’s equations, also facilitate solving complex inverse problems to reconstruct the hidden subsurface structures from field data.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#what-are-fields",
+    "href": "intro.html#what-are-fields",
+    "title": "1  Introduction",
+    "section": "1.2 What are fields?",
+    "text": "1.2 What are fields?\nIn physics and geophysics, a field refers to a physical quantity that has a value at every point in space and time. Fields can be scalar, vector, or tensor quantities, depending on their nature. For example, temperature is a scalar field, while gravitational and magnetic fields are vector fields, meaning they have both magnitude and direction at each point. Fields represent how forces, like gravity or magnetism, extend through space and interact with matter. In geophysics, fields are used to describe the behavior of, e.g., Earth’s gravity and magnetic forces, which can be measured to study the properties of the subsurface.\nWe depart from a very general idea of a field:\nA field describes the spatial distribution of a physical quantity. Such quantities can be\n\npressure, density, temperatur\nacceleration, velocity, flux, electric field, magnetic flux density, etc.\n\nWe observe an important difference between the two examples.\nThe first examples are representatives of scalar fields, while the second examples represent vector fields.\nScalar fields can be visualized by isoline maps.\nVector fields can be visualized by arrows or field lines.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#definitions",
+    "href": "intro.html#definitions",
+    "title": "1  Introduction",
+    "section": "1.3 Definitions",
+    "text": "1.3 Definitions\nPotential field methods are fundamental in geophysics for studying Earth’s subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving potential field equations to interpret subsurface structures or properties.\n\n1.3.1 The Scalar Potential Function\n\nPotential Field: A potential field \\(\\Phi(\\mathbf{r})\\) is a scalar field where the field intensity (such as gravitational acceleration \\(\\mathbf{g}\\) or magnetic field \\(\\mathbf{B}\\)) can be derived as the gradient of the potential: \\[\n\\mathbf{F}(\\mathbf{r}) = -\\grad \\Phi(\\mathbf{r})\n\\] where \\(\\mathbf{F}(\\mathbf{r})\\) represents the force field (e.g., gravitational or magnetic), and \\(\\grad \\Phi(\\mathbf{r})\\) is the gradient of the potential function.\nGravitational Potential \\(\\Phi_g\\): The gravitational potential \\(\\Phi_g\\) at a point \\(\\mathbf{r}\\) due to a mass distribution \\(\\rho(\\mathbf{r})\\) is given by: \\[\n\\Phi_g(\\mathbf{r}) = f \\int_V \\frac{\\rho(\\mathbf{r'})}{|\\mathbf{r} - \\mathbf{r'}|} \\dd V'\n\\] where \\(f\\) is the gravitational constant, \\(\\rho(\\mathbf{r'})\\) is the density at point \\(\\mathbf{r'}\\), and \\(\\dd V'\\) is the volume element.\nMagnetic Scalar Potential \\(\\Phi_m\\): In the absence of currents, the magnetic field \\(\\mathbf{B}\\) can be represented by a magnetic scalar potential: \\[\n\\mathbf{B} = -\\grad \\Phi_m\n\\] where \\(\\Phi_m\\) is analogous to the gravitational potential.\n\n\n\n1.3.2 Laplace’s Equation\n\nIn regions where there are no sources (e.g., mass or magnetic charge), the potential satisfies Laplace’s equation: \\[\n\\laplacian \\Phi = 0\n\\] Laplace’s equation is central to potential field methods because it defines how potential behaves in source-free regions, like in free space above the Earth’s surface in gravity or magnetic surveys.\n\n\n\n1.3.3 Poisson’s Equation\n\nWhen sources are present (mass or magnetization), the potential satisfies Poisson’s equation:\n\nGravitational Potential: \\[\n\\laplacian \\Phi_g = 4\\pi f \\rho\n\\]\nMagnetic Potential: \\[\n\\laplacian \\Phi_m = -\\mu_0 \\div \\mathbf{M}\n\\] where \\(\\rho\\) is the density, \\(\\mu_0\\) is the magnetic permeability, and \\(\\mathbf{M}\\) is the magnetization.\n\n\n\n\n1.3.4 Boundary Conditions\n\nSolutions to the potential field equations must satisfy boundary conditions that depend on the physical properties of the medium and the field.\n\nFor gravity, the potential at infinity often approaches zero: \\[\n\\Phi_g(\\infty) = 0\n\\]\nFor the magnetic field, the tangential components of \\(\\mathbf{B}\\) and normal components of \\(\\mathbf{H}\\) must be continuous across boundaries.\n\n\n\n\n1.3.5 Green’s Function and the Inverse Problem\n\nGreen’s Function: For solving Poisson’s or Laplace’s equation in a specific geometry, Green’s functions are often used to represent the solution in terms of the source distribution. \\[\n\\Phi(\\mathbf{r}) = \\int_V G(\\mathbf{r}, \\mathbf{r'}) \\rho(\\mathbf{r'})\\, \\dd V'\n\\] where \\(G(\\mathbf{r}, \\mathbf{r'})\\) is the Green’s function for the particular boundary conditions of the problem.\nInverse Problem: In geophysical surveys, the goal is often to infer the source distribution (e.g., mass or magnetization) from potential field measurements. This involves solving the inverse problem, which is often ill-posed and requires regularization techniques like Tikhonov regularization or the use of constraints (e.g., smoothness or sparsity) to stabilize the solution.\n\n\n\n1.3.6 Spherical Harmonics for Global Representations\n\nWhen dealing with global geophysical fields, such as the Earth’s gravity or magnetic field, spherical harmonics are commonly used to express the potential, e.g.: \\[\n\\Phi(r, \\theta, \\phi) = \\sum_{l=0}^{\\infty} \\sum_{m=-l}^{l} \\left( a_{lm} r^l + \\frac{b_{lm}}{r^{l+1}} \\right) Y_{lm}(\\theta, \\phi)\n\\] where \\(Y_{lm}(\\theta, \\phi)\\) are the spherical harmonics, and \\(a_{lm}, b_{lm}\\) are the coefficients determined from measurements.\n\n\n\n1.3.7 Upward and Downward Continuation\n\nUpward Continuation: This is a technique used to smooth potential field data by calculating the field at a higher elevation than the measurement plane. It is commonly used to reduce noise and remove near-surface effects.\nDownward Continuation: The inverse of upward continuation, used to estimate the potential field at a lower elevation, which can be unstable due to noise amplification.\n\n\n\n1.3.8 Anomalies and Signal Separation\n\nResidual Field: The measured potential field typically consists of a regional (background) component and an anomalous (local) component. The anomaly is what is typically of interest, as it reflects subsurface structures. \\[\n\\Phi_{\\text{measured}} = \\Phi_{\\text{regional}} + \\Phi_{\\text{anomaly}}\n\\]\nSignal separation techniques like trend surface analysis or filtering in the Fourier domain are used to isolate the anomaly from the regional field.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#summary-of-key-equations",
+    "href": "intro.html#summary-of-key-equations",
+    "title": "1  Introduction",
+    "section": "1.4 Summary of Key Equations:",
+    "text": "1.4 Summary of Key Equations:\n\nGravitational Field: \\(\\mathbf{g} = -\\grad \\Phi_g\\)\nMagnetic Field: \\(\\mathbf{B} = -\\grad \\Phi_m\\)\nLaplace’s Equation: \\(\\laplacian \\Phi = 0\\)\nPoisson’s Equation (gravity): \\(\\laplacian \\Phi_g = 4\\pi f \\rho\\)\nPoisson’s Equation (magnetic): \\(\\laplacian \\Phi_m = -\\mu_0 \\div \\mathbf{M}\\)\n\nThese general formulations provide a robust theoretical framework for potential field methods in geophysics.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "rubberband.html",
+    "href": "rubberband.html",
+    "title": "3  Rubberband",
+    "section": "",
+    "text": "3.1 Problem statement\nWe solve the rubberband example problem with the Finite Element (FE) method.\nFE is a standard tool for the numerical solution of PDE’s. We employ Julia’s poweful Gridap FE package to solve the rubberband problem.\nLet’s describe the location of the rubberband as a function \\(y = y(x)\\).\nWe place a rubberband between two walls at \\(x=0\\) and \\(x=1\\). The position of the two endpoint is \\(y(0)=1\\) and \\(y(1)=0\\). External forces acting in \\(y\\)-direction are defined by the function\\(f = f(x)\\).\nThe mathematical model can be formulated as follows:\nFind \\(y(x)\\) such that \\[\n\\begin{align}\n-\\pdv[2]{}{x}y(x) &= f(x) \\qin 0 &lt; x &lt; 1 \\\\\ny(0) &= 1 \\\\\ny(1) &= 0\n\\end{align}\n\\]\nThe conditions for \\(x=0\\) and \\(x=1\\) a re referred to as Dirichlet boundary conditions, which guarantee the uniqueness of the solution of the PDE by fixing the solution at the doamin boundaries.\nShow the code\nusing Gridap\nusing Gridap.Geometry\nusing GridapMakie\nusing CairoMakie\nWe consider a one-dimensional problem. To this end, we take the interval \\(0 \\le x \\le 1\\) and partition it into \\(n = 100\\) cells with equal length.\nThese cells are finite elements on which piecewise polynomials of a given order are defined. How exactly those polynomials are defined depends on the choice of the family of finite elements. We choose real-valued Lagrange elements of first order. Further, the FE space needs to know the type of continuity at the interior boundaries as well as the domain boundary conditions. All this can be defined by the function TestFESpace.\nThe Dirichlet values can be evaluated programmatically using the function \\(g(x) = 1 - x\\).\nFinally, the function \\(f(x) = 0\\) states that there are no external forces that act on the rubber band.",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rubberband</span>"
+    ]
+  },
+  {
+    "objectID": "rubberband.html#numerical-scheme",
+    "href": "rubberband.html#numerical-scheme",
+    "title": "3  Rubberband",
+    "section": "3.2 Numerical scheme",
+    "text": "3.2 Numerical scheme\nFE methods typically formulate a PDE in a weak form by multiplying with a test function and integrating over the elements, which yields the weak formulation:\nFind \\(u \\in \\mathcal U\\) such that \\[\n\\int_\\Omega \\grad v \\cdot \\grad u \\, \\dd{\\Omega} = \\int_\\Omega v f \\, \\dd{\\Omega}\n\\] for all \\(v \\in \\mathcal V\\) where \\(\\mathcal U\\) and \\(\\mathcal V\\) are the subset of functions in \\(H^1(\\Omega)\\) that fulfill the Dirchlet boundary conditions.\nThe problem is solved numerically by approximating the spaces \\(\\mathcal U\\) and \\(\\mathcal V\\)​ by their discrete counterparts associated with a FE mesh of the computational domain \\(\\Omega\\).\n\n\nShow the code\nmodel = CartesianDiscreteModel((0,1), 100)\norder = 1\nreffe = ReferenceFE(lagrangian, Float64, 1)\nV = TestFESpace(model, reffe, conformity=:H1,dirichlet_tags=\"boundary\")\ng(x) = 1 - x[1]\nU = TrialFESpace(V, g)\ndegree = 2 * order\nΩ = Triangulation(model)\ndΩ = Measure(Ω, degree)\na(u,v) = ∫( ∇(v)⋅∇(u) )*dΩ\nb(v) = ∫( v*f )*dΩ;",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rubberband</span>"
+    ]
+  },
+  {
+    "objectID": "rubberband.html#no-external-forces-laplace-problem",
+    "href": "rubberband.html#no-external-forces-laplace-problem",
+    "title": "3  Rubberband",
+    "section": "3.3 No external forces: Laplace problem",
+    "text": "3.3 No external forces: Laplace problem\nWe set \\(f(x) = 0\\).\n\n\nShow the code\nf(x) = 0.0\n\nop = AffineFEOperator(a,b,U,V)\n\nuh = solve(op)\nfig, ax = lines(uh; axis = (; xlabel = \"x\"), label=\"u(x)\"  )\nscatter!([0, 1], [1, 0], color=:red, markersize=16, label=\"Dirichlet\")\naxislegend(ax)\nfig\n\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n└ @ Makie ~/.julia/packages/Makie/XQfuO/src/scenes.jl:229",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rubberband</span>"
+    ]
+  },
+  {
+    "objectID": "rubberband.html#with-external-forces-poisson-problem",
+    "href": "rubberband.html#with-external-forces-poisson-problem",
+    "title": "3  Rubberband",
+    "section": "3.4 With external forces: Poisson problem",
+    "text": "3.4 With external forces: Poisson problem\nWe set \\(f(x) = 1 - x + 15 \\sin(3 \\pi x)\\).\n\n\nShow the code\nf(x) = 1 - x[1] + 15 * sin(3 * pi * x[1])\n\nop = AffineFEOperator(a,b,U,V)\n\nuh = solve(op)\n\nfig, ax = lines(uh; axis = (; xlabel = \"x\"), label=\"u(x)\" );\nscatter!([0, 1], [1, 0], color=:red, markersize=16, label=\"Dirichlet\");\naxislegend(ax);\nfig;\n\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n└ @ Makie ~/.julia/packages/Makie/XQfuO/src/scenes.jl:229",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rubberband</span>"
+    ]
+  },
+  {
+    "objectID": "rubberband.html#observations",
+    "href": "rubberband.html#observations",
+    "title": "3  Rubberband",
+    "section": "3.5 Observations",
+    "text": "3.5 Observations\n\nThe solution of the Laplace equation does not exhibit local extrema\n\nIt has no curvature\n\nThe solution of the Poisson equation has local minima and maxima\n\nIts extrema might attain larger or smaller values than those of the Dirichlet values at the boundary.",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rubberband</span>"
+    ]
+  },
+  {
+    "objectID": "pde_example.html",
+    "href": "pde_example.html",
+    "title": "4  Example",
+    "section": "",
+    "text": "This example illustrates one of the properties of solutions to the Laplace equation, the minimum-maximum principle. It states that in the interior of the domain the solution is bounded by the values at the domain boundaries.\nWe consider the stationary heat equation \\[\n\\vb J = - k \\grad T \\qin \\Omega \\subset \\mathbb R^2\n\\] with \\(\\vb J\\)—heat flux density, \\(k\\)—thermal conductivity, \\(T\\)—temperature.\nFor a hollow cylinder (tube) we define Dirichlet type boundary conditions for the temperature. At the inner boundary we enforce \\(T=100\\) for the lower half of the perimeter (where \\(y&lt;0\\)). At the upper part of the perimeter as well as the outer boundary we set \\(T=20\\). Note that the unit of \\(T\\) is arbitrary.\nIn the absence of internal heat sources or sinks, there holds \\[\n\\div \\vb J = 0\n\\] such that \\[\n\\div (k \\grad T) = 0.\n\\]\nWhen \\(k\\) is homogeneous, we obtain the following Laplace equation: \\[\n\\Delta T = 0\n\\]\nWe solve this problem using the FE method with the help of Gridap.\n\n\nShow the code\nusing Gridap\nusing Gridap.Fields\nusing GridapGmsh\nusing GridapMakie\nusing WGLMakie\n\n\nThe geometry of the cylinder and the associated triangulation is provided as a gmsh-file.\n\n\nShow the code\nif isfile(\"circle.msh\")\n  model = GmshDiscreteModel(\"circle.msh\");\nend\n\n\nInfo    : Reading 'circle.msh'...\nInfo    : 5 entities\nInfo    : 421 nodes\nInfo    : 842 elements\nInfo    : Done reading 'circle.msh'\n\n\nUnstructuredDiscreteModel()\n\n\n\n\nShow the code\norder = 2\nreffe = ReferenceFE(lagrangian,Float64,order)\nV0 = TestFESpace(model,reffe;conformity=:H1,dirichlet_tags=[\"outer\", \"inner\"])\n\nfunction gi(x)\n  if x[2] &lt; 0.0\n    return 100.0\n  else\n    return 20.0\n  end\nend\n\ngo(x) = 20.0\n\nU = TrialFESpace(V0,[go, gi])\n\ndegree = 2 * order\nΩ = Triangulation(model)\ndΩ = Measure(Ω,degree)\n\na(u,v) = ∫( ∇(v)⋅∇(u) )*dΩ\nb(v) = 0.0\n\nop = AffineFEOperator(a,b,U,V0)\n\nuh = solve(op);\n\n\n\n\nShow the code\ny = -[0.101:0.01:0.499;]\nT = [uh(Gridap.Fields.Point(0.0, v)) for v in y]\n\nfig = Figure(; size = (480, 480))\n\nax1 = Axis(fig[1, 1], xlabel = \"x\", ylabel=\"y\", aspect=1, limits=(-0.51, 0.51, -0.51, 0.51))\nplt = plot!(ax1, Ω, uh; colormap=:jet)\nlines!(ax1, [0.0, 0.0], [-0.5, -0.1], color=:white)\n#wireframe!(ax1, Ω; color=:white, linewidth=0.1)\nColorbar(fig[2, 1], plt; vertical=false, label=\"Temperature in a.u.\")\nax2 = Axis(fig[1, 2], xlabel = \"y\", ylabel=\"T\", aspect=1, limits=(0.1, 0.5, 20, 100))\nplot!(ax2, y, T; markersize=4)\nplot!(ax2, [-0.1, -0.5], [100, 20], color=:red, markersize=12)\nxlims!(ax2, (-0.1, -0.5))\nrowsize!(fig.layout, 1, Aspect(1, 1))\n\nfig\n\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n└ @ Makie ~/.julia/packages/Makie/eERNK/src/scenes.jl:227\n\n\n\n\n\n  \n    \n      \n      \n      \n    \n    \n      \n      \n      \n    \n  \n  \n    \n      \n      \n        \n      \n    \n    \n      \n      \n        \n      \n    \n  \n\n\n\nFigure 4.1: Temperatur distribution (in arbitrary units) within the tube (left) and temperature profile along \\(-0.5 \\le y \\le -0.1\\) (right).",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Example</span>"
+    ]
+  },
+  {
+    "objectID": "geophysical_application.html",
+    "href": "geophysical_application.html",
+    "title": "13  Geophysical Application",
+    "section": "",
+    "text": "13.1 Planetary density models",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "geophysical_application.html#bouguer-reduction",
+    "href": "geophysical_application.html#bouguer-reduction",
+    "title": "13  Geophysical Application",
+    "section": "13.2 Bouguer reduction",
+    "text": "13.2 Bouguer reduction",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
+    "href": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
+    "title": "13  Geophysical Application",
+    "section": "13.3 Gravitational attraction of a spherical body",
+    "text": "13.3 Gravitational attraction of a spherical body",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Geophysical Application</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html",
+    "href": "line_of_mass.html",
+    "title": "13  2-D mass distributions",
+    "section": "",
+    "text": "13.1 A horizontal straight line of mass\nWe consider an elongated mass with a lateral extension that is much larger than any profile crossing it at a right angle. Those mass distributions are invariant along one of the horizontal Cartesian axes.\nIf we consider the \\(x\\)-direction as the strike direction, then we can restrict our derivations to a single arbitrary \\(x\\)-plane, e.g., the plane \\(x=0\\). Thus, any field configuration observed in the \\(y-z\\)-plane is invariant with respect to a shift in the \\(x\\)-direction.\nFirst, we derive an expression for the gravitational attraction of a simple horizontal line, e.g., an infinite wire.\nNext, we make the transition to a polar coordinate system which is much better suited for the purpose of numerical implementation. To this end, we follow the work of Hubbert (1948) and Talwani et al. (1959).\nAs usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.\nFor an \\(x\\)-directed straight wire of density \\(\\rho_L\\) we obtain for the gravitational attraction in the plane \\(x=0\\)\n\\[\n\\vb g(0, y, z) = f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\grad \\frac{1}{\\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \\, \\dd x'\n\\tag{13.1}\\]\nSymPy is a Python library for symbolic mathematics. It yields the following result for the \\(z\\)-component of \\(\\mathbf g\\), i.e.,\n\\[\ng_z(0, y, z) = \\mathbf g \\cdot \\mathbf e_z =  f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\frac{\\partial}{\\partial z} \\frac{1}{\\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \\, \\dd x'\n\\]\nShow the code\nx, y, z, xprime, yprime, zprime, f, rho_L = symbols('x y z xprime yprime zprime f rho_L', real=True)\ng_z = integrate(f * rho_L * diff(1 / sqrt(xprime**2 + (y - yprime)**2 + (z - zprime)**2), z), (xprime, -oo, oo))\n# display(simplify(g_z))\ndisplay(Math(f' g_z(y,z) = {latex(simplify(g_z))}'))\n\n\n\\(\\displaystyle  g_z(y,z) = - \\frac{2 f \\rho_{L} \\left(z - {z}'\\right)}{\\left(y - {y}'\\right)^{2} + \\left(z - {z}'\\right)^{2}}\\)\nintegrate(-diff(-f * rho_L / sqrt(x**2 + y**2 + z**2), z), (x, -oo, oo))\n\n\\[\\begin{equation}- \\frac{2 f \\rho_{L} z}{y^{2} + z^{2}}\\end{equation}\\]\nWe recognize that\n\\[\ng_z(y,z) = - 2 f \\rho_L \\frac{z - z'}{(y - y')^2 + (z - z')^2}\n\\]\nThe attraction of the infinite line of mass is inversely proportional to the distance from the line to the point of observation.\nThe interesting point is here that the numerator is the derivative of the denominator, i.e.,\n\\[\nf'(z) = 2(z - z')\n\\]\nand\n\\[\nf(z) = (y - y')^2 + (z - z')^2\n\\]\nWith the logarithmic derivative\n\\[\n\\int \\frac{f'(z)}{f(z)} \\dd z = \\ln f(z) + C\n\\]\nwe obtain the logarithmic potential by integrating with respect to \\(z\\), which yields\n\\[\nV(y,z) = -2 f \\rho_L \\ln \\sqrt{(y - y')^2 + (z - z')^2} + C\n\\]\nor\n\\[\nV(y,z) = 2 f \\rho_L \\ln \\frac{1}{r}\n\\]\nNote that we have set \\(C = 0 = 2 f \\rho_L \\ln 1\\).\nThus, with a proper choice of \\(C\\), we can shift the potential such that \\(V\\) takes a desired value at a given distance from the line of mass.\nIn our case, the potential is zero at the finite distance of \\(r=1\\), and not at infinity as it would be the case for finite bodies where \\(V \\sim 1/r\\). In the 2-D case, the masses extend to infinity.\nShow the code\nV = 2 * f * rho_L * log(1 / sqrt((y - yprime)**2 + (z - zprime)**2))\n# display(V)\nplot(V.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]),\n  (y, -5, 5), size=(4, 3),\n  xlabel='y', ylabel=r'$V(y)$', ylim=(-4, 2), xlim=(-5, 5), axis_center=(-5, -4))\n\n\n\n\n\nPotential \\(V\\) of an infinite wire at \\(y=0\\) and \\(z=0.5\\), \\(f \\rho_L = 1\\).\nShow the code\nplot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]), \n  (y, -5, 5), size=(4, 3),\n  xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,5), xlim=(-5,5))\n\n\n\n\n\nVertical attraction \\(g_z\\) of an infinite wire at \\(y=0\\) and \\(z=0.5\\), \\(f \\rho_L = 1\\).",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html#a-horizontal-straight-line-of-mass",
+    "href": "line_of_mass.html#a-horizontal-straight-line-of-mass",
+    "title": "13  2-D mass distributions",
+    "section": "",
+    "text": "Figure 13.1: An infinite horizontal line of mass.\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nWe solve this problem as follows:\nThe \\(z\\)-derivative of the integrand is \\[\n\\pdv{}{z} \\frac{1}{\\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} = - \\frac{z - z'}{\\sqrt{x'^2 + (y - y')^2 + (z - z')^2}^3}\n\\] With the substitution \\[\nx' = \\sqrt{(y - y')^2 + (z - z')^2} \\tan\\alpha\n\\] we get \\[\n\\dd x' = \\sqrt{(y - y')^2 + (z - z')^2} (1 + \\tan^2\\alpha) \\dd \\alpha = \\sqrt{(y - y')^2 + (z - z')^2} \\frac{ 1 }{ \\cos^2\\alpha} \\dd \\alpha\n\\]\nSo, \\[\n\\begin{align}\ng(y,z) & = f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\frac{\\partial}{\\partial z} \\frac{1}{\\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \\, \\dd x' \\\\\n& = -f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty\\frac{z - z'}{\\sqrt{x'^2 + (y - y')^2 + (z - z')^2}^3} \\, \\dd x' \\\\\n\\end{align}\n\\]\nAfter substitution we see that the integrand gets \\[\n\\begin{align}\n-\\frac{  (z-z') \\sqrt{(y - y')^2 + (z - z')^2} (1 + \\tan^2\\alpha)}{\\sqrt{ ((y - y')^2 + (z - z')^2) \\tan^2\\alpha + (y - y')^2 + (z - z')^2   }^3 } = \\\\\n- \\frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \\frac{ 1 + \\tan^2 \\alpha }{ \\sqrt{ 1 + \\tan^2 \\alpha }^3} = \\\\\n- \\frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \\frac{ 1 }{ \\sqrt{ 1 + \\tan^2 \\alpha } } = \\\\\n- \\frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \\cos\\alpha\n\\end{align}\n\\]\nwhich finally yields\n\\[\ng(y,z) = -f \\rho_L \\frac{ z-z' }{(y - y')^2 + (z - z')^2 } \\int\\limits_{-\\pi/2}^{\\pi/2} \\cos\\alpha \\, \\dd \\alpha = -2f \\rho_L \\frac{ z-z' }{(y - y')^2 + (z - z')^2 }\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\ln r^2 = 2 \\ln r \\] \\[ \\ln r = -\\ln \\frac{1}{r}\n\\]",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html#attraction-of-a-plane-lamina",
+    "href": "line_of_mass.html#attraction-of-a-plane-lamina",
+    "title": "13  2-D mass distributions",
+    "section": "13.2 Attraction of a plane lamina",
+    "text": "13.2 Attraction of a plane lamina\nThe vertical component of attraction due to an element of area \\(\\mathrm{d}S\\) on an infinite horizontal plane lamina with density \\(\\rho\\) bounded by the planes \\(z\\) and \\(z+\\mathrm{d}z\\) is\n\\[\n\\mathrm{d}g = f \\rho \\mathrm{d}z \\mathrm{d}\\Omega\n\\]\nwhere \\(\\mathrm{d}\\Omega\\) is the solid angle subtended at the origin by the area \\(\\mathrm{d}S\\).\n\nIt holds \\[\n\\mathrm{d} g = \\frac{ f \\dd m }{ r^2} \\sin\\alpha = \\frac{f \\rho \\dd z \\dd S }{r^{2} }\\sin \\alpha.\n\\]\nFurther, \\[\n\\frac{ \\dd S \\sin\\alpha }{r^2 } = \\dd \\Omega.\n\\]\nIf we now consider a finite area \\(S\\) of arbitrary shape, the attraction at the origin due to the enclosed mass will be \\[\ng = f \\mathrm{d}z \\int _{S} \\rho \\, \\mathrm{d}\\Omega\n\\] or, if \\(\\rho\\) is constant over \\(S\\), this simplifies to \\[\ng = f \\rho \\Omega \\mathrm{d}z.\n\\] For a given solid angle \\(\\Omega\\), the attraction of the matter enclosed between two horizontal planes at \\(z=z_{1}\\) and \\(z=z_{2}\\) will be obtained by integrating \\[\ng = f \\Omega \\int_{z_{1}}^{z_{2}} \\rho \\, \\mathrm{d}z\n\\] and if \\(\\rho=\\mathrm{const.}\\) this becomes \\[\ng = f \\rho \\Omega (z_{2} - z_{1})\n\\] For the infinite horizontal plane the solid angle is \\(2 \\pi\\), such that the attraction of an infinite plate will be \\[\ng = 2 \\pi f \\rho (z_{2} - z_{1})\n\\] which is the vertical attraction of the Bouguer plate of thickness \\(z_{2} - z_{1}\\) and density \\(\\rho\\).",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "line_of_mass.html#the-mathrmdthetamathrmdz-solenoid",
+    "href": "line_of_mass.html#the-mathrmdthetamathrmdz-solenoid",
+    "title": "13  2-D mass distributions",
+    "section": "13.3 The \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) solenoid",
+    "text": "13.3 The \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) solenoid\nFirst, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the \\(x\\)-axis. Such a strip will be defined by the area on the plane \\(z=\\mathrm{const.}\\) lying between two inclined planes which intersect on the \\(x\\)-axis and make with the \\(y\\)-axis the angles of \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\).\n\nThe attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle \\(\\mathrm{d}\\Omega\\) between two planes intersecting at an angle \\(\\mathrm{d}\\Theta\\) will bear the same ratio to the total solid angle which the plane angle \\(\\mathrm{d}\\Theta\\) bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or \\(4 \\pi\\), and the total plane angle is \\(2 \\pi\\). Thus \\[\n\\frac{\\mathrm{d}\\Omega}{4 \\pi} = \\frac{\\mathrm{d}\\Theta}{2 \\pi}\n\\] or \\[\n\\mathrm{d}\\Omega = 2 \\mathrm{d}\\Theta.\n\\] Introducing this to the result obtained above gives \\[\n\\mathrm{d}g = 2 f \\rho \\mathrm{d}\\Theta \\mathrm{d}z\n\\] which is the fundamental differential equation of the attraction of a two-dimensional mass. The intersection of the two planes \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\) with the planes \\(z\\) and \\(z+\\mathrm{d}z\\) defines an elementary prism or solenoid of infinite length and cross-section \\(\\mathrm{d}\\Theta\\mathrm{d}z\\). For a finite area in the plane of integration \\[\ng = 2 f \\iint \\rho \\mathrm{d}\\Theta \\mathrm{d}z\n\\] Around an elementary prism \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) bounded by the lines \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\), and \\(z\\) and \\(z+\\mathrm{d}z\\), consider the line integral \\(\\oint \\Theta \\mathrm{d}z\\). Starting at the point \\((\\Theta, z)\\) and traversing the circuit in counter-clockwise direction, the resulting integral will be\n\\[\n\\oint \\Theta \\mathrm{d}z = 0 + (\\Theta + \\mathrm{d}\\Theta)\\mathrm{d}z + 0 - \\Theta \\mathrm{d}z = \\mathrm{d}\\Theta \\mathrm{d}z.\n\\]\n\n\n\n\n\n\nFigure 13.2: Sketch of the line integral about a \\(\\dd \\theta \\dd z\\)-solenoidal.\n\n\n\nOver a finite area \\(S\\) we may obtain \\(\\iint \\mathrm{d}\\Theta \\mathrm{d}z\\) by \\[\n\\iint_{S} \\mathrm{d}\\Theta \\mathrm{d}z = \\iint_{S} \\left[\\oint \\Theta \\mathrm{d}z \\right].\n\\] When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, \\[\n\\iint_{S} \\mathrm{d}\\Theta \\mathrm{d}z = \\oint_{s} \\Theta \\mathrm{d}z.\n\\] The attraction of a finite mass of constant density is obtained by \\[\ng = 2 f \\rho \\oint_{s} \\Theta \\mathrm{d}z.\n\\]\nAs an alternative, one could also consider the integral \\(\\oint z \\mathrm d \\theta\\). Traversing the integral in the sense \\(\\theta, z + \\mathrm d z, \\theta + \\mathrm d \\theta, z\\) we obtain\n\\[\n\\oint z \\mathrm{d}\\Theta  = 0 + (z + \\mathrm{d}z)\\mathrm{d}\\Theta + 0 - z \\mathrm{d}\\Theta = \\mathrm{d}\\Theta \\mathrm{d}z.\n\\] and \\[\ng = 2 f \\rho \\oint_{s} z \\mathrm{d}\\Theta.\n\\]\n\n\n\n\n\nHubbert, M.K., 1948. A LINE-INTEGRAL METHOD OF COMPUTING THE GRAVIMETRIC EFFECTS OF TWO-DIMENSIONAL MASSES. GEOPHYSICS, 13, 215–225. doi:10.1190/1.1437395\n\n\nTalwani, M., Worzel, J.L. & Landisman, M., 1959. Rapid gravity computations for two-dimensional bodies with application to the Mendocino submarine fracture zone. Journal of Geophysical Research, 64, 49–59. doi:10.1029/JZ064i001p00049",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2-D mass distributions</span>"
+    ]
+  },
+  {
+    "objectID": "talwani.html",
+    "href": "talwani.html",
+    "title": "14  Gravitational attraction of a prism",
+    "section": "",
+    "text": "14.1 Problem description\nRecall that the vertical component of the gravitational attraction caused by an elongated prismatic body of cross section \\(S\\) is\n\\[\ng_z(x,z) = \\frac{\\partial}{\\partial z}V(x,z) = -2 f \\Delta \\rho \\int\\limits_S \\frac{(z - z')\\, dx' \\,dz'}{\\sqrt{(x-x')^2 + (z-z')^2}}.\n\\]\nIf the point of observation is at the origin, we obtain\n\\[\ng_z(0,0) = \\frac{\\partial}{\\partial z}V(0,0) = 2 f \\Delta \\rho \\int\\limits_S \\frac{z\\, dx \\, dz}{\\sqrt{x^2 + z^2}}.\n\\]\nIt can be shown that this surface integral can be equivalently replaced by a line integral taken along the periphery of \\(S\\).",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational attraction of a prism</span>"
+    ]
+  },
+  {
+    "objectID": "talwani.html#line-integral",
+    "href": "talwani.html#line-integral",
+    "title": "14  Gravitational attraction of a prism",
+    "section": "14.2 Line integral",
+    "text": "14.2 Line integral\nThe Stokes theorem states that, for any vector field \\(\\mathbf A = (A_x, 0, A_z)^\\top\\) there holds\n\\[\n\\int\\limits_S (\\nabla \\times \\mathbf A) \\cdot d\\mathbf s = \\oint\\limits_C \\mathbf A \\cdot d\\mathbf \\ell,\n\\]\nwhere \\(d\\mathbf\\ell = \\mathbf e_x dx + \\mathbf e_z dz\\) is the oriented line element tangential to the curve \\(C\\), and \\(d\\mathbf s = dx \\,dz \\, \\mathbf e_y\\) the oriented surface element normal to the cross section \\(S\\). It follows by inspection that\n\\[\n\\partial_z A_x - \\partial_x A_z = 2 f \\Delta \\rho \\frac{z}{x^2 + z^2}\n\\]\nsuch that, after making the ansatz (Zhou (2008))\n\\[\nA_x = 0, \\qquad A_z = -2 f \\Delta\\rho \\, z \\left(\\frac{1}{z} \\, \\tan^{-1}\\frac{x}{z}\\right) = -2 f \\Delta \\rho \\, \\theta\n\\]\nThe angle \\(\\theta\\) is taken from the positive \\(x\\)-axis towards the positive \\(z\\)-axis.\nTalwani et al. (1959) have shown that the vertical component of the gravitational attraction of a two-dimensional prismatic body is, at the origin, equal to\n\\[\ng_z(0, 0) = 2 f \\Delta \\rho \\oint\\limits_C z \\, d\\theta,\n\\]\ni.e., a line integral taken along its periphery.\nThe following sketch illustrates the situation (taken from the original Talwani paper).\n\nLet \\(ABCDEF\\) be a given polygon with \\(n\\) sides and let \\(P\\) be the point at which the gravitational attraction due to this body has to be computed.\nFurther, let \\(z\\) be defined positive downwards and let \\(\\theta\\) be measured from the positive \\(x\\)-axis towards the positive \\(z\\)-axis.\nLet us evaluate the integral \\(\\oint z\\, d\\theta\\) for the above polygon.\nWe consider here the contribution from the side \\(BC\\). The remaining sides have to be added to obtain the total gravitational attraction of the complete prism.\nAt the point \\(Q\\) the line \\(BC\\) meets the \\(x\\)-axis at an angle \\(\\phi_i\\).\nLet \\(PQ = a_i\\). For any arbitrary point \\(R = R(x,z)\\) on the side \\(BC\\) there hold the two equivalent equations\n\\[\nz = x \\tan\\theta\n\\]\nand\n\\[\nz = (x - a_i) \\tan\\phi_i.\n\\]\nAfter eliminating \\(x\\) we obtain an expression for \\(z = z(\\theta)\\):\n\\[\nz = \\frac{a_i \\tan\\phi_i \\tan\\theta}{\\tan\\phi_i - \\tan\\theta}\n\\]\nThe contribution of the segment \\(BC\\) to the above line integral can now be rewritten as\n\\[\n\\int_{BC} z \\, d\\theta = \\int\\limits_B^C \\frac{a_i \\tan\\phi_i \\tan\\theta}{\\tan\\phi_i - \\tan\\theta} \\, d\\theta =: Z_i.\n\\]\nThe vertical component of the gravitational attraction is\n\\[\ng_z(0, 0) = 2 f \\Delta \\rho \\sum_{i=1}^n Z_i.\n\\]\nIt remains to solve the integral in the expression for \\(Z_i\\). To this end, we use Sympy.",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational attraction of a prism</span>"
+    ]
+  },
+  {
+    "objectID": "talwani.html#implementation",
+    "href": "talwani.html#implementation",
+    "title": "14  Gravitational attraction of a prism",
+    "section": "14.3 Implementation",
+    "text": "14.3 Implementation\n\n\nShow the code\na, x, z, phi, theta, Z = symbols('a x z phi theta Z', real=True)\nZ = solve(\n    [tan(theta) * x - z, (x - a) * tan(phi) - z], \n    [x, z], dict=True)\n# Z[0][z]\nsimplify(integrate(Z[0][z], theta))\n\n\n\\[\\begin{equation}\\frac{a \\left(- 2 \\theta - 2 \\log{\\left(- \\tan{\\left(\\phi \\right)} + \\tan{\\left(\\theta \\right)} \\right)} \\tan{\\left(\\phi \\right)} + \\log{\\left(\\frac{1}{\\cos^{2}{\\left(\\theta \\right)}} \\right)} \\tan{\\left(\\phi \\right)}\\right) \\cos^{2}{\\left(\\phi \\right)} \\tan{\\left(\\phi \\right)}}{2}\\end{equation}\\]\n\n\nNote that with \\[\n\\log\\left( \\frac{1}{\\cos^2\\theta}\\right) = - 2 \\log \\cos\\theta\n\\] and after combining the \\(\\log\\) terms we obtain the desired integral taken in the limit of integration, i.e., \\(\\theta_i\\) and \\(\\theta_{i+1}\\) \\[\nZ_{i} =a_{1} \\sin \\phi_{i} \\cos \\phi_{i} \\left[ \\theta_{i}-\\theta_{i+1} +\\tan \\phi_{i} \\log _{s} \\frac{\\cos \\theta_{i}\\left(\\tan \\theta_{i}-\\tan \\phi_{j}\\right)}{\\cos \\theta_{i+1}\\left(\\tan \\theta_{i+1}-\\tan \\phi_{i}\\right)}\\right]\n\\] which is the equation for \\(Z_i\\) given in Talwani et al. (1959), p. 50.\n\n\n\n\n\nTalwani, M., Worzel, J.L. & Landisman, M., 1959. Rapid gravity computations for two-dimensional bodies with application to the Mendocino submarine fracture zone. Journal of Geophysical Research, 64, 49–59. doi:10.1029/JZ064i001p00049\n\n\nZhou, X., 2008. 2D vector gravity potential and line integrals for the gravity anomaly caused by a 2D mass of depth-dependent density contrast. GEOPHYSICS, 73, I43–I50. doi:10.1190/1.2976116",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational attraction of a prism</span>"
+    ]
+  },
+  {
+    "objectID": "Talwani-Implementation.html",
+    "href": "Talwani-Implementation.html",
+    "title": "15  Implementation of the TALWANI approach",
+    "section": "",
+    "text": "15.1 Sort the vertices\n\\[\nZ_{i} =a_{1} \\sin \\phi_{i} \\cos \\phi_{i} \\left[ \\theta_{i}-\\theta_{i+1} +\\tan \\phi_{i} \\log _{s} \\frac{\\cos \\theta_{i}\\left(\\tan \\theta_{i}-\\tan \\phi_{j}\\right)}{\\cos \\theta_{i+1}\\left(\\tan \\theta_{i+1}-\\tan \\phi_{i}\\right)}\\right]\n\\]\nWe define a cylinder of radius \\(r=1\\) that will be approximated in the \\(x-z\\)-plane by a sufficiently large number of line segments around its enclosing circle.\nFirst, we have to sort the vertices in the case that they are given in an arbitrary order.\nTo this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.\nShow the code\npoly = Polygon(x, z, 500)\nShow the code\nfig, ax = plt.subplots()\nplt.plot(poly.x, poly.z, marker='.')\nax.set_aspect('equal', 'box');\nShow the code\ncylinder(np.array([-10., 0.]), poly.density * np.pi * radius**2, np.array([0., 10.]))\n\n\narray([1.04834947e-08, 1.04834947e-08])\nShow the code\ntalwani([-50, 0], poly)\n\n\n8.043842124387245e-10\nShow the code\nprofile = np.linspace(start=-40, stop=40, num=81)\nnpts = profile.size\ngtal = np.zeros(npts)\ngcyl = np.zeros(npts)\nmass = poly.density * np.pi * radius**2\nfor k in range(npts):\n    gtal[k] = talwani(np.array([profile[k], 0]), poly)\n    gcyl[k] = cylinder(np.array([profile[k], 0]), mass, np.array([xc, zc]))[1]\nShow the code\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.plot(profile, gtal, marker='.')\nax1.plot(profile, gcyl, marker='.');\nax2.plot(profile, gcyl - gtal, marker='.');\nShow the code\nnorm(gtal - gcyl) / norm(gcyl)\n\n\n0.00251609028849562",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Implementation of the TALWANI approach</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Summary",
+    "section": "",
+    "text": "WIP",
+    "crumbs": [
+      "Summary"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Blakely, R.J., 1995. Potential Theory in\nGravity and Magnetic Applications, 1st\ned., Cambridge University Press. doi:10.1017/CBO9780511549816",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "fields.html",
+    "href": "fields.html",
+    "title": "2  Fields",
+    "section": "",
+    "text": "2.1 Potential fields",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#density",
+    "href": "fields.html#density",
+    "title": "2  Fields",
+    "section": "2.2 Density",
+    "text": "2.2 Density",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#point-sources",
+    "href": "fields.html#point-sources",
+    "title": "2  Fields",
+    "section": "2.3 Point sources",
+    "text": "2.3 Point sources",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#solution-of-the-laplace-and-poisson-equations",
+    "href": "fields.html#solution-of-the-laplace-and-poisson-equations",
+    "title": "2  Fields",
+    "section": "2.2 Solution of the Laplace and Poisson equations",
+    "text": "2.2 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\n\n\n\n\n\nLaplace equation\n\n\n\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n\n\nand\n\n\n\n\n\n\nPoisson equation\n\n\n\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n\n\nfor \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\n\nShow the code\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\n# plt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2, size=(7,3));",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#what-can-be-observed-in-the-1-d-case",
+    "href": "fields.html#what-can-be-observed-in-the-1-d-case",
+    "title": "2  Fields",
+    "section": "2.3 What can be observed in the 1-D case?",
+    "text": "2.3 What can be observed in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\n\nIt has no curvature\n\nThe solution of the Poisson equation has local minima and maxima\n\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#potential-fields",
+    "href": "fields.html#potential-fields",
+    "title": "2  Fields",
+    "section": "",
+    "text": "2.1.1 Definition of a vector field\nA vector field \\(\\vb  F : \\mathbb R^n \\mapsto \\mathbb R^n\\) defined on a subset \\(\\Omega \\subset \\mathbb R^n\\) assigns to each point \\(\\vb x \\in \\mathbb R^n\\) a vector \\(\\vb F(\\vb x) \\in \\Omega\\).\nA vector field \\(\\vb F\\) is a potential or conservative vector field if and only if there exists a scalar field \\(\\Phi: \\mathbb R^n \\mapsto \\mathbb R\\) such that it holds \\(\\vb F (\\vb x) = \\grad \\Phi(\\vb x)\\).\n\n\n2.1.2 Equivalent properties of conservative fields\n\nThe line integral \\(\\int_C\\) along any curve \\(C\\) within the field only depends on the start and the end points, but not on the path between them (path independence)\nThe closed line integral is zero for any curve \\(C\\): \\(\\oint_C \\grad \\Phi(\\vb x ) \\cdot \\dd{\\vb x} = \\oint \\vb F (\\vb x ) \\cdot \\dd{\\vb x} = 0\\)\nSuch vector fields are curl free (irrotational), i.e., \\(\\curl \\grad \\Phi(\\vb x ) = \\curl \\vb F (\\vb x ) \\equiv \\vb 0\\)\n\n\n\n2.1.3 Divergence theorem\nStatements about the sources and sinks of vector fields can be derived by applying the divergence theorem.\nThe dielectric displacement \\(\\vb D = \\varepsilon(\\vb x) \\vb E(\\vb x)\\) has its sources in a volume density of electric charges \\(\\rho_E (\\vb x)\\).\nIt holds\n\\(\\rho_E = \\div \\vb D = - \\div (\\varepsilon \\grad \\Phi).\\)\nFor homogeneous dielectrics we obtain the Poisson equation of electrostatics\n\\(-\\Delta \\Phi = \\rho_E/\\varepsilon.\\)\n\n\n2.1.4 Poisson equation\nPotential theory attempts to calculate the unknown potential (the potential function) \\(\\Phi\\) caused by a given physical quantity, e.g., a source distribution \\(\\rho(\\vb x)\\).\nThe potential function can generally be determined by integrating the Poisson equation.\nOften, only its spatial derivative is desired, because for physicists only the fields are a meaningful quantity.\n\n\n2.1.5 Laplace equation\nIn a region where sources are absent, i.e., \\(\\rho(\\vb x ) \\equiv 0\\), the Poisson equation becomes the Laplace equation\n\\(\\Delta \\Phi(\\vb x) = 0\\)\nwith the scalar function \\(\\Phi\\) (the potential) defined over a subset \\(\\Omega \\subset \\mathbb R^n\\).\nThis elliptic partial differential equation (or short, the potential equation) is the point of departure in the potential theory.\n\n\n2.1.6 Mathematical Tools\nThe potential theory makes use of the functional analysis and its tools, e.g.,\n\nvector spaces\ninner product\nnorm\ndifferentiability\ncontinuity\n\netc.\n\n\n\n\n\n\nSpaces\n\n\n\nWe consider spaces with a norm induced by the inner product.\nEuclidean space: Any vector space defined over \\(\\mathbb R^n\\) equipped with an inner product of any finite dimension is called Euclidean vector space.\nThe coordinate space \\(\\mathbb R^3\\) with standard dot product is a Euclidean space!\nHilbert space: A Hilbert space is a vector space \\(H\\) with an inner product \\(\\langle f,g \\rangle\\) such that the norm \\(|f| = \\langle f,f \\rangle^{1/2}\\) turns the space into a complete metric space.\nThe coordinate spaces \\(\\mathbb R^n\\) and \\(\\mathbb C^n\\) are Hilbert spaces!\n\n\n\n\n\n\n\n\nScalar product\n\n\n\nWith \\(\\vb x = (x_1, x_2, \\dots, x_n)^\\top\\) we denote an \\(n\\)-tuple of numbers or a point in \\(\\mathbb R^n\\), and define the scalar product in \\(\\mathbb R^n\\) given by the dot product\n\\[\n\\langle \\cdot,\\cdot \\rangle : \\mathbb R^n \\mapsto \\mathbb R,\n\\] e.g., \\[\n\\langle \\vb x , \\vb y \\rangle = \\sum_{i=1}^n x_i y_i\n\\] as well as the norm induced by the inner product \\[\nx = \\abs{\\vb x} = \\langle \\vb x , \\vb x  \\rangle^{1/2}\n\\] The norm \\(\\abs{\\cdot} : \\mathbb R^n \\mapsto \\mathbb R\\), as a function, assigns to \\(\\vb x\\) its length.\n\n\n\n\n\n\n\n\nDifferentiation\n\n\n\nLet \\(\\Omega \\subset \\mathbb R^n\\) be an open subset.\nA derivative of order \\(\\vb \\alpha\\) is defined by a differential operator \\(D: C^k (\\Omega) \\mapsto C(\\Omega)\\) represented by\n\\(D^{\\vb \\alpha} f(\\vb x) = \\dfrac{\\partial^{|\\vb \\alpha|} f(x_1, x_2, \\dots, x_n)}{\\partial x_1^{\\alpha_1} \\partial x_2^{\\alpha_2}\\, \\dots \\,\\partial x_n^{\\alpha_n}}\\)\nand a multi-index \\(\\vb(\\alpha = (\\alpha_1, \\alpha_2, \\dots, \\alpha_n) \\in \\mathbb N_0^n\\) with \\(|\\vb\\alpha| = \\sum_{i=1}^n \\alpha_i\\).\nOther notations derived from the above definition are:\n\n\\(f_x := \\pdv{f}{x}\\) where \\(n=1, \\alpha_1=1, |\\vb\\alpha|=1\\)\n\\(f_{x x} := \\pdv[2]{f}{x}\\) where \\(n=1, \\alpha_1=2, |\\vb\\alpha|=2\\)\n\\(f_{x z} := \\pdv{f}{x}{z}\\) where \\(n=3, \\alpha_1=1, \\alpha_2=0, \\alpha_3=1, |\\vb\\alpha||=2\\)\n\n\n\n\n\n\n\n\n\nDifferentiability classes\n\n\n\nWhat is \\(C^k(\\Omega)\\)?\nThe space of the continuous real valued functions in a domain \\(\\Omega\\) is of class \\(C(\\Omega)\\) or \\(C^0(\\Omega)\\).\nThis space contains all differentiable functions in \\(\\Omega \\subset \\mathbb R^n\\).\nFunctions whose (partial) derivatives are also continuous are called continuously differentiable. These functions are said to be of class \\(C^1(\\Omega)\\).\nCorrespondingly, \\(C^n (\\Omega)\\) is called the space of the functions which are \\(n\\)-differentiable, where the \\(n\\)-th derivative \\(D^{\\vb\\alpha} f(\\vb x), |\\vb\\alpha| \\le n\\) is continuous on \\(\\Omega\\).\nArbitrarily often differentiable (smooth) functions belong to \\(C^\\infty ( \\Omega)\\).\n\n\n\n\n\n\n\n\nHarmonic function\n\n\n\nWe define the harmonic function:\nA real-valued function \\(U(\\vb x) \\in C^2 (\\Omega)\\) is called harmonic or regular potential function in the subset \\(\\Omega \\subset \\mathbb R^n\\) if there holds\n\\[\n\\Delta U(\\vb x) = 0\n\\]\nfor \\(\\vb x \\in \\Omega\\).",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Theory of Potential Field Methods in Geophysics",
@@ -60,239 +373,190 @@
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
+    "objectID": "pointmass.html",
+    "href": "pointmass.html",
+    "title": "3  Point mass",
     "section": "",
-    "text": "1.1 Why is Potential Theory important?\nPotential theory is essential in geophysics because it provides a mathematical framework for understanding and analyzing natural physical fields, such as gravity and magnetism, that originate from the Earth’s subsurface. These fields are governed by the principles of potential theory, allowing geophysicists to interpret variations in these fields to infer the distribution of subsurface properties like density and magnetization. Potential theory forms the basis for various geophysical methods, such as gravity and magnetic surveys, which are non-invasive and cost-effective techniques for exploring natural resources, studying tectonic structures, and assessing geological hazards. Its mathematical tools, like Laplace’s and Poisson’s equations, also facilitate solving complex inverse problems to reconstruct the hidden subsurface structures from field data.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#what-are-fields",
-    "href": "intro.html#what-are-fields",
-    "title": "1  Introduction",
-    "section": "1.2 What are fields?",
-    "text": "1.2 What are fields?\nIn physics and geophysics, a field refers to a physical quantity that has a value at every point in space and time. Fields can be scalar, vector, or tensor quantities, depending on their nature. For example, temperature is a scalar field, while gravitational and magnetic fields are vector fields, meaning they have both magnitude and direction at each point. Fields represent how forces, like gravity or magnetism, extend through space and interact with matter. In geophysics, fields are used to describe the behavior of, e.g., Earth’s gravity and magnetic forces, which can be measured to study the properties of the subsurface.\nWe depart from a very general idea of a field:\nA field describes the spatial distribution of a physical quantity. Such quantities can be\n\npressure, density, temperatur\nacceleration, velocity, flux, electric field, magnetic flux density, etc.\n\nWe observe an important difference between the two examples.\nThe first examples are representatives of scalar fields, while the second examples represent vector fields.\nScalar fields can be visualized by isoline maps.\nVector fields can be visualized by arrows or field lines.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#definitions",
-    "href": "intro.html#definitions",
-    "title": "1  Introduction",
-    "section": "1.3 Definitions",
-    "text": "1.3 Definitions\nPotential field methods are fundamental in geophysics for studying Earth’s subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving potential field equations to interpret subsurface structures or properties.\n\n1.3.1 The Scalar Potential Function\n\nPotential Field: A potential field \\(\\Phi(\\mathbf{r})\\) is a scalar field where the field intensity (such as gravitational acceleration \\(\\mathbf{g}\\) or magnetic field \\(\\mathbf{B}\\)) can be derived as the gradient of the potential: \\[\n\\mathbf{F}(\\mathbf{r}) = -\\nabla \\Phi(\\mathbf{r})\n\\] where \\(\\mathbf{F}(\\mathbf{r})\\) represents the force field (e.g., gravitational or magnetic), and \\(\\nabla \\Phi(\\mathbf{r})\\) is the gradient of the potential function.\nGravitational Potential \\(\\Phi_g\\): The gravitational potential \\(\\Phi_g\\) at a point \\(\\mathbf{r}\\) due to a mass distribution \\(\\rho(\\mathbf{r})\\) is given by: \\[\n\\Phi_g(\\mathbf{r}) = G \\int_V \\frac{\\rho(\\mathbf{r'})}{|\\mathbf{r} - \\mathbf{r'}|} \\dd V'\n\\] where \\(G\\) is the gravitational constant, \\(\\rho(\\mathbf{r'})\\) is the density at point \\(\\mathbf{r'}\\), and \\(dV'\\) is the volume element.\nMagnetic Scalar Potential \\(\\Phi_m\\): In the absence of currents, the magnetic field \\(\\mathbf{B}\\) can be represented by a magnetic scalar potential: \\[\n\\mathbf{B} = -\\nabla \\Phi_m\n\\] where \\(\\Phi_m\\) is analogous to the gravitational potential.\n\n\n\n1.3.2 Laplace’s Equation\n\nIn regions where there are no sources (e.g., mass or magnetic charge), the potential satisfies Laplace’s equation: \\[\n\\nabla^2 \\Phi = 0\n\\] Laplace’s equation is central to potential field methods because it defines how potential behaves in source-free regions, like in free space above the Earth’s surface in gravity or magnetic surveys.\n\n\n\n1.3.3 Poisson’s Equation\n\nWhen sources are present (mass or magnetization), the potential satisfies Poisson’s equation:\n\nGravitational Potential: \\[\n\\nabla^2 \\Phi_g = 4\\pi G \\rho\n\\]\nMagnetic Potential: \\[\n\\nabla^2 \\Phi_m = -\\mu_0 \\nabla \\cdot \\mathbf{M}\n\\] where \\(\\rho\\) is the density, \\(\\mu_0\\) is the magnetic permeability, and \\(\\mathbf{M}\\) is the magnetization.\n\n\n\n\n1.3.4 Boundary Conditions\n\nSolutions to the potential field equations must satisfy boundary conditions that depend on the physical properties of the medium and the field.\n\nFor gravity, the potential at infinity often approaches zero: \\[\n\\Phi_g(\\infty) = 0\n\\]\nFor the magnetic field, the tangential components of \\(\\mathbf{B}\\) and normal components of \\(\\mathbf{H}\\) must be continuous across boundaries.\n\n\n\n\n1.3.5 Green’s Function and the Inverse Problem\n\nGreen’s Function: For solving Poisson’s or Laplace’s equation in a specific geometry, Green’s functions are often used to represent the solution in terms of the source distribution. \\[\n\\Phi(\\mathbf{r}) = \\int_V G(\\mathbf{r}, \\mathbf{r'}) \\rho(\\mathbf{r'})\\, \\dd V'\n\\] where \\(G(\\mathbf{r}, \\mathbf{r'})\\) is the Green’s function for the particular boundary conditions of the problem.\nInverse Problem: In geophysical surveys, the goal is often to infer the source distribution (e.g., mass or magnetization) from potential field measurements. This involves solving the inverse problem, which is often ill-posed and requires regularization techniques like Tikhonov regularization or the use of constraints (e.g., smoothness or sparsity) to stabilize the solution.\n\n\n\n1.3.6 Spherical Harmonics for Global Representations\n\nWhen dealing with global geophysical fields, such as the Earth’s gravity or magnetic field, spherical harmonics are commonly used to express the potential, e.g.: \\[\n\\Phi(r, \\theta, \\phi) = \\sum_{l=0}^{\\infty} \\sum_{m=-l}^{l} \\left( a_{lm} r^l + \\frac{b_{lm}}{r^{l+1}} \\right) Y_{lm}(\\theta, \\phi)\n\\] where \\(Y_{lm}(\\theta, \\phi)\\) are the spherical harmonics, and \\(a_{lm}, b_{lm}\\) are the coefficients determined from measurements.\n\n\n\n1.3.7 Upward and Downward Continuation\n\nUpward Continuation: This is a technique used to smooth potential field data by calculating the field at a higher elevation than the measurement plane. It is commonly used to reduce noise and remove near-surface effects.\nDownward Continuation: The inverse of upward continuation, used to estimate the potential field at a lower elevation, which can be unstable due to noise amplification.\n\n\n\n1.3.8 Anomalies and Signal Separation\n\nResidual Field: The measured potential field typically consists of a regional (background) component and an anomalous (local) component. The anomaly is what is typically of interest, as it reflects subsurface structures. \\[\n\\Phi_{\\text{measured}} = \\Phi_{\\text{regional}} + \\Phi_{\\text{anomaly}}\n\\]\nSignal separation techniques like trend surface analysis or filtering in the Fourier domain are used to isolate the anomaly from the regional field.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#summary-of-key-equations",
-    "href": "intro.html#summary-of-key-equations",
-    "title": "1  Introduction",
-    "section": "1.4 Summary of Key Equations:",
-    "text": "1.4 Summary of Key Equations:\n\nGravitational Field: \\(\\mathbf{g} = -\\nabla \\Phi_g\\)\nMagnetic Field: \\(\\mathbf{B} = -\\nabla \\Phi_m\\)\nLaplace’s Equation: \\(\\nabla^2 \\Phi = 0\\)\nPoisson’s Equation (gravity): \\(\\nabla^2 \\Phi_g = 4\\pi G \\rho\\)\nPoisson’s Equation (magnetic): \\(\\nabla^2 \\Phi_m = -\\mu_0 \\nabla \\cdot \\mathbf{M}\\)\n\nThese general formulations provide a robust theoretical framework for potential field methods in geophysics.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "fields.html",
-    "href": "fields.html",
-    "title": "2  Fields",
-    "section": "",
-    "text": "2.1 Potential fields",
-    "crumbs": [
-      "Mathematical foundations",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
-    ]
-  },
-  {
-    "objectID": "fields.html#density",
-    "href": "fields.html#density",
-    "title": "2  Fields",
-    "section": "2.2 Density",
-    "text": "2.2 Density",
-    "crumbs": [
-      "Mathematical foundations",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
-    ]
-  },
-  {
-    "objectID": "fields.html#point-sources",
-    "href": "fields.html#point-sources",
-    "title": "2  Fields",
-    "section": "2.3 Point sources",
-    "text": "2.3 Point sources",
-    "crumbs": [
-      "Mathematical foundations",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
-    ]
-  },
-  {
-    "objectID": "fields.html#solution-of-the-laplace-and-poisson-equations",
-    "href": "fields.html#solution-of-the-laplace-and-poisson-equations",
-    "title": "2  Fields",
-    "section": "2.4 Solution of the Laplace and Poisson equations",
-    "text": "2.4 Solution of the Laplace and Poisson equations\nWe consider the second-order differential equations\n\n\n\n\n\n\nLaplace equation\n\n\n\n\\[\n\\dv[2]{y}{x} = 0\n\\]\n\n\nand\n\n\n\n\n\n\nPoisson equation\n\n\n\n\\[\n\\dv[2]{y}{x} = -4\\cos(4x) - 8 \\sin(8 x)\n\\]\n\n\nfor \\(x \\in [0, 1]\\) subject to the boundary conditions \\(y(0)=1\\) and \\(y(1)=0\\).\nTo obtain the solution to the above PDEs, we employ the Python package sympy, which is a powerful library for symbolic mathematics.\nSymbolic functions which depend on symbolic variables have to be defined with the function Function.\nThe solution of the differential equations can be obtained by a call to the dsolve function.\nThe signature of the function can be understood as follows:\n\nSolve the symbolic equation given by the expressions eq_poisson and eq_laplace, resp.\nThe desired solution is y(x)\nBoundary conditions can be enforced by the values following the keyword ics. In the example, y(0)=1 and y(1)=0.\n\n\n\nCode\nfrom sympy import Function, dsolve, diff, cos, sin\nfrom sympy.abc import x\nfrom sympy.plotting import plot, PlotGrid\nimport matplotlib.pyplot as plt\n# plt.style.use('fivethirtyeight')\n\ny = Function('y')\neq_poisson = diff(y(x), x, 2) + 4 * cos(4 * x) + 8 * sin(8 * x)\neq_laplace = diff(y(x), x, 2)\nresult_poisson = dsolve(eq_poisson, y(x), ics={y(0): 1, y(1): 0})\nresult_laplace = dsolve(eq_laplace, y(x), ics={y(0): 1, y(1): 0})\np1 = plot(result_poisson.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Poisson equation');\np2 = plot(result_laplace.rhs, (x, 0, 1), \n      ylim=(-0.2, 1.2), \n      ylabel='y(x)', \n      axis_center='auto',\n      show=False,\n      title='Laplace equation');\nPlotGrid(1, 2, p1, p2, size=(7,3));",
-    "crumbs": [
-      "Mathematical foundations",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
-    ]
-  },
-  {
-    "objectID": "fields.html#what-can-be-observed-in-the-1-d-case",
-    "href": "fields.html#what-can-be-observed-in-the-1-d-case",
-    "title": "2  Fields",
-    "section": "2.5 What can be observed in the 1-D case?",
-    "text": "2.5 What can be observed in the 1-D case?\n\nThe solution of the Laplace equation does not exhibit local extrema\n\nIt has no curvature\n\nThe solution of the Poisson equation has local minima and maxima\n\nIts extrema might get larger or smaller than those of the Dirichlet values at the boundary",
-    "crumbs": [
-      "Mathematical foundations",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
-    ]
-  },
-  {
-    "objectID": "geophysical_application.html",
-    "href": "geophysical_application.html",
-    "title": "9  Geophysical Application",
-    "section": "",
-    "text": "9.1 Planetary density models",
+    "text": "We introduce point sources.\nHowever, the difficulty is that, e.g., for a point mass there is no proper definition of a density in the sense of a mass per volume.\nDifficulties arise when we have to integrate the Poisson’s equation with point sources.\nTo this end, we introduce a generalized function with the desired property that it provides finite integral values for unbounded integrands.\nWe define\n\\[\n\\delta(\\vb x) = \\lim_{\\epsilon \\to 0} h_{\\epsilon}(\\vb x) =\n\\begin{cases}\n\\infty  & \\qif \\vb x = \\vb 0 \\\\\n0 & \\qif \\vb x \\ne \\vb 0\n\\end{cases}\n\\] with the function \\[\nh_{\\epsilon}(\\vb x) =\n\\begin{cases}\n\\frac{3}{4 \\pi \\epsilon^3}  & \\qif |\\vb x| \\le \\epsilon \\\\\n0 & \\qif |\\vb x| \\gt \\epsilon 0\n\\end{cases}\n\\] which describes a unit mass distributed over a small sphere of ardius \\(\\epsilon\\).\n\\(\\delta(\\vb x)\\) is the limit of the sequence of functions \\(h_\\epsilon(\\vb x)\\) for \\(\\epsilon \\to 0\\).\nWe are now able to evaluate the density of the sphere as \\(\\rho(\\vb x) = m h_\\epsilon(\\vb x)\\).\nFurther, the integral over a domain \\(G\\) containing the point \\(\\vb x\\) is finite, i.e.,\n\\[\n\\int_G h_\\epsilon(\\vb x) \\, \\dd {\\vb x} = 1.\n\\]\nWe calculate the weak limit of the function sequence \\(h_\\epsilon(\\vb x)\\) for \\(\\epsilon \\to 0\\) and any continuous test function \\(\\Phi(\\vb x)\\)\n\\[\n\\lim_{\\epsilon \\to 0} \\int \\Phi(\\vb x) h_\\epsilon(\\vb x) \\, \\dd {\\vb x} = \\Phi(0)\n\\]\nThe functional which assigns to each continuous function \\(\\Phi(\\vb x)\\) its value at the point \\(\\vb x = 0\\), i.e., \\(\\Phi(0)\\), is called the weak limit of the function \\(h_\\epsilon(\\vb x), \\epsilon \\to 0\\). This functional can be used to define the density \\(\\delta(\\vb x)\\).\nIt holds \\[\n\\int_G \\delta(\\vb x) \\, \\dd {\\vb x} = 1 \\qif \\vb x = \\vb 0 \\in G.\n\\]",
     "crumbs": [
       "Newton potential",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Point mass</span>"
     ]
   },
   {
-    "objectID": "geophysical_application.html#bouguer-reduction",
-    "href": "geophysical_application.html#bouguer-reduction",
-    "title": "9  Geophysical Application",
-    "section": "9.2 Bouguer reduction",
-    "text": "9.2 Bouguer reduction",
+    "objectID": "poisson_equation.html",
+    "href": "poisson_equation.html",
+    "title": "4  Poisson equation",
+    "section": "",
+    "text": "4.1 1\nThis is the Poisson equation:\n\\[\n-\\grad^2 U(x) = \\rho(x)  \\qin \\Omega \\in \\mathbb R^3\n\\]\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "crumbs": [
       "Newton potential",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Poisson equation</span>"
     ]
   },
   {
-    "objectID": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
-    "href": "geophysical_application.html#gravitational-attraction-of-a-spherical-body",
-    "title": "9  Geophysical Application",
-    "section": "9.3 Gravitational attraction of a spherical body",
-    "text": "9.3 Gravitational attraction of a spherical body",
+    "objectID": "poisson_equation.html#python-code",
+    "href": "poisson_equation.html#python-code",
+    "title": "4  Poisson equation",
+    "section": "4.2 Python code",
+    "text": "4.2 Python code\n\n\nShow the code\nimport sympy as sp\nfrom sympy import oo, pi\nr, Q, epsilon = sp.symbols(\"r, Q, epsilon\", real=True)\nU = sp.Function(\"U\")\nLU = U(r).diff(r).diff(r) + 2 / r * U(r).diff(r)\nLU\n\n\n\\(\\displaystyle \\frac{d^{2}}{d r^{2}} U{\\left(r \\right)} + \\frac{2 \\frac{d}{d r} U{\\left(r \\right)}}{r}\\)\n\n\n\n\nShow the code\nsol = sp.dsolve(LU, U(r), \n    ics={\n        U(r).subs(r, oo) : 0, \n        U(r).diff(r).subs(r, 1) : -Q / 4 / pi / epsilon})\nsol\n\n\n\\(\\displaystyle U{\\left(r \\right)} = \\frac{Q}{4 \\pi \\epsilon r}\\)",
     "crumbs": [
       "Newton potential",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Geophysical Application</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Poisson equation</span>"
     ]
   },
   {
-    "objectID": "line_of_mass.html",
-    "href": "line_of_mass.html",
-    "title": "10  2-D mass distributions",
+    "objectID": "Sphere_Potential_and_Attraction.html",
+    "href": "Sphere_Potential_and_Attraction.html",
+    "title": "10  Potential and gravitational attraction of a sphere",
     "section": "",
-    "text": "10.1 A horizontal straight line of mass\nAs usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.\nFor an \\(x\\)-directed straight wire of density \\(\\rho_L\\) we obtain for the gravitational attraction in the plane \\(x=0\\)\n\\[\n\\mathbf g(0, y, z) = f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\nabla \\frac{1}{\\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \\mathrm{d}x'\n\\tag{10.1}\\]\nSymPy is a Python library for symbolic mathematics. It yields the following result for the \\(z\\)-component of \\(\\mathbf g\\), i.e.,\n\\[\ng_z(0, y, z) = \\mathbf g \\cdot \\mathbf e_z =  f \\rho_L \\int\\limits_{x'=-\\infty}^\\infty \\frac{\\partial}{\\partial z} \\frac{1}{\\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \\mathrm{d}x'\n\\]\nCode\nx, y, z, xprime, yprime, zprime, f, rho_L = symbols('x y z xprime yprime zprime f rho_L', real=True)\ng_z = integrate(f * rho_L * diff(1 / sqrt(xprime**2 + (y - yprime)**2 + (z - zprime)**2), z), (xprime, -oo, oo))\n# display(simplify(g_z))\ndisplay(Math(f' g_z(y,z) = {latex(simplify(g_z))}'))\n\n\n\\(\\displaystyle  g_z(y,z) = - \\frac{2 f \\rho_{L} \\left(z - {z}'\\right)}{\\left(y - {y}'\\right)^{2} + \\left(z - {z}'\\right)^{2}}\\)\nWe recognize that\n\\[\ng_z(y,z) = - 2 f \\rho_L \\frac{z - z'}{(y - y')^2 + (z - z')^2}\n\\]\nThe attraction of the infinite line of mass is inversely proportional to the distance from the line to the point of observation.\nThe interesting point is here that the numerator is the derivative of the denominator, i.e.,\n\\[\nf'(z) = 2(z - z')\n\\]\nand\n\\[\nf(z) = (y - y')^2 + (z - z')^2\n\\]\nWith the logarithmic derivative\n\\[\n\\int \\frac{f'(z)}{f(z)} \\mathrm dz = \\ln f(z) + C\n\\]\nwe obtain the logarithmic potential by integrating with respect to \\(z\\), which yields\n\\[\nV(y,z) = -2 f \\rho_L \\ln \\sqrt{(y - y')^2 + (z - z')^2} + C\n\\]\nor\n\\[\nV(y,z) = 2 f \\rho_L \\ln \\frac{1}{r}\n\\]\nNote that we set \\(C = 0 = 2 f \\rho_L \\ln 1\\).\nThus, with a proper choice of \\(C\\), we can shift the potential such that \\(V\\) takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the finite distance of \\(r=1\\), and not at infinity as it would be the case for finite bodies where \\(V \\sim 1/r\\). In the 2-D case, the masses extend to infinity.\nCode\nV = 2 * f * rho_L * log(1 / sqrt((y - yprime)**2 + (z - zprime)**2))\n# display(V)\nplot(V.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]),\n  (y, -5, 5), size=(4, 3),\n  xlabel='y', ylabel=r'$V(y)$', ylim=(-4, 2), xlim=(-5, 5), axis_center=(-5, -4))\n\n\n\n\n\nPotential \\(V\\) of an infinite wire at \\(y=0\\) and \\(z=0.5\\), \\(f \\rho_L = 1\\).\nCode\nplot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]), \n  (y, -5, 5), size=(4, 3),\n  xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,5), xlim=(-5,5))\n\n\n\n\n\nVertical attraction \\(g_z\\) of an infinite wire at \\(y=0\\) and \\(z=0.5\\), \\(f \\rho_L = 1\\).",
+    "text": "10.1 Problem statement\n\\(\\require{physics}\\)\nWe consider a sphere of radius \\(a\\) centered at point \\((0,0,t)\\) , \\(t&gt;0\\) . The density contrast is \\(\\Delta \\rho\\) .\nThe excess mass caused by the sphere is therefore\n\\[\nm=\\frac{4\\pi }{3}a^3 \\Delta \\rho,\n\\]\nits potential is\n\\[\nV(x,y,z)=-f\\frac{m}{\\sqrt{x^2 +y^2 +(z-t)^2 }}.\n\\]\nWe restrict our measurements to profiles in the plane \\(x=0\\).\nShow the code\ny, z, t, f, m = sp.symbols(\"y z t f m\")\nV = sp.symbols(\"V\", cls=sp.Function)\nV = V(y)\nV = -f * m / sp.sqrt(y**2 + (z - t)**2)\nprint(\"V=\")\nV\n\n\nV=\n\n\n\\(\\displaystyle - \\frac{f m}{\\sqrt{y^{2} + \\left(- t + z\\right)^{2}}}\\)\nThe vertical component of the gravitational attraction is\n\\[\nV_z (y) := -\\pdv{V}{y}.\n\\]\nFor \\(z=0\\) we obtain the expression\nShow the code\nVz = -sp.diff(V, z).subs(z, 0)\nprint('Vz=')\nVz\n\n\nVz=\n\n\n\\(\\displaystyle \\frac{f m t}{\\left(t^{2} + y^{2}\\right)^{\\frac{3}{2}}}\\)\nThe horizontal component of the gravitational attraction in \\(z=0\\) is:\nShow the code\nVy = -sp.diff(V, y).subs(z, 0)\nprint('Vy=')\nVy.simplify()\n\n\nVy=\n\n\n\\(\\displaystyle - \\frac{f m y}{\\left(t^{2} + y^{2}\\right)^{\\frac{3}{2}}}\\)\nand its second derivative with respect to \\(y\\) evaluated at \\(z=0\\) is:\nShow the code\nVyy = -sp.diff(V, y, 2).subs(z, 0)\nprint('Vyy=')\nVyy.simplify()\n\n\nVyy=\n\n\n\\(\\displaystyle \\frac{f m \\left(- t^{2} + 2 y^{2}\\right)}{\\left(t^{2} + y^{2}\\right)^{\\frac{5}{2}}}\\)",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+      "Newton potential",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Potential and gravitational attraction of a sphere</span>"
     ]
   },
   {
-    "objectID": "line_of_mass.html#a-horizontal-straight-line-of-mass",
-    "href": "line_of_mass.html#a-horizontal-straight-line-of-mass",
-    "title": "10  2-D mass distributions",
+    "objectID": "Sphere_Potential_and_Attraction.html#example",
+    "href": "Sphere_Potential_and_Attraction.html#example",
+    "title": "10  Potential and gravitational attraction of a sphere",
+    "section": "10.2 Example",
+    "text": "10.2 Example\nWe consider as example a sphere at a depth of \\(t=2000\\) m with radius \\(r=1000\\) m. The density contrast is \\(\\Delta \\rho =500\\) \\(kg/m^3\\) . The vertical and horizontal components of the gravitational attraction along a profile at \\(z=0\\) running from \\(-10^4 \\le y\\le 10^4\\) m have to be computed in units of mGal (milliGal).\n\n\nShow the code\nyy = np.linspace(-1e4, 1e4, 101)\ndrho = 500\ndepth = 2000\nradius = 1000\nmass = 4 * np.pi / 3 * radius**3 * drho\nVz_num = lambda y_: Vz.subs(y, y_).subs(t, depth).subs(f, 6.674e-11).subs(m, mass)\nVy_num = lambda y_: Vy.subs(y, y_).subs(t, depth).subs(f, 6.674e-11).subs(m, mass)\n\nfig, ax = plt.subplots(figsize=(6,4))\n\nplt.plot(yy, [1e5 * Vz_num(v) for v in yy], label=r'$V_z$')\nplt.plot(yy, [1e5 * Vy_num(v) for v in yy], label=r'$V_y$')\nplt.xlabel('y in m')\nplt.ylabel('mGal')\nplt.legend()\nplt.grid(True);\n\n\n\n\n\n\n\n\n\n\n10.2.1 Discusson of the anomaly curves\nWe observe a maximum centered above the sphere for \\(V_z\\) , whereas \\(V_y\\) has two extrema along the profile.\nAre there hidden information about the depth of the sphere?\nFirst, we study the local extrema of \\(V_y (y)\\) . The derivative \\(V_{yy}\\) must vanish at those points. We compute the derivative symbolically, set the result to zero and solve for \\(y\\) .\nThe local extrema of \\(V_y\\) are located at the solutions of\n\\[\n    \\pdv[2]{}{y}V(y)=0.\n\\]\n\n\nShow the code\nsol = sp.solve(Vyy, y, dict=True)\n[sol[v][y] for v in [0,1]]\n\n\n[-sqrt(2)*t/2, sqrt(2)*t/2]\n\n\nWe obtain as solution \\[\n\\displaystyle \\left(\\begin{array}{c} -\\frac{\\sqrt{2}\\,t}{2}\\newline \\frac{\\sqrt{2}\\,t}{2} \\end{array}\\right).\n\\]\nThe positions of the extrema of \\(V_y\\) only depend on the depth of the sphere. The horizontal distance between the extrema is \\(\\sqrt{2}t\\).\n\n\nShow the code\nyp = np.sqrt(2.0) / 2 * depth\nfig, ax = plt.subplots(figsize=(6,4))\n\nplt.plot(yy, [1e5 * Vy_num(v) for v in yy], label=r'$V_y$')\nplt.scatter([-yp, yp], [1e5*Vy_num(-yp), 1e5*Vy_num(yp)], color='r', label=r'$\\pm \\frac{\\sqrt{2}}{2}t$')\nplt.xlabel('y in m')\nplt.ylabel('mGal')\nplt.legend()\nplt.grid(True);\n\n\n\n\n\n\n\n\n\nThe relation between \\(V_z (y)\\) and \\(t\\) is not so obvious. There are two inflection points symmetric to \\(y=0\\). The necessary condition for the existence of an inflection point is that\n\\[\n\\dv[2]{}{y} V_z(y) = 0.\n\\]\n\n\nShow the code\nVzyy = sp.diff(Vz, y, 2)\nVzyy.simplify()\nsol = sp.solve(Vzyy, y, dict=True)\n[sol[v][y] for v in [0,1]]\n\n\n[-t/2, t/2]\n\n\nThe inflection points of \\(V_z\\) are at \\(\\pm t/2\\).\n\n\nShow the code\nfig, ax = plt.subplots(figsize=(6,4))\n\nplt.plot(yy, [1e5 * Vz_num(v) for v in yy], label=r'$V_z$')\nplt.scatter([-depth/2, depth/2], [1e5*Vz_num(-depth/2), 1e5*Vz_num(depth/2)], color='r', label=r'$\\pm t/2$')\nplt.xlabel('y in m')\nplt.ylabel('mGal')\nplt.legend()\nplt.grid(True);\n\n\n\n\n\n\n\n\n\n\n\n10.2.2 Deflection of a pendulum\nThe deflection of a pendulum from the vertical direction due to the mass of the sphere is \\[\n\\alpha =\\tan^{-1} \\frac{V_y }{\\gamma_0 +V_z },\n\\]\nwhere \\(\\gamma_0 =9.81\\) \\(m/s^2\\) is a good estimate of the normal gravitational attraction at the surface of the Earth.\nThis is the fundamental idea of the Eötvös torsion balance.\nWith the sphere introduced in the above example we obtain the following figure:\n\n\nShow the code\nVz_ = np.array([Vz_num(v) for v in yy], dtype=float)\nVy_ = np.array([Vy_num(v) for v in yy], dtype=float)\ndeflection = 3600 * 180 / np.pi * np.atan(Vy_ / (9.81 + Vz_))\n\nfig, ax = plt.subplots(figsize=(6,4))\n\nplt.plot(yy, deflection);\nplt.ylabel('deflection in arcsec')\nplt.xlabel('y in m')\nplt.grid(True);\n\n\n\n\n\n\n\n\n\nThe maximum deflection in arc seconds of the pendulum is\n\n\nShow the code\nprint(np.max(deflection))\n\n\n0.2827865419859818\n\n\nTo put this into perspective:\nThe arc length \\(s\\) along the Earth’s equator corresponding to 1 arcsec is approximately 31 meters:\n\n\nShow the code\ns = np.pi / 180 / 3600 * 6.371e6\nprint(s)\n\n\n30.887479623488538",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Potential and gravitational attraction of a sphere</span>"
+    ]
+  },
+  {
+    "objectID": "PREM_.html",
+    "href": "PREM_.html",
+    "title": "9  PREM - Preliminary Reference Earth Model",
     "section": "",
-    "text": "\\[ \\ln r^2 = 2 \\ln r \\] \\[ \\ln r = -\\ln \\frac{1}{r} \\]",
+    "text": "9.1 Density profile\nIn this notebook we demonstrate how to model the Earth’s density as piecewise quadratic functions, such that \\[\n\\rho(r) = a_i r^{2} + b_i r + c_i, \\quad r_{i-1}&lt;r \\le r_{i}\n\\] for any shell enclosed by the radii \\(r_{i-1}\\) and \\(r_i\\), \\(i=1,2,\\dots,11\\).\nThe coefficients \\(a_i, b_i, c_i\\) as well as the layer boundaries \\(r_i\\) have been published by Dziewonski and Anderson (“Preliminary reference Earth model”, PEPI, 1981).\nThe following code reads the content of the file PREM.csv into memory.\nWe define a function `rho(r,a,b,c)´ which evaluates for any \\(r\\) a second order polynomial with the given coefficients \\(a,b,c\\):\nShow the code\nrho = lambda r, a, b, c: a * r**2 + b * r + c\nR_E = 6.371e6\n\nrr = np.linspace(0, R_E, 501)\n# Initialize myrho with zeros\nmyrho = np.zeros(len(rr))\n\nfor i in range(len(rr)):\n    # Find the first index where rr[i] &lt; h\n    ii = np.where(rr[i] &lt; h)[0]\n    if ii.size &gt; 0:\n        first_index = ii[0]  # Get the first index where the condition is met\n        # Ensure rr[i], an[first_index], bn[first_index], and cn[first_index] are scalars\n        myrho[i] = rho(float(rr[i]), float(an[first_index]), float(bn[first_index]), float(cn[first_index]))\n\n# Set the last element as in MATLAB\nmyrho[-1] = rho(float(R_E), float(an[10]), float(bn[10]), float(cn[10]))\n\nfig, ax = plt.subplots(figsize=(6,4))\nplt.plot(rr / 1000, myrho / 1000)\nplt.grid(True)\nplt.vlines(h / 1000, 1, 14, color='r', linewidth=0.2)\nplt.ylim(1, 14)\nplt.title('PREM density profile')\nplt.xlabel('km')\nplt.ylabel('density');",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>PREM - Preliminary Reference Earth Model</span>"
     ]
   },
   {
-    "objectID": "line_of_mass.html#attraction-of-a-plane-lamina",
-    "href": "line_of_mass.html#attraction-of-a-plane-lamina",
-    "title": "10  2-D mass distributions",
-    "section": "10.2 Attraction of a plane lamina",
-    "text": "10.2 Attraction of a plane lamina\nThe vertical component of attraction due to an element of area \\(\\mathrm{d}S\\) on an infinite horizontal plane lamina with density \\(\\rho\\) bounded by the planes \\(z\\) and \\(z+\\mathrm{d}z\\) is \\[\n\\mathrm{d}g = f \\rho \\mathrm{d}z \\mathrm{d}\\Omega\n\\] where \\(\\mathrm{d}\\Omega\\) is the solid angle subtended at the origin by the area \\(\\mathrm{d}S\\).\n\nIt holds \\[\n\\mathrm{d}\\Omega = \\frac{\\mathrm{d}S \\sin \\alpha}{r^{2}.}\n\\]\nIf we now consider a finite area \\(S\\) of arbitrary shape, the attraction at the origin due to the enclosed mass will be \\[\ng = f \\mathrm{d}z \\int _{S} \\rho \\, \\mathrm{d}\\Omega\n\\] or, if \\(\\rho\\) is constant over \\(S\\), this simplifies to \\[\ng = f \\rho \\Omega \\mathrm{d}z.\n\\] For a given solid angle \\(\\Omega\\), the attraction of the matter enclosed between two horizontal planes at \\(z=z_{1}\\) and \\(z=z_{2}\\) will be obtained by integrating \\[\ng = f \\Omega \\int_{z_{1}}^{z_{2}} \\rho \\, \\mathrm{d}z\n\\] and if \\(\\rho=\\mathrm{const.}\\) this becomes \\[\ng = f \\rho \\Omega (z_{2} - z_{1})\n\\] For the infinite horizontal plane the solid angle is \\(2 \\pi\\), such that the attraction of an infinite plate will be \\[\ng = 2 \\pi f \\rho (z_{2} - z_{1})\n\\] which is the vertical attraction of the Bouguer plate of thickness \\(z_{2} - z_{1}\\) and density \\(\\rho\\).",
+    "objectID": "PREM_.html#mass-distribution-inside-the-earth",
+    "href": "PREM_.html#mass-distribution-inside-the-earth",
+    "title": "9  PREM - Preliminary Reference Earth Model",
+    "section": "9.2 Mass distribution inside the Earth",
+    "text": "9.2 Mass distribution inside the Earth\nThe total mass of the Earth results from \\[\nm_E = 4 \\pi \\int\\limits_0^{R_E} \\rho(r) r^2 \\, \\mathrm dr.\n\\]\nHowever, there are density discontinuities which require a split of the integral at the jumps of \\(\\rho(r)\\). We integrate layer-wise, such that the mass of layer \\(i\\) is obtained by \\[\nm_i = 4 \\pi \\int_{r_{i-1}}^{r_i} \\rho(r) r^2 \\, \\mathrm d r ,\\quad 1 \\le i \\le 11.\n\\] We use Python’s Sympy library.\n\n\nShow the code\na, b, c, r, h_1, h_2 = sp.symbols('a b c r h_1 h_2', real=True)\n\n\nWe denote with i1 the following lambda function which is equivalent to the evaluation of the integral \\[\n4 \\pi \\int_{h_1}^{h_2} (a r^2 + b r + c) r^2 \\, \\mathrm d r\n\\]\n\n\nShow the code\ni1 = lambda h_1, h_2: 4 * pi * sp.integrate((a * r**2 + b * r + c) * r**2, (r, h_1, h_2))\n\nmass = np.zeros(len(an))\nmass[0] = i1(0, h[0]).subs(a, an[0]).subs(b, bn[0]).subs(c, cn[0]).subs(pi, np.pi)\n\nfor i in range(1, 11):\n    mass[i] = i1(h[i-1], h[i]).subs(a, an[i]).subs(b, bn[i]).subs(c, cn[i]).subs(pi, np.pi)\nmass\n\nM_Earth = np.sum(mass)\nprint('The mass of  the Earth is:') \nprint(M_Earth)\n\n\nThe mass of  the Earth is:\n5.972734577607561e+24\n\n\n\n\nShow the code\nfig, ax = plt.subplots(figsize=(6,4))\nplt.plot(np.concatenate(([0], h)) / 1e3, np.concatenate(([0], np.cumsum(mass))) / 1e24)\nplt.vlines(h / 1000, 0, 6.1, color='k', linewidth=0.2)\nplt.ylim(-0.2, 6.1)\nplt.title('Earth\\'s accumulated mass profile')\nplt.xlabel('km')\nplt.ylabel(r'Mass in 10$^{24}$ kg')\nplt.grid(True);",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>PREM - Preliminary Reference Earth Model</span>"
     ]
   },
   {
-    "objectID": "line_of_mass.html#the-mathrmdthetamathrmdz-solenoid",
-    "href": "line_of_mass.html#the-mathrmdthetamathrmdz-solenoid",
-    "title": "10  2-D mass distributions",
-    "section": "10.3 The \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) solenoid",
-    "text": "10.3 The \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) solenoid\nFirst, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the \\(x\\)-axis. Such a strip will be defined by the area on the plane \\(z=\\mathrm{const.}\\) lying between two inclined planes which intersect on the \\(x\\)-axis and make with the \\(y\\)-axis the angles of \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\).\n\nThe attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle \\(\\mathrm{d}\\Omega\\) between two planes intersecting at an angle \\(\\mathrm{d}\\Theta\\) will bear the same ratio to the total solid angle which the plane angle \\(\\mathrm{d}\\Theta\\) bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or \\(4 \\pi\\), and the total plane angle is \\(2 \\pi\\). Thus \\[\n\\frac{\\mathrm{d}\\Omega}{4 \\pi} = \\frac{\\mathrm{d}\\Theta}{2 \\pi}\n\\] or \\[\n\\mathrm{d}\\Omega = 2 \\mathrm{d}\\Theta.\n\\] Introducing this to the result obtained above gives \\[\n\\mathrm{d}g = 2 f \\rho \\mathrm{d}\\Theta \\mathrm{d}z\n\\] which is the fundamental differential equation of the attraction of a two-dimensional mass. The intersection of the two planes \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\) with the planes \\(z\\) and \\(z+\\mathrm{d}z\\) defines an elementary prism or solenoid of infinite length and cross-section \\(\\mathrm{d}\\Theta\\mathrm{d}z\\). For a finite area in the plane of integration \\[\ng = 2 f \\iint \\rho \\mathrm{d}\\Theta \\mathrm{d}z\n\\] Around an elementary prism \\(\\mathrm{d}\\Theta\\mathrm{d}z\\) bounded by the lines \\(\\Theta\\) and \\(\\Theta + \\mathrm{d}\\Theta\\), and \\(z\\) and \\(z+\\mathrm{d}z\\), consider the line integral \\(\\oint \\Theta \\mathrm{d}z\\). Starting at the point \\((\\Theta, z)\\) and traversing the circuit in counter-clockwise direction, the resulting integral will be \\[\n\\oint \\Theta \\mathrm{d}z = 0 + (\\Theta + \\mathrm{d}\\Theta)\\mathrm{d}z + 0 - \\Theta \\mathrm{d}z = \\mathrm{d}\\Theta \\mathrm{d}z.\n\\] Over a finite area \\(S\\) we may obtain \\(\\iint \\mathrm{d}\\Theta \\mathrm{d}z\\) by \\[\n\\iint_{S} \\mathrm{d}\\Theta \\mathrm{d}z = \\iint_{S} \\left[\\oint \\Theta \\mathrm{d}z \\right].\n\\] When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, \\[\n\\iint_{S} \\mathrm{d}\\Theta \\mathrm{d}z = \\oint_{s} \\Theta \\mathrm{d}z.\n\\] The attraction of a finite mass of constant density is obtained by \\[\ng = 2 f \\rho \\oint_{s} \\Theta \\mathrm{d}z.\n\\]\nAs an alternative, one could also consider the integral \\(\\oint z \\mathrm d \\theta\\). Traversing the integral in the sense \\(\\theta, z + \\mathrm d z, \\theta + \\mathrm d \\theta, z\\) we obtain\n\\[\n\\oint z \\mathrm{d}\\Theta  = 0 + (z + \\mathrm{d}z)\\mathrm{d}\\Theta + 0 - z \\mathrm{d}\\Theta = \\mathrm{d}\\Theta \\mathrm{d}z.\n\\] and \\[\ng = 2 f \\rho \\oint_{s} z \\mathrm{d}\\Theta.\n\\]\n\n\n\n\n\nHubbert, M.K., 1948. A LINE-INTEGRAL METHOD OF COMPUTING THE GRAVIMETRIC EFFECTS OF TWO-DIMENSIONAL MASSES. GEOPHYSICS, 13, 215–225. doi:10.1190/1.1437395\n\n\nTalwani, M., Worzel, J.L. & Landisman, M., 1959. Rapid gravity computations for two-dimensional bodies with application to the Mendocino submarine fracture zone. Journal of Geophysical Research, 64, 49–59. doi:10.1029/JZ064i001p00049",
+    "objectID": "PREM_.html#gravity-profile",
+    "href": "PREM_.html#gravity-profile",
+    "title": "9  PREM - Preliminary Reference Earth Model",
+    "section": "9.3 Gravity profile",
+    "text": "9.3 Gravity profile\n\n\nShow the code\n# Constants and assumptions\nG = 6.6743e-11  # Gravitational constant\nmyg = np.zeros(len(rr))  # Initialize myg as a zero array of the same length as rr\n\n# Loop through each element in rr\nfor i in range(1,len(rr)):\n    # Find the first index where rr[i] &lt; h\n    ii = np.where(rr[i] &lt; h)[0]\n    if ii.size &gt; 0:\n        ii = ii[0] + 1  # Adjusting for MATLAB's 1-based indexing\n\n        # Condition where ii == 1\n        if ii == 1:\n            M = i1(0, rr[i]).subs([(a, an[0]), (b, bn[0]), (c, cn[0])])\n        \n        # Condition where ii &gt; 1\n        elif ii &gt; 1:\n            # Calculating M as the sum of mass up to ii-1 plus the substituted function value\n            M = np.sum(mass[:ii-1]) + i1(h[ii-2], rr[i]).subs([(a, an[ii-1]), (b, bn[ii-1]), (c, cn[ii-1])])\n        \n        # Calculate myg[i] using the gravitational constant\n        myg[i] = G / rr[i]**2 * M\n\n# Set boundary conditions as in MATLAB\nmyg[0] = 0.0\nmyg[-1] = G / R_E**2 * M_Earth\n\n\n\n\nShow the code\nrext = np.linspace(R_E, 2*R_E, 41)\nfig, ax = plt.subplots(figsize=(6,4))\nplt.plot(rr / R_E, myg, color='b')\nplt.plot(rext / R_E, G * M_Earth / rext**2, color='r')\nplt.axvspan(0, 1, facecolor='g', alpha=0.2)\nplt.vlines(h / R_E, 0, 12, color='k', linewidth=0.2)\nplt.title('Acceleration profile')\nplt.xlabel('Earth radii')\nplt.ylabel(r'g in m$\\cdot s^{-2}$')\nplt.ylim(0, 12)\nplt.grid(True)\n\n\n\n\n\n\n\n\n\nThe results above do not agree well with the true surface acceleration due to the Earth’s ellipsoidal shape. The WGS84 gravity formula is valid for points at the Earth’s surface and accounts for the change of acceleration due to the ellipticity:\n\n\nShow the code\ng_equator = 9.7803253359\ng_pole = 9.8321849378\nsemi_axis_major = 6378137.0\nsemi_axis_minor = 6356752.3142\necc = np.sqrt(1 - semi_axis_minor**2 / semi_axis_major**2)\nk = semi_axis_minor / semi_axis_major * g_pole / g_equator - 1.0\n\ng_WGS = lambda phi: g_equator * (1 + k * np.sin(phi * np.pi / 180)**2) / np.sqrt(1 - ecc**2 * np.sin(phi * np.pi / 180)**2)\n\nlat = np.linspace(-90, 90, 101)\nfig, ax = plt.subplots(figsize=(6,4))\nplt.plot(lat, [g_WGS(v) for v in lat], label='WGS')\nplt.axhline(y=myg[-1], color='r', label='PREM')\nplt.grid(True)\nplt.ylabel('g')\nplt.xlabel('Latitude in degrees')\nplt.legend();",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2-D mass distributions</span>"
+      "Newton potential",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>PREM - Preliminary Reference Earth Model</span>"
     ]
   },
   {
-    "objectID": "talwani.html",
-    "href": "talwani.html",
-    "title": "11  Gravitational attraction of a prism",
+    "objectID": "circular_disc.html",
+    "href": "circular_disc.html",
+    "title": "12  Circular Disc",
     "section": "",
-    "text": "11.1 Problem description\nRecall that the vertical component of the gravitational attraction caused by an elongated prismatic body of cross section \\(S\\) is\n\\[\ng_z(x,z) = \\frac{\\partial}{\\partial z}V(x,z) = -2 f \\Delta \\rho \\int\\limits_S \\frac{(z - z')\\, dx' \\,dz'}{\\sqrt{(x-x')^2 + (z-z')^2}}.\n\\]\nIf the point of observation is at the origin, we obtain\n\\[\ng_z(0,0) = \\frac{\\partial}{\\partial z}V(0,0) = 2 f \\Delta \\rho \\int\\limits_S \\frac{z\\, dx \\, dz}{\\sqrt{x^2 + z^2}}.\n\\]\nIt can be shown that this surface integral can be equivalently replaced by a line integral taken along the periphery of \\(S\\).",
+    "text": "12.1 Potential along the z axis\nWe consider the potential and gravitational attraction of a circular disc in the plane \\(z=0\\) aligned with the z axis.\nTo obtain the potential at the \\(z\\)-axis we integrate over the surface area of the disc: \\[\nV(z) = -f \\frac{m}{r} = -2 \\pi f \\rho_F \\int\\limits_{r=0}^a \\frac{r \\, \\dd r}{\\sqrt{ r^2 + z^2 }}\n\\] with \\(r^2 = x^2 + y^2\\).\nIntegration yields: \\[\nV(z) = 2 \\pi f (|z| - \\sqrt{ a^2 + z^2 })\n\\]\nSympy check:\nShow the code\nimport sympy as sp\nfrom sympy import pi, oo\nx, y, z = sp.symbols('x y z', real=True)\nr, f, a, rho = sp.symbols('r f a rho_F', real=True, positive=True)\n\nV = sp.integrate(-2 * pi * f *rho * r / sp.sqrt(r**2 + z**2), (r, 0, a))\nV.simplify()\n\n\n\\(\\displaystyle 2 \\pi f \\rho_{F} \\left(- \\sqrt{a^{2} + z^{2}} + \\left|{z}\\right|\\right)\\)\nShow the code\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nzz = np.linspace(-5, 5, 400)\nfig, ax = plt.subplots(figsize=(6,4))\nplt.scatter(zz, np.abs(zz) - np.sqrt(1 + zz**2),s=3)\nplt.grid(True)\nplt.xlabel('z')\nplt.ylabel('V(z)');\n\n\n\n\n\n\n\n\nFigure 12.2: Potential of a circular disc of radius \\(a\\) at \\(z=0\\).",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Gravitational attraction of a prism</span>"
+      "Newton potential",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Circular Disc</span>"
     ]
   },
   {
-    "objectID": "talwani.html#line-integral",
-    "href": "talwani.html#line-integral",
-    "title": "11  Gravitational attraction of a prism",
-    "section": "11.2 Line integral",
-    "text": "11.2 Line integral\nThe Stokes theorem states that, for any vector field \\(\\mathbf A = (A_x, 0, A_z)^\\top\\) there holds\n\\[\n\\int\\limits_S (\\nabla \\times \\mathbf A) \\cdot d\\mathbf s = \\oint\\limits_C \\mathbf A \\cdot d\\mathbf \\ell,\n\\]\nwhere \\(d\\mathbf\\ell = \\mathbf e_x dx + \\mathbf e_z dz\\) is the oriented line element tangential to the curve \\(C\\), and \\(d\\mathbf s = dx \\,dz \\, \\mathbf e_y\\) the oriented surface element normal to the cross section \\(S\\). It follows by inspection that\n\\[\n\\partial_z A_x - \\partial_x A_z = 2 f \\Delta \\rho \\frac{z}{x^2 + z^2}\n\\]\nsuch that, after making the ansatz (Zhou (2008))\n\\[\nA_x = 0, \\qquad A_z = -2 f \\Delta\\rho \\, z \\left(\\frac{1}{z} \\, \\tan^{-1}\\frac{x}{z}\\right) = -2 f \\Delta \\rho \\, \\theta\n\\]\nThe angle \\(\\theta\\) is taken from the positive \\(x\\)-axis towards the positive \\(z\\)-axis.\nTalwani et al. (1959) have shown that the vertical component of the gravitational attraction of a two-dimensional prismatic body is, at the origin, equal to\n\\[\ng_z(0, 0) = 2 f \\Delta \\rho \\oint\\limits_C z \\, d\\theta,\n\\]\ni.e., a line integral taken along its periphery.\nThe following sketch illustrates the situation (taken from the original Talwani paper).\n\nLet \\(ABCDEF\\) be a given polygon with \\(n\\) sides and let \\(P\\) be the point at which the gravitational attraction due to this body has to be computed.\nFurther, let \\(z\\) be defined positive downwards and let \\(\\theta\\) be measured from the positive \\(x\\)-axis towards the positive \\(z\\)-axis.\nLet us evaluate the integral \\(\\oint z\\, d\\theta\\) for the above polygon.\nWe consider here the contribution from the side \\(BC\\). The remaining sides have to be added to obtain the total gravitational attraction of the complete prism.\nAt the point \\(Q\\) the line \\(BC\\) meets the \\(x\\)-axis at an angle \\(\\phi_i\\).\nLet \\(PQ = a_i\\). For any arbitrary point \\(R = R(x,z)\\) on the side \\(BC\\) there hold the two equivalent equations\n\\[\nz = x \\tan\\theta\n\\]\nand\n\\[\nz = (x - a_i) \\tan\\phi_i.\n\\]\nAfter eliminating \\(x\\) we obtain an expression for \\(z = z(\\theta)\\):\n\\[\nz = \\frac{a_i \\tan\\phi_i \\tan\\theta}{\\tan\\phi_i - \\tan\\theta}\n\\]\nThe contribution of the segment \\(BC\\) to the above line integral can now be rewritten as\n\\[\n\\int_{BC} z \\, d\\theta = \\int\\limits_B^C \\frac{a_i \\tan\\phi_i \\tan\\theta}{\\tan\\phi_i - \\tan\\theta} \\, d\\theta =: Z_i.\n\\]\nThe vertical component of the gravitational attraction is\n\\[\ng_z(0, 0) = 2 f \\Delta \\rho \\sum_{i=1}^n Z_i.\n\\]\nIt remains to solve the integral in the expression for \\(Z_i\\). To this end, we use Sympy.",
+    "objectID": "circular_disc.html#gravitational-attraction-along-the-z-axis",
+    "href": "circular_disc.html#gravitational-attraction-along-the-z-axis",
+    "title": "12  Circular Disc",
+    "section": "12.2 Gravitational attraction along the z axis",
+    "text": "12.2 Gravitational attraction along the z axis\nThe vertical component of the gravitational attraction is the projection of the field \\(\\vb g\\) onto the vertical direction \\(\\hat{\\vb e}_z\\)\n\\[\n\\vb g(z) = -\\grad V(z)\n\\]\n\\[\n-\\grad V(z) \\cdot \\hat{\\vb e}_z = -\\pdv{}{z}V(z) = 2 \\pi f \\rho_F \\left( \\frac{z}{\\sqrt{ a^2 + z^2 }} - \\text{sign}(z) \\right)\n\\]\nThis is the attraction of a disc of density \\(\\rho_{F}\\) aligned with the plane \\(z=0\\) observed at some point at the \\(z\\) axis.\nSympy check:\n\n\nShow the code\ng = -sp.diff(V, z)\ng\n\n\n\\(\\displaystyle \\frac{2 \\pi f \\rho_{F} z}{\\sqrt{a^{2} + z^{2}}} - 2 \\pi f \\rho_{F} \\operatorname{sign}{\\left(z \\right)}\\)\n\n\n\n\n\n\n\n\nNote\n\n\n\nNote that\n\\[\n\\dv{|z|}{z} = \\text{sign}z.\n\\]\n\n\n\n\nShow the code\nfig, ax = plt.subplots(figsize=(6,4))\nplt.scatter(zz, 2 * np.pi * (zz / np.sqrt(1 + zz**2) - np.sign(zz)),s=3)\nplt.xlabel('z')\nplt.ylabel('g(z)')\nplt.grid(True);\n\n\n\n\n\n\n\n\nFigure 12.3: Vertical attraction of a circular disc of radius \\(a\\) coplanar with \\(z=0\\).\n\n\n\n\n\nThe vertical component of the gravitational attraction obviously has a jump, which equals \\(4 \\pi f \\rho_F\\).\n\n\nShow the code\nsp.limit(g, z, 0, '-') - sp.limit(g, z, 0, '+')\n\n\n\\(\\displaystyle 4 \\pi f \\rho_{F}\\)",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Gravitational attraction of a prism</span>"
+      "Newton potential",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Circular Disc</span>"
     ]
   },
   {
-    "objectID": "talwani.html#implementation",
-    "href": "talwani.html#implementation",
-    "title": "11  Gravitational attraction of a prism",
-    "section": "11.3 Implementation",
-    "text": "11.3 Implementation\n\na, x, z, phi, theta, Z = symbols('a x z phi theta Z', real=True)\nZ = solve(\n    [tan(theta) * x - z, (x - a) * tan(phi) - z], \n    [x, z], dict=True)\n# Z[0][z]\nsimplify(integrate(Z[0][z], theta))\n\n\\[\\begin{equation}\\frac{a \\left(- 2 \\theta - 2 \\log{\\left(- \\tan{\\left(\\phi \\right)} + \\tan{\\left(\\theta \\right)} \\right)} \\tan{\\left(\\phi \\right)} + \\log{\\left(\\frac{1}{\\cos^{2}{\\left(\\theta \\right)}} \\right)} \\tan{\\left(\\phi \\right)}\\right) \\cos^{2}{\\left(\\phi \\right)} \\tan{\\left(\\phi \\right)}}{2}\\end{equation}\\]\n\n\nNote that with \\[\n\\log\\left( \\frac{1}{\\cos^2\\theta}\\right) = - 2 \\log \\cos\\theta\n\\] and after combining the \\(\\log\\) terms we obtain the desired integral taken in the limit of integration, i.e., \\(\\theta_i\\) and \\(\\theta_{i+1}\\) \\[\nZ_{i} =a_{1} \\sin \\phi_{i} \\cos \\phi_{i} \\left[ \\theta_{i}-\\theta_{i+1} +\\tan \\phi_{i} \\log _{s} \\frac{\\cos \\theta_{i}\\left(\\tan \\theta_{i}-\\tan \\phi_{j}\\right)}{\\cos \\theta_{i+1}\\left(\\tan \\theta_{i+1}-\\tan \\phi_{i}\\right)}\\right]\n\\] which is the equation for \\(Z_i\\) given in Talwani et al. (1959), p. 50.\n\n\n\n\n\nTalwani, M., Worzel, J.L. & Landisman, M., 1959. Rapid gravity computations for two-dimensional bodies with application to the Mendocino submarine fracture zone. Journal of Geophysical Research, 64, 49–59. doi:10.1029/JZ064i001p00049\n\n\nZhou, X., 2008. 2D vector gravity potential and line integrals for the gravity anomaly caused by a 2D mass of depth-dependent density contrast. GEOPHYSICS, 73, I43–I50. doi:10.1190/1.2976116",
+    "objectID": "circular_disc.html#potential-and-attraction-of-a-vertical-cylinder",
+    "href": "circular_disc.html#potential-and-attraction-of-a-vertical-cylinder",
+    "title": "12  Circular Disc",
+    "section": "12.3 Potential and attraction of a vertical cylinder",
+    "text": "12.3 Potential and attraction of a vertical cylinder\nThe cylinder is composed of circular discs with infinitely small thickness and constant radius \\(a\\). The integration of an aligned stack of such discs yields a cylinder.\n\n\n\n\n\n\nFigure 12.4: A co-axial stack of circular discs from \\(z=\\) to \\(z=h\\) forming a vertical cylinder of length \\(h\\).\n\n\n\nWe note that\n\\[\n\\rho = \\int_0^h \\rho_F \\, \\dd z.\n\\]\nWe integrate over the attraction for circular discs and obtain for a cylinder enclosed by the two horizontal planes \\(z=0\\) and \\(z=h, h&gt;0\\): \\[\n\\begin{align}\ng(z) & = 2 \\pi f \\rho \\left(h + \\sqrt{ a^2 + z^2 } - \\sqrt{ a^2 + (h - z)^{2} }\\right) \\qfor z &lt; 0 \\\\\n& = 2 \\pi f \\rho \\left(h - 2z + \\sqrt{ a^{2} + z^{2}} - \\sqrt{ a^2 + (h-z)^{2} }\\right) \\qfor h &gt; z \\\\\n& = 2 \\pi f \\rho \\left(-h + \\sqrt{ a^2 + z^2 } - \\sqrt{ a^2 + (h - z)^{2} }\\right) \\quad\\text{otherwise}\n\\end{align}\n\\]\nSympy check:\n\n\nShow the code\nh = sp.symbols('h', real=True, positive=True)\nrho0 = sp.symbols('rho', real=True, positive=True)\ni1 = sp.integrate(-g, z).subs(rho, rho0)\nsp.simplify(i1.subs(z, z-h) - i1.subs(z, z-0))\n\n\n\\(\\displaystyle \\begin{cases} 2 \\pi f \\rho \\left(h + \\sqrt{a^{2} + z^{2}} - \\sqrt{a^{2} + \\left(h - z\\right)^{2}}\\right) & \\text{for}\\: z &lt; 0 \\\\2 \\pi f \\rho \\left(h - 2 z + \\sqrt{a^{2} + z^{2}} - \\sqrt{a^{2} + \\left(h - z\\right)^{2}}\\right) & \\text{for}\\: h &gt; z \\\\2 \\pi f \\rho \\left(- h + \\sqrt{a^{2} + z^{2}} - \\sqrt{a^{2} + \\left(h - z\\right)^{2}}\\right) & \\text{otherwise} \\end{cases}\\)\n\n\n\n\nShow the code\nhh = 1.0\nzabove = np.linspace(-5, 0, 51)\nzinside = np.linspace(0, hh, 51)\nzbelow = np.linspace(hh, 6, 51)\nfig, ax = plt.subplots(figsize=(6,4))\nplt.plot(zabove, \n         2*np.pi*(hh + np.sqrt(1+zabove**2) - \n                  np.sqrt(1 + (hh - zabove)**2)),c='C0',\n        label=r'z&lt;0')\nplt.plot(zinside, \n        2*np.pi*(hh - 2 * zinside + np.sqrt(1+zinside**2) - \n                 np.sqrt(1 + (hh - zinside)**2)),c='C1',\n        label=r'0&lt;z&lt;h')\nplt.plot(zbelow, \n         2*np.pi*(-hh + np.sqrt(1+zbelow**2) - \n                  np.sqrt(1 + (hh - zbelow)**2)),c='C2',\n        label=r'z&gt;h')\nplt.axvspan(0, hh, facecolor='b', alpha=0.1)\nplt.xlabel('z')\nplt.ylabel('g(z)')\nplt.legend()\nplt.grid(True);",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Gravitational attraction of a prism</span>"
+      "Newton potential",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Circular Disc</span>"
     ]
   },
   {
-    "objectID": "Talwani-Implementation.html",
-    "href": "Talwani-Implementation.html",
-    "title": "12  Implementation of the TALWANI approach",
+    "objectID": "circular_disc.html#bouguer-plate-anomaly",
+    "href": "circular_disc.html#bouguer-plate-anomaly",
+    "title": "12  Circular Disc",
+    "section": "12.4 Bouguer plate anomaly",
+    "text": "12.4 Bouguer plate anomaly\nConsider the solution for \\(z&lt;0\\). What happens to \\(g(z)\\) when \\(a\\) goes to infinity, i.e., the cylinder turns into an infinite horizontal plate? We depart from the first of the above equations. In \\(z&lt;0\\) we have \\[\ng(z) = 2 \\pi f \\rho \\left( h + \\sqrt{ a^2 + z^2 } - \\sqrt{ a^2 + (h - z)^2 }\\right)\n\\] For \\(a \\to \\infty\\) we can expand the square root into a series, e.g. \\[\n\\sqrt{ a^2 + z^2 } = a \\sqrt{ 1 + \\frac{z^2}{a^2} } \\approx a \\left( 1 + \\frac{z^2}{2a^2} - \\dots\\right)\n\\] and \\[\n\\sqrt{ a^2 + (h-z)^2 } = a \\sqrt{ 1 + \\frac{(h-z)^2}{a^2} } \\approx a \\left( 1 + \\frac{(h-z)^2}{2a^2} - \\dots\\right)\n\\] After collecting terms we have \\[\ng(z) = 2 \\pi f \\rho \\left(h +  a \\left[ 1 + \\frac{z^2}{2a^2} - 1 - \\frac{(h-z)^2}{a^2}\\right]\\right) \\approx 2 \\pi f \\rho_{F}h\n\\] This is the well-known equation for the vertical attraction above an infinite horozontal plate of thickness \\(h\\) and density \\(\\rho\\) (Bouguer plate anomaly)\n\\[\ng_B(h) =  2 \\pi f \\rho h\n\\]",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Circular Disc</span>"
+    ]
+  },
+  {
+    "objectID": "mass_distribution.html",
+    "href": "mass_distribution.html",
+    "title": "7  Mass distribution",
     "section": "",
-    "text": "12.1 Sort the vertices\nFirst, we have to sort the vertices in the case that they are given in an arbitrary order.\nTo this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.\nCode\npoly = Polygon(x, z, 500)\nCode\nfig, ax = plt.subplots()\nplt.plot(poly.x, poly.z, marker='.')\nax.set_aspect('equal', 'box');\nCode\ncylinder(np.array([-10., 0.]), poly.density * np.pi * radius**2, np.array([0., 10.]))\n\n\narray([1.04834947e-08, 1.04834947e-08])\nCode\ntalwani([-50, 0], poly)\n\n\n8.043842124381056e-10\nCode\nprofile = np.linspace(start=-40, stop=40, num=81)\nnpts = profile.size\ngtal = np.zeros(npts)\ngcyl = np.zeros(npts)\nmass = poly.density * np.pi * radius**2\nfor k in range(npts):\n    gtal[k] = talwani(np.array([profile[k], 0]), poly)\n    gcyl[k] = cylinder(np.array([profile[k], 0]), mass, np.array([xc, zc]))[1]\nCode\nfig, (ax1, ax2) = plt.subplots(1, 2)\nax1.plot(profile, gtal, marker='.')\nax1.plot(profile, gcyl, marker='.');\nax2.plot(profile, gcyl - gtal, marker='.');\nCode\nnorm(gtal - gcyl) / norm(gcyl)\n\n\n0.002516090288497209",
+    "text": "The gravitational potential of a spatial mass distribution follows the principle of linear superposition. The potential can be composed as the sum of the individual potentials of point masses\n\\[\nV(\\vb r) = -f \\sum\\limits_{i=1}^N \\frac{m_i}{|\\vb r - \\vb r_i}, \\qfor |\\vb r - \\vb r'| \\ne 0.\n\\]\nFor a continuous mass distribution with density \\(\\rho(\\vb r)\\), a mass \\(\\dd m(\\vb r) = \\rho(\\vb r)  \\dd{^3 {\\vb r}}\\) must be assigned to each volume element. The summation gets replaced by an integration\n\\[\nV(\\vb r) = -f \\int\\limits_G \\frac{\\dd m (\\vb r')}{| \\vb r - \\vb r'|} = -f \\int\\limits_G \\frac{ \\rho(\\vb r')  \\dd{^3 {\\vb r'}}}{| \\vb r - \\vb r'|}\n\\]\nThis is Newton’s volume potential.\nIn practical applications the difficulty is to integrate over non-trivial, complicated geometries of the domain \\(G\\).\nIn the next section we demonstrate the integration over spherical shells and spheres.",
     "crumbs": [
-      "Two-dimensional problems",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Implementation of the TALWANI approach</span>"
+      "Newton potential",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Mass distribution</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "Summary",
+    "objectID": "spherical_shells.html",
+    "href": "spherical_shells.html",
+    "title": "8  Newton’s shell theorem",
     "section": "",
-    "text": "WIP",
+    "text": "8.1 Density laws\nThe potential outside of a solid sphere of radius \\(a\\) and density law \\(\\rho=\\rho(r)\\) can be obtained by integration over spherical shells using the law of cosines: \\[\nV(r)  = f \\int_{r'=0}^a \\int_{\\theta=0}^\\pi \\int_{\\phi=0}^{2\\pi}\n    \\frac{\\rho(r') {r'}^2 \\, \\mathrm d r' \\sin\\theta \\, \\mathrm d \\theta \\, \\mathrm d \\phi}{[{r'}^2 + r^2 -2 r r' \\cos\\theta]^{1/2}}.\n\\]\nWe depart from the potential of one spherical shell of radius \\(a\\) with surface density \\(\\rho_F\\), which can be evaluated as \\[\nV^F(r) = 2 \\pi f \\rho_F \\int_{\\theta=0}^\\pi \\frac{a^2 \\sin\\theta \\, \\mathrm d \\theta}{\\sqrt{r^2 + a^2 - 2ar\\cos\\theta}}.\n\\]\nThe potential \\(V^F(r)\\) inside or outside of such a spherical shell with surface density \\(\\rho_F\\) and radius \\(a\\) is \\[\nV^F(r) = 2 \\pi f \\frac{a}{r} \\rho_F \\left[ r + a - |r - a| \\right].\n\\] Because \\(r\\) can be either less or greater than \\(a\\), we obtain two solution for \\(V^F(r)\\): \\[\nV^F(r) = \\begin{cases}\n4 \\pi f \\rho_F \\frac{a^2}{r} & \\quad\\text{ if } r &gt; a \\\\\n4 \\pi f \\rho_F a & \\quad\\text{ if } r &lt; a\n\\end{cases}\n\\]\nWe now introduce a solid sphere with a density law \\(\\rho = \\rho(r)\\). To obtain the potential \\(V(r)\\) outside this sphere, we integrate\n\\[\nV(r) = \\int_{r'=0}^a V^F(r') \\, \\mathrm d r' = \\frac{2 \\pi f}{r } \\int_{r'=0}^{a} \\rho(r') [r + r' - |r - r'|] r' \\, \\mathrm d r'\n\\]\nTo this end, we make use of SymPy, a Python library for symbolic mathematics.\nWe first define symbolic variables.\nSince \\[\n\\sqrt{r^2 + a^2 + 2 a r} = |r + a| = r + a\n\\] and \\[\n\\sqrt{r^2 + a^2 - 2 a r} = |r - a| =\n\\begin{cases}\nr - a & \\text{if } r &gt; a \\\\\na - r & \\text{if } r &lt; a\n\\end{cases}\n\\] we have to be careful with the integrand.\nTo get the potential inside the sphere, i.e., for \\(r &lt; a\\), we have to decompose the integral into two contributions.\nFirst, we evaluate the potential due to a sphere of radius \\(r\\), to which we add the contribution of a hollow sphere with inner radius \\(r\\) and outer radius \\(a\\): \\[\nV(r) = \\frac{4 \\pi f}{r} \\left[ \\int_{r'=0}^r \\rho(r') {r'}^2 \\, \\mathrm d r' + \\int_r^a \\rho(r') r r' \\, \\mathrm d r'\\right]\n\\]\nIn the interior of a homogeneous sphere with a mean density of \\(\\bar\\rho\\) we obtain for \\(0 \\le r \\le a\\) \\[\nV(r) = \\frac{2 \\pi f \\bar\\rho}{3} \\left(3a^2 - r^2 \\right)\n\\]\nNow, we introduce non-trivial density laws, such as a linear density law \\[\n\\rho(r) = \\rho(0) - b r, \\quad b &gt; 0.\n\\]\nShow the code\nrho_m, rho_0, rho_R, R_E, b = sp.symbols(\"rho_m rho_0 rho_R R_E b\", positive=True, real=True)\nWith the known mean density of the Earth we can evaluate Earth’s mass.\nShow the code\nm_E = rho_m * 4 * pi / 3 * R_E**3\nm_E\n\n\n\\(\\displaystyle \\frac{4 \\pi R_{E}^{3} \\rho_{m}}{3}\\)\nThis is not very helpful. Instead, we can evaluate Earth’s mass using a volume integral over a density function, e.g., \\[\nm_E = 4 \\pi \\int_0^{R_E} (\\rho_0 - br) r^2 \\, \\mathrm d r\n\\] Using SymPy we obtain the expression\nShow the code\nm_E_int = 4 * pi * sp.integrate((rho_0 - b * r) * r**2, (r, 0, R_E))\nm_E_int.simplify()\n\n\n\\(\\displaystyle \\frac{\\pi R_{E}^{3} \\left(- 3 R_{E} b + 4 \\rho_{0}\\right)}{3}\\)\nThis result still contains two unknown parameters \\(b\\) and \\(\\rho_0\\).\nWe exploit the fact that there must hold \\[\n\\rho(R_E) = \\rho(0) - b R_E.\n\\]\nThe density at the Earth’s surface is about \\(2700\\) \\(kg/m^3\\).\nShow the code\neq1 = m_E_int - m_E\neq2 = rho_0 - b * R_E - rho_R\nShow the code\ncoeffs = sp.solve((eq1, eq2), (rho_0, b),dict=True)\ncoeff_rho_0 = coeffs[0][rho_0]\ncoeff_b = coeffs[0][b]\nShow the code\ncoeff_rho_0\n\n\n\\(\\displaystyle - 3 \\rho_{R} + 4 \\rho_{m}\\)\nShow the code\ncoeff_b\n\n\n\\(\\displaystyle \\frac{- 4 \\rho_{R} + 4 \\rho_{m}}{R_{E}}\\)\nShow the code\nrho_num = coeff_rho_0.subs(rho_R, 2700).subs(rho_m, 5515)\nShow the code\nb_num = coeff_b.subs(rho_R, 2700).subs(rho_m, 5515).subs(R_E, 6.371e6)",
     "crumbs": [
-      "Summary"
+      "Newton potential",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Newton's shell theorem</span>"
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Blakely, R.J., 1995. Potential Theory in\nGravity and Magnetic Applications, 1st\ned., Cambridge University Press. doi:10.1017/CBO9780511549816",
+    "objectID": "spherical_shells.html#gravitational-attraction-inside-the-earth",
+    "href": "spherical_shells.html#gravitational-attraction-inside-the-earth",
+    "title": "8  Newton’s shell theorem",
+    "section": "8.2 Gravitational attraction inside the Earth",
+    "text": "8.2 Gravitational attraction inside the Earth\nIt is known that the gravitational potential inside a sphere with a radially symmetric density function is \\[\nV(r) = \\frac{4 \\pi f}{r} \\left[ \\int_{r'=0}^r \\rho(r') {r'}^2 \\, \\mathrm d r' + \\int_r^{R_E} \\rho(r') r r' \\, \\mathrm d r'\\right]\n\\] The first integral amounts for the potential at the surface of a sphere with radius , whereas the second computes the potential taken at the inner surface of a hollow sphere.\nWith the constants derived above we want to evaluate these integrals.\n\n\nShow the code\ni1 = 4 * pi * f / r * sp.integrate((rho_0 - b * rp) * rp**2, (rp, 0, r))\ni1.simplify()\n\n\n\\(\\displaystyle \\frac{\\pi f r^{2} \\left(- 3 b r + 4 \\rho_{0}\\right)}{3}\\)\n\n\n\n\nShow the code\ni2 = 4 * pi * f * sp.integrate((rho_0 - b * rp) * rp, (rp, r, R_E))\ni2.simplify()\n\n\n\\(\\displaystyle \\frac{2 \\pi f \\left(- 2 R_{E}^{3} b + 3 R_{E}^{2} \\rho_{0} + 2 b r^{3} - 3 r^{2} \\rho_{0}\\right)}{3}\\)\n\n\nNext, we add both contributions to obtain the potential inside the Earth.\n\n\nShow the code\n#V = sp.Function(\"V\")\nV = i1 + i2\n\n\n\n\nShow the code\nV.simplify()\n\n\n\\(\\displaystyle \\frac{\\pi f \\left(- 4 R_{E}^{3} b + 6 R_{E}^{2} \\rho_{0} + b r^{3} - 2 r^{2} \\rho_{0}\\right)}{3}\\)\n\n\nWe obtain the gravitational attraction by taking the gradient of \\(V\\) in the direction of \\(\\mathbf r\\):\n\\[\ng(r) = \\nabla V(r) \\cdot \\hat{\\mathbf r}\n\\]\n\n\nShow the code\ng = sp.diff(V, r)\ng.simplify()\n\n\n\\(\\displaystyle \\frac{\\pi f r \\left(3 b r - 4 \\rho_{0}\\right)}{3}\\)",
     "crumbs": [
-      "References"
+      "Newton potential",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Newton's shell theorem</span>"
+    ]
+  },
+  {
+    "objectID": "spherical_shells.html#visualization-of-the-result",
+    "href": "spherical_shells.html#visualization-of-the-result",
+    "title": "8  Newton’s shell theorem",
+    "section": "8.3 Visualization of the result",
+    "text": "8.3 Visualization of the result\nWe plot the curve of \\(g(r)\\) inside the Earth.\nFurther, we check if \\(g(r)\\) has an extremum inside the Earth.\n\n\nShow the code\nf_ = 6.674e-11\ng_num = lambda r: np.pi * f_ * r * (3 * b_num * r - 4 * rho_num) / 3\n\n\n\n\nShow the code\nrstar = sp.solve(sp.diff(g, r), (r))\nrstar[0]\n\n\n\\(\\displaystyle \\frac{2 \\rho_{0}}{3 b}\\)\n\n\n\n\nShow the code\nrextrem = rstar[0].subs(rho_0, rho_num).subs(b, b_num)\nrextrem / 1e6\n\n\n\\(\\displaystyle 5.26578804026051\\)\n\n\n\n\nShow the code\n6.371e6 - rextrem\n\n\n\\(\\displaystyle 1105211.95973949\\)\n\n\nThe extremal value of \\(g(r)\\) in the interior of the Earth appears at \\(r=5.26 \\times 10^6\\) m, i.e., at a depth of 1105 km.\n\n\nShow the code\nrr = np.linspace(0, 6.367e6, 41)\n\n\n\n\nShow the code\nplt.plot(rr, g_num(rr))\nplt.scatter(rextrem, g_num(rextrem), color='r')\nplt.grid(True)\nplt.xlabel(\"r in m\")\nplt.ylabel(\"g(r)\");",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Newton's shell theorem</span>"
+    ]
+  },
+  {
+    "objectID": "spherical_shells.html#moment-of-inertia",
+    "href": "spherical_shells.html#moment-of-inertia",
+    "title": "8  Newton’s shell theorem",
+    "section": "8.4 Moment of inertia",
+    "text": "8.4 Moment of inertia\nThere are two constraints for density models: The mass of the Earth, and its moment of inertia. Both are moments of the density distribution. The mass is the second moment of the radial density distribution, whereas the mean moment of inertia is the scaled fourth moment of the radial density distribution. The moment of inertia can be inferred from a thin spherical shell of radius \\(a\\),\n\\[\nI = \\frac{2}{3} m a^2.\n\\]\nThe contribution of a small mass \\(\\mathrm d m\\) is therefore \\[\n\\mathrm d I = \\frac{2}{3} a^2 \\, \\mathrm d m.\n\\] The total moment of intertia an be calculated with the integral \\[\nI=\\frac{2}{3} \\int\\limits_0^{R_E}  \\rho(r) r^2 \\, \\mathrm d V =\n\\frac{8\\pi}{3} \\int\\limits_0^{R_E}  \\rho(r) r^4 \\, \\mathrm d r,\n\\] with the help of which we compute the moment of inertia factor \\(\\alpha\\), a dimensionless number, where \\[\n\\alpha = \\frac{I}{mR_E^2}.\n\\] This factor is \\(0.4\\) for a solid sphere.\nCheck using SymPy:\n\n\nShow the code\n(8 * pi / 3 * \n    sp.integrate(rho_m * r**4, (r, 0, R_E)) / \n    m_E / R_E**2\n    ).subs(rho_m, 5515).subs(R_E, 6.371e6)\n\n\n\\(\\displaystyle \\frac{2}{5}\\)\n\n\n\\(\\alpha\\) should be smaller for a sphere when there is an increasing density with depth.\nFor our density model, we observe \\(\\alpha=0.3319\\), which is slightly more than reported in the literature, where \\(\\alpha=0.3307144\\) (Williams, 1994).\nCheck:\n\n\nShow the code\n(8 * pi / 3 * \n    sp.integrate((rho_num - b_num * r) * r**4, (r, 0, R_E)) / \n    m_E / R_E**2\n    ).subs(rho_m, 5515).subs(R_E, 6.371e6)\n\n\n\\(\\displaystyle 0.331943185252342\\)",
+    "crumbs": [
+      "Newton potential",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Newton's shell theorem</span>"
     ]
   }
 ]

@@ -1,0 +1,31 @@
+---
+title: "Theory of Potential Field Methods"
+execute:
+  echo: true
+format: 
+  tubaf-revealjs:
+    smaller: true
+    scrollable: true
+    code-fold: true
+    
+    code-summary: "Show the code"
+    theme: default
+    html-math-method: mathjax
+    include-in-header:
+        - text: |
+            <script>
+            window.MathJax = {
+                loader: {
+                load: ['[tex]/physics']
+                },
+                tex: {
+                packages: {'[+]': ['physics']}
+                }
+            };
+            </script>
+bibliography: references/literatur.bib
+csl: https://www.zotero.org/styles/geophysical-journal-international
+jupyter: python3
+---
+
+{{< include "Sphere_Potential_and_Attraction.qmd" >}}

@@ -1,0 +1,124 @@
+---
+title: Solution of the *Laplace* and *Poisson* equations
+jupyter: julia-1.11
+---
+
+```julia
+using SymPy
+using Plots
+plotly()
+using ApproxFun
+using ApproxFunFourier
+using LinearAlgebra
+using Latexify
+```
+
+```{python}
+import sympy as sp
+```
+
+## One-dimensional case
+
+
+We consider the second-order differential equations
+
+$$
+\frac{d^2}{dx^2}y(x) = 0
+$$
+
+(*Laplace equation*) and
+$$
+\frac{d^2}{dx^2}y(x) = -4\cos(4x) - 8 \sin(8 x)
+$$
+
+(*Poisson equation*) for $x \in [0, 1]$ subject to the boundary conditions $y(0)=1$ and $y(1)=0$.
+
+To obtain the solution to the above PDEs, we employ the package `SymPy`.
+`SymPy` is the `Julia` port of a powerful `Python` library for symbolic mathematics.
+
+(Note: We don't need to worry about `Python`.)
+
+Within `SymPy`, all symbolic variables are defined using the function `Sym`.
+
+Symbolic functions which depend on symbolic variables have to be defined with the function `SymFunction`.
+
+```julia
+x = Sym("x")
+y = SymFunction("y");
+```
+
+All functions can be written in a very natural way:
+
+```julia
+laplace_eq = y''(x)
+```
+
+```julia
+poisson_eq = y''(x) + 4*cos(4*x) + 8*sin(8*x)
+```
+
+The solution of the differential equations can be obtained  by a call to the `dsolve` function.
+
+The signature of the function can be understood as follows:
+
+* Solve the symbolic equation given by the expression `laplace_eq`
+* The independent variable is `x`
+* Boundary conditions can be enforced by the values following the keyword `ics`. In the example, `y(0)=1` and `y(1)=0`)
+
+```julia
+g_l = dsolve(laplace_eq, x, ics=((y, 0, 1), (y, 1, 0)))
+```
+
+```julia
+g_p = dsolve(poisson_eq, x, ics=((y, 0, 1), (y, 1, 0)))
+```
+
+### What can we observe in the 1-D case?
+
+* The solution of the *Laplace equation* does not exhibit local extrema
+* It has no curvature
+
+
+* The solution of the *Poisson equation* has local minima and maxima
+* Its extrema might get larger or smaller than the Dirichlet values at the boundary
+
+```julia
+plot(g_l, 0, 1, label="Laplace", xlabel="x", ylabel="y")
+plot!(g_p, 0, 1, label="Poisson")
+```
+
+## Two-dimensional case
+
+For the two-dimensional case we consider functions on the square-shaped domain $[-1 \dots 1] \times [-1 \dots 1]$.
+
+### Laplace equation
+
+On the boundary $\partial\Omega$ of the domain $\Omega$, Dirichlet boundary values defined by the expression `g` are imposed.
+
+```julia
+Ω = (-1.0 .. 1.0)^2
+g = Fun((x,y) -> real(exp(-x-im*y)), ∂(Ω))  # boundary data
+Δ = Laplacian(Ω)
+u = [Dirichlet(Ω); Δ] \ [g; 0]
+plot(u)
+```
+
+By inspection of the above plot, we recognize the validity of the important *mean value theorem*.
+
+### Poisson equation
+
+Over the domain $\Omega_p$ a forcing function `f` is defined.
+At the boundary, homogeneous Dirichlet conditions are imposed.
+
+```julia
+f = Fun((x,y) -> exp(-10(x+0.2)^2-20(y-0.1)^2)) 
+Ωₚ = domain(f)
+Δₚ = Laplacian(Ωₚ)
+uₚ = [Dirichlet(Ωₚ); Δₚ] \ [0; f]
+plot(uₚ)
+```
+
+Solutions to the Poission equations do not obey the *mean value theorem*.
+Also, local extrema occur within the domain.
+
+

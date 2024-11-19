@@ -14,23 +14,27 @@ book:
     - part: "Mathematical foundations"
       chapters: 
         - fields.qmd
+#        - rubberband.qmd
+#        - pde_example.qmd
     - part: "Newton potential"
       chapters: 
         - pointmass.qmd
-        - poisson_equation.qmd
+#        - poisson_equation.qmd
         - mass_distribution.qmd
-        - shell_theorem.qmd
-        - legendre.qmd
+        - spherical_shells.qmd
+        - PREM_.qmd
+        - Sphere_Potential_and_Attraction.qmd
         - circular_disc.qmd
-        - geophysical_application.qmd
-        
     - part: "Two-dimensional problems"
       chapters: 
         - line_of_mass.qmd
         - talwani.qmd
         - Talwani-Implementation.qmd
+    - part: "Three-dimensional problems"
     - part: "Dipole potential"
     - part: "Spherical harmonics"
+      chapters:
+        - legendre.qmd
     - part: "Boundary value problems"
     - summary.qmd
     - references.qmd
@@ -43,6 +47,12 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    crossref:
+      chapters: true
+      eq-prefix: ""
+    code-fold: true
+    code-summary: "Show the code"
+    html-math-method: mathjax
     include-in-header:
       - text: |
           <script>
@@ -59,5 +69,6 @@ format:
     documentclass: scrreprt
     papersize: a4
 
-editor: visual
+editor:
+  render-on-save: true
 

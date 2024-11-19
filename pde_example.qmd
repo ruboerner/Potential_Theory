@@ -1,0 +1,99 @@
+---
+jupyter: julia-1.10
+#engine: julia
+---
+
+## Example
+
+This example illustrates one of the properties of solutions to the Laplace equation, the minimum-maximum principle.
+It states that in the interior of the domain the solution is bounded by the values at the domain boundaries.
+
+We consider the stationary heat equation
+$$
+\vb J = - k \grad T \qin \Omega \subset \mathbb R^2
+$$
+with $\vb J$---heat flux density, $k$---thermal conductivity, $T$---temperature.
+
+For a hollow cylinder (tube) we define Dirichlet type boundary conditions for the temperature. At the inner boundary we enforce $T=100$ for the lower half of the perimeter (where $y<0$).
+At the upper part of the perimeter as well as the outer boundary we set $T=20$. Note that the unit of $T$ is arbitrary.
+
+In the absence of internal heat sources or sinks, there holds
+$$
+\div \vb J = 0
+$$
+such that
+$$
+\div (k \grad T) = 0.
+$$
+
+When $k$ is homogeneous, we obtain the following Laplace equation:
+$$
+\Delta T = 0
+$$
+
+We solve this problem using the FE method with the help of `Gridap`.
+
+```{julia}
+using Gridap
+using Gridap.Fields
+using GridapGmsh
+using GridapMakie
+using WGLMakie
+```
+
+The geometry of the cylinder and the associated triangulation is provided as a `gmsh`-file.
+```{julia}
+if isfile("circle.msh")
+  model = GmshDiscreteModel("circle.msh");
+end
+```
+```{julia}
+order = 2
+reffe = ReferenceFE(lagrangian,Float64,order)
+V0 = TestFESpace(model,reffe;conformity=:H1,dirichlet_tags=["outer", "inner"])
+
+function gi(x)
+  if x[2] < 0.0
+    return 100.0
+  else
+    return 20.0
+  end
+end
+
+go(x) = 20.0
+
+U = TrialFESpace(V0,[go, gi])
+
+degree = 2 * order
+Ω = Triangulation(model)
+dΩ = Measure(Ω,degree)
+
+a(u,v) = ∫( ∇(v)⋅∇(u) )*dΩ
+b(v) = 0.0
+
+op = AffineFEOperator(a,b,U,V0)
+
+uh = solve(op);
+```
+
+```{julia}
+#| label: fig-temperatur
+#| fig-cap: "Temperatur distribution (in arbitrary units) within the tube (left) and temperature profile along $-0.5 \\le y \\le -0.1$ (right)."
+y = -[0.101:0.01:0.499;]
+T = [uh(Gridap.Fields.Point(0.0, v)) for v in y]
+
+fig = Figure(; size = (480, 480))
+
+ax1 = Axis(fig[1, 1], xlabel = "x", ylabel="y", aspect=1, limits=(-0.51, 0.51, -0.51, 0.51))
+plt = plot!(ax1, Ω, uh; colormap=:jet)
+lines!(ax1, [0.0, 0.0], [-0.5, -0.1], color=:white)
+#wireframe!(ax1, Ω; color=:white, linewidth=0.1)
+Colorbar(fig[2, 1], plt; vertical=false, label="Temperature in a.u.")
+ax2 = Axis(fig[1, 2], xlabel = "y", ylabel="T", aspect=1, limits=(0.1, 0.5, 20, 100))
+plot!(ax2, y, T; markersize=4)
+plot!(ax2, [-0.1, -0.5], [100, 20], color=:red, markersize=12)
+xlims!(ax2, (-0.1, -0.5))
+rowsize!(fig.layout, 1, Aspect(1, 1))
+
+fig
+```

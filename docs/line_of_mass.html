@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; 2-D mass distributions – Theory of Potential Field Methods in Geophysics</title>
+<title>13&nbsp; 2-D mass distributions – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,16 +85,16 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./talwani.html" rel="next">
-<link href="./geophysical_application.html" rel="prev">
+<link href="./circular_disc.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3fbf620316015237a6991a5ebc2a9eb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -175,7 +175,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./line_of_mass.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./line_of_mass.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -227,6 +227,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubberband.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rubberband</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pde_example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Example</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -241,43 +253,49 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point Mass</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./poisson_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Poisson Equation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Poisson equation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shell_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./geophysical_application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -294,22 +312,26 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Three-dimensional problems</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -345,18 +367,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-horizontal-straight-line-of-mass" id="toc-a-horizontal-straight-line-of-mass" class="nav-link active" data-scroll-target="#a-horizontal-straight-line-of-mass"><span class="header-section-number">10.1</span> A horizontal straight line of mass</a></li>
-  <li><a href="#attraction-of-a-plane-lamina" id="toc-attraction-of-a-plane-lamina" class="nav-link" data-scroll-target="#attraction-of-a-plane-lamina"><span class="header-section-number">10.2</span> Attraction of a plane lamina</a></li>
-  <li><a href="#the-mathrmdthetamathrmdz-solenoid" id="toc-the-mathrmdthetamathrmdz-solenoid" class="nav-link" data-scroll-target="#the-mathrmdthetamathrmdz-solenoid"><span class="header-section-number">10.3</span> The <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> solenoid</a></li>
+  <li><a href="#a-horizontal-straight-line-of-mass" id="toc-a-horizontal-straight-line-of-mass" class="nav-link active" data-scroll-target="#a-horizontal-straight-line-of-mass"><span class="header-section-number">13.1</span> A horizontal straight line of mass</a></li>
+  <li><a href="#attraction-of-a-plane-lamina" id="toc-attraction-of-a-plane-lamina" class="nav-link" data-scroll-target="#attraction-of-a-plane-lamina"><span class="header-section-number">13.2</span> Attraction of a plane lamina</a></li>
+  <li><a href="#the-mathrmdthetamathrmdz-solenoid" id="toc-the-mathrmdthetamathrmdz-solenoid" class="nav-link" data-scroll-target="#the-mathrmdthetamathrmdz-solenoid"><span class="header-section-number">13.3</span> The <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> solenoid</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./line_of_mass.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./line_of_mass.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></h1>
 </div>
 
 
@@ -377,20 +399,68 @@ window.Quarto = {
 <p>If we consider the <span class="math inline">\(x\)</span>-direction as the <em>strike direction</em>, then we can restrict our derivations to a single arbitrary <span class="math inline">\(x\)</span>-plane, e.g., the plane <span class="math inline">\(x=0\)</span>. Thus, any field configuration observed in the <span class="math inline">\(y-z\)</span>-plane is invariant with respect to a shift in the <span class="math inline">\(x\)</span>-direction.</p>
 <p>First, we derive an expression for the gravitational attraction of a simple horizontal line, e.g., an infinite wire.</p>
 <p>Next, we make the transition to a polar coordinate system which is much better suited for the purpose of numerical implementation. To this end, we follow the work of <span class="citation" data-cites="hubbert1948">Hubbert (<a href="references.html#ref-hubbert1948" role="doc-biblioref">1948</a>)</span> and <span class="citation" data-cites="talwani1959">Talwani <em>et al.</em> (<a href="references.html#ref-talwani1959" role="doc-biblioref">1959</a>)</span>.</p>
-<section id="a-horizontal-straight-line-of-mass" class="level2 page-columns page-full" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="a-horizontal-straight-line-of-mass"><span class="header-section-number">10.1</span> A horizontal straight line of mass</h2>
+<section id="a-horizontal-straight-line-of-mass" class="level2 page-columns page-full" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="a-horizontal-straight-line-of-mass"><span class="header-section-number">13.1</span> A horizontal straight line of mass</h2>
 <p>As usual, we depart from a simple geometry. Later we integrate over a cross section of arbitrary shape to obtain the potential and gravitational attraction of elongated bodies.</p>
+<div id="fig-lineofmass" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lineofmass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/line_of_mass.excalidraw.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lineofmass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: An infinite horizontal line of mass.
+</figcaption>
+</figure>
+</div>
 <p>For an <span class="math inline">\(x\)</span>-directed straight wire of density <span class="math inline">\(\rho_L\)</span> we obtain for the gravitational attraction in the plane <span class="math inline">\(x=0\)</span></p>
 <p><span id="eq-attraction-line"><span class="math display">\[
-\mathbf g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \nabla \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
-\tag{10.1}\]</span></span></p>
+\vb g(0, y, z) = f \rho_L \int\limits_{x'=-\infty}^\infty \grad \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x'
+\tag{13.1}\]</span></span></p>
 <p><em>SymPy</em> is a Python library for symbolic mathematics. It yields the following result for the <span class="math inline">\(z\)</span>-component of <span class="math inline">\(\mathbf g\)</span>, i.e.,</p>
 <p><span class="math display">\[
-g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \mathrm{d}x'
+g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x'
 \]</span></p>
-<div id="5476c54d" class="cell" data-execution_count="2">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We solve this problem as follows:</p>
+<p>The <span class="math inline">\(z\)</span>-derivative of the integrand is <span class="math display">\[
+\pdv{}{z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} = - \frac{z - z'}{\sqrt{x'^2 + (y - y')^2 + (z - z')^2}^3}
+\]</span> With the substitution <span class="math display">\[
+x' = \sqrt{(y - y')^2 + (z - z')^2} \tan\alpha
+\]</span> we get <span class="math display">\[
+\dd x' = \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha) \dd \alpha = \sqrt{(y - y')^2 + (z - z')^2} \frac{ 1 }{ \cos^2\alpha} \dd \alpha
+\]</span></p>
+<p>So, <span class="math display">\[
+\begin{align}
+g(y,z) &amp; = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x' \\
+&amp; = -f \rho_L \int\limits_{x'=-\infty}^\infty\frac{z - z'}{\sqrt{x'^2 + (y - y')^2 + (z - z')^2}^3} \, \dd x' \\
+\end{align}
+\]</span></p>
+<p>After substitution we see that the integrand gets <span class="math display">\[
+\begin{align}
+-\frac{  (z-z') \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha)}{\sqrt{ ((y - y')^2 + (z - z')^2) \tan^2\alpha + (y - y')^2 + (z - z')^2   }^3 } = \\
+- \frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \frac{ 1 + \tan^2 \alpha }{ \sqrt{ 1 + \tan^2 \alpha }^3} = \\
+- \frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \frac{ 1 }{ \sqrt{ 1 + \tan^2 \alpha } } = \\
+- \frac{ (z-z') }{(y - y')^2 + (z - z')^2 } \cos\alpha
+\end{align}
+\]</span></p>
+<p>which finally yields</p>
+<p><span class="math display">\[
+g(y,z) = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \int\limits_{-\pi/2}^{\pi/2} \cos\alpha \, \dd \alpha = -2f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 }
+\]</span></p>
+</div>
+</div>
+<div id="83bc2115" class="cell" data-execution_count="2">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>g_z <span class="op">=</span> integrate(f <span class="op">*</span> rho_L <span class="op">*</span> diff(<span class="dv">1</span> <span class="op">/</span> sqrt(xprime<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>), z), (xprime, <span class="op">-</span>oo, oo))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># display(simplify(g_z))</span></span>
@@ -398,6 +468,12 @@ g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle  g_z(y,z) = - \frac{2 f \rho_{L} \left(z - {z}'\right)}{\left(y - {y}'\right)^{2} + \left(z - {z}'\right)^{2}}\)</span></p>
+</div>
+</div>
+<div id="8ab7fe26" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>integrate(<span class="op">-</span>diff(<span class="op">-</span>f <span class="op">*</span> rho_L <span class="op">/</span> sqrt(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> z<span class="op">**</span><span class="dv">2</span>), z), (x, <span class="op">-</span>oo, oo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<p><span class="math display">\[\begin{equation}- \frac{2 f \rho_{L} z}{y^{2} + z^{2}}\end{equation}\]</span></p>
 </div>
 </div>
 <p>We recognize that</p>
@@ -415,7 +491,7 @@ f(z) = (y - y')^2 + (z - z')^2
 \]</span></p>
 <p>With the <em>logarithmic derivative</em></p>
 <p><span class="math display">\[
-\int \frac{f'(z)}{f(z)} \mathrm dz = \ln f(z) + C
+\int \frac{f'(z)}{f(z)} \dd z = \ln f(z) + C
 \]</span></p>
 <p>we obtain the <em>logarithmic potential</em> by integrating with respect to <span class="math inline">\(z\)</span>, which yields</p>
 <p><span class="math display">\[
@@ -424,55 +500,63 @@ V(y,z) = -2 f \rho_L \ln \sqrt{(y - y')^2 + (z - z')^2} + C
 <p>or</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p><span class="math display">\[ \ln r^2 = 2 \ln r \]</span> <span class="math display">\[ \ln r = -\ln \frac{1}{r} \]</span></p>
+<p><span class="math display">\[
+\ln r^2 = 2 \ln r \]</span> <span class="math display">\[ \ln r = -\ln \frac{1}{r}
+\]</span></p>
 </div></div><p><span class="math display">\[
 V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 \]</span></p>
-<p>Note that we set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
-<p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass. In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
-<div id="4d21d0b9" class="cell" data-execution_count="3">
+<p>Note that we have set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
+<p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass.</p>
+<p>In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
+<div id="9a7f3f8c" class="cell" data-execution_count="4">
 <details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># display(V)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plot(V.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  (y, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$V(y)$'</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">2</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># display(V)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plot(V.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  (y, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$V(y)$'</span>, ylim<span class="op">=</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">2</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="line_of_mass_files/figure-html/cell-4-output-1.png" width="373" height="277" class="figure-img"></p>
+<p><img src="line_of_mass_files/figure-html/cell-5-output-1.png" width="372" height="278" class="figure-img"></p>
 <figcaption>Potential <span class="math inline">\(V\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=0.5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div id="679c66e1" class="cell" data-execution_count="4">
+<div id="42c040b5" class="cell" data-execution_count="5">
 <details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (y, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$g_z(y)$'</span>, axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">0</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">5</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (y, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  xlabel<span class="op">=</span><span class="st">'y'</span>, ylabel<span class="op">=</span><span class="vs">r'$g_z(y)$'</span>, axis_center<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">0</span>), ylim<span class="op">=</span>(<span class="dv">0</span>,<span class="dv">5</span>), xlim<span class="op">=</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="line_of_mass_files/figure-html/cell-5-output-1.png" width="373" height="277" class="figure-img"></p>
+<p><img src="line_of_mass_files/figure-html/cell-6-output-1.png" width="372" height="278" class="figure-img"></p>
 <figcaption>Vertical attraction <span class="math inline">\(g_z\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=0.5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="attraction-of-a-plane-lamina" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="attraction-of-a-plane-lamina"><span class="header-section-number">10.2</span> Attraction of a plane lamina</h2>
-<p>The vertical component of attraction due to an element of area <span class="math inline">\(\mathrm{d}S\)</span> on an infinite horizontal plane lamina with density <span class="math inline">\(\rho\)</span> bounded by the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> is <span class="math display">\[
+<section id="attraction-of-a-plane-lamina" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="attraction-of-a-plane-lamina"><span class="header-section-number">13.2</span> Attraction of a plane lamina</h2>
+<p>The vertical component of attraction due to an element of area <span class="math inline">\(\mathrm{d}S\)</span> on an infinite horizontal plane lamina with density <span class="math inline">\(\rho\)</span> bounded by the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> is</p>
+<p><span class="math display">\[
 \mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega
-\]</span> where <span class="math inline">\(\mathrm{d}\Omega\)</span> is the solid angle subtended at the origin by the area <span class="math inline">\(\mathrm{d}S\)</span>.</p>
+\]</span></p>
+<p>where <span class="math inline">\(\mathrm{d}\Omega\)</span> is the solid angle subtended at the origin by the area <span class="math inline">\(\mathrm{d}S\)</span>.</p>
 <p><img src="images/hubbert_01.png" class="img-fluid"></p>
 <p>It holds <span class="math display">\[
-\mathrm{d}\Omega = \frac{\mathrm{d}S \sin \alpha}{r^{2}.}
+\mathrm{d} g = \frac{ f \dd m }{ r^2} \sin\alpha = \frac{f \rho \dd z \dd S }{r^{2} }\sin \alpha.
+\]</span></p>
+<p>Further, <span class="math display">\[
+\frac{ \dd S \sin\alpha }{r^2 } = \dd \Omega.
 \]</span></p>
 <p>If we now consider a finite area <span class="math inline">\(S\)</span> of arbitrary shape, the attraction at the origin due to the enclosed mass will be <span class="math display">\[
 g = f \mathrm{d}z \int _{S} \rho \, \mathrm{d}\Omega
@@ -486,8 +570,8 @@ g = f \rho \Omega (z_{2} - z_{1})
 g = 2 \pi f \rho (z_{2} - z_{1})
 \]</span> which is the vertical attraction of the Bouguer plate of thickness <span class="math inline">\(z_{2} - z_{1}\)</span> and density <span class="math inline">\(\rho\)</span>.</p>
 </section>
-<section id="the-mathrmdthetamathrmdz-solenoid" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="the-mathrmdthetamathrmdz-solenoid"><span class="header-section-number">10.3</span> The <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> solenoid</h2>
+<section id="the-mathrmdthetamathrmdz-solenoid" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="the-mathrmdthetamathrmdz-solenoid"><span class="header-section-number">13.3</span> The <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> solenoid</h2>
 <p>First, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the <span class="math inline">\(x\)</span>-axis. Such a strip will be defined by the area on the plane <span class="math inline">\(z=\mathrm{const.}\)</span> lying between two inclined planes which intersect on the <span class="math inline">\(x\)</span>-axis and make with the <span class="math inline">\(y\)</span>-axis the angles of <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>.</p>
 <p><img src="images/hubbert_02.png" class="img-fluid"></p>
 <p>The attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle <span class="math inline">\(\mathrm{d}\Omega\)</span> between two planes intersecting at an angle <span class="math inline">\(\mathrm{d}\Theta\)</span> will bear the same ratio to the total solid angle which the plane angle <span class="math inline">\(\mathrm{d}\Theta\)</span> bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or <span class="math inline">\(4 \pi\)</span>, and the total plane angle is <span class="math inline">\(2 \pi\)</span>. Thus <span class="math display">\[
@@ -498,9 +582,21 @@ g = 2 \pi f \rho (z_{2} - z_{1})
 \mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
 \]</span> which is the <em>fundamental differential equation of the attraction of a two-dimensional mass</em>. The intersection of the two planes <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span> with the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> defines an elementary prism or solenoid of infinite length and cross-section <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span>. For a finite area in the plane of integration <span class="math display">\[
 g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-\]</span> Around an elementary prism <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> bounded by the lines <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>, and <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span>, consider the line integral <span class="math inline">\(\oint \Theta \mathrm{d}z\)</span>. Starting at the point <span class="math inline">\((\Theta, z)\)</span> and traversing the circuit in counter-clockwise direction, the resulting integral will be <span class="math display">\[
+\]</span> Around an elementary prism <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> bounded by the lines <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>, and <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span>, consider the line integral <span class="math inline">\(\oint \Theta \mathrm{d}z\)</span>. Starting at the point <span class="math inline">\((\Theta, z)\)</span> and traversing the circuit in counter-clockwise direction, the resulting integral will be</p>
+<p><span class="math display">\[
 \oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
-\]</span> Over a finite area <span class="math inline">\(S\)</span> we may obtain <span class="math inline">\(\iint \mathrm{d}\Theta \mathrm{d}z\)</span> by <span class="math display">\[
+\]</span></p>
+<div id="fig-umlauf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-umlauf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/umlauf.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umlauf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: Sketch of the line integral about a <span class="math inline">\(\dd \theta \dd z\)</span>-solenoidal.
+</figcaption>
+</figure>
+</div>
+<p>Over a finite area <span class="math inline">\(S\)</span> we may obtain <span class="math inline">\(\iint \mathrm{d}\Theta \mathrm{d}z\)</span> by <span class="math display">\[
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
 \]</span> When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, <span class="math display">\[
 \iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.
@@ -949,13 +1045,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./geophysical_application.html" class="pagination-link" aria-label="Geophysical Application">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geophysical Application</span></span>
+      <a href="./circular_disc.html" class="pagination-link" aria-label="Circular Disc">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circular Disc</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./talwani.html" class="pagination-link" aria-label="Gravitational attraction of a prism">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

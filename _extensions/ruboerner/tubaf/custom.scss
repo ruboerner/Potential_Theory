@@ -1,0 +1,100 @@
+/*-- scss:defaults --*/
+
+$theme-white: #ffffff;
+$theme-darkblue: #00477e;
+$theme-blue: #0064a8;
+$theme-black: #000000;
+
+$body-bg: $theme-white;
+$body-color: $theme-darkblue;
+
+$code-color: #111111;
+$code-block-bg: $theme-white;
+$code-bg: #ffffff;
+$code-block-border-color: $theme-blue;
+
+$font-family-sans-serif: 'Arial', sans-serif;
+
+/*-- scss:rules --*/
+
+@mixin background-full {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// Slide numbers to the bottom-left
+.slide-number, .reveal.has-logo .slide-number {
+    bottom: 14px !important;
+    left: 30px !important;
+    top: unset !important;
+    color: $theme-darkblue !important;
+  }
+
+#title-slide {
+
+    .title {
+        font-size: 2em !important;
+    }
+    .subtitle {
+        font-size: 1.4em !important;
+        margin-top: 0em;
+        color: $theme-darkblue;
+    }
+    .author,
+    .quarto-title-author-name {
+        font-size: 1em !important;
+        font-style: italic;
+        margin-top: 0em;
+    }
+    .date {
+        font-size: 0.7em !important;
+    }
+}
+
+.reveal .slide-logo {
+    display: block;
+    position: fixed;
+    top: unset !important;
+    left: unset !important;
+    bottom: -20px !important;
+    right: -20px !important;
+    height: 140px !important;
+    width: 140px !important;
+    max-width: unset !important;
+    max-height: unset !important;
+    z-index: -999 !important;
+}
+
+.reveal h2 {
+    font-size: 1.4em;
+}
+
+.reveal p {
+    font-size: 1em !important;
+    font-weight: lighter;
+    margin-top: 1.25em;
+    color: #000000;
+}
+
+.reveal .slide-menu-button {
+    position: fixed;
+    top: 6px;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+.reveal .slide-menu-button > * {
+    pointer-events: auto;
+  }
+
+.math.display {
+    color: #000000 !important;
+}
+
+ol, ul {
+    color: $theme-black !important;
+}

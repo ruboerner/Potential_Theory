@@ -1,0 +1,13 @@
+i,Layer,Height,a,b,c
+int,string,real,real,real,real
+1,"Inner core",1.2215e6,-2.1773e-10,1.9110e-8,1.3088e4
+2,"Outer core",3.4800e6,-2.4123e-10,1.3976e-4,1.2346e4
+3,"D layer",3.6300e6,0,-5.0007e-4,7.3067e3
+4,"Lower Mantle",5.7010e6,-3.0922e-11,-2.4441e-4,6.7823e3
+5,"Inner transition zone 1",5.7710e6,0,-2.3286e-4,5.3197e3
+6,"Inner transition zone 2",5.9710e6,0,-1.2603e-3,1.1249e4
+7,"Outer transition zone",6.1510e6,0,-5.9706e-4,7.1083e3
+8,"Low velocity zone & lid",6.3466e6,0,1.0869e-4,2.6910e3
+9,"Inner crust",6.3560e6,0,0,2.9000e3
+10,"Outer crust",6.3680e6,0,0,2.6000e3
+11,"Ocean",6.3710e6,0,0,1.0200e3
