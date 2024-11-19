@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; PREM - Preliminary Reference Earth Model – Theory of Potential Field Methods in Geophysics</title>
+<title>6&nbsp; PREM - Preliminary Reference Earth Model – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Sphere_Potential_and_Attraction.html" rel="next">
-<link href="./shell_theorem.html" rel="prev">
+<link href="./spherical_shells.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -155,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./PREM_.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./PREM_.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -207,18 +207,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./rubberband.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rubberband</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pde_example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Example</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -233,49 +221,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poisson_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Poisson equation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shell_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+  <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PREM_.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,19 +268,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,8 +294,21 @@ window.Quarto = {
  <span class="menu-text">Dipole potential</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Spherical harmonics</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Spherical harmonics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -347,18 +336,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#density-profile" id="toc-density-profile" class="nav-link active" data-scroll-target="#density-profile"><span class="header-section-number">9.1</span> Density profile</a></li>
-  <li><a href="#mass-distribution-inside-the-earth" id="toc-mass-distribution-inside-the-earth" class="nav-link" data-scroll-target="#mass-distribution-inside-the-earth"><span class="header-section-number">9.2</span> Mass distribution inside the Earth</a></li>
-  <li><a href="#gravity-profile" id="toc-gravity-profile" class="nav-link" data-scroll-target="#gravity-profile"><span class="header-section-number">9.3</span> Gravity profile</a></li>
+  <li><a href="#density-profile" id="toc-density-profile" class="nav-link active" data-scroll-target="#density-profile"><span class="header-section-number">6.1</span> Density profile</a></li>
+  <li><a href="#mass-distribution-inside-the-earth" id="toc-mass-distribution-inside-the-earth" class="nav-link" data-scroll-target="#mass-distribution-inside-the-earth"><span class="header-section-number">6.2</span> Mass distribution inside the Earth</a></li>
+  <li><a href="#gravity-profile" id="toc-gravity-profile" class="nav-link" data-scroll-target="#gravity-profile"><span class="header-section-number">6.3</span> Gravity profile</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./PREM_.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pointmass.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./PREM_.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></h1>
 </div>
 
 
@@ -375,7 +364,7 @@ window.Quarto = {
 </header>
 
 
-<div id="3da5e65e" class="cell" data-execution_count="1">
+<div id="0a35877b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -391,7 +380,7 @@ window.Quarto = {
 \]</span> for any shell enclosed by the radii <span class="math inline">\(r_{i-1}\)</span> and <span class="math inline">\(r_i\)</span>, <span class="math inline">\(i=1,2,\dots,11\)</span>.</p>
 <p>The coefficients <span class="math inline">\(a_i, b_i, c_i\)</span> as well as the layer boundaries <span class="math inline">\(r_i\)</span> have been published by Dziewonski and Anderson (“Preliminary reference Earth model”, PEPI, 1981).</p>
 <p>The following code reads the content of the file <code>PREM.csv</code> into memory.</p>
-<div id="d2ae5b22" class="cell" data-execution_count="2">
+<div id="d0309e67" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'PREM.csv'</span>, </span>
@@ -401,7 +390,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>[<span class="st">'i'</span>, <span class="st">'layer'</span>, <span class="st">'height'</span>, <span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="aa4d2da7" class="cell" data-execution_count="3">
+<div id="fcdda20a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> df[<span class="st">'height'</span>].to_numpy()</span>
@@ -410,10 +399,10 @@ window.Quarto = {
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cn <span class="op">=</span> df[<span class="st">'c'</span>].to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="density-profile" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="density-profile"><span class="header-section-number">9.1</span> Density profile</h2>
+<section id="density-profile" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="density-profile"><span class="header-section-number">6.1</span> Density profile</h2>
 <p>We define a function `rho(r,a,b,c)´ which evaluates for any <span class="math inline">\(r\)</span> a second order polynomial with the given coefficients <span class="math inline">\(a,b,c\)</span>:</p>
-<div id="a77fe72b" class="cell" data-execution_count="4">
+<div id="99160768" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="kw">lambda</span> r, a, b, c: a <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b <span class="op">*</span> r <span class="op">+</span> c</span>
@@ -452,15 +441,15 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="mass-distribution-inside-the-earth" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="mass-distribution-inside-the-earth"><span class="header-section-number">9.2</span> Mass distribution inside the Earth</h2>
+<section id="mass-distribution-inside-the-earth" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="mass-distribution-inside-the-earth"><span class="header-section-number">6.2</span> Mass distribution inside the Earth</h2>
 <p>The total mass of the Earth results from <span class="math display">\[
 m_E = 4 \pi \int\limits_0^{R_E} \rho(r) r^2 \, \mathrm dr.
 \]</span></p>
 <p>However, there are density discontinuities which require a split of the integral at the jumps of <span class="math inline">\(\rho(r)\)</span>. We integrate layer-wise, such that the mass of layer <span class="math inline">\(i\)</span> is obtained by <span class="math display">\[
 m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 11.
 \]</span> We use <code>Python</code>’s <code>Sympy</code> library.</p>
-<div id="449fe69c" class="cell" data-execution_count="5">
+<div id="19d891e7" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a, b, c, r, h_1, h_2 <span class="op">=</span> sp.symbols(<span class="st">'a b c r h_1 h_2'</span>, real<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,7 +458,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 <p>We denote with i1 the following lambda function which is equivalent to the evaluation of the integral <span class="math display">\[
 4 \pi \int_{h_1}^{h_2} (a r^2 + b r + c) r^2 \, \mathrm d r
 \]</span></p>
-<div id="2c6d2d9b" class="cell" data-execution_count="6">
+<div id="09166b71" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>i1 <span class="op">=</span> <span class="kw">lambda</span> h_1, h_2: <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> sp.integrate((a <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b <span class="op">*</span> r <span class="op">+</span> c) <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>, (r, h_1, h_2))</span>
@@ -490,7 +479,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 5.972734577607561e+24</code></pre>
 </div>
 </div>
-<div id="7d5a9701" class="cell" data-execution_count="7">
+<div id="9f1bbb55" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -511,9 +500,9 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </div>
 </div>
 </section>
-<section id="gravity-profile" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="gravity-profile"><span class="header-section-number">9.3</span> Gravity profile</h2>
-<div id="4f430d25" class="cell" data-execution_count="8">
+<section id="gravity-profile" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="gravity-profile"><span class="header-section-number">6.3</span> Gravity profile</h2>
+<div id="f3bea709" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constants and assumptions</span></span>
@@ -544,7 +533,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>myg[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> G <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> M_Earth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="f2c3275d" class="cell" data-execution_count="9">
+<div id="8058a84a" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rext <span class="op">=</span> np.linspace(R_E, <span class="dv">2</span><span class="op">*</span>R_E, <span class="dv">41</span>)</span>
@@ -568,7 +557,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </div>
 </div>
 <p>The results above do not agree well with the true surface acceleration due to the Earth’s ellipsoidal shape. The WGS84 gravity formula is valid for points at the Earth’s surface and accounts for the change of acceleration due to the ellipticity:</p>
-<div id="cc7faca9" class="cell" data-execution_count="10">
+<div id="cc377acf" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>g_equator <span class="op">=</span> <span class="fl">9.7803253359</span></span>
@@ -1024,13 +1013,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./shell_theorem.html" class="pagination-link" aria-label="Newton's Shell Theorem">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span>
+      <a href="./spherical_shells.html" class="pagination-link" aria-label="Newton's shell theorem">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./Sphere_Potential_and_Attraction.html" class="pagination-link" aria-label="Potential and gravitational attraction of a sphere">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -65,9 +65,9 @@ format:
             }
           };
           </script>
-  pdf: 
-    documentclass: scrreprt
-    papersize: a4
+#  pdf: 
+#    documentclass: scrreprt
+#    papersize: a4
 
 editor:
   render-on-save: true

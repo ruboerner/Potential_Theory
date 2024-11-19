@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Implementation of the TALWANI approach – Theory of Potential Field Methods in Geophysics</title>
+<title>11&nbsp; Implementation of the TALWANI approach – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
+<link href="./legendre.html" rel="next">
 <link href="./talwani.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -155,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./Talwani-Implementation.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./Talwani-Implementation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -207,18 +207,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./rubberband.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rubberband</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pde_example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Example</span></span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -233,49 +221,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./poisson_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Poisson equation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shell_theorem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Newton’s Shell Theorem</span></span></a>
+  <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,19 +268,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,8 +294,21 @@ window.Quarto = {
  <span class="menu-text">Dipole potential</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Spherical harmonics</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Spherical harmonics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -347,16 +336,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sort-the-vertices" id="toc-sort-the-vertices" class="nav-link active" data-scroll-target="#sort-the-vertices"><span class="header-section-number">15.1</span> Sort the vertices</a></li>
+  <li><a href="#sort-the-vertices" id="toc-sort-the-vertices" class="nav-link active" data-scroll-target="#sort-the-vertices"><span class="header-section-number">11.1</span> Sort the vertices</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./Talwani-Implementation.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./Talwani-Implementation.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></h1>
 </div>
 
 
@@ -373,7 +362,7 @@ window.Quarto = {
 </header>
 
 
-<div id="9098383d" class="cell" data-execution_count="2">
+<div id="dc2bcc84" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Polygon:</span>
@@ -397,7 +386,7 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"n: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>n<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">x:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>x<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">z:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>z<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Density:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>density<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8d9ad953" class="cell" data-execution_count="3">
+<div id="3eb4f591" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cylinder(obs, mass, axis):</span>
@@ -405,7 +394,7 @@ window.Quarto = {
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="3af7fcf2" class="cell" data-execution_count="4">
+<div id="93c8f0b8" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> talwani(obs, polygon):</span>
@@ -464,7 +453,7 @@ window.Quarto = {
 Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
 \]</span></p>
 <p>We define a cylinder of radius <span class="math inline">\(r=1\)</span> that will be approximated in the <span class="math inline">\(x-z\)</span>-plane by a sufficiently large number of line segments around its enclosing circle.</p>
-<div id="82b7f35e" class="cell" data-execution_count="5">
+<div id="894f79ed" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">51</span></span>
@@ -477,7 +466,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(x)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="9992d74f" class="cell" data-execution_count="6">
+<div id="4a387cfb" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -492,17 +481,17 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </div>
 </div>
 </div>
-<section id="sort-the-vertices" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="sort-the-vertices"><span class="header-section-number">15.1</span> Sort the vertices</h2>
+<section id="sort-the-vertices" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="sort-the-vertices"><span class="header-section-number">11.1</span> Sort the vertices</h2>
 <p>First, we have to sort the vertices in the case that they are given in an arbitrary order.</p>
 <p>To this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.</p>
-<div id="3b9959cb" class="cell" data-execution_count="7">
+<div id="eb567f83" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> Polygon(x, z, <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="877d49b2" class="cell" data-execution_count="8">
+<div id="b99691b4" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -517,7 +506,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </div>
 </div>
 </div>
-<div id="69d54f0e" class="cell" data-execution_count="9">
+<div id="d63b0d00" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cylinder(np.array([<span class="op">-</span><span class="fl">10.</span>, <span class="fl">0.</span>]), poly.density <span class="op">*</span> np.pi <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span>, np.array([<span class="fl">0.</span>, <span class="fl">10.</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -526,16 +515,16 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 <pre><code>array([1.04834947e-08, 1.04834947e-08])</code></pre>
 </div>
 </div>
-<div id="c3ff0b3e" class="cell" data-execution_count="10">
+<div id="fc1b6966" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>talwani([<span class="op">-</span><span class="dv">50</span>, <span class="dv">0</span>], poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>8.043842124387245e-10</code></pre>
+<pre><code>np.float64(8.043842124381056e-10)</code></pre>
 </div>
 </div>
-<div id="bccf22ee" class="cell" data-execution_count="11">
+<div id="95024c9f" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">40</span>, stop<span class="op">=</span><span class="dv">40</span>, num<span class="op">=</span><span class="dv">81</span>)</span>
@@ -548,7 +537,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    gcyl[k] <span class="op">=</span> cylinder(np.array([profile[k], <span class="dv">0</span>]), mass, np.array([xc, zc]))[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="ce1122b0" class="cell" data-execution_count="12">
+<div id="72d3e589" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
@@ -564,13 +553,13 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </div>
 </div>
 </div>
-<div id="09acc4cf" class="cell" data-execution_count="13">
+<div id="46b6b50a" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>norm(gtal <span class="op">-</span> gcyl) <span class="op">/</span> norm(gcyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>0.00251609028849562</code></pre>
+<pre><code>np.float64(0.002516090288497209)</code></pre>
 </div>
 </div>
 
@@ -1001,12 +990,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./talwani.html" class="pagination-link" aria-label="Gravitational attraction of a prism">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text">Summary</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./legendre.html" class="pagination-link" aria-label="Legendre Polynomials">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

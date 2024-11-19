@@ -1,3 +1,7 @@
+---
+jupyter: python3
+---
+
 # Potential and gravitational attraction of a sphere
 
 ```{python}

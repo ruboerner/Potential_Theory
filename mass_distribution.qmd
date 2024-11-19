@@ -1,5 +1,6 @@
 ---
 title: "Mass distribution"
+jupyter: python3
 ---
 
 The gravitational potential of a spatial mass distribution follows the principle of linear superposition.

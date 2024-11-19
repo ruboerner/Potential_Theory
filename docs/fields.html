@@ -226,44 +226,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poisson_equation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Poisson equation</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -280,19 +268,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
       </ul>
@@ -306,8 +294,21 @@ window.Quarto = {
  <span class="menu-text">Dipole potential</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Spherical harmonics</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Spherical harmonics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
@@ -560,7 +561,7 @@ Poisson equation
 <li>The desired solution is <code>y(x)</code></li>
 <li>Boundary conditions can be enforced by the values following the keyword <code>ics</code>. In the example, <code>y(0)=1</code> and <code>y(1)=0</code>.</li>
 </ul>
-<div id="691a4736" class="cell" data-execution_count="1">
+<div id="6e3b2efb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Function, dsolve, diff, cos, sin</span>
@@ -591,7 +592,7 @@ Poisson equation
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="fields_files/figure-html/cell-2-output-1.png" width="656" height="275" class="figure-img"></p>
+<p><img src="fields_files/figure-html/cell-2-output-1.png" width="657" height="277" class="figure-img"></p>
 </figure>
 </div>
 </div>

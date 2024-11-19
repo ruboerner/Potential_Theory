@@ -1,5 +1,6 @@
 ---
 title: "Circular Disc"
+jupyter: python3
 ---
 We consider the potential and gravitational attraction of a circular disc in  the plane $z=0$ aligned with the z axis.
 
