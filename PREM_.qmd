@@ -19,9 +19,9 @@ $$
 $$
 for any shell enclosed by the radii $r_{i-1}$ and $r_i$, $i=1,2,\dots,11$.
 
-The coefficients $a_i, b_i, c_i$ as well as the layer boundaries $r_i$ have been published by Dziewonski and Anderson ("Preliminary reference Earth model", PEPI, 1981).
+The coefficients $a_i, b_i, c_i$ as well as the layer boundaries $r_i$ have been published by @dziewonskiPreliminaryReferenceEarth1981.
 
-The following code reads the content of the file `PREM.csv` into memory.
+The following `Python` code reads the content of the file `PREM.csv` into memory.
 
 
 ```{python}
@@ -41,7 +41,7 @@ cn = df['c'].to_numpy()
 
 ## Density profile
 
-We define a function `rho(r,a,b,c)´ which evaluates for any $r$ a second order polynomial with the given coefficients $a,b,c$:
+We define a function `rho(r,a,b,c)` which evaluates for any $r$ a second order polynomial with the given coefficients $a,b,c$:
 
 ```{python}
 rho = lambda r, a, b, c: a * r**2 + b * r + c

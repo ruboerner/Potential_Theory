@@ -1,0 +1,285 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Implementation of the TALWANI approach\n",
+        "jupyter: python3\n",
+        "---"
+      ],
+      "id": "ea99d6a1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "from numpy import isclose\n",
+        "from numpy.linalg import norm"
+      ],
+      "id": "37b3ca67",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "class Polygon:\n",
+        "    def __init__(self, x, z, density):\n",
+        "        xc = np.mean(x)\n",
+        "        zc = np.mean(z)\n",
+        "        angles = np.array([np.arctan2(p[1] - zc, p[0] - xc) for p in zip(x, z)])\n",
+        "        ind = np.argsort(angles) # if reverse order is required, flip sign of angles \n",
+        "        x = x[ind]\n",
+        "        z = z[ind]\n",
+        "        x = np.append(x, x[0])\n",
+        "        z = np.append(z, z[0])\n",
+        "        x[isclose(x, 0.0)] = 0.0\n",
+        "        z[isclose(z, 0.0)] = 0.0\n",
+        "        self.x = x\n",
+        "        self.z = z\n",
+        "        self.density = density\n",
+        "        self.n = len(x) - 1\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"n: {self.n} \\nx:\\n {self.x} \\nz:\\n {self.z} \\nDensity:\\n {self.density}\""
+      ],
+      "id": "a7f8a58d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "def cylinder(obs, mass, axis):\n",
+        "    g = -2 * 6.674e-11 * mass / np.linalg.norm(obs - axis)**2 * (obs - axis)\n",
+        "    return g"
+      ],
+      "id": "0adff333",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "def talwani(obs, polygon):\n",
+        "    gz = 0.0\n",
+        "    density = polygon.density\n",
+        "    x = polygon.x\n",
+        "    z = polygon.z\n",
+        "    n = polygon.n\n",
+        "    xp = obs[0]\n",
+        "    zp = obs[1]\n",
+        "    for k in range(n):   \n",
+        "        xv = x[k] - xp\n",
+        "        zv = z[k] - zp\n",
+        "        xvp1 = x[k+1] - xp\n",
+        "        zvp1 = z[k+1] - zp\n",
+        "        if not isclose(zv, zvp1):\n",
+        "            a_i = xvp1 + zvp1 * (xvp1 - xv) / (zv - zvp1)\n",
+        "        theta_v = np.arctan2(zv, xv)\n",
+        "        theta_vp1 = np.arctan2(zvp1, xvp1)\n",
+        "        phi_i = np.arctan2(zvp1 - zv, xvp1 - xv)\n",
+        "        \n",
+        "        if theta_v < 0:\n",
+        "            theta_v += np.pi\n",
+        "        if theta_vp1 < 0:\n",
+        "            theta_vp1 += np.pi\n",
+        "            \n",
+        "        if isclose(xv, 0.0): # A\n",
+        "            Zi = -a_i * np.sin(phi_i) * np.cos(phi_i) * (\n",
+        "                theta_vp1 - np.pi/2 + np.tan(phi_i) * np.log(np.cos(theta_vp1) * (np.tan(theta_vp1) - np.tan(phi_i))))\n",
+        "        elif isclose(xvp1, 0.0): # B\n",
+        "            Zi = a_i * np.sin(phi_i) * np.cos(phi_i) * (\n",
+        "                theta_v - np.pi/2 + np.tan(phi_i) * np.log(np.cos(theta_v) * (np.tan(theta_v) - np.tan(phi_i))))\n",
+        "        elif isclose(zv, zvp1): # C\n",
+        "            Zi = zv * (theta_vp1 - theta_v)\n",
+        "        elif isclose(xv, xvp1): # D\n",
+        "            Zi = xv * np.log(np.cos(theta_v) / np.cos(theta_vp1))\n",
+        "        elif isclose(theta_v, theta_vp1): # E\n",
+        "            Zi = 0.0\n",
+        "        elif isclose(xv, zv): # F\n",
+        "            Zi = 0.0\n",
+        "        elif isclose(xvp1, zvp1): # G\n",
+        "            Zi = 0.0\n",
+        "        else:\n",
+        "            a_i = xvp1 + zvp1 * (xvp1 - xv) / (zv - zvp1)\n",
+        "            Zi = a_i * np.sin(phi_i) * np.cos(phi_i) * ( \n",
+        "            theta_v - theta_vp1 + np.tan(phi_i) * \n",
+        "            np.log( \n",
+        "                np.cos(theta_v) * ( np.tan(theta_v) - np.tan(phi_i) ) /\n",
+        "                np.cos(theta_vp1) / ( np.tan(theta_vp1) - np.tan(phi_i) )))\n",
+        "        gz += Zi\n",
+        "    gz = gz * 2 * 6.674e-11 * density\n",
+        "    return gz"
+      ],
+      "id": "9af4900d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "$$\n",
+        "Z_{i} =a_{1} \\sin \\phi_{i} \\cos \\phi_{i} \\left[ \\theta_{i}-\\theta_{i+1} +\\tan \\phi_{i} \\log _{s} \\frac{\\cos \\theta_{i}\\left(\\tan \\theta_{i}-\\tan \\phi_{j}\\right)}{\\cos \\theta_{i+1}\\left(\\tan \\theta_{i+1}-\\tan \\phi_{i}\\right)}\\right] \n",
+        "$$\n",
+        "\n",
+        "\n",
+        "We define a cylinder of radius $r=1$ that will be approximated in the $x-z$-plane by a sufficiently large number of line segments around its enclosing circle. \n"
+      ],
+      "id": "fa737320"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "n = 51\n",
+        "xc = 0.0\n",
+        "zc = 10.0\n",
+        "radius = 1.0\n",
+        "x = np.array([xc + radius * np.cos(0.01 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])\n",
+        "z = np.array([zc + radius * np.sin(0.01 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])\n",
+        "\n",
+        "# print(x)"
+      ],
+      "id": "41554964",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "fig, ax = plt.subplots()\n",
+        "plt.plot(x, z, marker='.')\n",
+        "ax.set_aspect('equal', 'box');"
+      ],
+      "id": "c8bab3c8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Sort the vertices\n",
+        "First, we have to sort the vertices in the case that they are given in an arbitrary order.\n",
+        "\n",
+        "To this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.\n"
+      ],
+      "id": "2aeb46e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "poly = Polygon(x, z, 500)"
+      ],
+      "id": "62a4261c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "fig, ax = plt.subplots()\n",
+        "plt.plot(poly.x, poly.z, marker='.')\n",
+        "ax.set_aspect('equal', 'box');"
+      ],
+      "id": "72e678be",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "cylinder(np.array([-10., 0.]), poly.density * np.pi * radius**2, np.array([0., 10.]))"
+      ],
+      "id": "fa0e000f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "talwani([-50, 0], poly)"
+      ],
+      "id": "f767684b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "profile = np.linspace(start=-40, stop=40, num=81)\n",
+        "npts = profile.size\n",
+        "gtal = np.zeros(npts)\n",
+        "gcyl = np.zeros(npts)\n",
+        "mass = poly.density * np.pi * radius**2\n",
+        "for k in range(npts):\n",
+        "    gtal[k] = talwani(np.array([profile[k], 0]), poly)\n",
+        "    gcyl[k] = cylinder(np.array([profile[k], 0]), mass, np.array([xc, zc]))[1]"
+      ],
+      "id": "7d106388",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "fig, (ax1, ax2) = plt.subplots(1, 2)\n",
+        "ax1.plot(profile, gtal, marker='.')\n",
+        "ax1.plot(profile, gcyl, marker='.');\n",
+        "ax2.plot(profile, gcyl - gtal, marker='.');"
+      ],
+      "id": "71070064",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "norm(gtal - gcyl) / norm(gcyl)"
+      ],
+      "id": "2cb5e05c",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/rub/miniforge3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

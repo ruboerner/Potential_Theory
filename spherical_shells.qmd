@@ -13,11 +13,27 @@ from sympy.assumptions import assuming, Q
 import matplotlib.pyplot as plt
 ```
 
+We want to investigate spheres with an arbitrary radial density distribution $\rho = \rho(r)$.
+The following results have been described 1687 in Newton's _Philosophiae Naturalis Principia Mathematica_ and have since then been known as *Newton's shell theorem*.
+
+Newton stated that:
+
+::: {.callout-note title="Newton's shell theorem"}
+
+1. A spherical symmetric body causes a gravitational force on external objects as if all of its mass were concentrated in a point in its center.
+2. If the body is a spherically symmetric shell, then no net gravitational force is exerted by the shell on any object inside regardless of the objects's location within the shell.
+
+:::
+
+![](images/shell-integration.excalidraw.svg){#fig-shellintegration}
+
 The potential outside of a solid sphere of radius $a$ and density law $\rho=\rho(r)$ can be obtained by integration over spherical shells using the _law of cosines_:
 $$
 V(r)  = f \int_{r'=0}^a \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi} 
     \frac{\rho(r') {r'}^2 \, \mathrm d r' \sin\theta \, \mathrm d \theta \, \mathrm d \phi}{[{r'}^2 + r^2 -2 r r' \cos\theta]^{1/2}}.
 $$
+
+![](images/Drawing%20Kosinussatz.excalidraw.svg){#fig-law-of-cosine}
 
 We depart from the potential of one spherical shell of radius $a$ with surface density $\rho_F$, which can be evaluated as
 $$

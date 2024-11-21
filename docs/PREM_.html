@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.33">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,10 +91,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3fbf620316015237a6991a5ebc2a9eb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -364,7 +384,7 @@ window.Quarto = {
 </header>
 
 
-<div id="0a35877b" class="cell" data-execution_count="1">
+<div id="f2bd7e04" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -378,9 +398,9 @@ window.Quarto = {
 <p>In this notebook we demonstrate how to model the Earth’s density as piecewise quadratic functions, such that <span class="math display">\[
 \rho(r) = a_i r^{2} + b_i r + c_i, \quad r_{i-1}&lt;r \le r_{i}
 \]</span> for any shell enclosed by the radii <span class="math inline">\(r_{i-1}\)</span> and <span class="math inline">\(r_i\)</span>, <span class="math inline">\(i=1,2,\dots,11\)</span>.</p>
-<p>The coefficients <span class="math inline">\(a_i, b_i, c_i\)</span> as well as the layer boundaries <span class="math inline">\(r_i\)</span> have been published by Dziewonski and Anderson (“Preliminary reference Earth model”, PEPI, 1981).</p>
-<p>The following code reads the content of the file <code>PREM.csv</code> into memory.</p>
-<div id="d0309e67" class="cell" data-execution_count="2">
+<p>The coefficients <span class="math inline">\(a_i, b_i, c_i\)</span> as well as the layer boundaries <span class="math inline">\(r_i\)</span> have been published by <span class="citation" data-cites="dziewonskiPreliminaryReferenceEarth1981">Dziewonski &amp; Anderson (<a href="references.html#ref-dziewonskiPreliminaryReferenceEarth1981" role="doc-biblioref">1981</a>)</span>.</p>
+<p>The following <code>Python</code> code reads the content of the file <code>PREM.csv</code> into memory.</p>
+<div id="0bcc9e6b" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'PREM.csv'</span>, </span>
@@ -390,7 +410,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>[<span class="st">'i'</span>, <span class="st">'layer'</span>, <span class="st">'height'</span>, <span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="fcdda20a" class="cell" data-execution_count="3">
+<div id="84fa2111" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> df[<span class="st">'height'</span>].to_numpy()</span>
@@ -401,8 +421,8 @@ window.Quarto = {
 </div>
 <section id="density-profile" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="density-profile"><span class="header-section-number">6.1</span> Density profile</h2>
-<p>We define a function `rho(r,a,b,c)´ which evaluates for any <span class="math inline">\(r\)</span> a second order polynomial with the given coefficients <span class="math inline">\(a,b,c\)</span>:</p>
-<div id="99160768" class="cell" data-execution_count="4">
+<p>We define a function <code>rho(r,a,b,c)</code> which evaluates for any <span class="math inline">\(r\)</span> a second order polynomial with the given coefficients <span class="math inline">\(a,b,c\)</span>:</p>
+<div id="fe56156b" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="kw">lambda</span> r, a, b, c: a <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b <span class="op">*</span> r <span class="op">+</span> c</span>
@@ -449,7 +469,7 @@ m_E = 4 \pi \int\limits_0^{R_E} \rho(r) r^2 \, \mathrm dr.
 <p>However, there are density discontinuities which require a split of the integral at the jumps of <span class="math inline">\(\rho(r)\)</span>. We integrate layer-wise, such that the mass of layer <span class="math inline">\(i\)</span> is obtained by <span class="math display">\[
 m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 11.
 \]</span> We use <code>Python</code>’s <code>Sympy</code> library.</p>
-<div id="19d891e7" class="cell" data-execution_count="5">
+<div id="efbc4b91" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a, b, c, r, h_1, h_2 <span class="op">=</span> sp.symbols(<span class="st">'a b c r h_1 h_2'</span>, real<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -458,7 +478,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 <p>We denote with i1 the following lambda function which is equivalent to the evaluation of the integral <span class="math display">\[
 4 \pi \int_{h_1}^{h_2} (a r^2 + b r + c) r^2 \, \mathrm d r
 \]</span></p>
-<div id="09166b71" class="cell" data-execution_count="6">
+<div id="8f85f31c" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>i1 <span class="op">=</span> <span class="kw">lambda</span> h_1, h_2: <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> sp.integrate((a <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b <span class="op">*</span> r <span class="op">+</span> c) <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>, (r, h_1, h_2))</span>
@@ -479,7 +499,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 5.972734577607561e+24</code></pre>
 </div>
 </div>
-<div id="9f1bbb55" class="cell" data-execution_count="7">
+<div id="2c110cf1" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -502,7 +522,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </section>
 <section id="gravity-profile" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="gravity-profile"><span class="header-section-number">6.3</span> Gravity profile</h2>
-<div id="f3bea709" class="cell" data-execution_count="8">
+<div id="1d99a5fa" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constants and assumptions</span></span>
@@ -533,7 +553,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>myg[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> G <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> M_Earth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8058a84a" class="cell" data-execution_count="9">
+<div id="e4a67e17" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rext <span class="op">=</span> np.linspace(R_E, <span class="dv">2</span><span class="op">*</span>R_E, <span class="dv">41</span>)</span>
@@ -557,7 +577,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </div>
 </div>
 <p>The results above do not agree well with the true surface acceleration due to the Earth’s ellipsoidal shape. The WGS84 gravity formula is valid for points at the Earth’s surface and accounts for the change of acceleration due to the ellipticity:</p>
-<div id="cc377acf" class="cell" data-execution_count="10">
+<div id="a0b8f2bf" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>g_equator <span class="op">=</span> <span class="fl">9.7803253359</span></span>
@@ -588,6 +608,11 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-dziewonskiPreliminaryReferenceEarth1981" class="csl-entry" role="listitem">
+Dziewonski, A.M. &amp; Anderson, D.L., 1981. Preliminary reference <span>Earth</span> model. <em>Physics of the Earth and Planetary Interiors</em>, <strong>25</strong>, 297–356. doi:<a href="https://doi.org/10.1016/0031-9201(81)90046-7">10.1016/0031-9201(81)90046-7</a>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -673,8 +698,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -785,7 +808,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

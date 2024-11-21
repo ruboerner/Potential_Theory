@@ -1,0 +1,385 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "\n",
+        "# Potential and gravitational attraction of a sphere\n"
+      ],
+      "id": "fb15ea47"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "import sympy as sp\n",
+        "from sympy import pi, oo\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "id": "ed7b2726",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "$\\require{physics}$\n",
+        "\n",
+        "## Problem statement\n",
+        "\n",
+        "We consider a sphere of radius $a$ centered at point $(0,0,t)$ , $t>0$ . The density contrast is $\\Delta \\rho$ .\n",
+        "\n",
+        "\n",
+        "The excess mass caused by the sphere is therefore\n",
+        "\n",
+        "$$\n",
+        "m=\\frac{4\\pi }{3}a^3 \\Delta \\rho,\n",
+        "$$\n",
+        "\n",
+        "\n",
+        "its potential is\n",
+        "\n",
+        "\n",
+        "$$\n",
+        "V(x,y,z)=-f\\frac{m}{\\sqrt{x^2 +y^2 +(z-t)^2 }}.\n",
+        "$$\n",
+        "\n",
+        "\n",
+        "We restrict our measurements to profiles in the plane $x=0$.\n"
+      ],
+      "id": "e12a7160"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y, z, t, f, m = sp.symbols(\"y z t f m\")\n",
+        "V = sp.symbols(\"V\", cls=sp.Function)\n",
+        "V = V(y)\n",
+        "V = -f * m / sp.sqrt(y**2 + (z - t)**2)\n",
+        "print(\"V=\")\n",
+        "V"
+      ],
+      "id": "716ea31c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The vertical component of the gravitational attraction is\n",
+        "\n",
+        "$$\n",
+        "V_z (y) := -\\pdv{V}{y}.\n",
+        "$$\n",
+        "\n",
+        "For $z=0$ we obtain the expression"
+      ],
+      "id": "38322a4d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Vz = -sp.diff(V, z).subs(z, 0)\n",
+        "print('Vz=')\n",
+        "Vz"
+      ],
+      "id": "f5fa5db5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The horizontal component of the gravitational attraction in $z=0$ is:"
+      ],
+      "id": "7037ce13"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Vy = -sp.diff(V, y).subs(z, 0)\n",
+        "print('Vy=')\n",
+        "Vy.simplify()"
+      ],
+      "id": "e58f09b2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "and its second derivative with respect to $y$ evaluated at $z=0$ is:\n"
+      ],
+      "id": "e7a01a37"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Vyy = -sp.diff(V, y, 2).subs(z, 0)\n",
+        "print('Vyy=')\n",
+        "Vyy.simplify()"
+      ],
+      "id": "8f76d020",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Example\n",
+        "\n",
+        "We consider as example a sphere at a depth of $t=2000$ m with radius $r=1000$ m.\n",
+        "The density contrast is $\\Delta \\rho =500$ $kg/m^3$ .\n",
+        "The vertical and horizontal components of the gravitational attraction along a profile at $z=0$ running from $-10^4 \\le y\\le 10^4$ m have to be computed in units of mGal (milliGal).\n"
+      ],
+      "id": "7ec5682e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "yy = np.linspace(-1e4, 1e4, 101)\n",
+        "drho = 500\n",
+        "depth = 2000\n",
+        "radius = 1000\n",
+        "mass = 4 * np.pi / 3 * radius**3 * drho\n",
+        "Vz_num = lambda y_: Vz.subs(y, y_).subs(t, depth).subs(f, 6.674e-11).subs(m, mass)\n",
+        "Vy_num = lambda y_: Vy.subs(y, y_).subs(t, depth).subs(f, 6.674e-11).subs(m, mass)\n",
+        "\n",
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "\n",
+        "plt.plot(yy, [1e5 * Vz_num(v) for v in yy], label=r'$V_z$')\n",
+        "plt.plot(yy, [1e5 * Vy_num(v) for v in yy], label=r'$V_y$')\n",
+        "plt.xlabel('y in m')\n",
+        "plt.ylabel('mGal')\n",
+        "plt.legend()\n",
+        "plt.grid(True);"
+      ],
+      "id": "4d5848e4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Discusson of the anomaly curves\n",
+        "\n",
+        "We observe a maximum centered above the sphere for $V_z$ , whereas $V_y$ has two extrema along the profile.\n",
+        "\n",
+        "Are there hidden information about the depth of the sphere?\n",
+        "\n",
+        "First, we study the local extrema of $V_y (y)$ .\n",
+        "The derivative $V_{yy}$ must vanish at those points. \n",
+        "We compute the derivative symbolically, set the result to zero and solve for $y$ .\n",
+        "\n",
+        "The local extrema of $V_y$ are located at the solutions of\n",
+        "\n",
+        "$$\n",
+        "    \\pdv[2]{}{y}V(y)=0.\n",
+        "$$\n"
+      ],
+      "id": "baa272ea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "sol = sp.solve(Vyy, y, dict=True)\n",
+        "[sol[v][y] for v in [0,1]]"
+      ],
+      "id": "97b44ae7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We obtain as solution\n",
+        "$$\n",
+        "\\displaystyle \\left(\\begin{array}{c} -\\frac{\\sqrt{2}\\,t}{2}\\newline \\frac{\\sqrt{2}\\,t}{2} \\end{array}\\right).\n",
+        "$$\n",
+        " \n",
+        "\n",
+        "The positions of the extrema of $V_y$ only depend on the depth of the sphere. The horizontal distance between the extrema is $\\sqrt{2}t$.\n"
+      ],
+      "id": "1b2a6cb2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "yp = np.sqrt(2.0) / 2 * depth\n",
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "\n",
+        "plt.plot(yy, [1e5 * Vy_num(v) for v in yy], label=r'$V_y$')\n",
+        "plt.scatter([-yp, yp], [1e5*Vy_num(-yp), 1e5*Vy_num(yp)], color='r', label=r'$\\pm \\frac{\\sqrt{2}}{2}t$')\n",
+        "plt.xlabel('y in m')\n",
+        "plt.ylabel('mGal')\n",
+        "plt.legend()\n",
+        "plt.grid(True);"
+      ],
+      "id": "440dc50d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The relation between $V_z (y)$ and $t$ is not so obvious.\n",
+        "There are two inflection points symmetric to $y=0$.\n",
+        "The necessary condition for the existence of an inflection point is that\n",
+        "\n",
+        "$$\n",
+        " \\dv[2]{}{y} V_z(y) = 0.\n",
+        "$$\n"
+      ],
+      "id": "c3426d15"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Vzyy = sp.diff(Vz, y, 2)\n",
+        "Vzyy.simplify()\n",
+        "sol = sp.solve(Vzyy, y, dict=True)\n",
+        "[sol[v][y] for v in [0,1]]"
+      ],
+      "id": "448577f1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The inflection points of $V_z$ are at $\\pm t/2$. \n"
+      ],
+      "id": "2fdd2fdd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "\n",
+        "plt.plot(yy, [1e5 * Vz_num(v) for v in yy], label=r'$V_z$')\n",
+        "plt.scatter([-depth/2, depth/2], [1e5*Vz_num(-depth/2), 1e5*Vz_num(depth/2)], color='r', label=r'$\\pm t/2$')\n",
+        "plt.xlabel('y in m')\n",
+        "plt.ylabel('mGal')\n",
+        "plt.legend()\n",
+        "plt.grid(True);"
+      ],
+      "id": "4544b8c2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Deflection of a pendulum\n",
+        "\n",
+        "The deflection of a pendulum from the vertical direction due to the mass of the sphere is\n",
+        "$$\n",
+        "\\alpha =\\tan^{-1} \\frac{V_y }{\\gamma_0 +V_z },\n",
+        "$$\n",
+        "\n",
+        "\n",
+        "where $\\gamma_0 =9.81$ $m/s^2$ is a good estimate of the *normal gravitational attraction* at the surface of the Earth.\n",
+        "\n",
+        "This is the fundamental idea of the *Eötvös* torsion balance.\n",
+        "\n",
+        "With the sphere introduced in the above example we obtain the following figure:\n"
+      ],
+      "id": "33704a82"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Vz_ = np.array([Vz_num(v) for v in yy], dtype=float)\n",
+        "Vy_ = np.array([Vy_num(v) for v in yy], dtype=float)\n",
+        "deflection = 3600 * 180 / np.pi * np.atan(Vy_ / (9.81 + Vz_))\n",
+        "\n",
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "\n",
+        "plt.plot(yy, deflection);\n",
+        "plt.ylabel('deflection in arcsec')\n",
+        "plt.xlabel('y in m')\n",
+        "plt.grid(True);"
+      ],
+      "id": "9fa9aecb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The maximum deflection in arc seconds of the pendulum is\n"
+      ],
+      "id": "892f2eb8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(np.max(deflection))"
+      ],
+      "id": "765980d2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "To put this into perspective:\n",
+        "\n",
+        "\n",
+        "The arc length $s$ along the Earth's equator corresponding to 1 arcsec is approximately 31 meters:\n"
+      ],
+      "id": "ca1b6eef"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "s = np.pi / 180 / 3600 * 6.371e6\n",
+        "print(s)"
+      ],
+      "id": "df770a17",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/rub/miniforge3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

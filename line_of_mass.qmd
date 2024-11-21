@@ -45,7 +45,7 @@ $$
 g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x'
 $$
 
-::: {.callout-note}
+::: {.callout-note title="Integration by substitution"}
 
 We solve this problem as follows:
 
@@ -59,7 +59,10 @@ x' = \sqrt{(y - y')^2 + (z - z')^2} \tan\alpha
 $$
 we get
 $$
-\dd x' = \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha) \dd \alpha = \sqrt{(y - y')^2 + (z - z')^2} \frac{ 1 }{ \cos^2\alpha} \dd \alpha
+\begin{align}
+\dd x' & =  \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha) \dd \alpha \\
+& = \sqrt{(y - y')^2 + (z - z')^2} \frac{ 1 }{ \cos^2\alpha} \dd \alpha
+\end{align}
 $$
 
 So,
@@ -83,7 +86,10 @@ $$
 which finally yields
 
 $$
-g(y,z) = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \int\limits_{-\pi/2}^{\pi/2} \cos\alpha \, \dd \alpha = -2f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 }
+\begin{align}
+g(y,z) & = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \underbrace{\int\limits_{-\pi/2}^{\pi/2} \cos\alpha \, \dd \alpha}_{=2} \\
+& = -2f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 }
+\end{align}
 $$
 
 :::
@@ -97,7 +103,8 @@ display(Math(f' g_z(y,z) = {latex(simplify(g_z))}'))
 ```
 
 ```{python}
-integrate(-diff(-f * rho_L / sqrt(x**2 + y**2 + z**2), z), (x, -oo, oo))
+integrate(-diff(-f * rho_L / sqrt(x**2 + y**2 + z**2), z), 
+  (x, -oo, oo))
 ```
 
 We recognize that
@@ -168,21 +175,23 @@ plot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]),
   (y, -5, 5), size=(4, 3),
   xlabel='y', ylabel=r'$g_z(y)$', axis_center=(-5, 0), ylim=(0,5), xlim=(-5,5))
 ```
-
+------
 
 ## Attraction of a plane lamina
 
-The vertical component of attraction due to an element of area $\mathrm{d}S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is
+The vertical component of attraction $\dd g$ due to an element of area $\dd S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is
 
 $$
 \mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega 
 $$ 
 
-where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$.
+where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$ (@fig-sS-sketch).
 
-![](images/hubbert_01.png)
+![Attraction of an infinite plane lamina of thickness $\dd z$.](images/hubbert_01.png){#fig-sS-sketch}
 
-It holds $$
+It holds with $\dd m = \rho \dd z \dd S$ that
+
+$$
 \mathrm{d} g = \frac{ f \dd m }{ r^2} \sin\alpha = \frac{f \rho \dd z \dd S }{r^{2} }\sin \alpha.
 $$
 
@@ -191,58 +200,106 @@ $$
 \frac{ \dd S \sin\alpha }{r^2 } = \dd \Omega.
 $$
 
-If we now consider a finite area $S$ of arbitrary shape, the attraction at the origin due to the enclosed mass will be $$
+is the solid angle subtended at the origin by the area $\dd S$.
+
+If we now consider a finite area $S$ of arbitrary shape, the attraction at the origin due to the enclosed mass will be
+
+$$
 g = f \mathrm{d}z \int _{S} \rho \, \mathrm{d}\Omega 
-$$ or, if $\rho$ is constant over $S$, this simplifies to $$
+$$
+
+or, if $\rho$ is constant over $S$, this simplifies to 
+
+$$
 g = f \rho \Omega \mathrm{d}z.
-$$ For a given solid angle $\Omega$, the attraction of the matter enclosed between two horizontal planes at $z=z_{1}$ and $z=z_{2}$ will be obtained by integrating $$
+$$ 
+
+For a given solid angle $\Omega$, the attraction of the matter enclosed between two horizontal planes at $z=z_{1}$ and $z=z_{2}$ will be obtained by integrating 
+
+$$
 g = f \Omega \int_{z_{1}}^{z_{2}} \rho \, \mathrm{d}z 
-$$ and if $\rho=\mathrm{const.}$ this becomes $$
+$$ 
+
+an, if $\rho=\mathrm{const.}$, this becomes 
+
+$$
 g = f \rho \Omega (z_{2} - z_{1})
-$$ For the infinite horizontal plane the solid angle is $2 \pi$, such that the attraction of an infinite plate will be $$
+$$ 
+
+For the infinite horizontal plane the solid angle is $2 \pi$, such that the attraction of an infinite plate will be 
+
+$$
 g = 2 \pi f \rho (z_{2} - z_{1})
-$$ which is the vertical attraction of the Bouguer plate of thickness $z_{2} - z_{1}$ and density $\rho$.
+$$ 
+
+which is the vertical attraction of the Bouguer plate of thickness $z_{2} - z_{1}$ and density $\rho$.
 
 ## The $\mathrm{d}\Theta\mathrm{d}z$ solenoid
 
-First, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the $x$-axis. Such a strip will be defined by the area on the plane $z=\mathrm{const.}$ lying between two inclined planes which intersect on the $x$-axis and make with the $y$-axis the angles of $\Theta$ and $\Theta + \mathrm{d}\Theta$.
+First, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the $x$-axis. Such a strip will be defined by the area on the plane $z=const$ lying between two inclined planes which intersect on the $x$-axis and make with the $y$-axis the angles of $\Theta$ and $\Theta + \mathrm{d}\Theta$.
 
-![](images/hubbert_02.png)
+![Illustration of the $\dd \Theta \dd z$-solenoid.](images/solenoid.excalidraw.svg){#fig-solenoid}
 
-The attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle $\mathrm{d}\Omega$ between two planes intersecting at an angle $\mathrm{d}\Theta$ will bear the same ratio to the total solid angle which the plane angle $\mathrm{d}\Theta$ bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or $4 \pi$, and the total plane angle is $2 \pi$. Thus $$
+The attraction of this strip is proportional to the solid angle subtended at the origin. 
+The solid angle $\mathrm{d}\Omega$ between two planes intersecting at an angle $\mathrm{d}\Theta$ will bear the same ratio to the total solid angle which the plane angle $\mathrm{d}\Theta$ bears to the total plane angle. 
+The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or $4 \pi$, and the total plane angle is $2 \pi$.
+Thus 
+
+$$
 \frac{\mathrm{d}\Omega}{4 \pi} = \frac{\mathrm{d}\Theta}{2 \pi}
-$$ or $$
+$$ 
+or 
+$$
 \mathrm{d}\Omega = 2 \mathrm{d}\Theta.
-$$ Introducing this to the result obtained above gives $$
+$$ 
+
+Introducing this to the result obtained above gives 
+
+$$
 \mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
-$$ which is the *fundamental differential equation of the attraction of a two-dimensional mass*. The intersection of the two planes $\Theta$ and $\Theta + \mathrm{d}\Theta$ with the planes $z$ and $z+\mathrm{d}z$ defines an elementary prism or solenoid of infinite length and cross-section $\mathrm{d}\Theta\mathrm{d}z$. For a finite area in the plane of integration $$
+$$ 
+
+which is the *fundamental differential equation of the attraction of a two-dimensional mass*. The intersection of the two planes $\Theta$ and $\Theta + \mathrm{d}\Theta$ with the planes $z$ and $z+\mathrm{d}z$ defines an elementary prism or solenoid of infinite length and cross-section $\mathrm{d}\Theta\mathrm{d}z$. For a finite area in the plane of integration 
+
+$$
 g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-$$ Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Starting at the point $(\Theta, z)$ and traversing the circuit in counter-clockwise direction, the resulting integral will be
+$$ 
+
+Around an elementary prism $\mathrm{d}\Theta\mathrm{d}z$ bounded by the lines $\Theta$ and $\Theta + \mathrm{d}\Theta$, and $z$ and $z+\mathrm{d}z$, consider the line integral $\oint \Theta \mathrm{d}z$. Starting at the point $(\Theta, z)$ and traversing the circuit in counter-clockwise direction, the resulting integral will be
 
 $$
-\oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
+\oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d} \Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
 $$ 
 
-![Sketch of the line integral about a $\dd \theta \dd z$-solenoidal.](images/umlauf.png){#fig-umlauf}
+Note that in this circuit $\dd z$ is zero along the $z$ and $z + \dd z$ sides.
 
-Over a finite area $S$ we may obtain $\iint \mathrm{d}\Theta \mathrm{d}z$ by $$
-\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
-$$ When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, $$
-\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.
+![Sketch of the line integral about a $\dd \Theta \dd z$-solenoidal.](images/umlauf.png){#fig-umlauf}
+
+Alternatively one can evaluate the integral 
+
+$$
+\oint z \, \dd \Theta = 0 + (z + \dd z) \dd \Theta + 0 - z \dd \Theta = \dd z \dd \Theta
+$$
+
+Over a finite area $S$ we may evaluate the integral by 
+
+$$
+\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right] = 
+\iint_{S} \left[\oint z \, \dd \Theta \right].
 $$ 
+
+When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, 
+
+$$
+\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{\partial S} \Theta \mathrm{d}z = \oint_{\partial S} z \, \dd \Theta.
+$$ 
+
 The attraction of a finite mass of constant density is obtained by 
-$$
-g = 2 f \rho \oint_{s} \Theta \mathrm{d}z.
-$$
-
-As an alternative, one could also consider the integral $\oint z \mathrm d \theta$. Traversing the integral in the sense $\theta, z + \mathrm d z, \theta + \mathrm d \theta, z$ we obtain
 
 $$
-\oint z \mathrm{d}\Theta  = 0 + (z + \mathrm{d}z)\mathrm{d}\Theta + 0 - z \mathrm{d}\Theta = \mathrm{d}\Theta \mathrm{d}z.
+g = 2 f \rho \oint_{\partial S} \Theta \mathrm{d}z = 2 f \rho \oint_{\partial S} z \, \dd \Theta.
 $$
-and
-$$
-g = 2 f \rho \oint_{s} z \mathrm{d}\Theta.
-$$
+
+![Conversion of the surface integral into a line integral.](images/SdS.excalidraw.svg){#fig-SdS}
 
 ------------------------------------------------------------------------

@@ -4,6 +4,9 @@ jupyter: python3
 ---
 
 The gravitational potential of a spatial mass distribution follows the principle of linear superposition.
+
+![](images/pointmasses.excalidraw.svg){#fig-pointmasses}
+
 The potential can be composed as the sum of the individual potentials of point masses
 
 $$

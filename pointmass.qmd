@@ -1,3 +1,6 @@
+---
+jupyter: python3
+---
 # Point mass
 
 We introduce _point sources_.
@@ -22,10 +25,10 @@ $$
 h_{\epsilon}(\vb x) = 
 \begin{cases}
 \frac{3}{4 \pi \epsilon^3}  & \qif |\vb x| \le \epsilon \\
-0 & \qif |\vb x| \gt \epsilon 0
+0 & \qif |\vb x| \gt \epsilon
 \end{cases}
 $$
-which describes a unit mass distributed over a small sphere of ardius $\epsilon$.
+which describes a unit mass distributed over a small sphere of radius $\epsilon$.
 
 $\delta(\vb x)$ is the limit of the sequence of functions $h_\epsilon(\vb x)$ for $\epsilon \to 0$.
 

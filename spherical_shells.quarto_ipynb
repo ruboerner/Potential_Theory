@@ -1,0 +1,565 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Newton's shell theorem\n",
+        "jupyter: python3\n",
+        "---"
+      ],
+      "id": "84f5ae78"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import sympy as sp\n",
+        "from sympy import pi, oo\n",
+        "from sympy.assumptions import assuming, Q\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "id": "ed2c2fd7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We want to investigate spheres with an arbitrary radial density distribution $\\rho = \\rho(r)$.\n",
+        "The following results have been described 1687 in Newton's _Philosophiae Naturalis Principia Mathematica_ and have since then been known as *Newton's shell theorem*.\n",
+        "\n",
+        "Newton stated that:\n",
+        "\n",
+        "::: {.callout-note title=\"Newton's shell theorem\"}\n",
+        "\n",
+        "1. A spherical symmetric body causes a gravitational force on external objects as if all of its mass were concentrated in a point in its center.\n",
+        "2. If the body is a spherically symmetric shell, then no net gravitational force is exerted by the shell on any object inside regardless of the objects's location within the shell.\n",
+        "\n",
+        ":::\n",
+        "\n",
+        "![](images/shell-integration.excalidraw.svg){#fig-shellintegration}\n",
+        "\n",
+        "The potential outside of a solid sphere of radius $a$ and density law $\\rho=\\rho(r)$ can be obtained by integration over spherical shells using the _law of cosines_:\n",
+        "$$\n",
+        "V(r)  = f \\int_{r'=0}^a \\int_{\\theta=0}^\\pi \\int_{\\phi=0}^{2\\pi} \n",
+        "    \\frac{\\rho(r') {r'}^2 \\, \\mathrm d r' \\sin\\theta \\, \\mathrm d \\theta \\, \\mathrm d \\phi}{[{r'}^2 + r^2 -2 r r' \\cos\\theta]^{1/2}}.\n",
+        "$$\n",
+        "\n",
+        "![](images/Drawing%20Kosinussatz.excalidraw.svg){#fig-law-of-cosine}\n",
+        "\n",
+        "We depart from the potential of one spherical shell of radius $a$ with surface density $\\rho_F$, which can be evaluated as\n",
+        "$$\n",
+        "V^F(r) = 2 \\pi f \\rho_F \\int_{\\theta=0}^\\pi \\frac{a^2 \\sin\\theta \\, \\mathrm d \\theta}{\\sqrt{r^2 + a^2 - 2ar\\cos\\theta}}.\n",
+        "$$\n",
+        "\n",
+        "The potential $V^F(r)$ inside or outside of such a spherical shell with surface density $\\rho_F$ and radius $a$ is\n",
+        "$$\n",
+        "V^F(r) = 2 \\pi f \\frac{a}{r} \\rho_F \\left[ r + a - |r - a| \\right].\n",
+        "$$\n",
+        "Because $r$ can be either less or greater than $a$, we obtain two solution for $V^F(r)$:\n",
+        "$$\n",
+        "V^F(r) = \\begin{cases}\n",
+        "4 \\pi f \\rho_F \\frac{a^2}{r} & \\quad\\text{ if } r > a \\\\\n",
+        "4 \\pi f \\rho_F a & \\quad\\text{ if } r < a\n",
+        "\\end{cases}\n",
+        "$$\n",
+        "\n",
+        "We now introduce a solid sphere with a density law $\\rho = \\rho(r)$.\n",
+        "To obtain the potential $V(r)$ outside this sphere, we integrate \n",
+        "\n",
+        "$$\n",
+        "V(r) = \\int_{r'=0}^a V^F(r') \\, \\mathrm d r' = \\frac{2 \\pi f}{r } \\int_{r'=0}^{a} \\rho(r') [r + r' - |r - r'|] r' \\, \\mathrm d r'\n",
+        "$$\n",
+        "\n",
+        "To this end, we make use of `SymPy`, a `Python` library for symbolic mathematics.\n",
+        "\n",
+        "We first define symbolic variables.\n"
+      ],
+      "id": "c391ab3a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "r, rp, a, f, rho, theta = sp.symbols(\"r r' a f rho theta\", positive=True, real=True)"
+      ],
+      "id": "45fb6601",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "V = 2 * pi * f * rho * sp.integrate(a**2 * sp.sin(theta) / sp.sqrt(r**2 + a**2 - 2*a*r*sp.cos(theta)), (theta, 0, pi))\n",
+        "V.simplify()"
+      ],
+      "id": "d2abf667",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Since \n",
+        "$$\n",
+        "\\sqrt{r^2 + a^2 + 2 a r} = |r + a| = r + a\n",
+        "$$\n",
+        "and\n",
+        "$$\n",
+        "\\sqrt{r^2 + a^2 - 2 a r} = |r - a| = \n",
+        "\\begin{cases}\n",
+        "r - a & \\text{if } r > a \\\\\n",
+        "a - r & \\text{if } r < a \n",
+        "\\end{cases}\n",
+        "$$\n",
+        "we have to be careful with the integrand.\n"
+      ],
+      "id": "d9f5c8df"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Voutside = 2 * pi * f * rho / r * sp.integrate((r + rp - (r - rp)) * rp, (rp, 0, a))\n",
+        "Voutside"
+      ],
+      "id": "cf3b7502",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "To get the potential inside the sphere, i.e., for $r < a$, we have to decompose the integral into two contributions.\n",
+        "\n",
+        "First, we evaluate the potential due to a sphere of radius $r$, to which we add the contribution of a hollow sphere with inner radius $r$ and outer radius $a$:\n",
+        "$$\n",
+        "V(r) = \\frac{4 \\pi f}{r} \\left[ \\int_{r'=0}^r \\rho(r') {r'}^2 \\, \\mathrm d r' + \\int_r^a \\rho(r') r r' \\, \\mathrm d r'\\right]\n",
+        "$$\n",
+        "\n",
+        "In the interior of a homogeneous sphere with a mean density of $\\bar\\rho$ we obtain for $0 \\le r \\le a$\n",
+        "$$\n",
+        "V(r) = \\frac{2 \\pi f \\bar\\rho}{3} \\left(3a^2 - r^2 \\right)\n",
+        "$$\n"
+      ],
+      "id": "2d8266eb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "Vinside = 4 * pi * f * rho / r * (sp.integrate(rp**2, (rp, 0, r)) + sp.integrate(rp * r, (rp, r, a)))\n",
+        "Vinside.simplify()"
+      ],
+      "id": "8ded8a4f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Density laws\n",
+        "\n",
+        "Now, we introduce non-trivial density laws, such as a linear density law\n",
+        "$$\n",
+        "\\rho(r) = \\rho(0) - b r, \\quad b > 0.\n",
+        "$$\n"
+      ],
+      "id": "395328c2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rho_m, rho_0, rho_R, R_E, b = sp.symbols(\"rho_m rho_0 rho_R R_E b\", positive=True, real=True)"
+      ],
+      "id": "01fe2251",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "With the known mean density of the Earth we can evaluate Earth's mass.\n"
+      ],
+      "id": "9d9d1baf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "m_E = rho_m * 4 * pi / 3 * R_E**3\n",
+        "m_E"
+      ],
+      "id": "04be3dab",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "This is not very helpful. Instead, we can evaluate Earth's mass using a volume integral over a density function, e.g.,\n",
+        "$$\n",
+        "m_E = 4 \\pi \\int_0^{R_E} (\\rho_0 - br) r^2 \\, \\mathrm d r\n",
+        "$$\n",
+        "Using `SymPy` we obtain the expression\n"
+      ],
+      "id": "43684c73"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "m_E_int = 4 * pi * sp.integrate((rho_0 - b * r) * r**2, (r, 0, R_E))\n",
+        "m_E_int.simplify()"
+      ],
+      "id": "4601fdf6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "This result still contains two unknown parameters $b$ and $\\rho_0$.\n",
+        "\n",
+        "We exploit the fact that there must hold\n",
+        "$$\n",
+        "\\rho(R_E) = \\rho(0) - b R_E.\n",
+        "$$\n",
+        "\n",
+        "The density at the Earth's surface is about $2700$ $kg/m^3$.\n"
+      ],
+      "id": "072f90ce"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "eq1 = m_E_int - m_E\n",
+        "eq2 = rho_0 - b * R_E - rho_R"
+      ],
+      "id": "7fb741f1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "coeffs = sp.solve((eq1, eq2), (rho_0, b),dict=True)\n",
+        "coeff_rho_0 = coeffs[0][rho_0]\n",
+        "coeff_b = coeffs[0][b]"
+      ],
+      "id": "a7c337b1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "coeff_rho_0"
+      ],
+      "id": "f5f25b99",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "coeff_b"
+      ],
+      "id": "ec1274b8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rho_num = coeff_rho_0.subs(rho_R, 2700).subs(rho_m, 5515)"
+      ],
+      "id": "464d2fb5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "b_num = coeff_b.subs(rho_R, 2700).subs(rho_m, 5515).subs(R_E, 6.371e6)"
+      ],
+      "id": "00479e7b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Gravitational attraction inside the Earth\n",
+        "It is known that the gravitational potential inside a sphere with a radially symmetric density function is\n",
+        "$$\n",
+        "V(r) = \\frac{4 \\pi f}{r} \\left[ \\int_{r'=0}^r \\rho(r') {r'}^2 \\, \\mathrm d r' + \\int_r^{R_E} \\rho(r') r r' \\, \\mathrm d r'\\right]\n",
+        "$$\n",
+        "The first integral amounts for the potential at the surface of a sphere with radius , whereas the second computes the potential taken at the inner surface of a hollow sphere.\n",
+        "\n",
+        "With the constants derived above we want to evaluate these integrals.\n"
+      ],
+      "id": "c0075dbf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "i1 = 4 * pi * f / r * sp.integrate((rho_0 - b * rp) * rp**2, (rp, 0, r))\n",
+        "i1.simplify()"
+      ],
+      "id": "0238fc38",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "i2 = 4 * pi * f * sp.integrate((rho_0 - b * rp) * rp, (rp, r, R_E))\n",
+        "i2.simplify()"
+      ],
+      "id": "7c2cac38",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Next, we add both contributions to obtain the potential inside the Earth.\n"
+      ],
+      "id": "74d33c00"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#V = sp.Function(\"V\")\n",
+        "V = i1 + i2"
+      ],
+      "id": "6df690e5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "V.simplify()"
+      ],
+      "id": "466069e5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We obtain the gravitational attraction by taking the gradient of $V$ in the direction of $\\mathbf r$:\n",
+        "\n",
+        "$$\n",
+        "g(r) = \\nabla V(r) \\cdot \\hat{\\mathbf r}\n",
+        "$$\n"
+      ],
+      "id": "9168b959"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "g = sp.diff(V, r)\n",
+        "g.simplify()"
+      ],
+      "id": "eb890f84",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Visualization of the result\n",
+        "\n",
+        "We plot the curve of $g(r)$ inside the Earth.\n",
+        "\n",
+        "Further, we check if $g(r)$ has an extremum inside the Earth.\n"
+      ],
+      "id": "e0b905a2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "f_ = 6.674e-11\n",
+        "g_num = lambda r: np.pi * f_ * r * (3 * b_num * r - 4 * rho_num) / 3"
+      ],
+      "id": "bdc084a2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rstar = sp.solve(sp.diff(g, r), (r))\n",
+        "rstar[0]"
+      ],
+      "id": "f71d84e8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rextrem = rstar[0].subs(rho_0, rho_num).subs(b, b_num)\n",
+        "rextrem / 1e6"
+      ],
+      "id": "1d02b9bd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "6.371e6 - rextrem"
+      ],
+      "id": "c5cd9d8d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The extremal value of $g(r)$ in the interior of the Earth appears at $r=5.26 \\times 10^6$ m, i.e., at a depth of 1105 km.\n"
+      ],
+      "id": "07b74303"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rr = np.linspace(0, 6.367e6, 41)"
+      ],
+      "id": "8c78d04b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "plt.plot(rr, g_num(rr))\n",
+        "plt.scatter(rextrem, g_num(rextrem), color='r')\n",
+        "plt.grid(True)\n",
+        "plt.xlabel(\"r in m\")\n",
+        "plt.ylabel(\"g(r)\");"
+      ],
+      "id": "6bb76286",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Moment of inertia\n",
+        "\n",
+        "There are two constraints for density models: The mass of the Earth, and its moment of inertia. Both are moments of the density distribution. The mass is the second moment of the radial density distribution, whereas the mean moment of inertia is the scaled fourth moment of the radial density distribution.\n",
+        "The moment of inertia can be inferred from a thin spherical shell of radius $a$,\n",
+        "\n",
+        "$$\n",
+        "I = \\frac{2}{3} m a^2.\n",
+        "$$\n",
+        "\n",
+        "The contribution of a small mass $\\mathrm d m$ is therefore\n",
+        "$$\n",
+        "\\mathrm d I = \\frac{2}{3} a^2 \\, \\mathrm d m.\n",
+        "$$\n",
+        "The total moment of intertia an be calculated with the integral\n",
+        "$$\n",
+        "I=\\frac{2}{3} \\int\\limits_0^{R_E}  \\rho(r) r^2 \\, \\mathrm d V =\n",
+        "\\frac{8\\pi}{3} \\int\\limits_0^{R_E}  \\rho(r) r^4 \\, \\mathrm d r,\n",
+        "$$\n",
+        "with the help of which we compute the moment of inertia factor $\\alpha$, a dimensionless number, where\n",
+        "$$\n",
+        "\\alpha = \\frac{I}{mR_E^2}.\n",
+        "$$\n",
+        "This factor is $0.4$ for a solid sphere.\n",
+        "\n",
+        "Check using `SymPy`:\n"
+      ],
+      "id": "97317a53"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "(8 * pi / 3 * \n",
+        "    sp.integrate(rho_m * r**4, (r, 0, R_E)) / \n",
+        "    m_E / R_E**2\n",
+        "    ).subs(rho_m, 5515).subs(R_E, 6.371e6)"
+      ],
+      "id": "476266b4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "$\\alpha$ should be smaller for a sphere when there is an increasing density with depth.\n",
+        "\n",
+        "For our density model, we observe $\\alpha=0.3319$, which is slightly more than reported in the literature, where $\\alpha=0.3307144$ (Williams, 1994).\n",
+        "\n",
+        "Check:\n"
+      ],
+      "id": "f2deae98"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "(8 * pi / 3 * \n",
+        "    sp.integrate((rho_num - b_num * r) * r**4, (r, 0, R_E)) / \n",
+        "    m_E / R_E**2\n",
+        "    ).subs(rho_m, 5515).subs(R_E, 6.371e6)"
+      ],
+      "id": "b9978362",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/rub/miniforge3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

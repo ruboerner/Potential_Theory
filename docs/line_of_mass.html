@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.33">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,10 +91,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3fbf620316015237a6991a5ebc2a9eb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -409,13 +409,13 @@ Figure&nbsp;9.1: An infinite horizontal line of mass.
 <p><span class="math display">\[
 g_z(0, y, z) = \mathbf g \cdot \mathbf e_z =  f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial z} \frac{1}{\sqrt{{x'}^2 + (y - y')^2 + (z - z')^2}} \, \dd x'
 \]</span></p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="Integration by substitution">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Integration by substitution
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -425,7 +425,10 @@ Note
 \]</span> With the substitution <span class="math display">\[
 x' = \sqrt{(y - y')^2 + (z - z')^2} \tan\alpha
 \]</span> we get <span class="math display">\[
-\dd x' = \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha) \dd \alpha = \sqrt{(y - y')^2 + (z - z')^2} \frac{ 1 }{ \cos^2\alpha} \dd \alpha
+\begin{align}
+\dd x' &amp; =  \sqrt{(y - y')^2 + (z - z')^2} (1 + \tan^2\alpha) \dd \alpha \\
+&amp; = \sqrt{(y - y')^2 + (z - z')^2} \frac{ 1 }{ \cos^2\alpha} \dd \alpha
+\end{align}
 \]</span></p>
 <p>So, <span class="math display">\[
 \begin{align}
@@ -443,11 +446,14 @@ g(y,z) &amp; = f \rho_L \int\limits_{x'=-\infty}^\infty \frac{\partial}{\partial
 \]</span></p>
 <p>which finally yields</p>
 <p><span class="math display">\[
-g(y,z) = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \int\limits_{-\pi/2}^{\pi/2} \cos\alpha \, \dd \alpha = -2f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 }
+\begin{align}
+g(y,z) &amp; = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \underbrace{\int\limits_{-\pi/2}^{\pi/2} \cos\alpha \, \dd \alpha}_{=2} \\
+&amp; = -2f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 }
+\end{align}
 \]</span></p>
 </div>
 </div>
-<div id="616f4d3e" class="cell" data-execution_count="2">
+<div id="6216b3c9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -459,9 +465,10 @@ g(y,z) = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \int\limits_{-\pi/2}^
 <p><span class="math inline">\(\displaystyle  g_z(y,z) = - \frac{2 f \rho_{L} \left(z - {z}'\right)}{\left(y - {y}'\right)^{2} + \left(z - {z}'\right)^{2}}\)</span></p>
 </div>
 </div>
-<div id="e6d94c73" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>integrate(<span class="op">-</span>diff(<span class="op">-</span>f <span class="op">*</span> rho_L <span class="op">/</span> sqrt(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> z<span class="op">**</span><span class="dv">2</span>), z), (x, <span class="op">-</span>oo, oo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<div id="ce553afe" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>integrate(<span class="op">-</span>diff(<span class="op">-</span>f <span class="op">*</span> rho_L <span class="op">/</span> sqrt(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> z<span class="op">**</span><span class="dv">2</span>), z), </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (x, <span class="op">-</span>oo, oo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="8">
 <p><span class="math display">\[\begin{equation}- \frac{2 f \rho_{L} z}{y^{2} + z^{2}}\end{equation}\]</span></p>
 </div>
 </div>
@@ -498,7 +505,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 <p>Note that we have set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
 <p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass.</p>
 <p>In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
-<div id="3ab1c10a" class="cell" data-execution_count="4">
+<div id="6f67e234" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
@@ -516,7 +523,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 </div>
 </div>
 </div>
-<div id="ba77e0f7" class="cell" data-execution_count="5">
+<div id="229a889d" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
@@ -532,72 +539,124 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 </div>
 </div>
 </div>
+<hr>
 </section>
 <section id="attraction-of-a-plane-lamina" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="attraction-of-a-plane-lamina"><span class="header-section-number">9.2</span> Attraction of a plane lamina</h2>
-<p>The vertical component of attraction due to an element of area <span class="math inline">\(\mathrm{d}S\)</span> on an infinite horizontal plane lamina with density <span class="math inline">\(\rho\)</span> bounded by the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> is</p>
+<p>The vertical component of attraction <span class="math inline">\(\dd g\)</span> due to an element of area <span class="math inline">\(\dd S\)</span> on an infinite horizontal plane lamina with density <span class="math inline">\(\rho\)</span> bounded by the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> is</p>
 <p><span class="math display">\[
 \mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega
 \]</span></p>
-<p>where <span class="math inline">\(\mathrm{d}\Omega\)</span> is the solid angle subtended at the origin by the area <span class="math inline">\(\mathrm{d}S\)</span>.</p>
-<p><img src="images/hubbert_01.png" class="img-fluid"></p>
-<p>It holds <span class="math display">\[
+<p>where <span class="math inline">\(\mathrm{d}\Omega\)</span> is the solid angle subtended at the origin by the area <span class="math inline">\(\mathrm{d}S\)</span> (<a href="#fig-sS-sketch" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>).</p>
+<div id="fig-sS-sketch" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sS-sketch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/hubbert_01.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sS-sketch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: Attraction of an infinite plane lamina of thickness <span class="math inline">\(\dd z\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>It holds with <span class="math inline">\(\dd m = \rho \dd z \dd S\)</span> that</p>
+<p><span class="math display">\[
 \mathrm{d} g = \frac{ f \dd m }{ r^2} \sin\alpha = \frac{f \rho \dd z \dd S }{r^{2} }\sin \alpha.
 \]</span></p>
 <p>Further, <span class="math display">\[
 \frac{ \dd S \sin\alpha }{r^2 } = \dd \Omega.
 \]</span></p>
-<p>If we now consider a finite area <span class="math inline">\(S\)</span> of arbitrary shape, the attraction at the origin due to the enclosed mass will be <span class="math display">\[
+<p>is the solid angle subtended at the origin by the area <span class="math inline">\(\dd S\)</span>.</p>
+<p>If we now consider a finite area <span class="math inline">\(S\)</span> of arbitrary shape, the attraction at the origin due to the enclosed mass will be</p>
+<p><span class="math display">\[
 g = f \mathrm{d}z \int _{S} \rho \, \mathrm{d}\Omega
-\]</span> or, if <span class="math inline">\(\rho\)</span> is constant over <span class="math inline">\(S\)</span>, this simplifies to <span class="math display">\[
+\]</span></p>
+<p>or, if <span class="math inline">\(\rho\)</span> is constant over <span class="math inline">\(S\)</span>, this simplifies to</p>
+<p><span class="math display">\[
 g = f \rho \Omega \mathrm{d}z.
-\]</span> For a given solid angle <span class="math inline">\(\Omega\)</span>, the attraction of the matter enclosed between two horizontal planes at <span class="math inline">\(z=z_{1}\)</span> and <span class="math inline">\(z=z_{2}\)</span> will be obtained by integrating <span class="math display">\[
+\]</span></p>
+<p>For a given solid angle <span class="math inline">\(\Omega\)</span>, the attraction of the matter enclosed between two horizontal planes at <span class="math inline">\(z=z_{1}\)</span> and <span class="math inline">\(z=z_{2}\)</span> will be obtained by integrating</p>
+<p><span class="math display">\[
 g = f \Omega \int_{z_{1}}^{z_{2}} \rho \, \mathrm{d}z
-\]</span> and if <span class="math inline">\(\rho=\mathrm{const.}\)</span> this becomes <span class="math display">\[
+\]</span></p>
+<p>an, if <span class="math inline">\(\rho=\mathrm{const.}\)</span>, this becomes</p>
+<p><span class="math display">\[
 g = f \rho \Omega (z_{2} - z_{1})
-\]</span> For the infinite horizontal plane the solid angle is <span class="math inline">\(2 \pi\)</span>, such that the attraction of an infinite plate will be <span class="math display">\[
+\]</span></p>
+<p>For the infinite horizontal plane the solid angle is <span class="math inline">\(2 \pi\)</span>, such that the attraction of an infinite plate will be</p>
+<p><span class="math display">\[
 g = 2 \pi f \rho (z_{2} - z_{1})
-\]</span> which is the vertical attraction of the Bouguer plate of thickness <span class="math inline">\(z_{2} - z_{1}\)</span> and density <span class="math inline">\(\rho\)</span>.</p>
+\]</span></p>
+<p>which is the vertical attraction of the Bouguer plate of thickness <span class="math inline">\(z_{2} - z_{1}\)</span> and density <span class="math inline">\(\rho\)</span>.</p>
 </section>
 <section id="the-mathrmdthetamathrmdz-solenoid" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="the-mathrmdthetamathrmdz-solenoid"><span class="header-section-number">9.3</span> The <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> solenoid</h2>
-<p>First, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the <span class="math inline">\(x\)</span>-axis. Such a strip will be defined by the area on the plane <span class="math inline">\(z=\mathrm{const.}\)</span> lying between two inclined planes which intersect on the <span class="math inline">\(x\)</span>-axis and make with the <span class="math inline">\(y\)</span>-axis the angles of <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>.</p>
-<p><img src="images/hubbert_02.png" class="img-fluid"></p>
-<p>The attraction of this strip is proportional to the solid angle subtended by it at the origin. The solid angle <span class="math inline">\(\mathrm{d}\Omega\)</span> between two planes intersecting at an angle <span class="math inline">\(\mathrm{d}\Theta\)</span> will bear the same ratio to the total solid angle which the plane angle <span class="math inline">\(\mathrm{d}\Theta\)</span> bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or <span class="math inline">\(4 \pi\)</span>, and the total plane angle is <span class="math inline">\(2 \pi\)</span>. Thus <span class="math display">\[
+<p>First, we consider the attraction at the origin which will result from a narrow linear strip of infinite length parallel to the <span class="math inline">\(x\)</span>-axis. Such a strip will be defined by the area on the plane <span class="math inline">\(z=const\)</span> lying between two inclined planes which intersect on the <span class="math inline">\(x\)</span>-axis and make with the <span class="math inline">\(y\)</span>-axis the angles of <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>.</p>
+<div id="fig-solenoid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-solenoid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/solenoid.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-solenoid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: Illustration of the <span class="math inline">\(\dd \Theta \dd z\)</span>-solenoid.
+</figcaption>
+</figure>
+</div>
+<p>The attraction of this strip is proportional to the solid angle subtended at the origin. The solid angle <span class="math inline">\(\mathrm{d}\Omega\)</span> between two planes intersecting at an angle <span class="math inline">\(\mathrm{d}\Theta\)</span> will bear the same ratio to the total solid angle which the plane angle <span class="math inline">\(\mathrm{d}\Theta\)</span> bears to the total plane angle. The total solid angle is the ratio of the surface area of a sphere to the square of its radius, or <span class="math inline">\(4 \pi\)</span>, and the total plane angle is <span class="math inline">\(2 \pi\)</span>. Thus</p>
+<p><span class="math display">\[
 \frac{\mathrm{d}\Omega}{4 \pi} = \frac{\mathrm{d}\Theta}{2 \pi}
 \]</span> or <span class="math display">\[
 \mathrm{d}\Omega = 2 \mathrm{d}\Theta.
-\]</span> Introducing this to the result obtained above gives <span class="math display">\[
-\mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
-\]</span> which is the <em>fundamental differential equation of the attraction of a two-dimensional mass</em>. The intersection of the two planes <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span> with the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> defines an elementary prism or solenoid of infinite length and cross-section <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span>. For a finite area in the plane of integration <span class="math display">\[
-g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
-\]</span> Around an elementary prism <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> bounded by the lines <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>, and <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span>, consider the line integral <span class="math inline">\(\oint \Theta \mathrm{d}z\)</span>. Starting at the point <span class="math inline">\((\Theta, z)\)</span> and traversing the circuit in counter-clockwise direction, the resulting integral will be</p>
-<p><span class="math display">\[
-\oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d}\Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
 \]</span></p>
+<p>Introducing this to the result obtained above gives</p>
+<p><span class="math display">\[
+\mathrm{d}g = 2 f \rho \mathrm{d}\Theta \mathrm{d}z
+\]</span></p>
+<p>which is the <em>fundamental differential equation of the attraction of a two-dimensional mass</em>. The intersection of the two planes <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span> with the planes <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span> defines an elementary prism or solenoid of infinite length and cross-section <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span>. For a finite area in the plane of integration</p>
+<p><span class="math display">\[
+g = 2 f \iint \rho \mathrm{d}\Theta \mathrm{d}z
+\]</span></p>
+<p>Around an elementary prism <span class="math inline">\(\mathrm{d}\Theta\mathrm{d}z\)</span> bounded by the lines <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\Theta + \mathrm{d}\Theta\)</span>, and <span class="math inline">\(z\)</span> and <span class="math inline">\(z+\mathrm{d}z\)</span>, consider the line integral <span class="math inline">\(\oint \Theta \mathrm{d}z\)</span>. Starting at the point <span class="math inline">\((\Theta, z)\)</span> and traversing the circuit in counter-clockwise direction, the resulting integral will be</p>
+<p><span class="math display">\[
+\oint \Theta \mathrm{d}z = 0 + (\Theta + \mathrm{d} \Theta)\mathrm{d}z + 0 - \Theta \mathrm{d}z = \mathrm{d}\Theta \mathrm{d}z.
+\]</span></p>
+<p>Note that in this circuit <span class="math inline">\(\dd z\)</span> is zero along the <span class="math inline">\(z\)</span> and <span class="math inline">\(z + \dd z\)</span> sides.</p>
 <div id="fig-umlauf" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-umlauf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/umlauf.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-umlauf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.2: Sketch of the line integral about a <span class="math inline">\(\dd \theta \dd z\)</span>-solenoidal.
+Figure&nbsp;9.4: Sketch of the line integral about a <span class="math inline">\(\dd \Theta \dd z\)</span>-solenoidal.
 </figcaption>
 </figure>
 </div>
-<p>Over a finite area <span class="math inline">\(S\)</span> we may obtain <span class="math inline">\(\iint \mathrm{d}\Theta \mathrm{d}z\)</span> by <span class="math display">\[
-\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right].
-\]</span> When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently, <span class="math display">\[
-\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{s} \Theta \mathrm{d}z.
-\]</span> The attraction of a finite mass of constant density is obtained by <span class="math display">\[
-g = 2 f \rho \oint_{s} \Theta \mathrm{d}z.
-\]</span></p>
-<p>As an alternative, one could also consider the integral <span class="math inline">\(\oint z \mathrm d \theta\)</span>. Traversing the integral in the sense <span class="math inline">\(\theta, z + \mathrm d z, \theta + \mathrm d \theta, z\)</span> we obtain</p>
+<p>Alternatively one can evaluate the integral</p>
 <p><span class="math display">\[
-\oint z \mathrm{d}\Theta  = 0 + (z + \mathrm{d}z)\mathrm{d}\Theta + 0 - z \mathrm{d}\Theta = \mathrm{d}\Theta \mathrm{d}z.
-\]</span> and <span class="math display">\[
-g = 2 f \rho \oint_{s} z \mathrm{d}\Theta.
+\oint z \, \dd \Theta = 0 + (z + \dd z) \dd \Theta + 0 - z \dd \Theta = \dd z \dd \Theta
 \]</span></p>
+<p>Over a finite area <span class="math inline">\(S\)</span> we may evaluate the integral by</p>
+<p><span class="math display">\[
+\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \iint_{S} \left[\oint \Theta \mathrm{d}z \right] =
+\iint_{S} \left[\oint z \, \dd \Theta \right].
+\]</span></p>
+<p>When a separate line integral is taken around each of the elementary prisms of the area, each interior part is traversed twice, whereas the exterior parts are traversed but once and always in the same sense. Consequently,</p>
+<p><span class="math display">\[
+\iint_{S} \mathrm{d}\Theta \mathrm{d}z = \oint_{\partial S} \Theta \mathrm{d}z = \oint_{\partial S} z \, \dd \Theta.
+\]</span></p>
+<p>The attraction of a finite mass of constant density is obtained by</p>
+<p><span class="math display">\[
+g = 2 f \rho \oint_{\partial S} \Theta \mathrm{d}z = 2 f \rho \oint_{\partial S} z \, \dd \Theta.
+\]</span></p>
+<div id="fig-SdS" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SdS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/SdS.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SdS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: Conversion of the surface integral into a line integral.
+</figcaption>
+</figure>
+</div>
 <hr>
 
 
@@ -694,8 +753,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -806,7 +863,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
