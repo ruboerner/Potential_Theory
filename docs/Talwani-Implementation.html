@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.33">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3fbf620316015237a6991a5ebc2a9eb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -336,7 +336,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sort-the-vertices" id="toc-sort-the-vertices" class="nav-link active" data-scroll-target="#sort-the-vertices"><span class="header-section-number">11.1</span> Sort the vertices</a></li>
+  <li><a href="#numerical-experiment" id="toc-numerical-experiment" class="nav-link active" data-scroll-target="#numerical-experiment"><span class="header-section-number">11.1</span> Numerical experiment</a></li>
   </ul>
 </nav>
     </div>
@@ -362,7 +362,12 @@ window.Quarto = {
 </header>
 
 
-<div id="dc2bcc84" class="cell" data-execution_count="2">
+<p>We define a <code>Python</code> class <code>Polygon</code> which takes as argument a list of coordinates and a parameter. The purpose of this class is twofold:</p>
+<ul>
+<li>it stores all vertices an a convenient manner</li>
+<li>it sorts the vertices in CCW order.</li>
+</ul>
+<div id="c6eebae1" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Polygon:</span>
@@ -386,7 +391,9 @@ window.Quarto = {
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"n: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>n<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">x:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>x<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">z:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>z<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Density:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>density<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="3eb4f591" class="cell" data-execution_count="3">
+<p>To compare the numerical results, we provide here a simple function which computes the gravitational attraction of a horizontal cylinder of mass m that intersects the vertical plane at the coordinate given by the 2-D array <code>axis</code>. The point of observation is given by the coordinates in the 2-D array <code>obs</code>:</p>
+<p><code>g = cylinder(obs, mass, axis)</code></p>
+<div id="8c8622e4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cylinder(obs, mass, axis):</span>
@@ -394,7 +401,8 @@ window.Quarto = {
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="93c8f0b8" class="cell" data-execution_count="4">
+<p>The following code implements the Talwani approach:</p>
+<div id="6b6ef5f8" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> talwani(obs, polygon):</span>
@@ -452,25 +460,26 @@ window.Quarto = {
 <p><span class="math display">\[
 Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
 \]</span></p>
+<section id="numerical-experiment" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="numerical-experiment"><span class="header-section-number">11.1</span> Numerical experiment</h2>
 <p>We define a cylinder of radius <span class="math inline">\(r=1\)</span> that will be approximated in the <span class="math inline">\(x-z\)</span>-plane by a sufficiently large number of line segments around its enclosing circle.</p>
-<div id="894f79ed" class="cell" data-execution_count="5">
+<div id="359bcfaa" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">51</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">101</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>xc <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>zc <span class="op">=</span> <span class="fl">10.0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>zc <span class="op">=</span> <span class="fl">20.0</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([xc <span class="op">+</span> radius <span class="op">*</span> np.cos(<span class="fl">0.01</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> k <span class="op">/</span> n) <span class="cf">for</span> k <span class="kw">in</span> np.linspace(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>, n)])</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.array([zc <span class="op">+</span> radius <span class="op">*</span> np.sin(<span class="fl">0.01</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> k <span class="op">/</span> n) <span class="cf">for</span> k <span class="kw">in</span> np.linspace(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>, n)])</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(x)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> Polygon(x, z, <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4a387cfb" class="cell" data-execution_count="6">
+<div id="c0f886c7" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, z, marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(poly.x, poly.z, marker<span class="op">=</span><span class="st">'.'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
@@ -481,85 +490,49 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </div>
 </div>
 </div>
-<section id="sort-the-vertices" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="sort-the-vertices"><span class="header-section-number">11.1</span> Sort the vertices</h2>
-<p>First, we have to sort the vertices in the case that they are given in an arbitrary order.</p>
-<p>To this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.</p>
-<div id="eb567f83" class="cell" data-execution_count="7">
+<p>We define a profile perpendicular to the strike of the cylinder.</p>
+<p>The arrays <code>gtal</code> and <code>gcyl</code> store the values obtained by the Talwani method and the analytical solution for the cylinder, respectively.</p>
+<div id="8c4456d7" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> Polygon(x, z, <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">40</span>, stop<span class="op">=</span><span class="dv">40</span>, num<span class="op">=</span><span class="dv">81</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>npts <span class="op">=</span> profile.size</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gtal <span class="op">=</span> np.zeros(npts)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gcyl <span class="op">=</span> np.zeros(npts)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> poly.density <span class="op">*</span> np.pi <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(npts):</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    gtal[k] <span class="op">=</span> talwani(np.array([profile[k], <span class="dv">0</span>]), poly)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    gcyl[k] <span class="op">=</span> cylinder(np.array([profile[k], <span class="dv">0</span>]), mass, np.array([xc, zc]))[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="b99691b4" class="cell" data-execution_count="8">
+<p>The following plots illustrate the accuracy of the Talwani approach.</p>
+<div id="fe24701f" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.plot(poly.x, poly.z, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gtal, marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gcyl, marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax2.plot(profile, gcyl <span class="op">-</span> gtal, marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'anomaly'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'difference'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Talwani-Implementation_files/figure-html/cell-9-output-1.png" width="436" height="411" class="figure-img"></p>
+<p><img src="Talwani-Implementation_files/figure-html/cell-9-output-1.png" width="571" height="431" class="figure-img"></p>
+<figcaption>Comparison of analytical and numerical solutions (left) and absolute difference (right).</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div id="d63b0d00" class="cell" data-execution_count="9">
+<p>The relative error is</p>
+<div id="4c82453a" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cylinder(np.array([<span class="op">-</span><span class="fl">10.</span>, <span class="fl">0.</span>]), poly.density <span class="op">*</span> np.pi <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span>, np.array([<span class="fl">0.</span>, <span class="fl">10.</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(norm(gtal <span class="op">-</span> gcyl) <span class="op">/</span> norm(gcyl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>array([1.04834947e-08, 1.04834947e-08])</code></pre>
-</div>
-</div>
-<div id="fc1b6966" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>talwani([<span class="op">-</span><span class="dv">50</span>, <span class="dv">0</span>], poly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>np.float64(8.043842124381056e-10)</code></pre>
-</div>
-</div>
-<div id="95024c9f" class="cell" data-execution_count="11">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">40</span>, stop<span class="op">=</span><span class="dv">40</span>, num<span class="op">=</span><span class="dv">81</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>npts <span class="op">=</span> profile.size</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>gtal <span class="op">=</span> np.zeros(npts)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>gcyl <span class="op">=</span> np.zeros(npts)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> poly.density <span class="op">*</span> np.pi <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(npts):</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    gtal[k] <span class="op">=</span> talwani(np.array([profile[k], <span class="dv">0</span>]), poly)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    gcyl[k] <span class="op">=</span> cylinder(np.array([profile[k], <span class="dv">0</span>]), mass, np.array([xc, zc]))[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="72d3e589" class="cell" data-execution_count="12">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gtal, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gcyl, marker<span class="op">=</span><span class="st">'.'</span>)<span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ax2.plot(profile, gcyl <span class="op">-</span> gtal, marker<span class="op">=</span><span class="st">'.'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Talwani-Implementation_files/figure-html/cell-13-output-1.png" width="579" height="425" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="46b6b50a" class="cell" data-execution_count="13">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>norm(gtal <span class="op">-</span> gcyl) <span class="op">/</span> norm(gcyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>np.float64(0.002516090288497209)</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0018837709519435105</code></pre>
 </div>
 </div>
 
@@ -649,8 +622,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -761,7 +732,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

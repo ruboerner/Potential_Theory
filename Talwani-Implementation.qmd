@@ -3,7 +3,6 @@ title: Implementation of the TALWANI approach
 jupyter: python3
 ---
 
-
 ```{python}
 #| echo: false
 import matplotlib.pyplot as plt
@@ -12,8 +11,13 @@ from numpy import isclose
 from numpy.linalg import norm
 ```
 
+We define a `Python` class `Polygon` which takes as argument a list of coordinates and a parameter.
+The purpose of this class is twofold:
+
+- it stores all vertices an a convenient manner
+- it sorts the vertices in CCW order.
+
 ```{python}
-#| code-fold: true
 class Polygon:
     def __init__(self, x, z, density):
         xc = np.mean(x)
@@ -35,15 +39,18 @@ class Polygon:
         return f"n: {self.n} \nx:\n {self.x} \nz:\n {self.z} \nDensity:\n {self.density}"
 ```
 
+To compare the numerical results, we provide here a simple function which computes the gravitational attraction of a horizontal cylinder of mass m that intersects the vertical plane at the coordinate given by the 2-D array `axis`. The point of observation is given by the coordinates in the 2-D array `obs`:
+
+`g = cylinder(obs, mass, axis)`
+
 ```{python}
-#| code-fold: true
 def cylinder(obs, mass, axis):
     g = -2 * 6.674e-11 * mass / np.linalg.norm(obs - axis)**2 * (obs - axis)
     return g
 ```
+The following code implements the Talwani approach:
 
 ```{python}
-#| code-fold: true
 def talwani(obs, polygon):
     gz = 0.0
     density = polygon.density
@@ -100,35 +107,18 @@ $$
 Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
 $$
 
+## Numerical experiment
 
 We define a cylinder of radius $r=1$ that will be approximated in the $x-z$-plane by a sufficiently large number of line segments around its enclosing circle. 
 
 ```{python}
 #| code-fold: true
-n = 51
+n = 101
 xc = 0.0
-zc = 10.0
+zc = 20.0
 radius = 1.0
 x = np.array([xc + radius * np.cos(0.01 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])
 z = np.array([zc + radius * np.sin(0.01 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])
-
-# print(x)
-```
-
-```{python}
-#| code-fold: true
-fig, ax = plt.subplots()
-plt.plot(x, z, marker='.')
-ax.set_aspect('equal', 'box');
-```
-
-## Sort the vertices
-First, we have to sort the vertices in the case that they are given in an arbitrary order.
-
-To this end, we compute the polar angles taken from the center of the polygon to each of the vertices and sort in descending order.
-
-```{python}
-#| code-fold: true
 poly = Polygon(x, z, 500)
 ```
 
@@ -140,15 +130,9 @@ plt.plot(poly.x, poly.z, marker='.')
 ax.set_aspect('equal', 'box');
 ```
 
-```{python}
-#| code-fold: true
-cylinder(np.array([-10., 0.]), poly.density * np.pi * radius**2, np.array([0., 10.]))
-```
+We define a profile perpendicular to the strike of the cylinder.
 
-```{python}
-#| code-fold: true
-talwani([-50, 0], poly)
-```
+The arrays `gtal` and `gcyl` store the values obtained by the Talwani method and the analytical solution for the cylinder, respectively.
 
 ```{python}
 #| code-fold: true
@@ -161,18 +145,20 @@ for k in range(npts):
     gtal[k] = talwani(np.array([profile[k], 0]), poly)
     gcyl[k] = cylinder(np.array([profile[k], 0]), mass, np.array([xc, zc]))[1]
 ```
-
+The following plots illustrate the accuracy of the Talwani approach.
 ```{python}
 #| code-fold: true
+#| fig-cap: Comparison of analytical and numerical solutions (left) and absolute difference (right).
 fig, (ax1, ax2) = plt.subplots(1, 2)
 ax1.plot(profile, gtal, marker='.')
-ax1.plot(profile, gcyl, marker='.');
-ax2.plot(profile, gcyl - gtal, marker='.');
+ax1.plot(profile, gcyl, marker='.')
+ax2.plot(profile, gcyl - gtal, marker='.')
+ax1.set_title('anomaly')
+ax2.set_title('difference');
 ```
-
+The relative error is
 ```{python}
-#| code-fold: true
-norm(gtal - gcyl) / norm(gcyl)
+print(norm(gtal - gcyl) / norm(gcyl))
 ```
 
 
