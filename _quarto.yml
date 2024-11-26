@@ -30,6 +30,7 @@ book:
         - line_of_mass.qmd
         - talwani.qmd
         - Talwani-Implementation.qmd
+        - complex.qmd
     - part: "Three-dimensional problems"
     - part: "Dipole potential"
     - part: "Spherical harmonics"

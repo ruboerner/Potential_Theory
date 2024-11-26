@@ -397,6 +397,72 @@
     ]
   },
   {
+    "objectID": "complex.html",
+    "href": "complex.html",
+    "title": "12  Introduction to Complex Analysis",
+    "section": "",
+    "text": "12.1 2-D Problems in Potential Theory Solved Using Complex Analysis\n2-D problems in potential theory can be elegantly solved using complex analysis, the theory of differentiable complex-valued functions of complex variables.\nThe following tools from mathematics are used:",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Complex Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "complex.html#d-problems-in-potential-theory-solved-using-complex-analysis",
+    "href": "complex.html#d-problems-in-potential-theory-solved-using-complex-analysis",
+    "title": "12  Introduction to Complex Analysis",
+    "section": "",
+    "text": "Cauchy’s Integral Theorem\nCauchy’s Integral Formula\nCauchy-Riemann Differential Equations\nResidue Theorem of Complex Analysis",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Complex Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "complex.html#space-of-complex-numbers-mathbbc",
+    "href": "complex.html#space-of-complex-numbers-mathbbc",
+    "title": "12  Introduction to Complex Analysis",
+    "section": "12.2 Space of Complex Numbers \\(\\mathbb{C}\\)",
+    "text": "12.2 Space of Complex Numbers \\(\\mathbb{C}\\)\n\\(\\mathbb{C}\\) is a two-dimensional real vector space with the canonical basis \\((1, i)\\). A point \\(z \\in \\mathbb{C}\\) has real Cartesian coordinates \\(x := \\mathrm{Re}(z)\\), \\(y := \\mathrm{Im}(z) \\in \\mathbb{R}\\), briefly expressed as \\(z = x + i y\\).\nA complex-valued function \\(f: U \\subset \\mathbb{C} \\to \\mathbb{C}\\) on an open subset of \\(\\mathbb{C}\\) can therefore be expressed by decomposing it into its real and imaginary parts \\(f(x + i y) = u(x, y) + i v(x, y)\\), viewed as an \\(\\mathbb{R}^2\\)-valued function of two real variables \\((x, y) \\in \\tilde{U} := \\{(a, b) \\in \\mathbb{R}^2 \\ | \\ a + i b \\in U\\}\\).",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Complex Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "complex.html#cauchys-integral-theorem",
+    "href": "complex.html#cauchys-integral-theorem",
+    "title": "12  Introduction to Complex Analysis",
+    "section": "12.3 Cauchy’s Integral Theorem",
+    "text": "12.3 Cauchy’s Integral Theorem\nIn real analysis, the value of an integral depends on the integration bounds. For complex functions, the path also matters.\nLet \\(U \\subset \\mathbb{C}\\) be a simply connected (no holes) open domain (elementary domain), and \\(f: U \\mapsto \\mathbb{C}\\) a [[Holomorphy|holomorphic]] function. Furthermore, let \\(\\gamma : [a, b] \\to U\\) be a smooth, closed curve. Then: \\[\n\\oint_{\\gamma} f(z) \\, \\mathrm{d}z = 0.\n\\] Proof: With \\(f = u + i v\\) and \\(\\mathrm{d}z = \\mathrm{d}x + i \\mathrm{d}y\\), it follows: \\[\n\\oint_{\\gamma} f(z) \\, \\mathrm{d}z =\n\\oint_{\\gamma} (u + i v) (\\mathrm{d}x + i \\mathrm{d}y) =\n\\oint_{\\gamma} (u \\mathrm{d}x - v \\mathrm{d}y) +\ni \\oint_{\\gamma} (v \\mathrm{d}x + u \\mathrm{d}y).\n\\] Using Green’s Theorem: \\[\n\\iint_D \\left(\\frac{\\partial g}{\\partial x}(x,y) - \\frac{\\partial f}{\\partial y}(x,y)\\right)\\, \\mathrm{d}x \\, \\mathrm{d}y  = \\oint_{C} \\left(f(x,y)\\, \\mathrm{d}x + g(x,y)\\, \\mathrm{d}y\\right),\n\\] the line integrals are replaced by surface integrals over the region \\(D\\) enclosed by the curve \\(\\gamma\\): \\[\n\\begin{align}\n\\oint_\\gamma (u \\, \\mathrm{d}x - v \\, \\mathrm{d}y) & = \\iint_D \\left( -\\frac{\\partial v}{\\partial x} -\\frac{\\partial u}{\\partial y} \\right) \\, \\mathrm{d}x\\,\\mathrm{d}y, \\\\\n\\oint_\\gamma (v \\, \\mathrm{d}x + u \\, \\mathrm{d}y) & = \\iint_D \\left(  \\frac{\\partial u}{\\partial x} - \\frac{\\partial v}{\\partial y} \\right) \\, \\mathrm{d}x\\,\\mathrm{d}y.\n\\end{align}\n\\] For the real and imaginary parts \\(u\\) and \\(v\\) of holomorphic functions in the domain \\(D\\), the Cauchy-Riemann differential equations hold: \\[\n\\begin{align}\nu_x & = +v_y, \\\\\nu_y & = -v_x.\n\\end{align}\n\\] Thus, both integrands—and consequently the integral—are zero: \\[\n\\iint_D \\left( -\\frac{\\partial v}{\\partial x} -\\frac{\\partial u}{\\partial y} \\right) \\, \\mathrm{d}x\\,\\mathrm{d}y = \\iint_D \\left( \\frac{\\partial u}{\\partial y} -\\frac{\\partial u}{\\partial y} \\right) \\, \\mathrm{d}x\\,\\mathrm{d}y = 0,\n\\] and \\[\n\\iint_D \\left( \\frac{\\partial u}{\\partial x} -\\frac{\\partial v}{\\partial y} \\right) \\, \\mathrm{d}x\\,\\mathrm{d}y =\n\\iint_D \\left( \\frac{\\partial u}{\\partial x} -\\frac{\\partial u}{\\partial x} \\right) \\, \\mathrm{d}x\\,\\mathrm{d}y = 0.\n\\] Hence: \\[\n\\oint_{\\gamma} f(z) \\, \\mathrm{d}z = 0 \\qquad \\square\n\\]",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Complex Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "complex.html#cauchys-integral-formula-cif",
+    "href": "complex.html#cauchys-integral-formula-cif",
+    "title": "12  Introduction to Complex Analysis",
+    "section": "12.4 Cauchy’s Integral Formula (CIF)",
+    "text": "12.4 Cauchy’s Integral Formula (CIF)\nLet \\(U\\) be an open subset of the complex plane \\(\\mathbb{C}\\). Consider the closed disk \\(D\\) fully contained within \\(U\\), defined as: \\[\nD = \\{ z : |z - z_{0}| \\le r \\}.\n\\] Let \\(f: U \\mapsto \\mathbb{C}\\) be a holomorphic function, and \\(\\gamma\\) a counterclockwise-oriented circle along the boundary of \\(D\\). Then, for any point \\(a\\) inside \\(D\\): \\[\nf(a) = \\frac{1}{2 \\pi i} \\oint_{\\gamma} \\frac{f(z)}{z - a} \\, \\mathrm{d}z.\n\\] The CIF states that the values of a holomorphic function \\(f\\) inside a disk are fully determined by its values on the boundary of that disk.",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Complex Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "complex.html#residue-theorem",
+    "href": "complex.html#residue-theorem",
+    "title": "12  Introduction to Complex Analysis",
+    "section": "12.5 Residue Theorem",
+    "text": "12.5 Residue Theorem\nIf \\(f(z)\\) is holomorphic in the neighborhood of a point \\(z_{0}\\), then: \\[\n\\oint_{C} f(z) \\, \\mathrm{d}z = 0.\n\\] However, if \\(f(z)\\) has an isolated singularity at \\(z_{0}\\), the integral is generally nonzero and satisfies: \\[\n\\frac{1}{2 \\pi i} \\oint_{C} f(z) \\, \\mathrm{d}z = \\mathrm{Res} f(z).\n\\] For a simple pole: \\[\n\\mathrm{Res} f(z) = \\lim_{ z \\to z_{0} } (z - z_{0}) f(z).\n\\] Instead of computing contour integrals, one only needs to calculate residues, which is often simpler.",
+    "crumbs": [
+      "Two-dimensional problems",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Introduction to Complex Analysis</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
     "title": "Summary",
