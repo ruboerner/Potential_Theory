@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Legendre Polynomials – Theory of Potential Field Methods in Geophysics</title>
+<title>13&nbsp; Hilbert Transform – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./hilbert.html" rel="prev">
+<link href="./legendre.html" rel="next">
+<link href="./complex.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,6 +79,35 @@ window.MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -92,7 +121,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./hilbert.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -228,7 +257,7 @@ window.MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hilbert.html" class="sidebar-item-text sidebar-link">
+  <a href="./hilbert.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
   </div>
 </li>
@@ -253,7 +282,7 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./legendre.html" class="sidebar-item-text sidebar-link active">
+  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
   </div>
 </li>
@@ -280,15 +309,30 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#representation-of-the-potential-gradient-in-the-complex-plane" id="toc-representation-of-the-potential-gradient-in-the-complex-plane" class="nav-link active" data-scroll-target="#representation-of-the-potential-gradient-in-the-complex-plane"><span class="header-section-number">13.1</span> Representation of the Potential Gradient in the Complex Plane</a></li>
+  <li><a href="#application-to-gravitational-potential" id="toc-application-to-gravitational-potential" class="nav-link" data-scroll-target="#application-to-gravitational-potential"><span class="header-section-number">13.2</span> Application to Gravitational Potential</a>
+  <ul class="collapse">
+  <li><a href="#gravitational-acceleration-in-mathbbr" id="toc-gravitational-acceleration-in-mathbbr" class="nav-link" data-scroll-target="#gravitational-acceleration-in-mathbbr"><span class="header-section-number">13.2.1</span> Gravitational Acceleration in <span class="math inline">\(\mathbb{R}\)</span></a></li>
+  <li><a href="#gravitational-acceleration-in-mathbbc" id="toc-gravitational-acceleration-in-mathbbc" class="nav-link" data-scroll-target="#gravitational-acceleration-in-mathbbc"><span class="header-section-number">13.2.2</span> Gravitational Acceleration in <span class="math inline">\(\mathbb{C}\)</span></a></li>
+  <li><a href="#computation-of-g-in-a-source-free-region" id="toc-computation-of-g-in-a-source-free-region" class="nav-link" data-scroll-target="#computation-of-g-in-a-source-free-region"><span class="header-section-number">13.2.3</span> Computation of <span class="math inline">\(G\)</span> in a Source-Free Region</a></li>
+  <li><a href="#how-to-choose-the-integration-path" id="toc-how-to-choose-the-integration-path" class="nav-link" data-scroll-target="#how-to-choose-the-integration-path"><span class="header-section-number">13.2.4</span> How to Choose the Integration Path?</a></li>
+  <li><a href="#derivation-of-the-hilbert-transform" id="toc-derivation-of-the-hilbert-transform" class="nav-link" data-scroll-target="#derivation-of-the-hilbert-transform"><span class="header-section-number">13.2.5</span> Derivation of the Hilbert Transform</a></li>
+  <li><a href="#what-is-the-fourier-spectrum-of--frac1pi-y" id="toc-what-is-the-fourier-spectrum-of--frac1pi-y" class="nav-link" data-scroll-target="#what-is-the-fourier-spectrum-of--frac1pi-y"><span class="header-section-number">13.2.6</span> What is the Fourier Spectrum of <span class="math inline">\(-\frac{1}{\pi y}\)</span>?</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./hilbert.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></h1>
 </div>
 
 
@@ -305,8 +349,175 @@ window.MathJax = {
 </header>
 
 
+<section id="representation-of-the-potential-gradient-in-the-complex-plane" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="representation-of-the-potential-gradient-in-the-complex-plane"><span class="header-section-number">13.1</span> Representation of the Potential Gradient in the Complex Plane</h2>
+<p>[[Introduction to Complex Analysis]]</p>
+<p>Let <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> denote the real and imaginary parts of a complex-valued function of the complex variable <span class="math inline">\(z = x + i y\)</span>, with <span class="math inline">\(f(x + iy) = u(x,y) + iv(x,y)\)</span>. The functions <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are real-valued and differentiable at every point in an open subset <span class="math inline">\(\Omega \subset \mathbb{C}\)</span>. These functions map from <span class="math inline">\(\mathbb{R}^2\)</span> to <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>A function <span class="math inline">\(f: \mathbb{C} \to \mathbb{C}\)</span>, <span class="math inline">\(f(z) = u + iv\)</span>, defined in a domain <span class="math inline">\(\Omega\)</span>, is called <em>holomorphic</em> if the real-valued functions <span class="math inline">\(u(x,y)\)</span> and <span class="math inline">\(v(x,y)\)</span> are continuously differentiable in <span class="math inline">\(\Omega\)</span>, and their partial derivatives satisfy the relations <span class="math display">\[
+\begin{align}
+u_x &amp; = +v_y, \\
+u_y &amp; = -v_x,
+\end{align}
+\]</span> at every point in <span class="math inline">\(\Omega\)</span>. These are the <em>Cauchy-Riemann differential equations</em> (CRD).</p>
+<p>Consider a function <span class="math inline">\(f: \mathbb{C} \mapsto \mathbb{C}\)</span>. We want to demonstrate that this function is complex differentiable and holomorphic.</p>
+<p>Definition of the derivative:</p>
+<p><span class="math display">\[
+f'(z) = \lim_{ h \to 0 } \frac{f(z + h) - f(z)}{h}
+\]</span> What does this limit mean by thinking of the real and imaginary parts separately? Let’s replace <span class="math inline">\(z\)</span> with <span class="math inline">\(x+iy\)</span>: <span class="math display">\[
+f'(x +iy) = \lim_{ h \to 0 } \frac{f(x + iy + h) - f(x + iy)}{h}
+\]</span> Now <span class="math inline">\(h\)</span> is also a complex number. Replace <span class="math inline">\(h\)</span> by <span class="math inline">\(a + ib\)</span> and take the limit as <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> together approach <span class="math inline">\(0\)</span>:</p>
+<p><span class="math display">\[
+f'(x +iy) = \lim_{ (a,b) \to (0,0) } \frac{f(x + iy + a + ib) - f(x + iy)}{a + ib}
+\]</span> Now introduce a new function <span class="math inline">\(F: \mathbb{R}^{2} \mapsto \mathbb{C}\)</span> that <span class="math inline">\(F(x,y) = f(x + iy)\)</span>. <span class="math inline">\(F\)</span> is a function of two real variables, <span class="math inline">\(f\)</span> is a function of a single complex variable.</p>
+<p><span class="math display">\[
+f'(x +iy) = \lim_{ (a,b) \to (0,0) } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+\]</span> If that limit exists, then it is equal to the same limit when we just restrict to moving aong the real axis, i.e., when we approach <span class="math inline">\((0,0)\)</span> just along the real axis. We set <span class="math inline">\(b=0\)</span> and write <span class="math display">\[
+f'(x +iy) = \lim_{ a \to 0, b=0 } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+\]</span> This is a restricted situation, but if the limit exists for <span class="math inline">\((a,b) \to (0,0)\)</span> then this limit must also exist and approach to the same quantity. <span class="math display">\[
+f'(x +iy) = \lim_{ a \to 0 } \frac{F(x + a, y) - F(x, y)}{a} = \frac{\partial F}{\partial x}(x,y)
+\]</span> Now we repeat the same story and instead of restricting to the real axis we restrict to the imaginary axis. <span class="math display">\[
+f'(x +iy) = \lim_{ a =\to= 0, b \to 0 } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+\]</span> <span class="math display">\[
+f'(x +iy) = \lim_{ b \to 0 } \frac{F(x, y + b) - F(x, y)}{ib} = \frac{1}{i}\frac{\partial F}{\partial y}(x,y)
+\]</span> If these limits are the same, then <span class="math display">\[
+\frac{\partial F}{\partial x}(x,y) = \frac{1}{i} \frac{\partial F}{\partial y}(x,y)
+\]</span> Now introduce two new functions: <span class="math inline">\(u: \mathbb{R}^{2} \to \mathbb{R}\)</span> and <span class="math inline">\(v: \mathbb{R}^{2} \to \mathbb{R}\)</span>, such that <span class="math display">\[
+F(x,y) = u(x,y) + i v(x,y)
+\]</span> Now expand out the partial derivative <span class="math display">\[
+\frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{1}{i} \frac{\partial F}{\partial y}(x,y) = \frac{1}{i}\left( \frac{\partial u}{\partial y} + i \frac{\partial v}{\partial y} \right) = \left( \frac{1}{i}\frac{\partial u}{\partial y} + \frac{\partial v}{\partial y} \right)
+\]</span> and equate the real and imaginary parts <span class="math display">\[
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \qquad \frac{1}{i} \frac{\partial u}{\partial y} = i \frac{\partial v}{\partial x}
+\]</span> which become the <em>Cauchy-Riemann equations</em> <span class="math display">\[
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \qquad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x}
+\]</span> A function is called <em>holomorphic</em> when these equation are satisfied. The stronger condition however is that <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are real differentiable functions <em>and</em> they satisfy the CRE.</p>
+</section>
+<section id="application-to-gravitational-potential" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="application-to-gravitational-potential"><span class="header-section-number">13.2</span> Application to Gravitational Potential</h2>
+<p>Let <span class="math inline">\(V_y(y,z) := \partial_y V(y,z)\)</span>, and <span class="math inline">\(V_{yy} := \partial^2_{yy}V(y,z)\)</span>, etc., denote the partial derivatives of the gravitational potential in the respective coordinate directions.</p>
+<p>Due to the properties <span class="math display">\[\nabla \times \mathbf{g} = \mathbf{0},\]</span> and <span class="math display">\[\Delta V = 0,\]</span> the <em>Cauchy-Riemann</em> differential equations <span class="math display">\[
+V_{yz} - V_{zy} = 0 \qquad \text{and} \qquad V_{yy} + V_{zz} = 0
+\]</span> hold.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Correspondence between CR and gravity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correspondence between CR and gravity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>CR equations</th>
+<th>Gravity components</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x+iy\)</span></td>
+<td><span class="math inline">\(z+iy\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u+iv\)</span></td>
+<td><span class="math inline">\(V_y + i V_z\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(u_x\)</span></td>
+<td><span class="math inline">\(V_{yz}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u_y\)</span></td>
+<td><span class="math inline">\(V_{yy}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(v_x\)</span></td>
+<td><span class="math inline">\(V_{zz}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(v_y\)</span></td>
+<td><span class="math inline">\(V_{zy}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(u_x = v_y\)</span></td>
+<td><span class="math inline">\(V_{yz} = V_{zy}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u_y = -v_x\)</span></td>
+<td><span class="math inline">\(V_{yy} = -V_{zz}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We may therefore assume that <span class="math inline">\(V_y\)</span> and <span class="math inline">\(V_z\)</span> are the real and imaginary parts of a complex function <span class="math inline">\(G(s)\)</span>.</p>
+<p>We say that <span class="math inline">\(G(s)\)</span> is <em>regular</em> or <em>holomorphic</em>.</p>
+<p>The functions <span class="math inline">\(V_y\)</span> and <span class="math inline">\(V_z\)</span> depend on <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span>, i.e., <span class="math inline">\(V_y = V_y(y, z)\)</span> and <span class="math inline">\(V_z = V_z(y, z)\)</span>.</p>
+<p>In the complex plane, the real coordinates <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> are combined into a complex coordinate <span class="math inline">\(s = z + iy\)</span>.</p>
+<p>Thus, we obtain the regular function <span class="math inline">\(G : \mathbb{C} \to \mathbb{C}\)</span> <span class="math display">\[
+G(s) = V_y(s) + i V_z(s).
+\]</span></p>
+<section id="gravitational-acceleration-in-mathbbr" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="gravitational-acceleration-in-mathbbr"><span class="header-section-number">13.2.1</span> Gravitational Acceleration in <span class="math inline">\(\mathbb{R}\)</span></h3>
+<p>With <span class="math inline">\(r^2 = (y - y')^2 + (z - z')^2\)</span>, the components of the gravitational acceleration are given by <span class="math display">\[
+V_y(y, z) = - 2 f \rho \iint_A \frac{y - y'}{r^2} \, dy' \, dz'
+\]</span> and <span class="math display">\[
+V_z(y, z) = - 2 f \rho \iint_A \frac{z - z'}{r^2} \, dy' \, dz'.
+\]</span></p>
+</section>
+<section id="gravitational-acceleration-in-mathbbc" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="gravitational-acceleration-in-mathbbc"><span class="header-section-number">13.2.2</span> Gravitational Acceleration in <span class="math inline">\(\mathbb{C}\)</span></h3>
+<p>The gravitational acceleration in the complex plane can be expressed as <span class="math display">\[
+G(s) = -2 f \rho i \iint_A \frac{1}{s - s'} \, dy' \, dz'.
+\]</span></p>
+</section>
+<section id="computation-of-g-in-a-source-free-region" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="computation-of-g-in-a-source-free-region"><span class="header-section-number">13.2.3</span> Computation of <span class="math inline">\(G\)</span> in a Source-Free Region</h3>
+<p>Using the <em>Cauchy Integral Formula</em>, we find: Let <span class="math inline">\(G : \Omega \to \mathbb{C}\)</span> be regular in a domain <span class="math inline">\(\Omega\)</span>, and let <span class="math inline">\(C : [a, b] \to \Omega \setminus \{z_0\}\)</span> be a closed, positively oriented, piecewise <span class="math inline">\(C^1\)</span>-continuous curve enclosing <span class="math inline">\(z_0 \in \Omega\)</span>. Then, <span class="math display">\[
+G(z_0) = \frac{1}{2 \pi i} \oint_C \frac{G(z)}{z - z_0} \, \mathrm{d}z.
+\]</span> The values on the boundary completely determine those inside <span class="math inline">\(C\)</span>.</p>
+</section>
+<section id="how-to-choose-the-integration-path" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="how-to-choose-the-integration-path"><span class="header-section-number">13.2.4</span> How to Choose the Integration Path?</h3>
+<p>By the <em>Cauchy Integral Theorem</em>, the integration path can be chosen arbitrarily. Since <span class="math inline">\(G(s) \to 0\)</span> as <span class="math inline">\(y^2 + z^2 \to \infty\)</span>, <span class="math inline">\(z &lt; 0\)</span>, the integration path is chosen to fully encompass the <span class="math inline">\(y\)</span>-axis, returning along an arc in the upper half-plane, extending to infinity.</p>
+<div id="fig-contour" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-contour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/contour_integral.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-contour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: Choice of the integration path
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="derivation-of-the-hilbert-transform" class="level3" data-number="13.2.5">
+<h3 data-number="13.2.5" class="anchored" data-anchor-id="derivation-of-the-hilbert-transform"><span class="header-section-number">13.2.5</span> Derivation of the Hilbert Transform</h3>
+<p>We obtain the <em>Hilbert Transform Pair</em> <span class="math display">\[
+V_y(y) = +\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_z(y')}{y' - y} \, dy'
+\]</span> and <span class="math display">\[
+V_z(y) = -\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_y(y')}{y' - y} \, dy'.
+\]</span></p>
+<p>Recognizing these as convolution integrals: <span class="math display">\[
+V_y(y) = -\frac{1}{\pi y} \ast V_z(y) = +\mathcal{H}\{V_z(y)\},
+\]</span> and <span class="math display">\[
+V_z(y) = +\frac{1}{\pi y} \ast V_y(y) = -\mathcal{H}\{V_y(y)\}.
+\]</span></p>
+<p>In the frequency domain, convolution becomes multiplication.</p>
+</section>
+<section id="what-is-the-fourier-spectrum-of--frac1pi-y" class="level3" data-number="13.2.6">
+<h3 data-number="13.2.6" class="anchored" data-anchor-id="what-is-the-fourier-spectrum-of--frac1pi-y"><span class="header-section-number">13.2.6</span> What is the Fourier Spectrum of <span class="math inline">\(-\frac{1}{\pi y}\)</span>?</h3>
+<p><span class="math display">\[
+-\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{e^{-i k y}}{y} \, dy = i \, \mathrm{sign}(k).
+\]</span></p>
+<p>Derivation using the <em>Residue Theorem in Complex Analysis</em>: Replace <span class="math inline">\(\frac{1}{y}\)</span> with <span class="math inline">\(\lim_{a \to 0} \frac{y}{y^2 + a^2}\)</span>, <span class="math inline">\(y = u + iv\)</span>, apply the Residue Theorem, and integrate around poles <span class="math inline">\(+ia\)</span> and <span class="math inline">\(-ia\)</span>.</p>
+<p>Thus, the spectrum of <span class="math inline">\(-\frac{1}{\pi y}\)</span> is <span class="math inline">\(i \, \mathrm{sign}(k)\)</span>!</p>
+<p>For negative and positive wave numbers <span class="math inline">\(k\)</span>, the spectrum of <span class="math inline">\(V_y\)</span> (or <span class="math inline">\(V_z\)</span>) is multiplied by <span class="math inline">\(-i\)</span> and <span class="math inline">\(+i\)</span>, respectively.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -728,13 +939,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./hilbert.html" class="pagination-link" aria-label="Hilbert Transform">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span>
+      <a href="./complex.html" class="pagination-link" aria-label="Introduction to Complex Analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Complex Analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text">Summary</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./legendre.html" class="pagination-link" aria-label="Legendre Polynomials">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

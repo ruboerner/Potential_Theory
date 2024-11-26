@@ -1,0 +1,194 @@
+---
+title: "Hilbert Transform"
+---
+
+## Representation of the Potential Gradient in the Complex Plane
+
+
+[[Introduction to Complex Analysis]]
+
+Let $u$ and $v$ denote the real and imaginary parts of a complex-valued function of the complex variable $z = x + i y$, with $f(x + iy) = u(x,y) + iv(x,y)$. The functions $u$ and $v$ are real-valued and differentiable at every point in an open subset $\Omega \subset \mathbb{C}$. These functions map from $\mathbb{R}^2$ to $\mathbb{R}$.
+
+A function $f: \mathbb{C} \to \mathbb{C}$, $f(z) = u + iv$, defined in a domain $\Omega$, is called _holomorphic_ if the real-valued functions $u(x,y)$ and $v(x,y)$ are continuously differentiable in $\Omega$, and their partial derivatives satisfy the relations
+$$
+\begin{align}
+u_x & = +v_y, \\
+u_y & = -v_x,
+\end{align}
+$$
+at every point in $\Omega$. These are the _Cauchy-Riemann differential equations_ (CRD).
+
+Consider a function $f: \mathbb{C} \mapsto \mathbb{C}$. We want to demonstrate that this function is complex differentiable and holomorphic.
+
+Definition of the derivative:
+
+$$
+f'(z) = \lim_{ h \to 0 } \frac{f(z + h) - f(z)}{h}
+$$
+What does this limit mean by thinking of the real and imaginary parts separately? Let's replace $z$ with $x+iy$:
+$$
+f'(x +iy) = \lim_{ h \to 0 } \frac{f(x + iy + h) - f(x + iy)}{h}
+$$
+Now $h$ is also a complex number. Replace $h$ by $a + ib$ and take the limit as $a$ and $b$ together approach $0$:
+
+$$
+f'(x +iy) = \lim_{ (a,b) \to (0,0) } \frac{f(x + iy + a + ib) - f(x + iy)}{a + ib}
+$$
+Now introduce a new function $F: \mathbb{R}^{2} \mapsto \mathbb{C}$ that $F(x,y) = f(x + iy)$. $F$ is a function of two real variables, $f$ is a function of a single complex variable.
+
+$$
+f'(x +iy) = \lim_{ (a,b) \to (0,0) } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+$$
+If that limit exists, then it is equal to the same limit when we just restrict to moving aong the real axis, i.e., when we approach $(0,0)$ just along the real axis.
+We set $b=0$ and write
+$$
+f'(x +iy) = \lim_{ a \to 0, b=0 } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+$$
+This is a restricted situation, but if the limit exists for $(a,b) \to (0,0)$ then this limit must also exist and approach to the same quantity.
+$$
+f'(x +iy) = \lim_{ a \to 0 } \frac{F(x + a, y) - F(x, y)}{a} = \frac{\partial F}{\partial x}(x,y)
+$$
+Now we repeat the same story and instead of restricting to the real axis we restrict to the imaginary axis.
+$$
+f'(x +iy) = \lim_{ a =\to= 0, b \to 0 } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+$$
+$$
+f'(x +iy) = \lim_{ b \to 0 } \frac{F(x, y + b) - F(x, y)}{ib} = \frac{1}{i}\frac{\partial F}{\partial y}(x,y)
+$$
+If these limits are the same, then
+$$
+\frac{\partial F}{\partial x}(x,y) = \frac{1}{i} \frac{\partial F}{\partial y}(x,y)
+$$
+Now introduce two new functions: $u: \mathbb{R}^{2} \to \mathbb{R}$ and $v: \mathbb{R}^{2} \to \mathbb{R}$, such that
+$$
+F(x,y) = u(x,y) + i v(x,y)
+$$
+Now expand out the partial derivative
+$$
+\frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{1}{i} \frac{\partial F}{\partial y}(x,y) = \frac{1}{i}\left( \frac{\partial u}{\partial y} + i \frac{\partial v}{\partial y} \right) = \left( \frac{1}{i}\frac{\partial u}{\partial y} + \frac{\partial v}{\partial y} \right)
+$$
+and equate the real and imaginary parts
+$$
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \qquad \frac{1}{i} \frac{\partial u}{\partial y} = i \frac{\partial v}{\partial x}
+$$
+which become the _Cauchy-Riemann equations_
+$$
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \qquad \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x}
+$$
+A function is called _holomorphic_ when these equation are satisfied. The stronger condition however is that  $u$ and $v$ are real differentiable functions _and_ they satisfy the CRE.
+
+## Application to Gravitational Potential
+Let $V_y(y,z) := \partial_y V(y,z)$, and $V_{yy} := \partial^2_{yy}V(y,z)$, etc., denote the partial derivatives of the gravitational potential in the respective coordinate directions.
+
+
+Due to the properties
+$$\nabla \times \mathbf{g} = \mathbf{0},$$
+and
+$$\Delta V = 0,$$
+the *Cauchy-Riemann* differential equations
+$$
+V_{yz} - V_{zy} = 0 \qquad \text{and} \qquad V_{yy} + V_{zz} = 0
+$$
+hold.
+
+::: {.callout-note title="Correspondence between CR and gravity"}
+
+| CR equations | Gravity components |
+|--------|---------|
+|  $x+iy$  | $z+iy$ |
+| $u+iv$ | $V_y + i V_z$ |
+| $u_x$ | $V_{yz}$ |
+| $u_y$ | $V_{yy}$ |
+| $v_x$ | $V_{zz}$ |
+| $v_y$ | $V_{zy}$ |
+| $u_x = v_y$ | $V_{yz} = V_{zy}$ |
+| $u_y = -v_x$ | $V_{yy} = -V_{zz}$ |
+
+:::
+
+
+We may therefore assume that $V_y$ and $V_z$ are the real and imaginary parts of a complex function $G(s)$.
+
+We say that $G(s)$ is _regular_ or _holomorphic_.
+
+The functions $V_y$ and $V_z$ depend on $y$ and $z$, i.e., $V_y = V_y(y, z)$ and $V_z = V_z(y, z)$.
+
+
+In the complex plane, the real coordinates $y$ and $z$ are combined into a complex coordinate $s = z + iy$.
+
+Thus, we obtain the regular function $G : \mathbb{C} \to \mathbb{C}$
+$$
+G(s) = V_y(s) + i V_z(s).
+$$
+
+
+### Gravitational Acceleration in $\mathbb{R}$
+
+With $r^2 = (y - y')^2 + (z - z')^2$, the components of the gravitational acceleration are given by
+$$
+V_y(y, z) = - 2 f \rho \iint_A \frac{y - y'}{r^2} \, dy' \, dz'
+$$
+and
+$$
+V_z(y, z) = - 2 f \rho \iint_A \frac{z - z'}{r^2} \, dy' \, dz'.
+$$
+
+
+### Gravitational Acceleration in $\mathbb{C}$
+
+The gravitational acceleration in the complex plane can be expressed as
+$$
+G(s) = -2 f \rho i \iint_A \frac{1}{s - s'} \, dy' \, dz'.
+$$
+
+### Computation of $G$ in a Source-Free Region
+
+Using the *Cauchy Integral Formula*, we find:
+Let $G : \Omega \to \mathbb{C}$ be regular in a domain $\Omega$, and let $C : [a, b] \to \Omega \setminus \{z_0\}$ be a closed, positively oriented, piecewise $C^1$-continuous curve enclosing $z_0 \in \Omega$. Then,
+$$
+G(z_0) = \frac{1}{2 \pi i} \oint_C \frac{G(z)}{z - z_0} \, \mathrm{d}z.
+$$
+The values on the boundary completely determine those inside $C$.
+
+### How to Choose the Integration Path?
+
+By the *Cauchy Integral Theorem*, the integration path can be chosen arbitrarily. Since $G(s) \to 0$ as $y^2 + z^2 \to \infty$, $z < 0$, the integration path is chosen to fully encompass the $y$-axis, returning along an arc in the upper half-plane, extending to infinity.
+
+![Choice of the integration path](images/contour_integral.excalidraw.svg){#fig-contour}
+
+### Derivation of the Hilbert Transform
+
+We obtain the *Hilbert Transform Pair*
+$$
+V_y(y) = +\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_z(y')}{y' - y} \, dy'
+$$
+and
+$$
+V_z(y) = -\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_y(y')}{y' - y} \, dy'.
+$$
+
+
+Recognizing these as convolution integrals:
+$$
+V_y(y) = -\frac{1}{\pi y} \ast V_z(y) = +\mathcal{H}\{V_z(y)\},
+$$
+and
+$$
+V_z(y) = +\frac{1}{\pi y} \ast V_y(y) = -\mathcal{H}\{V_y(y)\}.
+$$
+
+In the frequency domain, convolution becomes multiplication.
+
+
+### What is the Fourier Spectrum of $-\frac{1}{\pi y}$?
+
+
+$$
+-\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{e^{-i k y}}{y} \, dy = i \, \mathrm{sign}(k).
+$$
+
+Derivation using the *Residue Theorem in Complex Analysis*: Replace $\frac{1}{y}$ with $\lim_{a \to 0} \frac{y}{y^2 + a^2}$, $y = u + iv$, apply the Residue Theorem, and integrate around poles $+ia$ and $-ia$.
+
+Thus, the spectrum of $-\frac{1}{\pi y}$ is $i \, \mathrm{sign}(k)$!
+
+For negative and positive wave numbers $k$, the spectrum of $V_y$ (or $V_z$) is multiplied by $-i$ and $+i$, respectively.
