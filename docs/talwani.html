@@ -459,7 +459,7 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </section>
 <section id="implementation" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="implementation"><span class="header-section-number">10.3</span> Implementation</h2>
-<div id="887816fb" class="cell" data-execution_count="2">
+<div id="edb38cda" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, x, z, phi, theta, Z <span class="op">=</span> symbols(<span class="st">'a x z phi theta Z'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -469,7 +469,7 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Z[0][z]</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>simplify(integrate(Z[<span class="dv">0</span>][z], theta))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
 <p><span class="math display">\[\begin{equation}\frac{a \left(- 2 \theta - 2 \log{\left(- \tan{\left(\phi \right)} + \tan{\left(\theta \right)} \right)} \tan{\left(\phi \right)} + \log{\left(\frac{1}{\cos^{2}{\left(\theta \right)}} \right)} \tan{\left(\phi \right)}\right) \cos^{2}{\left(\phi \right)} \tan{\left(\phi \right)}}{2}\end{equation}\]</span></p>
 </div>
 </div>

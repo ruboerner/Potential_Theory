@@ -1,0 +1,304 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: PREM - Preliminary Reference Earth Model\n",
+        "jupyter: python3\n",
+        "---"
+      ],
+      "id": "db7cccb7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import sympy as sp\n",
+        "from sympy import pi\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "id": "5fcec79b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "In this notebook we demonstrate how to model the Earth's density as piecewise quadratic functions, such that\n",
+        "$$\n",
+        "\\rho(r) = a_i r^{2} + b_i r + c_i, \\quad r_{i-1}<r \\le r_{i}\n",
+        "$$\n",
+        "for any shell enclosed by the radii $r_{i-1}$ and $r_i$, $i=1,2,\\dots,11$.\n",
+        "\n",
+        "The coefficients $a_i, b_i, c_i$ as well as the layer boundaries $r_i$ have been published by @dziewonskiPreliminaryReferenceEarth1981.\n",
+        "\n",
+        "The following `Python` code reads the content of the file `PREM.csv` into memory.\n"
+      ],
+      "id": "ab6b28f0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df = pd.read_csv('PREM.csv', \n",
+        "\tsep=',',\n",
+        "    header=0,\n",
+        "    skiprows=[1],\n",
+        "    names=['i', 'layer', 'height', 'a', 'b', 'c'])"
+      ],
+      "id": "6684684b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "h = df['height'].to_numpy()\n",
+        "an = df['a'].to_numpy()\n",
+        "bn = df['b'].to_numpy()\n",
+        "cn = df['c'].to_numpy()"
+      ],
+      "id": "30cc3b97",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Density profile\n",
+        "\n",
+        "We define a function `rho(r,a,b,c)` which evaluates for any $r$ a second order polynomial with the given coefficients $a,b,c$:\n"
+      ],
+      "id": "e6ee4d77"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rho = lambda r, a, b, c: a * r**2 + b * r + c\n",
+        "R_E = 6.371e6\n",
+        "\n",
+        "rr = np.linspace(0, R_E, 501)\n",
+        "# Initialize myrho with zeros\n",
+        "myrho = np.zeros(len(rr))\n",
+        "\n",
+        "for i in range(len(rr)):\n",
+        "    # Find the first index where rr[i] < h\n",
+        "    ii = np.where(rr[i] < h)[0]\n",
+        "    if ii.size > 0:\n",
+        "        first_index = ii[0]  # Get the first index where the condition is met\n",
+        "        # Ensure rr[i], an[first_index], bn[first_index], and cn[first_index] are scalars\n",
+        "        myrho[i] = rho(float(rr[i]), float(an[first_index]), float(bn[first_index]), float(cn[first_index]))\n",
+        "\n",
+        "# Set the last element as in MATLAB\n",
+        "myrho[-1] = rho(float(R_E), float(an[10]), float(bn[10]), float(cn[10]))\n",
+        "\n",
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "plt.plot(rr / 1000, myrho / 1000)\n",
+        "plt.grid(True)\n",
+        "plt.vlines(h / 1000, 1, 14, color='r', linewidth=0.2)\n",
+        "plt.ylim(1, 14)\n",
+        "plt.title('PREM density profile')\n",
+        "plt.xlabel('km')\n",
+        "plt.ylabel('density');"
+      ],
+      "id": "651bd12a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Mass distribution inside the Earth\n",
+        "\n",
+        "The total mass of the Earth results from\n",
+        "$$\n",
+        "m_E = 4 \\pi \\int\\limits_0^{R_E} \\rho(r) r^2 \\, \\mathrm dr.\n",
+        "$$\n",
+        "\n",
+        "However, there are density discontinuities which require a split of the integral at the jumps of $\\rho(r)$.\n",
+        "We integrate layer-wise, such that the mass of layer  $i$ is obtained by\n",
+        "$$\n",
+        "m_i = 4 \\pi \\int_{r_{i-1}}^{r_i} \\rho(r) r^2 \\, \\mathrm d r ,\\quad 1 \\le i \\le 11.\n",
+        "$$\n",
+        "We use `Python`'s `Sympy` library. \n"
+      ],
+      "id": "99b86631"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "a, b, c, r, h_1, h_2 = sp.symbols('a b c r h_1 h_2', real=True)"
+      ],
+      "id": "5795227b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "We denote with i1 the following lambda function which is equivalent to the evaluation of the integral\n",
+        "$$\n",
+        "4 \\pi \\int_{h_1}^{h_2} (a r^2 + b r + c) r^2 \\, \\mathrm d r\n",
+        "$$\n"
+      ],
+      "id": "d496b1fa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "i1 = lambda h_1, h_2: 4 * pi * sp.integrate((a * r**2 + b * r + c) * r**2, (r, h_1, h_2))\n",
+        "\n",
+        "mass = np.zeros(len(an))\n",
+        "mass[0] = i1(0, h[0]).subs(a, an[0]).subs(b, bn[0]).subs(c, cn[0]).subs(pi, np.pi)\n",
+        "\n",
+        "for i in range(1, 11):\n",
+        "    mass[i] = i1(h[i-1], h[i]).subs(a, an[i]).subs(b, bn[i]).subs(c, cn[i]).subs(pi, np.pi)\n",
+        "mass\n",
+        "\n",
+        "M_Earth = np.sum(mass)\n",
+        "print('The mass of  the Earth is:') \n",
+        "print(M_Earth)"
+      ],
+      "id": "d529115b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "plt.plot(np.concatenate(([0], h)) / 1e3, np.concatenate(([0], np.cumsum(mass))) / 1e24)\n",
+        "plt.vlines(h / 1000, 0, 6.1, color='k', linewidth=0.2)\n",
+        "plt.ylim(-0.2, 6.1)\n",
+        "plt.title('Earth\\'s accumulated mass profile')\n",
+        "plt.xlabel('km')\n",
+        "plt.ylabel(r'Mass in 10$^{24}$ kg')\n",
+        "plt.grid(True);"
+      ],
+      "id": "1295c906",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Gravity profile\n"
+      ],
+      "id": "28463efa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Constants and assumptions\n",
+        "G = 6.6743e-11  # Gravitational constant\n",
+        "myg = np.zeros(len(rr))  # Initialize myg as a zero array of the same length as rr\n",
+        "\n",
+        "# Loop through each element in rr\n",
+        "for i in range(1,len(rr)):\n",
+        "    # Find the first index where rr[i] < h\n",
+        "    ii = np.where(rr[i] < h)[0]\n",
+        "    if ii.size > 0:\n",
+        "        ii = ii[0] + 1  # Adjusting for MATLAB's 1-based indexing\n",
+        "\n",
+        "        # Condition where ii == 1\n",
+        "        if ii == 1:\n",
+        "            M = i1(0, rr[i]).subs([(a, an[0]), (b, bn[0]), (c, cn[0])])\n",
+        "        \n",
+        "        # Condition where ii > 1\n",
+        "        elif ii > 1:\n",
+        "            # Calculating M as the sum of mass up to ii-1 plus the substituted function value\n",
+        "            M = np.sum(mass[:ii-1]) + i1(h[ii-2], rr[i]).subs([(a, an[ii-1]), (b, bn[ii-1]), (c, cn[ii-1])])\n",
+        "        \n",
+        "        # Calculate myg[i] using the gravitational constant\n",
+        "        myg[i] = G / rr[i]**2 * M\n",
+        "\n",
+        "# Set boundary conditions as in MATLAB\n",
+        "myg[0] = 0.0\n",
+        "myg[-1] = G / R_E**2 * M_Earth"
+      ],
+      "id": "3c6a4ed1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "rext = np.linspace(R_E, 2*R_E, 41)\n",
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "plt.plot(rr / R_E, myg, color='b')\n",
+        "plt.plot(rext / R_E, G * M_Earth / rext**2, color='r')\n",
+        "plt.axvspan(0, 1, facecolor='g', alpha=0.2)\n",
+        "plt.vlines(h / R_E, 0, 12, color='k', linewidth=0.2)\n",
+        "plt.title('Acceleration profile')\n",
+        "plt.xlabel('Earth radii')\n",
+        "plt.ylabel(r'g in m$\\cdot s^{-2}$')\n",
+        "plt.ylim(0, 12)\n",
+        "plt.grid(True)"
+      ],
+      "id": "3e8f1afe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The results above do not agree well with the true surface acceleration due to the Earth's ellipsoidal shape. The WGS84 gravity formula is valid for points at the Earth's surface and accounts for the change of acceleration due to the ellipticity:\n"
+      ],
+      "id": "32b2157c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "g_equator = 9.7803253359\n",
+        "g_pole = 9.8321849378\n",
+        "semi_axis_major = 6378137.0\n",
+        "semi_axis_minor = 6356752.3142\n",
+        "ecc = np.sqrt(1 - semi_axis_minor**2 / semi_axis_major**2)\n",
+        "k = semi_axis_minor / semi_axis_major * g_pole / g_equator - 1.0\n",
+        "\n",
+        "g_WGS = lambda phi: g_equator * (1 + k * np.sin(phi * np.pi / 180)**2) / np.sqrt(1 - ecc**2 * np.sin(phi * np.pi / 180)**2)\n",
+        "\n",
+        "lat = np.linspace(-90, 90, 101)\n",
+        "fig, ax = plt.subplots(figsize=(6,4))\n",
+        "plt.plot(lat, [g_WGS(v) for v in lat], label='WGS')\n",
+        "plt.axhline(y=myg[-1], color='r', label='PREM')\n",
+        "plt.grid(True)\n",
+        "plt.ylabel('g')\n",
+        "plt.xlabel('Latitude in degrees')\n",
+        "plt.legend();"
+      ],
+      "id": "3cdac1b1",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/rub/miniforge3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

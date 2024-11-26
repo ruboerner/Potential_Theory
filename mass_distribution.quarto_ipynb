@@ -1,0 +1,49 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Mass distribution\"\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "\n",
+        "The gravitational potential of a spatial mass distribution follows the principle of linear superposition.\n",
+        "\n",
+        "![](images/pointmasses.excalidraw.svg){#fig-pointmasses}\n",
+        "\n",
+        "The potential can be composed as the sum of the individual potentials of point masses\n",
+        "\n",
+        "$$\n",
+        "V(\\vb r) = -f \\sum\\limits_{i=1}^N \\frac{m_i}{|\\vb r - \\vb r_i}, \\qfor |\\vb r - \\vb r'| \\ne 0.\n",
+        "$$\n",
+        "\n",
+        "For a continuous mass distribution with density $\\rho(\\vb r)$, a mass $\\dd m(\\vb r) = \\rho(\\vb r)  \\dd{^3 {\\vb r}}$ must be assigned to each volume element.\n",
+        "The summation gets replaced by an integration\n",
+        "\n",
+        "$$\n",
+        "V(\\vb r) = -f \\int\\limits_G \\frac{\\dd m (\\vb r')}{| \\vb r - \\vb r'|} = -f \\int\\limits_G \\frac{ \\rho(\\vb r')  \\dd{^3 {\\vb r'}}}{| \\vb r - \\vb r'|}\n",
+        "$$\n",
+        "\n",
+        "This is Newton's volume potential.\n",
+        "\n",
+        "In practical applications the difficulty is to integrate over non-trivial, complicated geometries of the domain $G$. \n",
+        "\n",
+        "In the next section we demonstrate the integration over spherical shells and spheres."
+      ],
+      "id": "e07580d3"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/rub/miniforge3/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
