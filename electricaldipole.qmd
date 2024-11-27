@@ -75,8 +75,8 @@ from sympy import *
 from IPython.display import display, Math
 U, r, theta = symbols("U r theta")
 U = cos(theta) / r**2
-display(Math('U(r, \\theta) = ' + latex(U)))
+display(Math('U(r, \\theta) = \\frac{p}{4 \\pi \\varepsilon} ' + latex(U)))
 grad_sph = [diff(U, r), 1 / r * diff(U, theta)]
 E = [-grad_sph[i] for i in [0,1]]
-display(Math('\\mathbf E(r, \\theta) = ' + latex(E) + '^\\top'))
+display(Math('\\mathbf E(r, \\theta) = \\frac{p}{4 \\pi \\varepsilon}' + latex(E) + '^\\top'))
 ```

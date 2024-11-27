@@ -480,7 +480,7 @@ Note
 <p><span class="math display">\[
 \mathbf E = -\grad U.
 \]</span></p>
-<div id="6c5c9ecd" class="cell" data-execution_count="1">
+<div id="09be50ab" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -488,16 +488,16 @@ Note
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Math</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>U, r, theta <span class="op">=</span> symbols(<span class="st">"U r theta"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> cos(theta) <span class="op">/</span> r<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'U(r, </span><span class="ch">\\</span><span class="st">theta) = '</span> <span class="op">+</span> latex(U)))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'U(r, </span><span class="ch">\\</span><span class="st">theta) = </span><span class="ch">\\</span><span class="st">frac</span><span class="sc">{p}</span><span class="st">{4 </span><span class="ch">\\</span><span class="st">pi </span><span class="ch">\\</span><span class="st">varepsilon} '</span> <span class="op">+</span> latex(U)))</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>grad_sph <span class="op">=</span> [diff(U, r), <span class="dv">1</span> <span class="op">/</span> r <span class="op">*</span> diff(U, theta)]</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> [<span class="op">-</span>grad_sph[i] <span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>]]</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'</span><span class="ch">\\</span><span class="st">mathbf E(r, </span><span class="ch">\\</span><span class="st">theta) = '</span> <span class="op">+</span> latex(E) <span class="op">+</span> <span class="st">'^</span><span class="ch">\\</span><span class="st">top'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'</span><span class="ch">\\</span><span class="st">mathbf E(r, </span><span class="ch">\\</span><span class="st">theta) = </span><span class="ch">\\</span><span class="st">frac</span><span class="sc">{p}</span><span class="st">{4 </span><span class="ch">\\</span><span class="st">pi </span><span class="ch">\\</span><span class="st">varepsilon}'</span> <span class="op">+</span> latex(E) <span class="op">+</span> <span class="st">'^</span><span class="ch">\\</span><span class="st">top'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(\displaystyle U(r, \theta) = \frac{\cos{\left(\theta \right)}}{r^{2}}\)</span></p>
+<p><span class="math inline">\(\displaystyle U(r, \theta) = \frac{p}{4 \pi \varepsilon} \frac{\cos{\left(\theta \right)}}{r^{2}}\)</span></p>
 </div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math inline">\(\displaystyle \mathbf E(r, \theta) = \left[ \frac{2 \cos{\left(\theta \right)}}{r^{3}}, \  \frac{\sin{\left(\theta \right)}}{r^{3}}\right]^\top\)</span></p>
+<p><span class="math inline">\(\displaystyle \mathbf E(r, \theta) = \frac{p}{4 \pi \varepsilon}\left[ \frac{2 \cos{\left(\theta \right)}}{r^{3}}, \  \frac{\sin{\left(\theta \right)}}{r^{3}}\right]^\top\)</span></p>
 </div>
 </div>
 
