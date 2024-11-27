@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./legendre-intro.html" rel="next">
+<link href="./fieldline.html" rel="next">
 <link href="./electricaldipole.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -335,6 +335,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -349,13 +355,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
       </ul>
@@ -469,7 +475,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 </section>
 <section id="magnetic-dipole" class="level2" data-number="16.4">
 <h2 data-number="16.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">16.4</span> Magnetic Dipole</h2>
-<div id="fa96f561" class="cell" data-execution_count="1">
+<div id="b18e0623" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -482,7 +488,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="16.4.1">
 <h3 data-number="16.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">16.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="07d6b9e9" class="cell" data-execution_count="2">
+<div id="b7ed3ec9" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -496,7 +502,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="1e42875f" class="cell" data-execution_count="3">
+<div id="9396d86f" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>
@@ -954,8 +960,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./legendre-intro.html" class="pagination-link" aria-label="Introduction to Legendre polynomials">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./fieldline.html" class="pagination-link" aria-label="Equation of a dipole field line">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

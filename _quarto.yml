@@ -8,6 +8,12 @@ book:
   title: "Theory of Potential Field Methods in Geophysics"
   author: "Dr. Ralph-Uwe Börner"
   date: today
+  announcement: 
+    icon: info-circle
+    dismissable: true
+    content: "New chapters on dipole and Legendre polynomials added."
+    type: primary
+    position: below-navbar
   chapters: 
     - index.qmd
     - intro.qmd
@@ -39,6 +45,7 @@ book:
       chapters:
       - electricaldipole.qmd
       - magneticdipole.qmd
+      - fieldline.qmd
     - part: "Spherical harmonics"
       chapters:
         - legendre-intro.qmd

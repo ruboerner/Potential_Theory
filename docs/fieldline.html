@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19&nbsp; Applications of the Legendre Polynomials – Theory of Potential Field Methods in Geophysics</title>
+<title>17&nbsp; Equation of a dipole field line – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./legendre-intro.html" rel="prev">
+<link href="./legendre-intro.html" rel="next">
+<link href="./magneticdipole.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -121,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./electricaldipole.html">Dipole potential</a></li><li class="breadcrumb-item"><a href="./fieldline.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -303,7 +337,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
+  <a href="./fieldline.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
   </div>
 </li>
@@ -326,7 +360,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./legendre.html" class="sidebar-item-text sidebar-link active">
+  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
@@ -358,20 +392,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#gravitational-potential" id="toc-gravitational-potential" class="nav-link active" data-scroll-target="#gravitational-potential"><span class="header-section-number">19.1</span> Gravitational Potential</a>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link active" data-scroll-target="#visualization"><span class="header-section-number">17.1</span> Visualization</a></li>
+  <li><a href="#differential-geometry-properties-of-field-lines" id="toc-differential-geometry-properties-of-field-lines" class="nav-link" data-scroll-target="#differential-geometry-properties-of-field-lines"><span class="header-section-number">17.2</span> Differential geometry properties of field lines</a>
   <ul class="collapse">
-  <li><a href="#expansion-of-the-term-1mathbfr---mathbfr" id="toc-expansion-of-the-term-1mathbfr---mathbfr" class="nav-link" data-scroll-target="#expansion-of-the-term-1mathbfr---mathbfr"><span class="header-section-number">19.1.1</span> Expansion of the term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span></a></li>
-  <li><a href="#binomial-expansion-for-small-displacements" id="toc-binomial-expansion-for-small-displacements" class="nav-link" data-scroll-target="#binomial-expansion-for-small-displacements"><span class="header-section-number">19.1.2</span> Binomial Expansion for Small Displacements</a></li>
-  <li><a href="#description-of-latitudinal-variations-in-potential" id="toc-description-of-latitudinal-variations-in-potential" class="nav-link" data-scroll-target="#description-of-latitudinal-variations-in-potential"><span class="header-section-number">19.1.3</span> Description of Latitudinal Variations in Potential</a></li>
-  <li><a href="#equivalence-of-series-expansions" id="toc-equivalence-of-series-expansions" class="nav-link" data-scroll-target="#equivalence-of-series-expansions"><span class="header-section-number">19.1.4</span> Equivalence of Series Expansions</a></li>
-  <li><a href="#special-case-for-s-0" id="toc-special-case-for-s-0" class="nav-link" data-scroll-target="#special-case-for-s-0"><span class="header-section-number">19.1.5</span> Special Case for <span class="math inline">\(s = 0\)</span></a></li>
-  </ul></li>
-  <li><a href="#electrostatic-potential" id="toc-electrostatic-potential" class="nav-link" data-scroll-target="#electrostatic-potential"><span class="header-section-number">19.2</span> Electrostatic potential</a>
-  <ul class="collapse">
-  <li><a href="#substitution-into-the-potential" id="toc-substitution-into-the-potential" class="nav-link" data-scroll-target="#substitution-into-the-potential"><span class="header-section-number">19.2.1</span> Substitution into the Potential</a></li>
-  <li><a href="#expansion-using-legendre-polynomials" id="toc-expansion-using-legendre-polynomials" class="nav-link" data-scroll-target="#expansion-using-legendre-polynomials"><span class="header-section-number">19.2.2</span> Expansion Using Legendre Polynomials</a></li>
-  <li><a href="#simplification" id="toc-simplification" class="nav-link" data-scroll-target="#simplification"><span class="header-section-number">19.2.3</span> Simplification</a></li>
-  <li><a href="#legendre-polynomial-for-n-1" id="toc-legendre-polynomial-for-n-1" class="nav-link" data-scroll-target="#legendre-polynomial-for-n-1"><span class="header-section-number">19.2.4</span> Legendre Polynomial for <span class="math inline">\(n = 1\)</span></a></li>
+  <li><a href="#curvature" id="toc-curvature" class="nav-link" data-scroll-target="#curvature"><span class="header-section-number">17.2.1</span> Curvature</a></li>
+  <li><a href="#horizontal-slope" id="toc-horizontal-slope" class="nav-link" data-scroll-target="#horizontal-slope"><span class="header-section-number">17.2.2</span> Horizontal slope</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -379,9 +404,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./electricaldipole.html">Dipole potential</a></li><li class="breadcrumb-item"><a href="./fieldline.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></h1>
 </div>
 
 
@@ -398,185 +423,250 @@ window.Quarto = {
 </header>
 
 
-<section id="gravitational-potential" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="gravitational-potential"><span class="header-section-number">19.1</span> Gravitational Potential</h2>
-<p>We depart from the potential <span class="math inline">\(V(\mathbf r)\)</span> at a point <span class="math inline">\(\mathbf{r}\)</span> caused by a point mass <span class="math inline">\(m\)</span> located at <span class="math inline">\(\mathbf{r}'\)</span>.</p>
-<div id="fig-grav-legendre" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grav-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/Gravitationspotential.excalidraw.svg" class="img-fluid figure-img">
+<div id="5bac33d8" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grav-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.1: Point mass displaced from the origin
+<p>We try to find an equation for the field lines of a dipole.</p>
+<div id="fig-fieldline" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fieldline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Feldlinie.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fieldline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.1: A schematic sketch of a field line of a dipole aligned with the <span class="math inline">\(z\)</span>-axis.
 </figcaption>
 </figure>
 </div>
-<p>The potential at <span class="math inline">\(\mathbf{r}\)</span> due to a point mass <span class="math inline">\(m\)</span> at <span class="math inline">\(\mathbf{r}'\)</span> is given by: <span class="math display">\[
-V(\mathbf{r}) = -f \frac{m}{|\mathbf{r} - \mathbf{r}'|}.
-\]</span></p>
-<p>Suppose the point mass is slightly displaced to <span class="math inline">\(\mathbf{r}' = (0, 0, s)^\top\)</span> along the <span class="math inline">\(z\)</span>-axis.</p>
-<section id="expansion-of-the-term-1mathbfr---mathbfr" class="level3" data-number="19.1.1">
-<h3 data-number="19.1.1" class="anchored" data-anchor-id="expansion-of-the-term-1mathbfr---mathbfr"><span class="header-section-number">19.1.1</span> Expansion of the term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span></h3>
-<p>The frequently occurring term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span> can be expanded into a power series when <span class="math inline">\(|\mathbf{r}'| \ll |\mathbf{r}|\)</span>.</p>
-<p>Let <span class="math inline">\(\mathbf{r} = (x, y, z)^\top\)</span> (observation point) and <span class="math inline">\(\mathbf{r}' = (0, 0, s)^\top\)</span> (source point of the mass). The Euclidean distance between the observation and source points is <span class="math inline">\(q = |\mathbf{r} - \mathbf{r}'|\)</span>.</p>
-<p>Using the magnitudes <span class="math inline">\(r = |\mathbf{r}|\)</span> and <span class="math inline">\(s = |\mathbf{r}'|\)</span>, and applying the [[Kosinussatz|law of cosines]], we have: <span class="math display">\[
-\frac{1}{q} = f(r, \theta) = \frac{1}{r} \left[1 + \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta \right]^{-1/2}.
-\]</span></p>
-</section>
-<section id="binomial-expansion-for-small-displacements" class="level3" data-number="19.1.2">
-<h3 data-number="19.1.2" class="anchored" data-anchor-id="binomial-expansion-for-small-displacements"><span class="header-section-number">19.1.2</span> Binomial Expansion for Small Displacements</h3>
-<p>For a small displacement of the source point away from the origin, i.e., <span class="math inline">\(s \ll r\)</span>, <span class="math inline">\(f(r, \theta)\)</span> can be expanded as a <em>binomial series</em> <span class="math display">\[
-f(r, \theta) = \frac{1}{r} (1 + b)^{-1/2} = \frac{1}{r} \sum_{n=0}^\infty \binom{-1/2}{n} b^n,
-\]</span> where <span class="math display">\[
-b = \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta, \quad |b| &lt; 1.
-\]</span></p>
-<p>Rearranging the series in powers of <span class="math inline">\(\frac{s}{r}\)</span> gives <span class="math display">\[
-f(r, \theta) = \frac{1}{r} \sum_{n=0}^\infty \left(\frac{s}{r} \right)^n P_n(\cos \theta).
-\]</span></p>
-<p>The <span class="math inline">\(P_n(\cos \theta)\)</span> are polynomials of degree <span class="math inline">\(n\)</span> in <span class="math inline">\(\cos \theta\)</span>. They are known as <em>Legendre Polynomials</em> or <em>zonal spherical harmonics</em>. Since they are independent of the azimuthal angle <span class="math inline">\(\varphi\)</span>, they have constant values over spherical zones (<span class="math inline">\(\theta = \text{const}\)</span>).</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Legendre polynomials">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Legendre polynomials
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The Legendre polynomials can also be defined as the coefficients in a formal expansion in powers of <span class="math inline">\(t\)</span> of the generating function</p>
+<p>It holds for a field line that</p>
 <p><span class="math display">\[
-\frac{1}{\sqrt{1 - 2tx + t^2}} = \sum\limits_{n=0}^\infty
-P_n(x)t^n.
-\]</span> The coefficient of <span class="math inline">\(t^n\)</span> is a polynomial in <span class="math inline">\(x\)</span> of degree <span class="math inline">\(n\)</span> with <span class="math inline">\(|x| \le 1\)</span>.</p>
-<p>The first Legendre polynomials are</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(n\)</span></th>
-<th style="text-align: left;"><span class="math inline">\(P_n(x)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(0\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(1\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(x\)</span></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(2\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\dfrac{1}{2}(3x^2 -1)\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>Legendre polynomials can be calculated using Rodrigues’ formula</p>
+\mathbf{H} \times \mathrm{d} \mathbf{s} = \mathbf{0}
+\]</span></p>
+<p>which means that both the field vector and the line element are tangential at any point along the field line.</p>
+<p>The equation for the magnetostatic field of a magnetic dipole aligned with the <span class="math inline">\(z\)</span>-axis is given by</p>
 <p><span class="math display">\[
-P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n}(x^2 - 1)^n
+\mathbf H(r, \theta) =
+\left( {H_r \atop H_\theta} \right) =
+\frac{m}{4 \pi r^3}
+\left(
+{{2 \cos\theta} \atop {\sin\theta} }\right).
 \]</span></p>
+<p>In this case, the magnetic dipole moment is given by <span class="math display">\[
+\mathbf{m} = (0, 0, m)^\top,
+\]</span> and the tangential line element is <span class="math display">\[
+\mathrm d \mathbf s = (\mathrm dr, r \, \mathrm d\theta, 0)^\top.
+\]</span></p>
+<p>Let’s compute the cross product with the help of <code>SymPy</code>.</p>
+<div id="427c6999" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r, theta, d_r, d_theta, H_r, H_theta <span class="op">=</span> symbols(<span class="st">'r theta d_r d_theta H_r H_theta'</span>, real<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> Matrix([H_r, H_theta, <span class="dv">0</span>])</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> Matrix([d_r, r <span class="op">*</span> d_theta, <span class="dv">0</span>])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'</span><span class="ch">\\</span><span class="st">mathbf H </span><span class="ch">\\</span><span class="st">times </span><span class="ch">\\</span><span class="st">mathrm d </span><span class="ch">\\</span><span class="st">mathbf s = '</span> <span class="op">+</span> latex(H.cross(ds)) <span class="op">+</span> <span class="st">' = </span><span class="ch">\\</span><span class="st">mathbf 0'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \mathbf H \times \mathrm d \mathbf s = \left[\begin{matrix}0\\0\\H_{r} d_{\theta} r - H_{\theta} d_{r}\end{matrix}\right] = \mathbf 0\)</span></p>
 </div>
 </div>
-</section>
-<section id="description-of-latitudinal-variations-in-potential" class="level3" data-number="19.1.3">
-<h3 data-number="19.1.3" class="anchored" data-anchor-id="description-of-latitudinal-variations-in-potential"><span class="header-section-number">19.1.3</span> Description of Latitudinal Variations in Potential</h3>
-<p>The superposition of Legendre polynomials can describe the latitude-dependent variations in potential.</p>
-<p>For <span class="math inline">\(r \ll s\)</span>, a similar result is obtained by factoring out <span class="math inline">\(1/s\)</span> <span class="math display">\[
-f(r, \theta) =
-\begin{cases}
-\dfrac{1}{s} \sum_{n=0}^\infty \left(\dfrac{r}{s}\right)^n P_n(\cos \theta), &amp; r \leq s, \\
-\dfrac{1}{r} \sum_{n=0}^\infty \left(\dfrac{s}{r}\right)^{n+1} P_n(\cos \theta), &amp; r \geq s.
-\end{cases}
-\]</span></p>
-</section>
-<section id="equivalence-of-series-expansions" class="level3" data-number="19.1.4">
-<h3 data-number="19.1.4" class="anchored" data-anchor-id="equivalence-of-series-expansions"><span class="header-section-number">19.1.4</span> Equivalence of Series Expansions</h3>
-<p>For <span class="math inline">\(r \geq s\)</span>, the series satisfy <span class="math display">\[
-\frac{1}{r} \sum_{n=0}^\infty \left(\frac{s}{r}\right)^n P_n(\cos \theta) = \frac{1}{s} \sum_{n=0}^\infty \left(\frac{s}{r}\right)^{n+1} P_n(\cos \theta).
-\]</span></p>
-</section>
-<section id="special-case-for-s-0" class="level3" data-number="19.1.5">
-<h3 data-number="19.1.5" class="anchored" data-anchor-id="special-case-for-s-0"><span class="header-section-number">19.1.5</span> Special Case for <span class="math inline">\(s = 0\)</span></h3>
-<p>When <span class="math inline">\(s = 0\)</span>, only the term for <span class="math inline">\(n = 0\)</span> contributes a non-zero value. Thus <span class="math display">\[
-f(r, \theta) = \frac{1}{r}.
-\]</span></p>
-</section>
-</section>
-<section id="electrostatic-potential" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="electrostatic-potential"><span class="header-section-number">19.2</span> Electrostatic potential</h2>
-<p>Observation point at <span class="math inline">\(\mathbf{r} = (x, y, z)^\top\)</span>, <span class="math inline">\(r = |\mathbf{r}|\)</span>.<br>
-Source points <span class="math inline">\(\pm \mathbf{r}' = (0, 0, \pm a)^\top\)</span>.<br>
-Two charges on the <span class="math inline">\(z\)</span>-axis: <span class="math inline">\(+Q\)</span> at <span class="math inline">\(z = a\)</span> and <span class="math inline">\(-Q\)</span> at <span class="math inline">\(z = -a\)</span>.</p>
-<div id="fig-electric-dipole-legendre" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-electric-dipole-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/electric-dipole-legendre.excalidraw.svg" class="img-fluid figure-img">
+<p>We arrive at <span class="math display">\[
+H_r r \mathrm{d}\theta = H_\theta \mathrm{d} r.
+\]</span> This is the differential equation of a field line. We need a parametric solution of the form <span class="math inline">\(r = r(\theta)\)</span>.</p>
+<p>We rearrange the ODE using the definition of <span class="math inline">\(\mathbf H\)</span> given above into the following form: <span class="math display">\[
+\frac{\mathrm{d}r}{\mathrm{d}\theta} = 2 r \cot\theta
+\]</span> To obtain a solution using <code>SymPy</code>, we recast <code>r</code> as a symbolic function (of <span class="math inline">\(\theta\)</span>):</p>
+<div id="6d4c38ae" class="cell" data-tags="[]" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> symbols(<span class="st">"r"</span>, cls<span class="op">=</span>Function)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> dsolve(r(theta).diff(theta) <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> r(theta) <span class="op">*</span> cot(theta), r(theta))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>display(Math(latex(R)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle r{\left(\theta \right)} = C_{1} \sin^{2}{\left(\theta \right)}\)</span></p>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-electric-dipole-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.2: Electrostatic dipole aligned with the <span class="math inline">\(z\)</span>-axis
-</figcaption>
+</div>
+<p>We choose <span class="math inline">\(C_1=r_0\)</span>, where <span class="math inline">\(r_0\)</span> is an arbitrary scale length. The parametric equation for a field line of a dipole is finally given by <span class="math display">\[
+r(\theta) = r_0 \sin^2 \theta
+\]</span></p>
+<section id="visualization" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="visualization"><span class="header-section-number">17.1</span> Visualization</h2>
+<p>We choose an arbitrary scale length <span class="math inline">\(r_0\)</span>. Since <span class="math inline">\(\theta\)</span> is the pole distance angle, <span class="math inline">\(\sin\theta=1\)</span> at the equator, i.e., on the plane perpendicular to the dipole. Hence, <span class="math inline">\(r_0\)</span> can be interpreted as the distance to the field line at the equator, since <span class="math inline">\(r(\theta) = r_0\)</span> for <span class="math inline">\(\theta=\pi/2\)</span>.</p>
+<p>Note further, that we have to transform <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span> into a Cartesian coordinate system using the relations <span class="math display">\[
+\begin{align}
+x &amp; = r(\theta) \cos\phi \\
+z &amp; = r(\theta) \sin\phi
+\end{align}
+\]</span> where <span class="math inline">\(\phi = \pi/2 - \theta\)</span>.</p>
+<div id="75978523" class="cell" data-tags="[]" data-execution_count="4">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>theta_n <span class="op">=</span> np.linspace(start<span class="op">=</span><span class="dv">0</span>, stop<span class="op">=</span>np.pi, num<span class="op">=</span>n)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>r_0 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> []</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> []</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> theta_n:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    x.append(r_0 <span class="op">*</span> np.sin(t)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> np.cos(np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> t))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    z.append(r_0 <span class="op">*</span> np.sin(t)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> np.sin(np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> t))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="051f6315" class="cell" data-tags="[]" data-execution_count="5">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, z, marker<span class="op">=</span><span class="st">'.'</span>, markersize<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> mpatches.Circle((<span class="dv">0</span>,<span class="dv">0</span>), radius<span class="op">=</span><span class="fl">0.1</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ax.add_patch(circle)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'x/r$_0$'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'z/r$_0$'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fieldline_files/figure-html/cell-6-output-1.png" width="503" height="357" class="figure-img"></p>
 </figure>
 </div>
-<p>The distances between the charges and the observation point are obtained using the <em>law of cosines</em>.</p>
-<ul>
-<li><p>Distance to the charge <span class="math inline">\(+Q\)</span>: <span class="math display">\[
-| \mathbf{r} - \mathbf{r}'| = \sqrt{r^2 + a^2 - 2ar \cos \theta}
-= r \sqrt{1 - 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2}.
-\]</span></p></li>
-<li><p>Using <span class="math inline">\(\cos \theta = -\cos(\pi - \theta)\)</span> (<em>complementary angle</em>), the distance to the charge <span class="math inline">\(-Q\)</span> is: <span class="math display">\[
-| \mathbf{r} + \mathbf{r}'| = \sqrt{r^2 + a^2 + 2ar \cos \theta}
-= r \sqrt{1 + 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2}.
-\]</span></p></li>
-</ul>
-<section id="substitution-into-the-potential" class="level3" data-number="19.2.1">
-<h3 data-number="19.2.1" class="anchored" data-anchor-id="substitution-into-the-potential"><span class="header-section-number">19.2.1</span> Substitution into the Potential</h3>
-<p>Substituting these distances into the potentials: <span class="math display">\[
-U(r) = \frac{Q}{4 \pi \varepsilon r}
-\left\{
-\left[1 - 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2
-\right]^{-1/2} -
-\left[1 + 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2
-\right]^{-1/2}
-\right\}.
-\]</span></p>
+</div>
+</div>
+<p>We observe that the shape of the field line is invariant with respect to the ratio <span class="math inline">\(r/r_0\)</span>.</p>
+<p>In planetary geophysics, the <em>L-shell</em> or <em>L-value</em> is a particular set of magnetic field lines. The L-value describes the field lines which cross the Earth’s magnetic equator at a number of Earth radii equal to the L-value.</p>
+<p>L-shells uniquely define regions of particular geophysical interest. For instance, auroral light displays are most common around <span class="math inline">\(L=6\)</span>, can reach <span class="math inline">\(L=4\)</span> and even <span class="math inline">\(L=2\)</span> during most severe geomagnetic storms.</p>
 </section>
-<section id="expansion-using-legendre-polynomials" class="level3" data-number="19.2.2">
-<h3 data-number="19.2.2" class="anchored" data-anchor-id="expansion-using-legendre-polynomials"><span class="header-section-number">19.2.2</span> Expansion Using Legendre Polynomials</h3>
-<p>We apply Legendre polynomials, defined as: <span class="math display">\[
-P_n(x) = \frac{1}{2^n n!} \frac{\mathrm{d}^n}{\mathrm{d}x^n} \left( x^2 - 1 \right)^n,
-\]</span> with <span class="math inline">\(t := \frac{a}{r}\)</span> and <span class="math inline">\(x := \cos \theta\)</span>.</p>
-<p>For <span class="math inline">\(tx := -\frac{a}{r} \cos \theta\)</span>, the sign propagates through <span class="math inline">\(t^n = \left(-\frac{a}{r}\right)^n = (-1)^n \left(\frac{a}{r}\right)^n\)</span>: <span class="math display">\[
-U(r) = \frac{Q}{4 \pi \varepsilon r}
-\left[
-\sum_{n=0}^\infty P_n(\cos \theta) \left( \frac{a}{r} \right)^n -
-\sum_{n=0}^\infty P_n(\cos \theta) (-1)^n \left( \frac{a}{r} \right)^n
-\right].
+<section id="differential-geometry-properties-of-field-lines" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="differential-geometry-properties-of-field-lines"><span class="header-section-number">17.2</span> Differential geometry properties of field lines</h2>
+<p>Two questions are of particular interest: 1. What is the <em>curvature radius</em> of the field line in the equatorial plane? 2. At which angle <span class="math inline">\(\theta\)</span> the tangential line is horizontal?</p>
+<section id="curvature" class="level3" data-number="17.2.1">
+<h3 data-number="17.2.1" class="anchored" data-anchor-id="curvature"><span class="header-section-number">17.2.1</span> Curvature</h3>
+<p>For the curvature <span class="math inline">\(\kappa(\theta)\)</span> of a parametric curve defined in polar coordinates <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span> in the point <span class="math inline">\(r(\theta)\)</span> there holds (<a href="https://en.wikipedia.org/wiki/Curvature">cf.&nbsp;this Wikipedia article</a>)</p>
+<p><span class="math display">\[
+\kappa(\theta) = \frac{r(\theta)^2 + 2 r'(\theta)^2 - r(\theta) r''(\theta)}
+{\left[r(\theta)^2 + r'(\theta)^2\right]^{3/2}}
 \]</span></p>
+<p>We implement this equation to obtain the curvature radius in the equatorial plane where <span class="math inline">\(\theta=\pi/2\)</span>.</p>
+<p>First, we introduce a symbolic function <code>R</code> which defines <span class="math inline">\(r(\theta) = \sin^2\theta\)</span>. Next, we implement the curvature function <span class="math inline">\(\kappa(\theta)\)</span> using <code>SymPy</code>. Finally, in <span class="math inline">\(\kappa\)</span> we substitute <span class="math inline">\(\theta\)</span> by <span class="math inline">\(\pi/2\)</span>.</p>
+<div id="9432e264" class="cell" data-tags="[]" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> sin(theta)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>kappa <span class="op">=</span> (R<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> diff(R, theta)<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> R <span class="op">*</span> diff(R, theta, theta)) <span class="op">/</span> (</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        sqrt(R<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> diff(R, theta)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="0c5616f8" class="cell" data-tags="[]" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'</span><span class="ch">\\</span><span class="st">kappa = '</span> <span class="op">+</span> latex(kappa.subs(theta, pi<span class="op">/</span><span class="dv">2</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \kappa = 3\)</span></p>
+</div>
+</div>
+<p>The curvature evaluates to <span class="math inline">\(\kappa=3\)</span>.</p>
+<p>We note that the <em>curvature radius</em> is the inverse of the curvature. Hence, when <span class="math inline">\(r_0 = 1\)</span>, the curvature radius at the equator is <span class="math inline">\(r_\kappa = 1/3\)</span>.</p>
+<p>Let’s check this:</p>
+<p>The origin of a circle with curvature radius of <span class="math inline">\(r_\kappa=1/3\)</span> is at the point <span class="math inline">\((2/3, 0)\)</span>. We expect that the shape of this circle approximates the field line near the equatorial plane.</p>
+<div id="802eb50e" class="cell" data-tags="[]" data-execution_count="8">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, z, marker<span class="op">=</span><span class="st">'.'</span>, markersize<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> mpatches.Circle((<span class="dv">0</span>,<span class="dv">0</span>), radius<span class="op">=</span><span class="fl">0.1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> mpatches.Circle((<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">0</span>), radius<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>], [<span class="dv">0</span>], <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>, markersize<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ax.add_patch(circle)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>ax.add_patch(check)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'x/r$_0$'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'z/r$_0$'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fieldline_files/figure-html/cell-9-output-1.png" width="503" height="357" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="simplification" class="level3" data-number="19.2.3">
-<h3 data-number="19.2.3" class="anchored" data-anchor-id="simplification"><span class="header-section-number">19.2.3</span> Simplification</h3>
-<p>Terms with even powers cancel because <span class="math inline">\((-1)^{2n} = 1\)</span>.</p>
-<p>Thus, the potential simplifies to: <span class="math display">\[
-U(r) = \frac{2Q}{4 \pi \varepsilon r}
-\left[
-P_1(\cos \theta) \left( \frac{a}{r} \right) +
-P_3(\cos \theta) \left( \frac{a}{r} \right)^3 + \ldots
-\right].
+<section id="horizontal-slope" class="level3" data-number="17.2.2">
+<h3 data-number="17.2.2" class="anchored" data-anchor-id="horizontal-slope"><span class="header-section-number">17.2.2</span> Horizontal slope</h3>
+<p>To find the angle where the slope of the field line is horizontal, we have to form the <em>parametric derivative</em> of the function in the <span class="math inline">\(x-z\)</span>-plane.</p>
+<p>Let <span class="math inline">\(x(\theta)\)</span> and <span class="math inline">\(z(\theta)\)</span> be the coordinates of the points of the curve expressed as functions of a variable <span class="math inline">\(\theta\)</span>, i.e.,</p>
+<p><span class="math display">\[
+z = z(\theta), \qquad x = x(\theta).
 \]</span></p>
-<p>For <span class="math inline">\(r \gg a\)</span>, the term with <span class="math inline">\(P_1(\cos \theta)\)</span> dominates.</p>
-<p>This leads to the <em>electric dipole potential</em>: <span class="math display">\[
-U(r) = \frac{2aQ}{4 \pi \varepsilon}
-\cdot
-\frac{P_1(\cos \theta)}{r^2}.
+<p>Then the first derivative implied by these parametric equations is easily derived using the <em>chain rule</em> as</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}z}{\mathrm{d}x} = \frac{\mathrm{d}z / \mathrm{d \theta}}{\mathrm{d}x / \mathrm{d \theta}} = \frac{z'(\theta)}{x'(\theta)}
 \]</span></p>
-</section>
-<section id="legendre-polynomial-for-n-1" class="level3" data-number="19.2.4">
-<h3 data-number="19.2.4" class="anchored" data-anchor-id="legendre-polynomial-for-n-1"><span class="header-section-number">19.2.4</span> Legendre Polynomial for <span class="math inline">\(n = 1\)</span></h3>
-<p>The Legendre polynomial of degree <span class="math inline">\(n=1\)</span> is: <span class="math display">\[
-P_1(\cos \theta) = \cos \theta.
+<p>where the notation <span class="math inline">\(x'(\theta)\)</span> denotes the derivative of <span class="math inline">\(x\)</span> with respect to <span class="math inline">\(\theta\)</span>.</p>
+<p>To find the point where the slope of the field line is horizontal, the derivative of <span class="math inline">\(z\)</span> with respect to <span class="math inline">\(x\)</span> must be zero (necessary condition). i.e.,</p>
+<p><span class="math display">\[
+\frac{z'(\theta)}{x'(\theta)} = 0.
 \]</span></p>
-<p>This corresponds to the equation (with the <em>electric dipole moment</em> <span class="math inline">\(p = 2aQ\)</span>) derived using the <a href="./electricaldipole.html">electric dipole and the superposition principle</a>.</p>
+<p>We search all angles <span class="math inline">\(\theta\)</span> for which this condition is fulfilled.</p>
+<div id="286833e2" class="cell" data-tags="[]" data-execution_count="9">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> R <span class="op">*</span> cos(pi<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> theta)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> R <span class="op">*</span> sin(pi<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> theta)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>theta_star <span class="op">=</span> np.take(solve(Z.diff(theta) <span class="op">/</span> X.diff(theta)), [<span class="dv">1</span>, <span class="dv">3</span>])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>angles <span class="op">=</span> np.array([<span class="dv">90</span> <span class="op">-</span> p.evalf() <span class="op">*</span> <span class="dv">180</span> <span class="op">/</span> np.pi <span class="cf">for</span> p <span class="kw">in</span> theta_star])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>angles <span class="op">=</span> angles.astype(<span class="st">'float'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The two angles are at '</span>, angles, <span class="st">' degrees.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The two angles are at  [ 35.26438968 -35.26438968]  degrees.</code></pre>
+</div>
+</div>
+<p>As seen from the dipole position, the field lines are horizontal at an angle of approx. <span class="math inline">\(\pm 35\textdegree\)</span> below and above the equatorial plane.</p>
+<div id="3c6fa687" class="cell" data-tags="[]" data-execution_count="10">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.plot(x, z, marker<span class="op">=</span><span class="st">'.'</span>, markersize<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> mpatches.Circle((<span class="dv">0</span>,<span class="dv">0</span>), radius<span class="op">=</span><span class="fl">0.1</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> mpatches.Circle((<span class="dv">2</span><span class="op">/</span><span class="dv">3</span>,<span class="dv">0</span>), radius<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, color<span class="op">=</span><span class="st">'green'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>check_slope <span class="op">=</span> mpatches.Wedge((<span class="dv">0</span>,<span class="dv">0</span>), r<span class="op">=</span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>, theta1<span class="op">=</span><span class="fl">360.0</span><span class="op">+</span>angles[<span class="dv">1</span>], theta2<span class="op">=</span>angles[<span class="dv">0</span>], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>ax.add_patch(circle)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.add_patch(check)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ax.add_patch(check_slope)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'x/r$_0$'</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'z/r$_0$'</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fieldline_files/figure-html/cell-11-output-1.png" width="503" height="357" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The distance from the dipole to the points where the slope is horizontal is <span class="math inline">\(r^* = r_0 \sin^2 \theta^*\)</span>.</p>
+<p>It is always <span class="math inline">\(\frac{2}{3}r_0\)</span>.</p>
+<div id="1b55b778" class="cell" data-tags="[]" data-execution_count="11">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[sin(t.evalf())<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> t <span class="kw">in</span> theta_star]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[0.666666666666667, 0.666666666666667]</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -1002,13 +1092,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./legendre-intro.html" class="pagination-link" aria-label="Introduction to Legendre polynomials">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span>
+      <a href="./magneticdipole.html" class="pagination-link" aria-label="Potential of a magnetic dipole">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text">Summary</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./legendre-intro.html" class="pagination-link" aria-label="Introduction to Legendre polynomials">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
