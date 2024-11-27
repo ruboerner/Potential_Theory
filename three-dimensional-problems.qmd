@@ -1,0 +1,201 @@
+---
+title: "Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$"
+---
+
+We consider a density distribution $\rho$ in a volume within $\mathbb{R}^3$. The component of the gravitational field vector $\mathbf{g}$ induced by this density distribution in the direction of $\mathbf{a}$, at a distance $r$ from the origin, can be expressed as a surface integral:
+
+$$
+\mathbf{g} \cdot \mathbf{a} = -\nabla V \cdot \mathbf{a} = -f \rho \iint \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s
+$$
+
+We use the following identity:
+$$
+\mathbf{a} \cdot \nabla V = \nabla \cdot (V \mathbf{a}) - V \underbrace{\nabla \cdot \mathbf{a}}_{= 0}.
+$$
+
+Thus:
+$$
+-f \rho \int_V \mathbf{a} \cdot \nabla \frac{1}{r} \, \mathrm{d}V = -f \rho \int_V \nabla \cdot \left( \frac{1}{r} \mathbf{a} \right) \, \mathrm{d}V =
+-f \rho \iint_S \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s.
+$$
+
+![](images/three-dimensional-modelling.excalidraw.svg){#fig-three-d}
+
+We now consider a position vector $\mathbf{r}$ and project the field $\mathbf{g}$ onto the direction of $\mathbf{r}$, i.e., onto $\frac{\mathbf{r}}{r}$.
+
+For a surface element $\mathrm{d}s$, the integrand becomes:
+$$
+-f \rho \mathbf{r} \cdot \mathbf{u}_n \frac{1}{r^2} \, \mathrm{d}s = -f \frac{m}{r^2} \, \mathrm{d}s,
+$$
+where the surface element has the associated mass:
+$$
+m(\mathbf{r}) = \rho \mathbf{r} \cdot \mathbf{u}_n.
+$$
+
+The gravitational field $\mathbf{g}$ can be expressed as:
+$$
+\mathbf{g} = f \rho \iint \frac{1}{r} \frac{\mathbf{r}}{r} \cdot \mathbf{u}_n \, \mathrm{d}s =
+f \iint \frac{\rho \mathbf{r} \cdot \mathbf{u}_n}{r^2} \, \mathrm{d}s =
+f \iint \frac{\sigma'}{r^2} \, \mathrm{d}s.
+$$
+
+The gravitational effect of a body is equivalent to that of an artificial mass distribution on its surface, with surface density:
+$$
+\sigma'(\mathbf{r}) = \rho \mathbf{r} \cdot \mathbf{u}_n.
+$$
+
+The surface density is a purely computational quantity. Unlike the constant volume density, it is _position-dependent_ and can be positive or negative for the same body.
+
+## Cartesian Components of the Gravitational Field
+
+The components $g_x$, $g_y$, and $g_z$ of the field $\mathbf{g}$ are obtained by projecting the field onto the Cartesian unit vectors. In general:
+$$
+a_b = \mathbf{a} \cdot \frac{\mathbf{b}}{|\mathbf{b}|} = |\mathbf{a}| \cos \theta,
+$$
+where $\theta$ is the angle between the vector $\mathbf{a}$ and the direction of $\mathbf{b}$.
+
+The $z$-component of $\mathbf{g}$ is:
+$$
+g_z := \mathbf{g} \cdot \mathbf{e}_z = 
+f \rho \iint \frac{\mathbf{r} \cdot \mathbf{u}_n}{r^2} \frac{z}{r} \, \mathrm{d}s =
+f \rho \iint \mathbf{r} \cdot \mathbf{u}_n \frac{z}{r^3} \, \mathrm{d}s.
+$$
+
+By dividing the surface of the body into a set of planar sub-areas, the integration can be performed separately for each sub-area. Summing the contributions from all sub-areas yields the gravitational acceleration.
+
+## Surface Density for Sub-Areas
+
+For each $i$th sub-area, the surface density is position-dependent:
+$$
+\sigma_i'(\mathbf{r}) = \rho \mathbf{r} \cdot \mathbf{u}_i.
+$$
+
+Summing over all sub-areas gives:
+$$
+g_z = f \sum_i \rho \mathbf{r} \cdot \mathbf{u}_i \iint_i \frac{z}{r^3} \, \mathrm{d}s.
+$$
+
+The normal vector $\mathbf{u}_n$ has Cartesian components:
+$$
+\mathbf{u}_n = \begin{pmatrix}
+\ell \\
+m \\
+n
+\end{pmatrix}.
+$$
+
+The normal direction of the $i$th sub-area can be computed in several ways. Let $(x_1, y_1, z_1)$ denote the Cartesian coordinates of one of the corners of the $i$th sub-area. Then:
+$$
+\mathbf{r} \cdot \mathbf{u}_n = \ell x_1 + m y_1 + n z_1.
+$$
+
+The contribution to the solid angle under which the surface element appears from the origin is:
+$$
+\mathrm{d}\Omega = \frac{\cos \theta}{r^2} \, \mathrm{d}s.
+$$
+
+Assuming unit surface density:
+$$
+\Omega = \ell g_x + m g_y + n g_z.
+$$
+
+## Curl of Unit Vectors
+
+The scalar products of $\mathbf{u}_n$ with the curl of unit vectors are:
+$$
+\mathbf{u}_n \cdot \nabla \times \frac{\mathbf{i}}{r} = \frac{-mz + ny}{r^3},
+$$
+$$
+\mathbf{u}_n \cdot \nabla \times \frac{\mathbf{j}}{r} = \frac{-nx + \ell z}{r^3},
+$$
+$$
+\mathbf{u}_n \cdot \nabla \times \frac{\mathbf{k}}{r} = \frac{mx - \ell y}{r^3}.
+$$
+
+Integration gives:
+$$
+P := \iint \mathbf{u}_n \cdot \nabla \times \frac{\mathbf{i}}{r} \, \mathrm{d}s = n g_y - m g_z,
+$$
+$$
+Q := \iint \mathbf{u}_n \cdot \nabla \times \frac{\mathbf{j}}{r} \, \mathrm{d}s = \ell g_z - n g_x,
+$$
+$$
+R := \iint \mathbf{u}_n \cdot \nabla \times \frac{\mathbf{k}}{r} \, \mathrm{d}s = m g_x - \ell g_y.
+$$
+
+Additionally:
+$$
+\ell^2 + m^2 + n^2 = 1.
+$$
+
+Thus, the gravitational field components are:
+$$
+\begin{align}
+g_x & = \ell \Omega - n Q + m R, \\
+g_y & = m \Omega - \ell R + n P, \\
+g_z & = n \Omega - m P + \ell Q.
+\end{align}
+$$
+
+## Stokes' Theorem
+
+Using Stokes' Theorem:
+$$
+\iint (\nabla \times \mathbf{F}) \cdot \mathrm{d}\mathbf{S} = \oint \mathbf{F} \cdot \mathrm{d}\mathbf{r},
+$$
+with:
+$$
+\begin{align}
+\mathrm{d}\mathbf{S} & = \mathbf{u}_n \, \mathrm{d}s, \\
+\mathrm{d}\mathbf{r} & = \boldsymbol{\tau} \, \mathrm{d}\tau,
+\end{align}
+$$
+we convert surface integrals over the normal component of the curl of a vector field into line integrals over the vector field along the boundary of the domain:
+$$
+\iint \mathbf{u}_n \cdot \nabla \times \frac{\mathbf{i}}{r} \, \mathrm{d}s = \oint \frac{\mathbf{i}}{r} \, \mathrm{d}\tau.
+$$
+
+## Contributions of Polygonal Edges
+
+The contributions from the $i$th edge of the polygon are:
+$$
+\begin{align}
+P_i & = I L_x, \\
+Q_i & = I L_y, \\
+R_i & = I L_z,
+\end{align}
+$$
+where:
+$$
+\begin{align}
+L_x & = x_2 - x_1, \\
+L_y & = y_2 - y_1, \\
+L_z & = z_2 - z_1, \\
+L^2 & = L_x^2 + L_y^2 + L_z^2,
+\end{align}
+$$
+
+$$
+\begin{align}
+I & = L_x \int_0^1 \left(L^2 t^2 + b t + r_1^2 \right)^{-\frac{1}{2}} \, \mathrm{d}t, \\
+t & = \frac{x - x_1}{x_2 - x_1}, \\
+r_1 & = \sqrt{x_1^2 + y_1^2 + z_1^2}, \\
+b & = 2 (x_1 L_x + y_1 L_y + z_1 L_z).
+\end{align}
+$$
+
+Finally, we obtain $I$ for two cases:
+
+1. If $r_1 + \dfrac{b}{2L} \neq 0$, then:
+$$
+I = \frac{1}{L} \ln \left[ \frac{\sqrt{L^2 + b + r_1^2} + L + \frac{b}{2L}}{r_1 + \frac{b}{2L}} \right].
+$$
+
+2. If $r_1 + \dfrac{b}{2L} = 0$, then:
+$$
+I = \frac{1}{L} \ln \frac{|L - r_1|}{r_1}.
+$$
+
+::: {.callout-note}
+A `MATLAB` implementation of this approach can be downloaded at [https://github.com/ruboerner/GravMag3D](https://github.com/ruboerner/GravMag3D).
+:::

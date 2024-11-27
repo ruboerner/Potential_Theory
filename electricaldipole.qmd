@@ -1,0 +1,82 @@
+---
+title: "Potential of an electrical dipole"
+jupyter: python3
+---
+
+## Derivation Using Taylor Series
+
+Two charges $Q$ with opposite signs are separated by a distance $\mathbf{a}$.  
+The electric dipole moment is defined as $\mathbf{p} = Q \mathbf{a}$ and points from the **negative to the positive** charge.
+
+![Sketch of an electrical dipole aligned with the $z$-axis.](images/Dipolpotential.excalidraw.svg){#fig-dipolepotential}
+
+According to the principle of superposition, the potential is given by
+$$
+U(\mathbf{r}) = \frac{Q}{4 \pi \varepsilon} \left[
+\frac{1}{|\mathbf{r} - \mathbf{a}|}
+-
+\frac{1}{|\mathbf{r}|}
+\right].
+$$
+
+For $|\mathbf{a}| \ll |\mathbf{r}|$, the reciprocal distance (first term in the brackets) can be expanded into a series
+$$
+\begin{align}
+\frac{1}{|\mathbf{r} - \mathbf{a}|} & \approx
+\frac{1}{|\mathbf{r}|} \left\{
+1 - 2 \frac{\mathbf{a} \cdot \mathbf{r}}{|\mathbf{r}|^2}
+\right\}^{-1/2} \\
+& \approx \frac{1}{|\mathbf{r}|}
+\left[
+1 + \frac{\mathbf{a} \cdot \mathbf{r}}{|\mathbf{r}|^2}
+\right].
+\end{align}
+$$
+
+The dipole potential is thus
+$$
+U(\mathbf{r}) = \frac{Q}{4 \pi \varepsilon}
+\frac{\mathbf{a} \cdot \mathbf{r}}{|\mathbf{r}|^3}.
+$$
+
+The scalar product, using $r = |\mathbf{r}|$ and $p = |\mathbf{p}|$, leads to the equation
+$$
+U(r) = \frac{p}{4 \pi \varepsilon} \frac{\cos \theta}{r^2}.
+$$
+
+
+Additionally,
+$$
+\nabla \frac{1}{|\mathbf{r}|} = - \frac{\mathbf{r}}{|\mathbf{r}|^3}.
+$$
+
+The dipole potential is direction-dependent.
+
+We see that the dipole potential can be derived from the single charge potential by differentiating with respect to the coordinates of the single potential along the dipole axis. The term $\mathbf{p} \cdot \nabla$ is understood as a directional derivative. It calculates the projection of the gradient onto the dipole axis.
+$$
+U(\mathbf{r}) = -\frac{1}{4 \pi \varepsilon} \mathbf{p} \cdot \nabla \frac{1}{|\mathbf{r}|}.
+$$
+
+
+::: {.callout-note}
+This result is an approximate solution, as higher-order terms in the Taylor series expansion are neglected.
+:::
+
+## Field components
+The electric field can be obtained from the potential by applying the gradient
+
+$$
+\mathbf E = -\grad U.
+$$
+
+```{python}
+import numpy as np
+from sympy import *
+from IPython.display import display, Math
+U, r, theta = symbols("U r theta")
+U = cos(theta) / r**2
+display(Math('U(r, \\theta) = ' + latex(U)))
+grad_sph = [diff(U, r), 1 / r * diff(U, theta)]
+E = [-grad_sph[i] for i in [0,1]]
+display(Math('\\mathbf E(r, \\theta) = ' + latex(E) + '^\\top'))
+```

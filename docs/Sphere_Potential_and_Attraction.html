@@ -298,12 +298,44 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Three-dimensional problems</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Three-dimensional problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Dipole potential</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Dipole potential</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -316,8 +348,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
       </ul>
@@ -392,7 +430,7 @@ m=\frac{4\pi }{3}a^3 \Delta \rho,
 V(x,y,z)=-f\frac{m}{\sqrt{x^2 +y^2 +(z-t)^2 }}.
 \]</span></p>
 <p>We restrict our measurements to profiles in the plane <span class="math inline">\(x=0\)</span>.</p>
-<div id="b9922b73" class="cell" data-execution_count="2">
+<div id="950c1369" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>y, z, t, f, m <span class="op">=</span> sp.symbols(<span class="st">"y z t f m"</span>)</span>
@@ -414,7 +452,7 @@ V(x,y,z)=-f\frac{m}{\sqrt{x^2 +y^2 +(z-t)^2 }}.
 V_z (y) := -\pdv{V}{y}.
 \]</span></p>
 <p>For <span class="math inline">\(z=0\)</span> we obtain the expression</p>
-<div id="cf417640" class="cell" data-execution_count="3">
+<div id="e3498cc1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Vz <span class="op">=</span> <span class="op">-</span>sp.diff(V, z).subs(z, <span class="dv">0</span>)</span>
@@ -429,7 +467,7 @@ V_z (y) := -\pdv{V}{y}.
 </div>
 </div>
 <p>The horizontal component of the gravitational attraction in <span class="math inline">\(z=0\)</span> is:</p>
-<div id="bfae59fa" class="cell" data-execution_count="4">
+<div id="233f7770" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Vy <span class="op">=</span> <span class="op">-</span>sp.diff(V, y).subs(z, <span class="dv">0</span>)</span>
@@ -444,7 +482,7 @@ V_z (y) := -\pdv{V}{y}.
 </div>
 </div>
 <p>and its second derivative with respect to <span class="math inline">\(y\)</span> evaluated at <span class="math inline">\(z=0\)</span> is:</p>
-<div id="5e677729" class="cell" data-execution_count="5">
+<div id="b8a8ab67" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Vyy <span class="op">=</span> <span class="op">-</span>sp.diff(V, y, <span class="dv">2</span>).subs(z, <span class="dv">0</span>)</span>
@@ -462,7 +500,7 @@ V_z (y) := -\pdv{V}{y}.
 <section id="example" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="example"><span class="header-section-number">7.2</span> Example</h2>
 <p>We consider as example a sphere at a depth of <span class="math inline">\(t=2000\)</span> m with radius <span class="math inline">\(r=1000\)</span> m. The density contrast is <span class="math inline">\(\Delta \rho =500\)</span> <span class="math inline">\(kg/m^3\)</span> . The vertical and horizontal components of the gravitational attraction along a profile at <span class="math inline">\(z=0\)</span> running from <span class="math inline">\(-10^4 \le y\le 10^4\)</span> m have to be computed in units of mGal (milliGal).</p>
-<div id="7fff909e" class="cell" data-execution_count="6">
+<div id="97520164" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>yy <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1e4</span>, <span class="fl">1e4</span>, <span class="dv">101</span>)</span>
@@ -499,7 +537,7 @@ V_z (y) := -\pdv{V}{y}.
 <p><span class="math display">\[
     \pdv[2]{}{y}V(y)=0.
 \]</span></p>
-<div id="b39e68db" class="cell" data-execution_count="7">
+<div id="f9e2aefe" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sol <span class="op">=</span> sp.solve(Vyy, y, <span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
@@ -513,7 +551,7 @@ V_z (y) := -\pdv{V}{y}.
 \displaystyle \left(\begin{array}{c} -\frac{\sqrt{2}\,t}{2}\newline \frac{\sqrt{2}\,t}{2} \end{array}\right).
 \]</span></p>
 <p>The positions of the extrema of <span class="math inline">\(V_y\)</span> only depend on the depth of the sphere. The horizontal distance between the extrema is <span class="math inline">\(\sqrt{2}t\)</span>.</p>
-<div id="4af426f4" class="cell" data-execution_count="8">
+<div id="0070f3af" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>yp <span class="op">=</span> np.sqrt(<span class="fl">2.0</span>) <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> depth</span>
@@ -538,7 +576,7 @@ V_z (y) := -\pdv{V}{y}.
 <p><span class="math display">\[
 \dv[2]{}{y} V_z(y) = 0.
 \]</span></p>
-<div id="3e20a5bf" class="cell" data-execution_count="9">
+<div id="25e51cbf" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Vzyy <span class="op">=</span> sp.diff(Vz, y, <span class="dv">2</span>)</span>
@@ -551,7 +589,7 @@ V_z (y) := -\pdv{V}{y}.
 </div>
 </div>
 <p>The inflection points of <span class="math inline">\(V_z\)</span> are at <span class="math inline">\(\pm t/2\)</span>.</p>
-<div id="94f1f94f" class="cell" data-execution_count="10">
+<div id="41fef191" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -580,7 +618,7 @@ V_z (y) := -\pdv{V}{y}.
 <p>where <span class="math inline">\(\gamma_0 =9.81\)</span> <span class="math inline">\(m/s^2\)</span> is a good estimate of the <em>normal gravitational attraction</em> at the surface of the Earth.</p>
 <p>This is the fundamental idea of the <em>Eötvös</em> torsion balance.</p>
 <p>With the sphere introduced in the above example we obtain the following figure:</p>
-<div id="6e162bb7" class="cell" data-execution_count="11">
+<div id="cc71c684" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Vz_ <span class="op">=</span> np.array([Vz_num(v) <span class="cf">for</span> v <span class="kw">in</span> yy], dtype<span class="op">=</span><span class="bu">float</span>)</span>
@@ -603,7 +641,7 @@ V_z (y) := -\pdv{V}{y}.
 </div>
 </div>
 <p>The maximum deflection in arc seconds of the pendulum is</p>
-<div id="75549baf" class="cell" data-execution_count="12">
+<div id="92451310" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">max</span>(deflection))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -614,7 +652,7 @@ V_z (y) := -\pdv{V}{y}.
 </div>
 <p>To put this into perspective:</p>
 <p>The arc length <span class="math inline">\(s\)</span> along the Earth’s equator corresponding to 1 arcsec is approximately 31 meters:</p>
-<div id="7db3c9a4" class="cell" data-execution_count="13">
+<div id="d7b007ec" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">180</span> <span class="op">/</span> <span class="dv">3600</span> <span class="op">*</span> <span class="fl">6.371e6</span></span>

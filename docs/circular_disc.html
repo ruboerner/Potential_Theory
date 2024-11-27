@@ -298,12 +298,44 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Three-dimensional problems</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Three-dimensional problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Dipole potential</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Dipole potential</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -316,8 +348,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
       </ul>
@@ -397,7 +435,7 @@ V(z) = -f \frac{m}{r} = -2 \pi f \rho_F \int\limits_{r=0}^a \frac{r \, \dd r}{\s
 V(z) = 2 \pi f (|z| - \sqrt{ a^2 + z^2 })
 \]</span></p>
 <p>Sympy check:</p>
-<div id="db9669d9" class="cell" data-execution_count="1">
+<div id="c5704627" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -450,7 +488,7 @@ Figure&nbsp;8.2: Potential of a circular disc of radius <span class="math inline
 \]</span></p>
 <p>This is the attraction of a disc of density <span class="math inline">\(\rho_{F}\)</span> aligned with the plane <span class="math inline">\(z=0\)</span> observed at some point at the <span class="math inline">\(z\)</span> axis.</p>
 <p>Sympy check:</p>
-<div id="27b0397c" class="cell" data-execution_count="3">
+<div id="8120cbc2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="op">-</span>sp.diff(V, z)</span>
@@ -499,7 +537,7 @@ Figure&nbsp;8.3: Vertical attraction of a circular disc of radius <span class="m
 </div>
 </div>
 <p>The vertical component of the gravitational attraction obviously has a jump, which equals <span class="math inline">\(4 \pi f \rho_F\)</span>.</p>
-<div id="a0da3ec7" class="cell" data-execution_count="5">
+<div id="e7324bb3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sp.limit(g, z, <span class="dv">0</span>, <span class="st">'-'</span>) <span class="op">-</span> sp.limit(g, z, <span class="dv">0</span>, <span class="st">'+'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -534,7 +572,7 @@ g(z) &amp; = 2 \pi f \rho \left(h + \sqrt{ a^2 + z^2 } - \sqrt{ a^2 + (h - z)^{2
 \end{align}
 \]</span></p>
 <p>Sympy check:</p>
-<div id="dc090c24" class="cell" data-execution_count="6">
+<div id="260ebe67" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> sp.symbols(<span class="st">'h'</span>, real<span class="op">=</span><span class="va">True</span>, positive<span class="op">=</span><span class="va">True</span>)</span>
@@ -546,7 +584,7 @@ g(z) &amp; = 2 \pi f \rho \left(h + \sqrt{ a^2 + z^2 } - \sqrt{ a^2 + (h - z)^{2
 <p><span class="math inline">\(\displaystyle \begin{cases} 2 \pi f \rho \left(h + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{for}\: z &lt; 0 \\2 \pi f \rho \left(h - 2 z + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{for}\: h &gt; z \\2 \pi f \rho \left(- h + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{otherwise} \end{cases}\)</span></p>
 </div>
 </div>
-<div id="c0e68252" class="cell" data-execution_count="7">
+<div id="52e213f6" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hh <span class="op">=</span> <span class="fl">1.0</span></span>

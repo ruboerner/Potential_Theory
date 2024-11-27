@@ -485,6 +485,193 @@
     ]
   },
   {
+    "objectID": "three-dimensional-problems.html",
+    "href": "three-dimensional-problems.html",
+    "title": "14  Gravitational Field Caused by a Density Distribution in \\(\\mathbb{R}^3\\)",
+    "section": "",
+    "text": "14.1 Cartesian Components of the Gravitational Field\nWe consider a density distribution \\(\\rho\\) in a volume within \\(\\mathbb{R}^3\\). The component of the gravitational field vector \\(\\mathbf{g}\\) induced by this density distribution in the direction of \\(\\mathbf{a}\\), at a distance \\(r\\) from the origin, can be expressed as a surface integral:\n\\[\n\\mathbf{g} \\cdot \\mathbf{a} = -\\nabla V \\cdot \\mathbf{a} = -f \\rho \\iint \\frac{\\mathbf{a} \\cdot \\mathbf{u}_n}{r} \\, \\mathrm{d}s\n\\]\nWe use the following identity: \\[\n\\mathbf{a} \\cdot \\nabla V = \\nabla \\cdot (V \\mathbf{a}) - V \\underbrace{\\nabla \\cdot \\mathbf{a}}_{= 0}.\n\\]\nThus: \\[\n-f \\rho \\int_V \\mathbf{a} \\cdot \\nabla \\frac{1}{r} \\, \\mathrm{d}V = -f \\rho \\int_V \\nabla \\cdot \\left( \\frac{1}{r} \\mathbf{a} \\right) \\, \\mathrm{d}V =\n-f \\rho \\iint_S \\frac{\\mathbf{a} \\cdot \\mathbf{u}_n}{r} \\, \\mathrm{d}s.\n\\]\nWe now consider a position vector \\(\\mathbf{r}\\) and project the field \\(\\mathbf{g}\\) onto the direction of \\(\\mathbf{r}\\), i.e., onto \\(\\frac{\\mathbf{r}}{r}\\).\nFor a surface element \\(\\mathrm{d}s\\), the integrand becomes: \\[\n-f \\rho \\mathbf{r} \\cdot \\mathbf{u}_n \\frac{1}{r^2} \\, \\mathrm{d}s = -f \\frac{m}{r^2} \\, \\mathrm{d}s,\n\\] where the surface element has the associated mass: \\[\nm(\\mathbf{r}) = \\rho \\mathbf{r} \\cdot \\mathbf{u}_n.\n\\]\nThe gravitational field \\(\\mathbf{g}\\) can be expressed as: \\[\n\\mathbf{g} = f \\rho \\iint \\frac{1}{r} \\frac{\\mathbf{r}}{r} \\cdot \\mathbf{u}_n \\, \\mathrm{d}s =\nf \\iint \\frac{\\rho \\mathbf{r} \\cdot \\mathbf{u}_n}{r^2} \\, \\mathrm{d}s =\nf \\iint \\frac{\\sigma'}{r^2} \\, \\mathrm{d}s.\n\\]\nThe gravitational effect of a body is equivalent to that of an artificial mass distribution on its surface, with surface density: \\[\n\\sigma'(\\mathbf{r}) = \\rho \\mathbf{r} \\cdot \\mathbf{u}_n.\n\\]\nThe surface density is a purely computational quantity. Unlike the constant volume density, it is position-dependent and can be positive or negative for the same body.\nThe components \\(g_x\\), \\(g_y\\), and \\(g_z\\) of the field \\(\\mathbf{g}\\) are obtained by projecting the field onto the Cartesian unit vectors. In general: \\[\na_b = \\mathbf{a} \\cdot \\frac{\\mathbf{b}}{|\\mathbf{b}|} = |\\mathbf{a}| \\cos \\theta,\n\\] where \\(\\theta\\) is the angle between the vector \\(\\mathbf{a}\\) and the direction of \\(\\mathbf{b}\\).\nThe \\(z\\)-component of \\(\\mathbf{g}\\) is: \\[\ng_z := \\mathbf{g} \\cdot \\mathbf{e}_z =\nf \\rho \\iint \\frac{\\mathbf{r} \\cdot \\mathbf{u}_n}{r^2} \\frac{z}{r} \\, \\mathrm{d}s =\nf \\rho \\iint \\mathbf{r} \\cdot \\mathbf{u}_n \\frac{z}{r^3} \\, \\mathrm{d}s.\n\\]\nBy dividing the surface of the body into a set of planar sub-areas, the integration can be performed separately for each sub-area. Summing the contributions from all sub-areas yields the gravitational acceleration.",
+    "crumbs": [
+      "Three-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$</span>"
+    ]
+  },
+  {
+    "objectID": "three-dimensional-problems.html#surface-density-for-sub-areas",
+    "href": "three-dimensional-problems.html#surface-density-for-sub-areas",
+    "title": "14  Gravitational Field Caused by a Density Distribution in \\(\\mathbb{R}^3\\)",
+    "section": "14.2 Surface Density for Sub-Areas",
+    "text": "14.2 Surface Density for Sub-Areas\nFor each \\(i\\)th sub-area, the surface density is position-dependent: \\[\n\\sigma_i'(\\mathbf{r}) = \\rho \\mathbf{r} \\cdot \\mathbf{u}_i.\n\\]\nSumming over all sub-areas gives: \\[\ng_z = f \\sum_i \\rho \\mathbf{r} \\cdot \\mathbf{u}_i \\iint_i \\frac{z}{r^3} \\, \\mathrm{d}s.\n\\]\nThe normal vector \\(\\mathbf{u}_n\\) has Cartesian components: \\[\n\\mathbf{u}_n = \\begin{pmatrix}\n\\ell \\\\\nm \\\\\nn\n\\end{pmatrix}.\n\\]\nThe normal direction of the \\(i\\)th sub-area can be computed in several ways. Let \\((x_1, y_1, z_1)\\) denote the Cartesian coordinates of one of the corners of the \\(i\\)th sub-area. Then: \\[\n\\mathbf{r} \\cdot \\mathbf{u}_n = \\ell x_1 + m y_1 + n z_1.\n\\]\nThe contribution to the solid angle under which the surface element appears from the origin is: \\[\n\\mathrm{d}\\Omega = \\frac{\\cos \\theta}{r^2} \\, \\mathrm{d}s.\n\\]\nAssuming unit surface density: \\[\n\\Omega = \\ell g_x + m g_y + n g_z.\n\\]",
+    "crumbs": [
+      "Three-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$</span>"
+    ]
+  },
+  {
+    "objectID": "three-dimensional-problems.html#curl-of-unit-vectors",
+    "href": "three-dimensional-problems.html#curl-of-unit-vectors",
+    "title": "14  Gravitational Field Caused by a Density Distribution in \\(\\mathbb{R}^3\\)",
+    "section": "14.3 Curl of Unit Vectors",
+    "text": "14.3 Curl of Unit Vectors\nThe scalar products of \\(\\mathbf{u}_n\\) with the curl of unit vectors are: \\[\n\\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{i}}{r} = \\frac{-mz + ny}{r^3},\n\\] \\[\n\\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{j}}{r} = \\frac{-nx + \\ell z}{r^3},\n\\] \\[\n\\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{k}}{r} = \\frac{mx - \\ell y}{r^3}.\n\\]\nIntegration gives: \\[\nP := \\iint \\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{i}}{r} \\, \\mathrm{d}s = n g_y - m g_z,\n\\] \\[\nQ := \\iint \\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{j}}{r} \\, \\mathrm{d}s = \\ell g_z - n g_x,\n\\] \\[\nR := \\iint \\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{k}}{r} \\, \\mathrm{d}s = m g_x - \\ell g_y.\n\\]\nAdditionally: \\[\n\\ell^2 + m^2 + n^2 = 1.\n\\]\nThus, the gravitational field components are: \\[\n\\begin{align}\ng_x & = \\ell \\Omega - n Q + m R, \\\\\ng_y & = m \\Omega - \\ell R + n P, \\\\\ng_z & = n \\Omega - m P + \\ell Q.\n\\end{align}\n\\]",
+    "crumbs": [
+      "Three-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$</span>"
+    ]
+  },
+  {
+    "objectID": "three-dimensional-problems.html#stokes-theorem",
+    "href": "three-dimensional-problems.html#stokes-theorem",
+    "title": "14  Gravitational Field Caused by a Density Distribution in \\(\\mathbb{R}^3\\)",
+    "section": "14.4 Stokes’ Theorem",
+    "text": "14.4 Stokes’ Theorem\nUsing Stokes’ Theorem: \\[\n\\iint (\\nabla \\times \\mathbf{F}) \\cdot \\mathrm{d}\\mathbf{S} = \\oint \\mathbf{F} \\cdot \\mathrm{d}\\mathbf{r},\n\\] with: \\[\n\\begin{align}\n\\mathrm{d}\\mathbf{S} & = \\mathbf{u}_n \\, \\mathrm{d}s, \\\\\n\\mathrm{d}\\mathbf{r} & = \\boldsymbol{\\tau} \\, \\mathrm{d}\\tau,\n\\end{align}\n\\] we convert surface integrals over the normal component of the curl of a vector field into line integrals over the vector field along the boundary of the domain: \\[\n\\iint \\mathbf{u}_n \\cdot \\nabla \\times \\frac{\\mathbf{i}}{r} \\, \\mathrm{d}s = \\oint \\frac{\\mathbf{i}}{r} \\, \\mathrm{d}\\tau.\n\\]",
+    "crumbs": [
+      "Three-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$</span>"
+    ]
+  },
+  {
+    "objectID": "three-dimensional-problems.html#contributions-of-polygonal-edges",
+    "href": "three-dimensional-problems.html#contributions-of-polygonal-edges",
+    "title": "14  Gravitational Field Caused by a Density Distribution in \\(\\mathbb{R}^3\\)",
+    "section": "14.5 Contributions of Polygonal Edges",
+    "text": "14.5 Contributions of Polygonal Edges\nThe contributions from the \\(i\\)th edge of the polygon are: \\[\n\\begin{align}\nP_i & = I L_x, \\\\\nQ_i & = I L_y, \\\\\nR_i & = I L_z,\n\\end{align}\n\\] where: \\[\n\\begin{align}\nL_x & = x_2 - x_1, \\\\\nL_y & = y_2 - y_1, \\\\\nL_z & = z_2 - z_1, \\\\\nL^2 & = L_x^2 + L_y^2 + L_z^2,\n\\end{align}\n\\]\n\\[\n\\begin{align}\nI & = L_x \\int_0^1 \\left(L^2 t^2 + b t + r_1^2 \\right)^{-\\frac{1}{2}} \\, \\mathrm{d}t, \\\\\nt & = \\frac{x - x_1}{x_2 - x_1}, \\\\\nr_1 & = \\sqrt{x_1^2 + y_1^2 + z_1^2}, \\\\\nb & = 2 (x_1 L_x + y_1 L_y + z_1 L_z).\n\\end{align}\n\\]\nFinally, we obtain \\(I\\) for two cases:\n\nIf \\(r_1 + \\dfrac{b}{2L} \\neq 0\\), then: \\[\nI = \\frac{1}{L} \\ln \\left[ \\frac{\\sqrt{L^2 + b + r_1^2} + L + \\frac{b}{2L}}{r_1 + \\frac{b}{2L}} \\right].\n\\]\nIf \\(r_1 + \\dfrac{b}{2L} = 0\\), then: \\[\nI = \\frac{1}{L} \\ln \\frac{|L - r_1|}{r_1}.\n\\]\n\n\n\n\n\n\n\nNote\n\n\n\nA MATLAB implementation of this approach can be downloaded at https://github.com/ruboerner/GravMag3D.",
+    "crumbs": [
+      "Three-dimensional problems",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$</span>"
+    ]
+  },
+  {
+    "objectID": "electricaldipole.html",
+    "href": "electricaldipole.html",
+    "title": "15  Potential of an electrical dipole",
+    "section": "",
+    "text": "15.1 Derivation Using Taylor Series\nTwo charges \\(Q\\) with opposite signs are separated by a distance \\(\\mathbf{a}\\).\nThe electric dipole moment is defined as \\(\\mathbf{p} = Q \\mathbf{a}\\) and points from the negative to the positive charge.\nAccording to the principle of superposition, the potential is given by \\[\nU(\\mathbf{r}) = \\frac{Q}{4 \\pi \\varepsilon} \\left[\n\\frac{1}{|\\mathbf{r} - \\mathbf{a}|}\n-\n\\frac{1}{|\\mathbf{r}|}\n\\right].\n\\]\nFor \\(|\\mathbf{a}| \\ll |\\mathbf{r}|\\), the reciprocal distance (first term in the brackets) can be expanded into a series \\[\n\\begin{align}\n\\frac{1}{|\\mathbf{r} - \\mathbf{a}|} & \\approx\n\\frac{1}{|\\mathbf{r}|} \\left\\{\n1 - 2 \\frac{\\mathbf{a} \\cdot \\mathbf{r}}{|\\mathbf{r}|^2}\n\\right\\}^{-1/2} \\\\\n& \\approx \\frac{1}{|\\mathbf{r}|}\n\\left[\n1 + \\frac{\\mathbf{a} \\cdot \\mathbf{r}}{|\\mathbf{r}|^2}\n\\right].\n\\end{align}\n\\]\nThe dipole potential is thus \\[\nU(\\mathbf{r}) = \\frac{Q}{4 \\pi \\varepsilon}\n\\frac{\\mathbf{a} \\cdot \\mathbf{r}}{|\\mathbf{r}|^3}.\n\\]\nThe scalar product, using \\(r = |\\mathbf{r}|\\) and \\(p = |\\mathbf{p}|\\), leads to the equation \\[\nU(r) = \\frac{p}{4 \\pi \\varepsilon} \\frac{\\cos \\theta}{r^2}.\n\\]\nAdditionally, \\[\n\\nabla \\frac{1}{|\\mathbf{r}|} = - \\frac{\\mathbf{r}}{|\\mathbf{r}|^3}.\n\\]\nThe dipole potential is direction-dependent.\nWe see that the dipole potential can be derived from the single charge potential by differentiating with respect to the coordinates of the single potential along the dipole axis. The term \\(\\mathbf{p} \\cdot \\nabla\\) is understood as a directional derivative. It calculates the projection of the gradient onto the dipole axis. \\[\nU(\\mathbf{r}) = -\\frac{1}{4 \\pi \\varepsilon} \\mathbf{p} \\cdot \\nabla \\frac{1}{|\\mathbf{r}|}.\n\\]",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Potential of an electrical dipole</span>"
+    ]
+  },
+  {
+    "objectID": "electricaldipole.html#derivation-using-taylor-series",
+    "href": "electricaldipole.html#derivation-using-taylor-series",
+    "title": "15  Potential of an electrical dipole",
+    "section": "",
+    "text": "Figure 15.1: Sketch of an electrical dipole aligned with the \\(z\\)-axis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis result is an approximate solution, as higher-order terms in the Taylor series expansion are neglected.",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Potential of an electrical dipole</span>"
+    ]
+  },
+  {
+    "objectID": "electricaldipole.html#field-components",
+    "href": "electricaldipole.html#field-components",
+    "title": "15  Potential of an electrical dipole",
+    "section": "15.2 Field components",
+    "text": "15.2 Field components\nThe electric field can be obtained from the potential by applying the gradient\n\\[\n\\mathbf E = -\\grad U.\n\\]\n\n\nShow the code\nimport numpy as np\nfrom sympy import *\nfrom IPython.display import display, Math\nU, r, theta = symbols(\"U r theta\")\nU = cos(theta) / r**2\ndisplay(Math('U(r, \\\\theta) = ' + latex(U)))\ngrad_sph = [diff(U, r), 1 / r * diff(U, theta)]\nE = [-grad_sph[i] for i in [0,1]]\ndisplay(Math('\\\\mathbf E(r, \\\\theta) = ' + latex(E) + '^\\\\top'))\n\n\n\\(\\displaystyle U(r, \\theta) = \\frac{\\cos{\\left(\\theta \\right)}}{r^{2}}\\)\n\n\n\\(\\displaystyle \\mathbf E(r, \\theta) = \\left[ \\frac{2 \\cos{\\left(\\theta \\right)}}{r^{3}}, \\  \\frac{\\sin{\\left(\\theta \\right)}}{r^{3}}\\right]^\\top\\)",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Potential of an electrical dipole</span>"
+    ]
+  },
+  {
+    "objectID": "magneticdipole.html",
+    "href": "magneticdipole.html",
+    "title": "16  Potential of a magnetic dipole",
+    "section": "",
+    "text": "16.1 Derivation\nThe magnetic field \\(\\mathbf{B}\\) is curl-free outside the source distribution \\[\n\\nabla \\times \\mathbf{B} = \\mathbf{0}\n\\] and has a potential \\[\n\\mathbf{H} = - \\nabla V.\n\\]\nThe potential \\(V\\) satisfies the Laplace equation (due to \\(\\nabla \\cdot \\mathbf{B} = 0\\)).\nInduction: \\[\n\\mathbf{B} = \\mu_{r} \\mu_{0} \\mathbf{H} = \\mu_{0}(\\mathbf{H} + \\mathbf{M}) = \\mu_{0}\\mathbf{H} + \\mathbf{J}\n\\] where \\(\\mathbf{J}\\) is the magnetic polarization.\nPotential: \\[\n\\begin{align}\nV(\\mathbf{r}) & = -\\frac{1}{4 \\pi} \\mathbf{m} \\cdot \\nabla \\frac{1}{| \\mathbf{r} - \\mathbf{r'}|} \\\\\n& = \\frac{1}{4 \\pi} \\mathbf{m} \\cdot \\frac{\\mathbf{r} - \\mathbf{r'}}{| \\mathbf{r} - \\mathbf{r'}|^{3}}.\n\\end{align}\n\\]\nIf \\(\\mathbf{m} = (0, 0, m)^\\top\\) and \\(\\mathbf{r'} = (0, 0, 0)^\\top\\), we refer to a vertical magnetic dipole at the origin. Then, with \\(r = |\\mathbf{r}|\\): \\[\nV(\\mathbf{r}) = \\frac{m}{4 \\pi} \\frac{z}{r^{3}} = \\frac{m}{4 \\pi} \\frac{\\cos \\theta}{r^{2}}.\n\\]",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Potential of a magnetic dipole</span>"
+    ]
+  },
+  {
+    "objectID": "magneticdipole.html#magnetic-field",
+    "href": "magneticdipole.html#magnetic-field",
+    "title": "16  Potential of a magnetic dipole",
+    "section": "16.2 Magnetic Field",
+    "text": "16.2 Magnetic Field\nThe magnetic field is given by: \\[\n\\begin{align}\n\\mathbf{H} & = - \\nabla V \\\\\n& = -\\frac{m}{4 \\pi} \\left( \\hat{\\mathbf{r}} \\frac{\\partial}{\\partial r} + \\frac{1}{r} \\hat{\\theta} \\frac{\\partial}{\\partial \\theta} + \\frac{1}{r \\sin \\theta} \\hat{\\phi} \\frac{\\partial}{\\partial \\phi} \\right) \\frac{\\cos \\theta}{r^{2}} \\\\\n& = +\\frac{m}{4 \\pi} \\left( \\hat{\\mathbf{r}} \\frac{2 \\cos \\theta}{r^{3}} + \\hat{\\theta} \\frac{\\sin \\theta}{r^{3}} \\right) \\\\\n& = (H_{r}, H_{\\theta}, 0)^\\top.\n\\end{align}\n\\]\nThe magnitude of the field is: \\[\nH = \\sqrt{H_{r}^{2} + H_{\\theta}^{2}} = \\frac{m}{4 \\pi r^{3}} \\sqrt{1 + 3 \\cos^{2} \\theta}.\n\\]\nThe field strength decreases as \\(r^{-3}\\), and the field direction depends on the angle \\(\\theta\\).\nThe magnitude of the field along the dipole axis is twice as large as that in the equatorial plane. At \\(\\theta = 0\\) and \\(\\theta = \\frac{\\pi}{2}\\), one of the components of \\(\\mathbf{H}\\) vanishes. These positions are known as the Gauss first and second principal axes, respectively.",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Potential of a magnetic dipole</span>"
+    ]
+  },
+  {
+    "objectID": "magneticdipole.html#spatial-distribution-of-the-dipole-moment",
+    "href": "magneticdipole.html#spatial-distribution-of-the-dipole-moment",
+    "title": "16  Potential of a magnetic dipole",
+    "section": "16.3 Spatial Distribution of the Dipole Moment",
+    "text": "16.3 Spatial Distribution of the Dipole Moment\nDipole density: Magnetization corresponds to the density of dipole moments: \\[\n\\mathbf{m} = \\int_{V} \\mathbf{M} \\, \\mathrm{d}V.\n\\]\nSubstituting the dipole moment into the potential equation gives: \\[\nV(\\mathbf{r}) = -\\frac{1}{4 \\pi} \\int \\mathbf{M} \\cdot \\nabla \\frac{1}{|\\mathbf{r} - \\mathbf{r'}|} \\, \\mathrm{d}V.\n\\]\nFor homogeneous magnetization: \\[\nV(\\mathbf{r}) = -\\frac{1}{4 \\pi} \\mathbf{M} \\cdot \\nabla \\int \\frac{1}{|\\mathbf{r} - \\mathbf{r'}|} \\, \\mathrm{d}V.\n\\]",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Potential of a magnetic dipole</span>"
+    ]
+  },
+  {
+    "objectID": "magneticdipole.html#magnetic-dipole",
+    "href": "magneticdipole.html#magnetic-dipole",
+    "title": "16  Potential of a magnetic dipole",
+    "section": "16.4 Magnetic Dipole",
+    "text": "16.4 Magnetic Dipole\n\n\nShow the code\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sympy import *\n\n\nFor the dipole field of a magnetized sphere at position \\(\\mathbf{r'}\\) with dipole moment \\(\\mathbf{m}\\): \\[\n\\mathbf{B}(\\mathbf{r}) = \\frac{\\mu_{0}}{4 \\pi R^5} \\left( 3 (\\mathbf{m}^\\top (\\mathbf{r} - \\mathbf{r'})) (\\mathbf{r} - \\mathbf{r'}) - \\mathbf{m} R^2 \\right).\n\\]\n\n16.4.1 Derivation using SymPy\n\n\nShow the code\nm_x, m_y, m_z, x, y, z, mu = symbols('m_x m_y m_z x y z mu_0', real=True)\nr = symbols('r', positive=True)\nm = Matrix([m_x, m_y, m_z])\nV = -mu / 4 / pi * m.dot([diff(1 / sqrt(x**2 + y**2 + z**2), q) for q in [x,y,z]])\nV\n\n\n\\(\\displaystyle - \\frac{\\mu_{0} \\left(- \\frac{m_{x} x}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{3}{2}}} - \\frac{m_{y} y}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{3}{2}}} - \\frac{m_{z} z}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{3}{2}}}\\right)}{4 \\pi}\\)\n\n\nThe field can be obtained by taking the negative gradient of the potential:\n\n\nShow the code\nB = [-diff(V, p) for p in [x,y,z]]\nsimplify(Matrix([B[0], B[1], B[2]])).subs(x**2+y**2+z**2, r**2)\n\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{\\mu_{0} \\left(- m_{x} r^{2} + 3 x \\left(m_{x} x + m_{y} y + m_{z} z\\right)\\right)}{4 \\pi r^{5}}\\\\\\frac{\\mu_{0} \\left(- m_{y} r^{2} + 3 y \\left(m_{x} x + m_{y} y + m_{z} z\\right)\\right)}{4 \\pi r^{5}}\\\\\\frac{\\mu_{0} \\left(- m_{z} r^{2} + 3 z \\left(m_{x} x + m_{y} y + m_{z} z\\right)\\right)}{4 \\pi r^{5}}\\end{matrix}\\right]\\)\n\n\nThis result can be rewritten in compact form as \\[\n\\mathbf{B}(\\mathbf r)= \\frac{\\mu_0}{4 \\pi r^3}\n\\left(3({\\mathbf{m}} \\cdot {\\hat{\\mathbf{r}}}) {\\hat{\\mathbf{r}}}-{\\mathbf{m}}\\right)\n\\] with the radial unit vector \\[\n\\hat{\\mathbf r} = \\frac{\\mathbf r}{r}, \\quad r = |\\mathbf r|.\n\\]\nThe induced magnetization is caused by the magnetic field within the body: \\[\n\\mathbf{M}_{i} = (\\mu_{r} - 1) \\mathbf{H} = \\kappa \\mathbf{H} = \\frac{\\kappa}{\\mu_{0}} \\mathbf{B}.\n\\]\nThe susceptibility \\(\\kappa\\) is obtained from the magnetic permeability: \\[\n\\mu = \\mu_{0} \\mu_{r} = \\mu_{0}(1 + \\kappa),\n\\] hence: \\[\n\\kappa = \\mu_{r} - 1.\n\\]\nThe susceptibility is a dimensionless quantity, typically expressed in \\(10^{-5}\\) SI units.\nThe dipole moment of a sphere with radius \\(a\\) and susceptibility \\(\\kappa\\) in the geomagnetic main field \\(\\mathbf{T_{0}}\\) is: \\[\n\\mathbf{m} = \\frac{\\kappa}{\\mu_{0}} \\mathbf{T_{0}} \\frac{4 \\pi}{3} a^{3}.\n\\]",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Potential of a magnetic dipole</span>"
+    ]
+  },
+  {
+    "objectID": "legendre-intro.html",
+    "href": "legendre-intro.html",
+    "title": "17  Introduction to Legendre polynomials",
+    "section": "",
+    "text": "17.1 Visualization on a sphere\nThe Legendre polynomials were first introduced in 1782 by Adrian-Marie Legendre as the coefficients in the expansion of the Newtonian potential.\nIn this section we demonstrate how the Legendre polynomials can be computed.\nA very handy and especially compact expression for the Legendre polynomials is given by the formula of Rodrigues\n\\[\nP_n(x) = \\frac{1}{2^n n!} \\frac{\\mathrm d^n}{\\mathrm dx^n} (x^2 - 1)^n.\n\\]\nIt is straightforward to compute these polynomials with the help of SymPy.\nWe implement the above equation and later substitute \\(x=:\\cos\\theta\\).\nFirst, we introduce symbolic variables.\nNext, we define a symbolic expression which provides (not evaluates) the formula of Rodrigues. Note that we introduce a symbolic differentiation (up to order n) by using the Derivative function. The differentiation can later be carried out explicitly by calling the method .doit().\nLet’s evaluate the Legendre polynomials \\(P_n(\\cos\\theta)\\) for a small range of order \\(n\\), say \\(0 \\le n \\le 5\\).\nNote: - First, we iterate through a list of orders n (for i in range(0,5):) and substitute the desired value of n with i (subs(n, i)) - Second, with the fixed order of the derivative, we carry out the differentiation by calling doit() - Finally, we substitute x with cos(theta) and expand the expression.\nWe observe that Legendre polynomials are polynomials in \\(\\cos\\theta\\).\nLet’s visualize:\nIn the following we reproduce these results by expanding the inverse distance \\(1/r\\), which is the main feature of, e.g., the potential of a point mass in \\(\\mathbb R^3\\).\nThe gravity potential due to a point mass \\(m\\) located at the point \\(\\mathbf r'\\) observed at the point \\(\\mathbf r\\) is given by\n\\[\nV(\\mathbf r) = -f \\frac{m}{|\\mathbf r - \\mathbf r'|}\n\\]\nNote that the point mass is not in the center of a sphere, but has been moved slightly along the \\(z\\)-axis to the point \\(\\mathbf r' = (0, 0, s)^\\top\\).\nThe term \\(1/|\\mathbf r - \\mathbf r'|\\) can be expanded in a Taylor series when \\(|\\mathbf r'| \\ll |\\mathbf r|\\).\nLet \\(\\mathbf r = (x, y, z)^\\top\\) and \\(\\mathbf r' = (0, 0, s)^\\top\\). The Euclidean distance between the point mass and the point of observation is \\(q = |\\mathbf r - \\mathbf r'|\\). With \\(r = |\\mathbf r|\\) and \\(s = |\\mathbf r'|\\) we can rewrite the term \\(1/q\\) using the Theorem of Cosines as\n\\[\n\\frac{1}{q}=f(r, \\theta)=\\frac{1}{r}\\left[1+\\left(\\frac{s}{r}\\right)^{2}-2 \\frac{s}{r} \\cos \\theta\\right]^{-1 / 2}\n\\]\nWhen \\(s \\ll r\\), we can expand \\(f(r, \\theta)\\) in a binomial series as\n\\[\nf(r, \\theta) = \\frac{1}{r} (1 + b)^{-1/2} = \\frac{1}{r}\\sum\\limits_{n=0}^\\infty \\left( -1/2 \\atop n \\right)b^n\n\\] with \\[\nb = \\left(\\frac{s}{r}\\right)^2 - 2 \\frac{s}{r}\\cos\\theta, \\quad |b| &lt; 1\n\\]\nRearranging after powers of \\(s/r\\) we arrive at\n\\[\nf(r, \\theta) = \\frac{1}{r} \\sum\\limits_{n=0}^\\infty\\left(\\frac{s}{r} \\right)^n P_n(\\cos\\theta)\n\\]\nThe \\(P_n(\\cos\\theta)\\) are polynomials of degree \\(n\\) in \\(\\cos\\theta\\).\nThe polynomial coefficients in the binomial series are binomial coefficients given by \\[\n\\left( -1/2 \\atop n \\right)\n\\] The binomial coefficients for \\(0 \\le n \\le 4\\) are:\nNext, we expand \\[\nf(r, \\theta) = \\frac{1}{r \\sqrt{1 + \\left(\\dfrac{s}{r}\\right)^2 - 2 \\dfrac{s}{r}\\cos\\theta}}\n\\] into a series. To this end, we define a symbolic expression for \\(f\\).\nWe expand in a power series of \\(b\\):\nWe repeat this step, but replace b to obtain the following result:\nThis is a polynomial in \\(\\cos\\theta\\). The coefficients have the form \\(\\dfrac{1}{r}\\left(\\dfrac{s}{r}\\right)^n\\).\nThe following cell forms the expression \\[\n\\sum_{n=0}^\\infty \\left( -1/2 \\atop n \\right) b^n\n\\] (Note that we have omitted the leading term \\(1/r\\)).\nThis is — up to the leading term — the same expression that we have derived above by a series expansion of \\(f(r, \\theta)\\).\nIt can be demonstrated that similar results can be obtained when we form the summation \\[\n\\sum_{n=0}^\\infty \\left( \\frac{s}{r}\\right)^n \\, P_n(\\cos\\theta)\n\\]\n(Note that the number of terms differs when we stop the summation for a finite value of \\(n\\).)\nWe illustrate the Legendre polynomials on the surface of a sphere, i.e., for \\(r=const\\). The potential function is a function of \\(\\theta\\) only. Hence, Legendre polynomials are referred to as zonal spherical harmonics.\nLet’s plot \\(P_4(\\cos\\theta)\\):\nShow the code\ndeg2rad = lambda x: x * np.pi / 180.0\n\nm = 4\nex = Pn.subs(n, m).doit().subs(x, cos(theta))\nlegendreP = lambdify(theta, ex, \"numpy\")\n\nlon = np.linspace(0, 360.0, 180) - 180.0\nlat = np.linspace(-90.0, 90.0, 90)\ncolat = lat + 90.0\nd = np.zeros((len(lon), len(colat)), dtype = np.float64)\nfor j, yy in enumerate(colat):\n    for i in range(len(lon)):\n        d[i, j] = legendreP(deg2rad(yy))\ndrm = np.transpose(d)\nShow the code\nfig = plt.figure(figsize=(3, 3),tight_layout = {'pad': 0})\nplotcrs = ccrs.Orthographic(0, 0)\nax = plt.subplot(projection=plotcrs)\ncf = ax.pcolormesh(lon, lat, drm,\n    transform=ccrs.PlateCarree(),\n    cmap='RdBu_r', vmin=-1, vmax=1)\nplt.colorbar(cf)\nax.relim()\nax.autoscale_view()",
+    "crumbs": [
+      "Spherical harmonics",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction to Legendre polynomials</span>"
+    ]
+  },
+  {
+    "objectID": "legendre-intro.html#summary",
+    "href": "legendre-intro.html#summary",
+    "title": "17  Introduction to Legendre polynomials",
+    "section": "17.2 Summary",
+    "text": "17.2 Summary\nThe Legendre polynomials can be defined as the coefficients in a formal expansion in powers of \\(t\\) of the generating function \\[\n\\frac{1}{\\sqrt{1-2xt+t^2}} = \\sum_{n=0}^\\infty P_n(x) t^n.\n\\] The coefficient of \\(t^n\\) is a polynomial in \\(x\\) of degree \\(n\\) with \\(|x| \\le 1\\).\nIn our approach outlined above, we have set \\[\nt =: \\frac{s}{r}\n\\] and \\[\nx =: \\cos\\theta.\n\\]\nA further definiton of the Legendre polynomials is given in terms of solutions to Legendre’s differential equation \\[\n(1 - t^2) P_n''(x) - 2 x P_n'(x) + n(n+1) P_n(x) = 0.\n\\]",
+    "crumbs": [
+      "Spherical harmonics",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Introduction to Legendre polynomials</span>"
+    ]
+  },
+  {
+    "objectID": "legendre.html",
+    "href": "legendre.html",
+    "title": "18  Applications of the Legendre Polynomials",
+    "section": "",
+    "text": "18.1 Gravitational Potential\nWe depart from the potential \\(V(\\mathbf r)\\) at a point \\(\\mathbf{r}\\) caused by a point mass \\(m\\) located at \\(\\mathbf{r}'\\).\nThe potential at \\(\\mathbf{r}\\) due to a point mass \\(m\\) at \\(\\mathbf{r}'\\) is given by: \\[\nV(\\mathbf{r}) = -f \\frac{m}{|\\mathbf{r} - \\mathbf{r}'|}.\n\\]\nSuppose the point mass is slightly displaced to \\(\\mathbf{r}' = (0, 0, s)^\\top\\) along the \\(z\\)-axis.",
+    "crumbs": [
+      "Spherical harmonics",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Applications of the Legendre Polynomials</span>"
+    ]
+  },
+  {
+    "objectID": "legendre.html#gravitational-potential",
+    "href": "legendre.html#gravitational-potential",
+    "title": "18  Applications of the Legendre Polynomials",
+    "section": "",
+    "text": "Figure 18.1: Point mass displaced from the origin\n\n\n\n\n\n\n18.1.1 Expansion of the term \\(1/|\\mathbf{r} - \\mathbf{r}'|\\)\nThe frequently occurring term \\(1/|\\mathbf{r} - \\mathbf{r}'|\\) can be expanded into a power series when \\(|\\mathbf{r}'| \\ll |\\mathbf{r}|\\).\nLet \\(\\mathbf{r} = (x, y, z)^\\top\\) (observation point) and \\(\\mathbf{r}' = (0, 0, s)^\\top\\) (source point of the mass). The Euclidean distance between the observation and source points is \\(q = |\\mathbf{r} - \\mathbf{r}'|\\).\nUsing the magnitudes \\(r = |\\mathbf{r}|\\) and \\(s = |\\mathbf{r}'|\\), and applying the [[Kosinussatz|law of cosines]], we have: \\[\n\\frac{1}{q} = f(r, \\theta) = \\frac{1}{r} \\left[1 + \\left(\\frac{s}{r}\\right)^2 - 2 \\frac{s}{r} \\cos \\theta \\right]^{-1/2}.\n\\]\n\n\n18.1.2 Binomial Expansion for Small Displacements\nFor a small displacement of the source point away from the origin, i.e., \\(s \\ll r\\), \\(f(r, \\theta)\\) can be expanded as a binomial series \\[\nf(r, \\theta) = \\frac{1}{r} (1 + b)^{-1/2} = \\frac{1}{r} \\sum_{n=0}^\\infty \\binom{-1/2}{n} b^n,\n\\] where \\[\nb = \\left(\\frac{s}{r}\\right)^2 - 2 \\frac{s}{r} \\cos \\theta, \\quad |b| &lt; 1.\n\\]\nRearranging the series in powers of \\(\\frac{s}{r}\\) gives \\[\nf(r, \\theta) = \\frac{1}{r} \\sum_{n=0}^\\infty \\left(\\frac{s}{r} \\right)^n P_n(\\cos \\theta).\n\\]\nThe \\(P_n(\\cos \\theta)\\) are polynomials of degree \\(n\\) in \\(\\cos \\theta\\). They are known as Legendre Polynomials or zonal spherical harmonics. Since they are independent of the azimuthal angle \\(\\varphi\\), they have constant values over spherical zones (\\(\\theta = \\text{const}\\)).\n\n\n\n\n\n\nLegendre polynomials\n\n\n\nThe Legendre polynomials can also be defined as the coefficients in a formal expansion in powers of \\(t\\) of the generating function\n\\[\n\\frac{1}{\\sqrt{1 - 2tx + t^2}} = \\sum\\limits_{n=0}^\\infty\nP_n(x)t^n.\n\\] The coefficient of \\(t^n\\) is a polynomial in \\(x\\) of degree \\(n\\) with \\(|x| \\le 1\\).\nThe first Legendre polynomials are\n\n\n\n\\(n\\)\n\\(P_n(x)\\)\n\n\n\n\n\\(0\\)\n\\(1\\)\n\n\n\\(1\\)\n\\(x\\)\n\n\n\\(2\\)\n\\(\\dfrac{1}{2}(3x^2 -1)\\)\n\n\n\nLegendre polynomials can be calculated using Rodrigues’ formula\n\\[\nP_n(x) = \\frac{1}{2^n n!} \\frac{\\mathrm d^n}{\\mathrm dx^n}(x^2 - 1)^n\n\\]\n\n\n\n\n18.1.3 Description of Latitudinal Variations in Potential\nThe superposition of Legendre polynomials can describe the latitude-dependent variations in potential.\nFor \\(r \\ll s\\), a similar result is obtained by factoring out \\(1/s\\) \\[\nf(r, \\theta) =\n\\begin{cases}\n\\dfrac{1}{s} \\sum_{n=0}^\\infty \\left(\\dfrac{r}{s}\\right)^n P_n(\\cos \\theta), & r \\leq s, \\\\\n\\dfrac{1}{r} \\sum_{n=0}^\\infty \\left(\\dfrac{s}{r}\\right)^{n+1} P_n(\\cos \\theta), & r \\geq s.\n\\end{cases}\n\\]\n\n\n18.1.4 Equivalence of Series Expansions\nFor \\(r \\geq s\\), the series satisfy \\[\n\\frac{1}{r} \\sum_{n=0}^\\infty \\left(\\frac{s}{r}\\right)^n P_n(\\cos \\theta) = \\frac{1}{s} \\sum_{n=0}^\\infty \\left(\\frac{s}{r}\\right)^{n+1} P_n(\\cos \\theta).\n\\]\n\n\n18.1.5 Special Case for \\(s = 0\\)\nWhen \\(s = 0\\), only the term for \\(n = 0\\) contributes a non-zero value. Thus \\[\nf(r, \\theta) = \\frac{1}{r}.\n\\]",
+    "crumbs": [
+      "Spherical harmonics",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Applications of the Legendre Polynomials</span>"
+    ]
+  },
+  {
+    "objectID": "legendre.html#electrostatic-potential",
+    "href": "legendre.html#electrostatic-potential",
+    "title": "18  Applications of the Legendre Polynomials",
+    "section": "18.2 Electrostatic potential",
+    "text": "18.2 Electrostatic potential\nObservation point at \\(\\mathbf{r} = (x, y, z)^\\top\\), \\(r = |\\mathbf{r}|\\).\nSource points \\(\\pm \\mathbf{r}' = (0, 0, \\pm a)^\\top\\).\nTwo charges on the \\(z\\)-axis: \\(+Q\\) at \\(z = a\\) and \\(-Q\\) at \\(z = -a\\).\n\n\n\n\n\n\nFigure 18.2: Electrostatic dipole aligned with the \\(z\\)-axis\n\n\n\nThe distances between the charges and the observation point are obtained using the law of cosines.\n\nDistance to the charge \\(+Q\\): \\[\n| \\mathbf{r} - \\mathbf{r}'| = \\sqrt{r^2 + a^2 - 2ar \\cos \\theta}\n= r \\sqrt{1 - 2 \\frac{a}{r} \\cos \\theta + \\left( \\frac{a}{r} \\right)^2}.\n\\]\nUsing \\(\\cos \\theta = -\\cos(\\pi - \\theta)\\) (complementary angle), the distance to the charge \\(-Q\\) is: \\[\n| \\mathbf{r} + \\mathbf{r}'| = \\sqrt{r^2 + a^2 + 2ar \\cos \\theta}\n= r \\sqrt{1 + 2 \\frac{a}{r} \\cos \\theta + \\left( \\frac{a}{r} \\right)^2}.\n\\]\n\n\n18.2.1 Substitution into the Potential\nSubstituting these distances into the potentials: \\[\nU(r) = \\frac{Q}{4 \\pi \\varepsilon r}\n\\left\\{\n\\left[1 - 2 \\frac{a}{r} \\cos \\theta + \\left( \\frac{a}{r} \\right)^2\n\\right]^{-1/2} -\n\\left[1 + 2 \\frac{a}{r} \\cos \\theta + \\left( \\frac{a}{r} \\right)^2\n\\right]^{-1/2}\n\\right\\}.\n\\]\n\n\n18.2.2 Expansion Using Legendre Polynomials\nWe apply Legendre polynomials, defined as: \\[\nP_n(x) = \\frac{1}{2^n n!} \\frac{\\mathrm{d}^n}{\\mathrm{d}x^n} \\left( x^2 - 1 \\right)^n,\n\\] with \\(t := \\frac{a}{r}\\) and \\(x := \\cos \\theta\\).\nFor \\(tx := -\\frac{a}{r} \\cos \\theta\\), the sign propagates through \\(t^n = \\left(-\\frac{a}{r}\\right)^n = (-1)^n \\left(\\frac{a}{r}\\right)^n\\): \\[\nU(r) = \\frac{Q}{4 \\pi \\varepsilon r}\n\\left[\n\\sum_{n=0}^\\infty P_n(\\cos \\theta) \\left( \\frac{a}{r} \\right)^n -\n\\sum_{n=0}^\\infty P_n(\\cos \\theta) (-1)^n \\left( \\frac{a}{r} \\right)^n\n\\right].\n\\]\n\n\n18.2.3 Simplification\nTerms with even powers cancel because \\((-1)^{2n} = 1\\).\nThus, the potential simplifies to: \\[\nU(r) = \\frac{2Q}{4 \\pi \\varepsilon r}\n\\left[\nP_1(\\cos \\theta) \\left( \\frac{a}{r} \\right) +\nP_3(\\cos \\theta) \\left( \\frac{a}{r} \\right)^3 + \\ldots\n\\right].\n\\]\nFor \\(r \\gg a\\), the term with \\(P_1(\\cos \\theta)\\) dominates.\nThis leads to the electric dipole potential: \\[\nU(r) = \\frac{2aQ}{4 \\pi \\varepsilon}\n\\cdot\n\\frac{P_1(\\cos \\theta)}{r^2}.\n\\]\n\n\n18.2.4 Legendre Polynomial for \\(n = 1\\)\nThe Legendre polynomial of degree \\(n=1\\) is: \\[\nP_1(\\cos \\theta) = \\cos \\theta.\n\\]\nThis corresponds to the equation (with the electric dipole moment \\(p = 2aQ\\)) derived using the electric dipole and the superposition principle.",
+    "crumbs": [
+      "Spherical harmonics",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Applications of the Legendre Polynomials</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
     "title": "Summary",

@@ -33,9 +33,15 @@ book:
         - complex.qmd
         - hilbert.qmd
     - part: "Three-dimensional problems"
+      chapters:
+      - three-dimensional-problems.qmd
     - part: "Dipole potential"
+      chapters:
+      - electricaldipole.qmd
+      - magneticdipole.qmd
     - part: "Spherical harmonics"
       chapters:
+        - legendre-intro.qmd
         - legendre.qmd
     - part: "Boundary value problems"
     - summary.qmd

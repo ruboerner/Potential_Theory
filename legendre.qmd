@@ -1,3 +1,186 @@
 ---
-title: "Legendre Polynomials"
+title: "Applications of the Legendre Polynomials"
 ---
+
+## Gravitational Potential
+
+
+We depart from the potential $V(\mathbf r)$ at a point $\mathbf{r}$ caused by a point mass $m$ located at $\mathbf{r}'$.
+
+![Point mass displaced from the origin](images/Gravitationspotential.excalidraw.svg){#fig-grav-legendre}
+
+The potential at $\mathbf{r}$ due to a point mass $m$ at $\mathbf{r}'$ is given by:
+$$
+V(\mathbf{r}) = -f \frac{m}{|\mathbf{r} - \mathbf{r}'|}.
+$$
+
+Suppose the point mass is slightly displaced to $\mathbf{r}' = (0, 0, s)^\top$ along the $z$-axis.
+
+
+### Expansion of the term $1/|\mathbf{r} - \mathbf{r}'|$
+The frequently occurring term $1/|\mathbf{r} - \mathbf{r}'|$  can be expanded into a power series when $|\mathbf{r}'| \ll |\mathbf{r}|$.
+
+Let $\mathbf{r} = (x, y, z)^\top$ (observation point) and $\mathbf{r}' = (0, 0, s)^\top$ (source point of the mass). The Euclidean distance between the observation and source points is $q = |\mathbf{r} - \mathbf{r}'|$.
+
+Using the magnitudes $r = |\mathbf{r}|$ and $s = |\mathbf{r}'|$, and applying the [[Kosinussatz|law of cosines]], we have:
+$$
+\frac{1}{q} = f(r, \theta) = \frac{1}{r} \left[1 + \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta \right]^{-1/2}.
+$$
+
+
+### Binomial Expansion for Small Displacements
+For a small displacement of the source point away from the origin, i.e., $s \ll r$, $f(r, \theta)$ can be expanded as a *binomial series*
+$$
+f(r, \theta) = \frac{1}{r} (1 + b)^{-1/2} = \frac{1}{r} \sum_{n=0}^\infty \binom{-1/2}{n} b^n,
+$$
+where
+$$
+b = \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta, \quad |b| < 1.
+$$
+
+Rearranging the series in powers of $\frac{s}{r}$ gives
+$$
+f(r, \theta) = \frac{1}{r} \sum_{n=0}^\infty \left(\frac{s}{r} \right)^n P_n(\cos \theta).
+$$
+
+The $P_n(\cos \theta)$ are polynomials of degree $n$ in $\cos \theta$. They are known as _Legendre Polynomials_ or _zonal spherical harmonics_.
+Since they are independent of the azimuthal angle $\varphi$, they have constant values over spherical zones ($\theta = \text{const}$).
+
+::: {.callout-note title="Legendre polynomials"}
+The Legendre polynomials can also be defined as the coefficients in a formal expansion in powers of 
+$t$ of the generating function
+
+$$
+\frac{1}{\sqrt{1 - 2tx + t^2}} = \sum\limits_{n=0}^\infty
+P_n(x)t^n.
+$$
+The coefficient of $t^n$ is a polynomial in $x$ of degree $n$ with $|x| \le 1$.
+
+The first Legendre polynomials are
+
+| $n$ | $P_n(x)$                |
+| --- |:---------------------- |
+| $0$ | $1$                     |
+| $1$ | $x$                     |
+| $2$ | $\dfrac{1}{2}(3x^2 -1)$ |
+
+Legendre polynomials can be calculated using Rodrigues' formula
+
+$$
+P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n}(x^2 - 1)^n
+$$
+
+:::
+
+
+### Description of Latitudinal Variations in Potential
+The superposition of Legendre polynomials can describe the latitude-dependent variations in potential.
+
+For $r \ll s$, a similar result is obtained by factoring out $1/s$
+$$
+f(r, \theta) =
+\begin{cases}
+\dfrac{1}{s} \sum_{n=0}^\infty \left(\dfrac{r}{s}\right)^n P_n(\cos \theta), & r \leq s, \\
+\dfrac{1}{r} \sum_{n=0}^\infty \left(\dfrac{s}{r}\right)^{n+1} P_n(\cos \theta), & r \geq s.
+\end{cases}
+$$
+
+
+### Equivalence of Series Expansions
+For $r \geq s$, the series satisfy
+$$
+\frac{1}{r} \sum_{n=0}^\infty \left(\frac{s}{r}\right)^n P_n(\cos \theta) = \frac{1}{s} \sum_{n=0}^\infty \left(\frac{s}{r}\right)^{n+1} P_n(\cos \theta).
+$$
+
+
+### Special Case for $s = 0$
+When $s = 0$, only the term for $n = 0$ contributes a non-zero value. Thus
+$$
+f(r, \theta) = \frac{1}{r}.
+$$
+
+## Electrostatic potential
+
+
+Observation point at $\mathbf{r} = (x, y, z)^\top$, $r = |\mathbf{r}|$.  
+Source points $\pm \mathbf{r}' = (0, 0, \pm a)^\top$.  
+Two charges on the $z$-axis: $+Q$ at $z = a$ and $-Q$ at $z = -a$.  
+
+![Electrostatic dipole aligned with the $z$-axis](images/electric-dipole-legendre.excalidraw.svg){#fig-electric-dipole-legendre}
+
+The distances between the charges and the observation point are obtained using the _law of cosines_.
+
+- Distance to the charge $+Q$:
+$$
+| \mathbf{r} - \mathbf{r}'| = \sqrt{r^2 + a^2 - 2ar \cos \theta}
+= r \sqrt{1 - 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2}.
+$$
+
+- Using $\cos \theta = -\cos(\pi - \theta)$ (_complementary angle_), the distance to the charge $-Q$ is:
+$$
+| \mathbf{r} + \mathbf{r}'| = \sqrt{r^2 + a^2 + 2ar \cos \theta}
+= r \sqrt{1 + 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2}.
+$$
+
+### Substitution into the Potential
+
+Substituting these distances into the potentials:
+$$
+U(r) = \frac{Q}{4 \pi \varepsilon r}
+\left\{
+\left[1 - 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2
+\right]^{-1/2} -
+\left[1 + 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2
+\right]^{-1/2}
+\right\}.
+$$
+
+### Expansion Using Legendre Polynomials
+
+We apply Legendre polynomials, defined as:
+$$
+P_n(x) = \frac{1}{2^n n!} \frac{\mathrm{d}^n}{\mathrm{d}x^n} \left( x^2 - 1 \right)^n,
+$$
+with $t := \frac{a}{r}$ and $x := \cos \theta$.  
+
+For $tx := -\frac{a}{r} \cos \theta$, the sign propagates through $t^n = \left(-\frac{a}{r}\right)^n = (-1)^n \left(\frac{a}{r}\right)^n$:
+$$
+U(r) = \frac{Q}{4 \pi \varepsilon r}
+\left[
+\sum_{n=0}^\infty P_n(\cos \theta) \left( \frac{a}{r} \right)^n -
+\sum_{n=0}^\infty P_n(\cos \theta) (-1)^n \left( \frac{a}{r} \right)^n
+\right].
+$$
+
+### Simplification
+
+Terms with even powers cancel because $(-1)^{2n} = 1$.
+
+Thus, the potential simplifies to:
+$$
+U(r) = \frac{2Q}{4 \pi \varepsilon r}
+\left[
+P_1(\cos \theta) \left( \frac{a}{r} \right) +
+P_3(\cos \theta) \left( \frac{a}{r} \right)^3 + \ldots
+\right].
+$$
+
+For $r \gg a$, the term with $P_1(\cos \theta)$ dominates.  
+
+This leads to the _electric dipole potential_:
+$$
+U(r) = \frac{2aQ}{4 \pi \varepsilon}
+\cdot
+\frac{P_1(\cos \theta)}{r^2}.
+$$
+
+### Legendre Polynomial for $n = 1$
+
+The Legendre polynomial of degree $n=1$ is:
+$$
+P_1(\cos \theta) = \cos \theta.
+$$
+
+
+
+This corresponds to the equation (with the _electric dipole moment_ $p = 2aQ$) derived using the  [electric dipole and the superposition principle](electricaldipole.qmd).

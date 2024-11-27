@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Fields – Theory of Potential Field Methods in Geophysics</title>
+<title>15&nbsp; Potential of an electrical dipole – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./pointmass.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./magneticdipole.html" rel="next">
+<link href="./three-dimensional-problems.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -155,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fields.html">Mathematical foundations</a></li><li class="breadcrumb-item"><a href="./fields.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./electricaldipole.html">Dipole potential</a></li><li class="breadcrumb-item"><a href="./electricaldipole.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -203,7 +203,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fields.html" class="sidebar-item-text sidebar-link active">
+  <a href="./fields.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span></a>
   </div>
 </li>
@@ -325,7 +325,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
+  <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
   </div>
 </li>
@@ -386,26 +386,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#potential-fields" id="toc-potential-fields" class="nav-link active" data-scroll-target="#potential-fields"><span class="header-section-number">2.1</span> Potential fields</a>
-  <ul class="collapse">
-  <li><a href="#definition-of-a-vector-field" id="toc-definition-of-a-vector-field" class="nav-link" data-scroll-target="#definition-of-a-vector-field"><span class="header-section-number">2.1.1</span> Definition of a vector field</a></li>
-  <li><a href="#equivalent-properties-of-conservative-fields" id="toc-equivalent-properties-of-conservative-fields" class="nav-link" data-scroll-target="#equivalent-properties-of-conservative-fields"><span class="header-section-number">2.1.2</span> Equivalent properties of conservative fields</a></li>
-  <li><a href="#divergence-theorem" id="toc-divergence-theorem" class="nav-link" data-scroll-target="#divergence-theorem"><span class="header-section-number">2.1.3</span> Divergence theorem</a></li>
-  <li><a href="#poisson-equation" id="toc-poisson-equation" class="nav-link" data-scroll-target="#poisson-equation"><span class="header-section-number">2.1.4</span> Poisson equation</a></li>
-  <li><a href="#laplace-equation" id="toc-laplace-equation" class="nav-link" data-scroll-target="#laplace-equation"><span class="header-section-number">2.1.5</span> Laplace equation</a></li>
-  <li><a href="#mathematical-tools" id="toc-mathematical-tools" class="nav-link" data-scroll-target="#mathematical-tools"><span class="header-section-number">2.1.6</span> Mathematical Tools</a></li>
-  </ul></li>
-  <li><a href="#solution-of-the-laplace-and-poisson-equations" id="toc-solution-of-the-laplace-and-poisson-equations" class="nav-link" data-scroll-target="#solution-of-the-laplace-and-poisson-equations"><span class="header-section-number">2.2</span> Solution of the Laplace and Poisson equations</a></li>
-  <li><a href="#what-can-be-observed-in-the-1-d-case" id="toc-what-can-be-observed-in-the-1-d-case" class="nav-link" data-scroll-target="#what-can-be-observed-in-the-1-d-case"><span class="header-section-number">2.3</span> What can be observed in the 1-D case?</a></li>
+  <li><a href="#derivation-using-taylor-series" id="toc-derivation-using-taylor-series" class="nav-link active" data-scroll-target="#derivation-using-taylor-series"><span class="header-section-number">15.1</span> Derivation Using Taylor Series</a></li>
+  <li><a href="#field-components" id="toc-field-components" class="nav-link" data-scroll-target="#field-components"><span class="header-section-number">15.2</span> Field components</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fields.html">Mathematical foundations</a></li><li class="breadcrumb-item"><a href="./fields.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./electricaldipole.html">Dipole potential</a></li><li class="breadcrumb-item"><a href="./electricaldipole.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></h1>
 </div>
 
 
@@ -422,244 +413,93 @@ window.Quarto = {
 </header>
 
 
-<section id="potential-fields" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="potential-fields"><span class="header-section-number">2.1</span> Potential fields</h2>
-<section id="definition-of-a-vector-field" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="definition-of-a-vector-field"><span class="header-section-number">2.1.1</span> Definition of a vector field</h3>
-<p>A vector field <span class="math inline">\(\vb  F : \mathbb R^n \mapsto \mathbb R^n\)</span> defined on a subset <span class="math inline">\(\Omega \subset \mathbb R^n\)</span> assigns to each point <span class="math inline">\(\vb x \in \mathbb R^n\)</span> a vector <span class="math inline">\(\vb F(\vb x) \in \Omega\)</span>.</p>
-<p>A vector field <span class="math inline">\(\vb F\)</span> is a <em>potential</em> or <em>conservative vector field</em> if and only if there exists a scalar field <span class="math inline">\(\Phi: \mathbb R^n \mapsto \mathbb R\)</span> such that it holds <span class="math inline">\(\vb F (\vb x) = \grad \Phi(\vb x)\)</span>.</p>
-</section>
-<section id="equivalent-properties-of-conservative-fields" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="equivalent-properties-of-conservative-fields"><span class="header-section-number">2.1.2</span> Equivalent properties of conservative fields</h3>
-<ul>
-<li><p>The line integral <span class="math inline">\(\int_C\)</span> along any curve <span class="math inline">\(C\)</span> within the field only depends on the start and the end points, but not on the path between them (<em>path independence</em>)</p></li>
-<li><p>The closed line integral is zero for any curve <span class="math inline">\(C\)</span>: <span class="math inline">\(\oint_C \grad \Phi(\vb x ) \cdot \dd{\vb x} = \oint \vb F (\vb x ) \cdot \dd{\vb x} = 0\)</span></p></li>
-<li><p>Such vector fields are curl free (irrotational), i.e., <span class="math inline">\(\curl \grad \Phi(\vb x ) = \curl \vb F (\vb x ) \equiv \vb 0\)</span></p></li>
-</ul>
-</section>
-<section id="divergence-theorem" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="divergence-theorem"><span class="header-section-number">2.1.3</span> Divergence theorem</h3>
-<p>Statements about the sources and sinks of vector fields can be derived by applying the divergence theorem.</p>
-<p>The dielectric displacement <span class="math inline">\(\vb D = \varepsilon(\vb x) \vb E(\vb x)\)</span> has its sources in a volume density of electric charges <span class="math inline">\(\rho_E (\vb x)\)</span>.</p>
-<p>It holds</p>
-<p><span class="math inline">\(\rho_E = \div \vb D = - \div (\varepsilon \grad \Phi).\)</span></p>
-<p>For homogeneous dielectrics we obtain the <em>Poisson equation of electrostatics</em></p>
-<p><span class="math inline">\(-\Delta \Phi = \rho_E/\varepsilon.\)</span></p>
-</section>
-<section id="poisson-equation" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="poisson-equation"><span class="header-section-number">2.1.4</span> Poisson equation</h3>
-<p>Potential theory attempts to calculate the unknown potential (the <em>potential function</em>) <span class="math inline">\(\Phi\)</span> caused by a given physical quantity, e.g., a source distribution <span class="math inline">\(\rho(\vb x)\)</span>.</p>
-<p>The potential function can generally be determined by <strong>integrating</strong> the Poisson equation.</p>
-<p>Often, only its spatial derivative is desired, because for physicists only the fields are a meaningful quantity.</p>
-</section>
-<section id="laplace-equation" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="laplace-equation"><span class="header-section-number">2.1.5</span> Laplace equation</h3>
-<p>In a region where sources are absent, i.e., <span class="math inline">\(\rho(\vb x ) \equiv 0\)</span>, the Poisson equation becomes the Laplace equation</p>
-<p><span class="math inline">\(\Delta \Phi(\vb x) = 0\)</span></p>
-<p>with the scalar function <span class="math inline">\(\Phi\)</span> (the <em>potential</em>) defined over a subset <span class="math inline">\(\Omega \subset \mathbb R^n\)</span>.</p>
-<p>This elliptic partial differential equation (or short, the <em>potential equation</em>) is the point of departure in the potential theory.</p>
-</section>
-<section id="mathematical-tools" class="level3" data-number="2.1.6">
-<h3 data-number="2.1.6" class="anchored" data-anchor-id="mathematical-tools"><span class="header-section-number">2.1.6</span> Mathematical Tools</h3>
-<p>The potential theory makes use of the <em>functional analysis</em> and its tools, e.g.,</p>
-<ul>
-<li>vector spaces</li>
-<li>inner product</li>
-<li>norm</li>
-<li>differentiability</li>
-<li>continuity</li>
-</ul>
-<p>etc.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Spaces">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="derivation-using-taylor-series" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="derivation-using-taylor-series"><span class="header-section-number">15.1</span> Derivation Using Taylor Series</h2>
+<p>Two charges <span class="math inline">\(Q\)</span> with opposite signs are separated by a distance <span class="math inline">\(\mathbf{a}\)</span>.<br>
+The electric dipole moment is defined as <span class="math inline">\(\mathbf{p} = Q \mathbf{a}\)</span> and points from the <strong>negative to the positive</strong> charge.</p>
+<div id="fig-dipolepotential" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dipolepotential-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Dipolpotential.excalidraw.svg" class="img-fluid figure-img">
 </div>
-<div class="callout-title-container flex-fill">
-Spaces
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We consider <em>spaces</em> with a norm induced by the <em>inner product</em>.</p>
-<p><em>Euclidean space</em>: Any vector space defined over <span class="math inline">\(\mathbb R^n\)</span> equipped with an inner product of any finite dimension is called <em>Euclidean vector space</em>.</p>
-<p>The coordinate space <span class="math inline">\(\mathbb R^3\)</span> with standard dot product is a Euclidean space!</p>
-<p><em>Hilbert space:</em> A Hilbert space is a vector space <span class="math inline">\(H\)</span> with an inner product <span class="math inline">\(\langle f,g \rangle\)</span> such that the norm <span class="math inline">\(|f| = \langle f,f \rangle^{1/2}\)</span> turns the space into a complete metric space.</p>
-<p>The coordinate spaces <span class="math inline">\(\mathbb R^n\)</span> and <span class="math inline">\(\mathbb C^n\)</span> are Hilbert spaces!</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Scalar product">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Scalar product
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>With <span class="math inline">\(\vb x = (x_1, x_2, \dots, x_n)^\top\)</span> we denote an <span class="math inline">\(n\)</span>-tuple of numbers or a <em>point</em> in <span class="math inline">\(\mathbb R^n\)</span>, and define the <em>scalar product</em> in <span class="math inline">\(\mathbb R^n\)</span> given by the dot product</p>
-<p><span class="math display">\[
-\langle \cdot,\cdot \rangle : \mathbb R^n \mapsto \mathbb R,
-\]</span> e.g., <span class="math display">\[
-\langle \vb x , \vb y \rangle = \sum_{i=1}^n x_i y_i
-\]</span> as well as the <em>norm induced by the inner product</em> <span class="math display">\[
-x = \abs{\vb x} = \langle \vb x , \vb x  \rangle^{1/2}
-\]</span> The norm <span class="math inline">\(\abs{\cdot} : \mathbb R^n \mapsto \mathbb R\)</span>, as a function, assigns to <span class="math inline">\(\vb x\)</span> its length.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Differentiation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Differentiation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(\Omega \subset \mathbb R^n\)</span> be an open subset.</p>
-<p>A <em>derivative of order</em> <span class="math inline">\(\vb \alpha\)</span> is defined by a differential operator <span class="math inline">\(D: C^k (\Omega) \mapsto C(\Omega)\)</span> represented by</p>
-<p><span class="math inline">\(D^{\vb \alpha} f(\vb x) = \dfrac{\partial^{|\vb \alpha|} f(x_1, x_2, \dots, x_n)}{\partial x_1^{\alpha_1} \partial x_2^{\alpha_2}\, \dots \,\partial x_n^{\alpha_n}}\)</span></p>
-<p>and a <em>multi-index</em> <span class="math inline">\(\vb(\alpha = (\alpha_1, \alpha_2, \dots, \alpha_n) \in \mathbb N_0^n\)</span> with <span class="math inline">\(|\vb\alpha| = \sum_{i=1}^n \alpha_i\)</span>.</p>
-<p>Other notations derived from the above definition are:</p>
-<ul>
-<li><p><span class="math inline">\(f_x := \pdv{f}{x}\)</span> where <span class="math inline">\(n=1, \alpha_1=1, |\vb\alpha|=1\)</span></p></li>
-<li><p><span class="math inline">\(f_{x x} := \pdv[2]{f}{x}\)</span> where <span class="math inline">\(n=1, \alpha_1=2, |\vb\alpha|=2\)</span></p></li>
-<li><p><span class="math inline">\(f_{x z} := \pdv{f}{x}{z}\)</span> where <span class="math inline">\(n=3, \alpha_1=1, \alpha_2=0, \alpha_3=1, |\vb\alpha||=2\)</span></p></li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Differentiability classes">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Differentiability classes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>What is <span class="math inline">\(C^k(\Omega)\)</span>?</p>
-<p>The space of the continuous real valued functions in a domain <span class="math inline">\(\Omega\)</span> is of class <span class="math inline">\(C(\Omega)\)</span> or <span class="math inline">\(C^0(\Omega)\)</span>.</p>
-<p>This space contains all differentiable functions in <span class="math inline">\(\Omega \subset \mathbb R^n\)</span>.</p>
-<p>Functions whose (partial) derivatives are also continuous are called continuously differentiable. These functions are said to be of class <span class="math inline">\(C^1(\Omega)\)</span>.</p>
-<p>Correspondingly, <span class="math inline">\(C^n (\Omega)\)</span> is called the space of the functions which are <span class="math inline">\(n\)</span>-differentiable, where the <span class="math inline">\(n\)</span>-th derivative <span class="math inline">\(D^{\vb\alpha} f(\vb x), |\vb\alpha| \le n\)</span> is continuous on <span class="math inline">\(\Omega\)</span>.</p>
-<p>Arbitrarily often differentiable (smooth) functions belong to <span class="math inline">\(C^\infty ( \Omega)\)</span>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Harmonic function">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Harmonic function
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We define the <em>harmonic function</em>:</p>
-<p>A real-valued function <span class="math inline">\(U(\vb x) \in C^2 (\Omega)\)</span> is called <em>harmonic</em> or <em>regular potential function</em> in the subset <span class="math inline">\(\Omega \subset \mathbb R^n\)</span> if there holds</p>
-<p><span class="math display">\[
-\Delta U(\vb x) = 0
-\]</span></p>
-<p>for <span class="math inline">\(\vb x \in \Omega\)</span>.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="solution-of-the-laplace-and-poisson-equations" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="solution-of-the-laplace-and-poisson-equations"><span class="header-section-number">2.2</span> Solution of the Laplace and Poisson equations</h2>
-<p>We consider the second-order differential equations</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Laplace equation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Laplace equation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-\dv[2]{y}{x} = 0
-\]</span></p>
-</div>
-</div>
-<p>and</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Poisson equation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Poisson equation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-\dv[2]{y}{x} = -4\cos(4x) - 8 \sin(8 x)
-\]</span></p>
-</div>
-</div>
-<p>for <span class="math inline">\(x \in [0, 1]\)</span> subject to the boundary conditions <span class="math inline">\(y(0)=1\)</span> and <span class="math inline">\(y(1)=0\)</span>.</p>
-<p>To obtain the solution to the above PDEs, we employ the <code>Python</code> package <code>sympy</code>, which is a powerful library for symbolic mathematics.</p>
-<p>Symbolic functions which depend on symbolic variables have to be defined with the function <code>Function</code>.</p>
-<p>The solution of the differential equations can be obtained by a call to the <code>dsolve</code> function.</p>
-<p>The signature of the function can be understood as follows:</p>
-<ul>
-<li>Solve the symbolic equation given by the expressions <code>eq_poisson</code> and <code>eq_laplace</code>, resp.</li>
-<li>The desired solution is <code>y(x)</code></li>
-<li>Boundary conditions can be enforced by the values following the keyword <code>ics</code>. In the example, <code>y(0)=1</code> and <code>y(1)=0</code>.</li>
-</ul>
-<div id="3fd76984" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Function, dsolve, diff, cos, sin</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.abc <span class="im">import</span> x</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.plotting <span class="im">import</span> plot, PlotGrid</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.style.use('fivethirtyeight')</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> Function(<span class="st">'y'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>eq_poisson <span class="op">=</span> diff(y(x), x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">4</span> <span class="op">*</span> cos(<span class="dv">4</span> <span class="op">*</span> x) <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> sin(<span class="dv">8</span> <span class="op">*</span> x)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>eq_laplace <span class="op">=</span> diff(y(x), x, <span class="dv">2</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>result_poisson <span class="op">=</span> dsolve(eq_poisson, y(x), ics<span class="op">=</span>{y(<span class="dv">0</span>): <span class="dv">1</span>, y(<span class="dv">1</span>): <span class="dv">0</span>})</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>result_laplace <span class="op">=</span> dsolve(eq_laplace, y(x), ics<span class="op">=</span>{y(<span class="dv">0</span>): <span class="dv">1</span>, y(<span class="dv">1</span>): <span class="dv">0</span>})</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> plot(result_poisson.rhs, (x, <span class="dv">0</span>, <span class="dv">1</span>), </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>), </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      ylabel<span class="op">=</span><span class="st">'y(x)'</span>, </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      axis_center<span class="op">=</span><span class="st">'auto'</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      show<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span><span class="st">'Poisson equation'</span>)<span class="op">;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> plot(result_laplace.rhs, (x, <span class="dv">0</span>, <span class="dv">1</span>), </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      ylim<span class="op">=</span>(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>), </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      ylabel<span class="op">=</span><span class="st">'y(x)'</span>, </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      axis_center<span class="op">=</span><span class="st">'auto'</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      show<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span><span class="st">'Laplace equation'</span>)<span class="op">;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>PlotGrid(<span class="dv">1</span>, <span class="dv">2</span>, p1, p2, size<span class="op">=</span>(<span class="dv">7</span>,<span class="dv">3</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="fields_files/figure-html/cell-2-output-1.png" width="657" height="277" class="figure-img"></p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dipolepotential-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: Sketch of an electrical dipole aligned with the <span class="math inline">\(z\)</span>-axis.
+</figcaption>
 </figure>
 </div>
+<p>According to the principle of superposition, the potential is given by <span class="math display">\[
+U(\mathbf{r}) = \frac{Q}{4 \pi \varepsilon} \left[
+\frac{1}{|\mathbf{r} - \mathbf{a}|}
+-
+\frac{1}{|\mathbf{r}|}
+\right].
+\]</span></p>
+<p>For <span class="math inline">\(|\mathbf{a}| \ll |\mathbf{r}|\)</span>, the reciprocal distance (first term in the brackets) can be expanded into a series <span class="math display">\[
+\begin{align}
+\frac{1}{|\mathbf{r} - \mathbf{a}|} &amp; \approx
+\frac{1}{|\mathbf{r}|} \left\{
+1 - 2 \frac{\mathbf{a} \cdot \mathbf{r}}{|\mathbf{r}|^2}
+\right\}^{-1/2} \\
+&amp; \approx \frac{1}{|\mathbf{r}|}
+\left[
+1 + \frac{\mathbf{a} \cdot \mathbf{r}}{|\mathbf{r}|^2}
+\right].
+\end{align}
+\]</span></p>
+<p>The dipole potential is thus <span class="math display">\[
+U(\mathbf{r}) = \frac{Q}{4 \pi \varepsilon}
+\frac{\mathbf{a} \cdot \mathbf{r}}{|\mathbf{r}|^3}.
+\]</span></p>
+<p>The scalar product, using <span class="math inline">\(r = |\mathbf{r}|\)</span> and <span class="math inline">\(p = |\mathbf{p}|\)</span>, leads to the equation <span class="math display">\[
+U(r) = \frac{p}{4 \pi \varepsilon} \frac{\cos \theta}{r^2}.
+\]</span></p>
+<p>Additionally, <span class="math display">\[
+\nabla \frac{1}{|\mathbf{r}|} = - \frac{\mathbf{r}}{|\mathbf{r}|^3}.
+\]</span></p>
+<p>The dipole potential is direction-dependent.</p>
+<p>We see that the dipole potential can be derived from the single charge potential by differentiating with respect to the coordinates of the single potential along the dipole axis. The term <span class="math inline">\(\mathbf{p} \cdot \nabla\)</span> is understood as a directional derivative. It calculates the projection of the gradient onto the dipole axis. <span class="math display">\[
+U(\mathbf{r}) = -\frac{1}{4 \pi \varepsilon} \mathbf{p} \cdot \nabla \frac{1}{|\mathbf{r}|}.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This result is an approximate solution, as higher-order terms in the Taylor series expansion are neglected.</p>
 </div>
 </div>
 </section>
-<section id="what-can-be-observed-in-the-1-d-case" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="what-can-be-observed-in-the-1-d-case"><span class="header-section-number">2.3</span> What can be observed in the 1-D case?</h2>
-<ul>
-<li>The solution of the <em>Laplace equation</em> does not exhibit local extrema
-<ul>
-<li>It has no curvature</li>
-</ul></li>
-<li>The solution of the <em>Poisson equation</em> has local minima and maxima
-<ul>
-<li>Its extrema might get larger or smaller than those of the Dirichlet values at the boundary</li>
-</ul></li>
-</ul>
+<section id="field-components" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="field-components"><span class="header-section-number">15.2</span> Field components</h2>
+<p>The electric field can be obtained from the potential by applying the gradient</p>
+<p><span class="math display">\[
+\mathbf E = -\grad U.
+\]</span></p>
+<div id="6c5c9ecd" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Math</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>U, r, theta <span class="op">=</span> symbols(<span class="st">"U r theta"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> cos(theta) <span class="op">/</span> r<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'U(r, </span><span class="ch">\\</span><span class="st">theta) = '</span> <span class="op">+</span> latex(U)))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>grad_sph <span class="op">=</span> [diff(U, r), <span class="dv">1</span> <span class="op">/</span> r <span class="op">*</span> diff(U, theta)]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> [<span class="op">-</span>grad_sph[i] <span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>]]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'</span><span class="ch">\\</span><span class="st">mathbf E(r, </span><span class="ch">\\</span><span class="st">theta) = '</span> <span class="op">+</span> latex(E) <span class="op">+</span> <span class="st">'^</span><span class="ch">\\</span><span class="st">top'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle U(r, \theta) = \frac{\cos{\left(\theta \right)}}{r^{2}}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \mathbf E(r, \theta) = \left[ \frac{2 \cos{\left(\theta \right)}}{r^{3}}, \  \frac{\sin{\left(\theta \right)}}{r^{3}}\right]^\top\)</span></p>
+</div>
+</div>
 
 
 </section>
@@ -1084,13 +924,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./three-dimensional-problems.html" class="pagination-link" aria-label="Gravitational Field Caused by a Density Distribution in $\mathbb{R}^3$">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./pointmass.html" class="pagination-link" aria-label="Point mass">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./magneticdipole.html" class="pagination-link" aria-label="Potential of a magnetic dipole">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

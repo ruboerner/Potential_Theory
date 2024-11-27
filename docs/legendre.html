@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Legendre Polynomials – Theory of Potential Field Methods in Geophysics</title>
+<title>18&nbsp; Applications of the Legendre Polynomials – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./summary.html" rel="next">
-<link href="./hilbert.html" rel="prev">
+<link href="./legendre-intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -79,6 +79,35 @@ window.MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -92,7 +121,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -235,12 +264,44 @@ window.MathJax = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Three-dimensional problems</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Three-dimensional problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Dipole potential</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Dipole potential</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -253,8 +314,14 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
       </ul>
@@ -280,15 +347,35 @@ window.MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#gravitational-potential" id="toc-gravitational-potential" class="nav-link active" data-scroll-target="#gravitational-potential"><span class="header-section-number">18.1</span> Gravitational Potential</a>
+  <ul class="collapse">
+  <li><a href="#expansion-of-the-term-1mathbfr---mathbfr" id="toc-expansion-of-the-term-1mathbfr---mathbfr" class="nav-link" data-scroll-target="#expansion-of-the-term-1mathbfr---mathbfr"><span class="header-section-number">18.1.1</span> Expansion of the term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span></a></li>
+  <li><a href="#binomial-expansion-for-small-displacements" id="toc-binomial-expansion-for-small-displacements" class="nav-link" data-scroll-target="#binomial-expansion-for-small-displacements"><span class="header-section-number">18.1.2</span> Binomial Expansion for Small Displacements</a></li>
+  <li><a href="#description-of-latitudinal-variations-in-potential" id="toc-description-of-latitudinal-variations-in-potential" class="nav-link" data-scroll-target="#description-of-latitudinal-variations-in-potential"><span class="header-section-number">18.1.3</span> Description of Latitudinal Variations in Potential</a></li>
+  <li><a href="#equivalence-of-series-expansions" id="toc-equivalence-of-series-expansions" class="nav-link" data-scroll-target="#equivalence-of-series-expansions"><span class="header-section-number">18.1.4</span> Equivalence of Series Expansions</a></li>
+  <li><a href="#special-case-for-s-0" id="toc-special-case-for-s-0" class="nav-link" data-scroll-target="#special-case-for-s-0"><span class="header-section-number">18.1.5</span> Special Case for <span class="math inline">\(s = 0\)</span></a></li>
+  </ul></li>
+  <li><a href="#electrostatic-potential" id="toc-electrostatic-potential" class="nav-link" data-scroll-target="#electrostatic-potential"><span class="header-section-number">18.2</span> Electrostatic potential</a>
+  <ul class="collapse">
+  <li><a href="#substitution-into-the-potential" id="toc-substitution-into-the-potential" class="nav-link" data-scroll-target="#substitution-into-the-potential"><span class="header-section-number">18.2.1</span> Substitution into the Potential</a></li>
+  <li><a href="#expansion-using-legendre-polynomials" id="toc-expansion-using-legendre-polynomials" class="nav-link" data-scroll-target="#expansion-using-legendre-polynomials"><span class="header-section-number">18.2.2</span> Expansion Using Legendre Polynomials</a></li>
+  <li><a href="#simplification" id="toc-simplification" class="nav-link" data-scroll-target="#simplification"><span class="header-section-number">18.2.3</span> Simplification</a></li>
+  <li><a href="#legendre-polynomial-for-n-1" id="toc-legendre-polynomial-for-n-1" class="nav-link" data-scroll-target="#legendre-polynomial-for-n-1"><span class="header-section-number">18.2.4</span> Legendre Polynomial for <span class="math inline">\(n = 1\)</span></a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./legendre-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./legendre.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></h1>
 </div>
 
 
@@ -305,8 +392,189 @@ window.MathJax = {
 </header>
 
 
+<section id="gravitational-potential" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="gravitational-potential"><span class="header-section-number">18.1</span> Gravitational Potential</h2>
+<p>We depart from the potential <span class="math inline">\(V(\mathbf r)\)</span> at a point <span class="math inline">\(\mathbf{r}\)</span> caused by a point mass <span class="math inline">\(m\)</span> located at <span class="math inline">\(\mathbf{r}'\)</span>.</p>
+<div id="fig-grav-legendre" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grav-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Gravitationspotential.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grav-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18.1: Point mass displaced from the origin
+</figcaption>
+</figure>
+</div>
+<p>The potential at <span class="math inline">\(\mathbf{r}\)</span> due to a point mass <span class="math inline">\(m\)</span> at <span class="math inline">\(\mathbf{r}'\)</span> is given by: <span class="math display">\[
+V(\mathbf{r}) = -f \frac{m}{|\mathbf{r} - \mathbf{r}'|}.
+\]</span></p>
+<p>Suppose the point mass is slightly displaced to <span class="math inline">\(\mathbf{r}' = (0, 0, s)^\top\)</span> along the <span class="math inline">\(z\)</span>-axis.</p>
+<section id="expansion-of-the-term-1mathbfr---mathbfr" class="level3" data-number="18.1.1">
+<h3 data-number="18.1.1" class="anchored" data-anchor-id="expansion-of-the-term-1mathbfr---mathbfr"><span class="header-section-number">18.1.1</span> Expansion of the term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span></h3>
+<p>The frequently occurring term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span> can be expanded into a power series when <span class="math inline">\(|\mathbf{r}'| \ll |\mathbf{r}|\)</span>.</p>
+<p>Let <span class="math inline">\(\mathbf{r} = (x, y, z)^\top\)</span> (observation point) and <span class="math inline">\(\mathbf{r}' = (0, 0, s)^\top\)</span> (source point of the mass). The Euclidean distance between the observation and source points is <span class="math inline">\(q = |\mathbf{r} - \mathbf{r}'|\)</span>.</p>
+<p>Using the magnitudes <span class="math inline">\(r = |\mathbf{r}|\)</span> and <span class="math inline">\(s = |\mathbf{r}'|\)</span>, and applying the [[Kosinussatz|law of cosines]], we have: <span class="math display">\[
+\frac{1}{q} = f(r, \theta) = \frac{1}{r} \left[1 + \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta \right]^{-1/2}.
+\]</span></p>
+</section>
+<section id="binomial-expansion-for-small-displacements" class="level3" data-number="18.1.2">
+<h3 data-number="18.1.2" class="anchored" data-anchor-id="binomial-expansion-for-small-displacements"><span class="header-section-number">18.1.2</span> Binomial Expansion for Small Displacements</h3>
+<p>For a small displacement of the source point away from the origin, i.e., <span class="math inline">\(s \ll r\)</span>, <span class="math inline">\(f(r, \theta)\)</span> can be expanded as a <em>binomial series</em> <span class="math display">\[
+f(r, \theta) = \frac{1}{r} (1 + b)^{-1/2} = \frac{1}{r} \sum_{n=0}^\infty \binom{-1/2}{n} b^n,
+\]</span> where <span class="math display">\[
+b = \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta, \quad |b| &lt; 1.
+\]</span></p>
+<p>Rearranging the series in powers of <span class="math inline">\(\frac{s}{r}\)</span> gives <span class="math display">\[
+f(r, \theta) = \frac{1}{r} \sum_{n=0}^\infty \left(\frac{s}{r} \right)^n P_n(\cos \theta).
+\]</span></p>
+<p>The <span class="math inline">\(P_n(\cos \theta)\)</span> are polynomials of degree <span class="math inline">\(n\)</span> in <span class="math inline">\(\cos \theta\)</span>. They are known as <em>Legendre Polynomials</em> or <em>zonal spherical harmonics</em>. Since they are independent of the azimuthal angle <span class="math inline">\(\varphi\)</span>, they have constant values over spherical zones (<span class="math inline">\(\theta = \text{const}\)</span>).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Legendre polynomials">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Legendre polynomials
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Legendre polynomials can also be defined as the coefficients in a formal expansion in powers of <span class="math inline">\(t\)</span> of the generating function</p>
+<p><span class="math display">\[
+\frac{1}{\sqrt{1 - 2tx + t^2}} = \sum\limits_{n=0}^\infty
+P_n(x)t^n.
+\]</span> The coefficient of <span class="math inline">\(t^n\)</span> is a polynomial in <span class="math inline">\(x\)</span> of degree <span class="math inline">\(n\)</span> with <span class="math inline">\(|x| \le 1\)</span>.</p>
+<p>The first Legendre polynomials are</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(P_n(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\dfrac{1}{2}(3x^2 -1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Legendre polynomials can be calculated using Rodrigues’ formula</p>
+<p><span class="math display">\[
+P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n}(x^2 - 1)^n
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="description-of-latitudinal-variations-in-potential" class="level3" data-number="18.1.3">
+<h3 data-number="18.1.3" class="anchored" data-anchor-id="description-of-latitudinal-variations-in-potential"><span class="header-section-number">18.1.3</span> Description of Latitudinal Variations in Potential</h3>
+<p>The superposition of Legendre polynomials can describe the latitude-dependent variations in potential.</p>
+<p>For <span class="math inline">\(r \ll s\)</span>, a similar result is obtained by factoring out <span class="math inline">\(1/s\)</span> <span class="math display">\[
+f(r, \theta) =
+\begin{cases}
+\dfrac{1}{s} \sum_{n=0}^\infty \left(\dfrac{r}{s}\right)^n P_n(\cos \theta), &amp; r \leq s, \\
+\dfrac{1}{r} \sum_{n=0}^\infty \left(\dfrac{s}{r}\right)^{n+1} P_n(\cos \theta), &amp; r \geq s.
+\end{cases}
+\]</span></p>
+</section>
+<section id="equivalence-of-series-expansions" class="level3" data-number="18.1.4">
+<h3 data-number="18.1.4" class="anchored" data-anchor-id="equivalence-of-series-expansions"><span class="header-section-number">18.1.4</span> Equivalence of Series Expansions</h3>
+<p>For <span class="math inline">\(r \geq s\)</span>, the series satisfy <span class="math display">\[
+\frac{1}{r} \sum_{n=0}^\infty \left(\frac{s}{r}\right)^n P_n(\cos \theta) = \frac{1}{s} \sum_{n=0}^\infty \left(\frac{s}{r}\right)^{n+1} P_n(\cos \theta).
+\]</span></p>
+</section>
+<section id="special-case-for-s-0" class="level3" data-number="18.1.5">
+<h3 data-number="18.1.5" class="anchored" data-anchor-id="special-case-for-s-0"><span class="header-section-number">18.1.5</span> Special Case for <span class="math inline">\(s = 0\)</span></h3>
+<p>When <span class="math inline">\(s = 0\)</span>, only the term for <span class="math inline">\(n = 0\)</span> contributes a non-zero value. Thus <span class="math display">\[
+f(r, \theta) = \frac{1}{r}.
+\]</span></p>
+</section>
+</section>
+<section id="electrostatic-potential" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="electrostatic-potential"><span class="header-section-number">18.2</span> Electrostatic potential</h2>
+<p>Observation point at <span class="math inline">\(\mathbf{r} = (x, y, z)^\top\)</span>, <span class="math inline">\(r = |\mathbf{r}|\)</span>.<br>
+Source points <span class="math inline">\(\pm \mathbf{r}' = (0, 0, \pm a)^\top\)</span>.<br>
+Two charges on the <span class="math inline">\(z\)</span>-axis: <span class="math inline">\(+Q\)</span> at <span class="math inline">\(z = a\)</span> and <span class="math inline">\(-Q\)</span> at <span class="math inline">\(z = -a\)</span>.</p>
+<div id="fig-electric-dipole-legendre" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-electric-dipole-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/electric-dipole-legendre.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-electric-dipole-legendre-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18.2: Electrostatic dipole aligned with the <span class="math inline">\(z\)</span>-axis
+</figcaption>
+</figure>
+</div>
+<p>The distances between the charges and the observation point are obtained using the <em>law of cosines</em>.</p>
+<ul>
+<li><p>Distance to the charge <span class="math inline">\(+Q\)</span>: <span class="math display">\[
+| \mathbf{r} - \mathbf{r}'| = \sqrt{r^2 + a^2 - 2ar \cos \theta}
+= r \sqrt{1 - 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2}.
+\]</span></p></li>
+<li><p>Using <span class="math inline">\(\cos \theta = -\cos(\pi - \theta)\)</span> (<em>complementary angle</em>), the distance to the charge <span class="math inline">\(-Q\)</span> is: <span class="math display">\[
+| \mathbf{r} + \mathbf{r}'| = \sqrt{r^2 + a^2 + 2ar \cos \theta}
+= r \sqrt{1 + 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2}.
+\]</span></p></li>
+</ul>
+<section id="substitution-into-the-potential" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="substitution-into-the-potential"><span class="header-section-number">18.2.1</span> Substitution into the Potential</h3>
+<p>Substituting these distances into the potentials: <span class="math display">\[
+U(r) = \frac{Q}{4 \pi \varepsilon r}
+\left\{
+\left[1 - 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2
+\right]^{-1/2} -
+\left[1 + 2 \frac{a}{r} \cos \theta + \left( \frac{a}{r} \right)^2
+\right]^{-1/2}
+\right\}.
+\]</span></p>
+</section>
+<section id="expansion-using-legendre-polynomials" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="expansion-using-legendre-polynomials"><span class="header-section-number">18.2.2</span> Expansion Using Legendre Polynomials</h3>
+<p>We apply Legendre polynomials, defined as: <span class="math display">\[
+P_n(x) = \frac{1}{2^n n!} \frac{\mathrm{d}^n}{\mathrm{d}x^n} \left( x^2 - 1 \right)^n,
+\]</span> with <span class="math inline">\(t := \frac{a}{r}\)</span> and <span class="math inline">\(x := \cos \theta\)</span>.</p>
+<p>For <span class="math inline">\(tx := -\frac{a}{r} \cos \theta\)</span>, the sign propagates through <span class="math inline">\(t^n = \left(-\frac{a}{r}\right)^n = (-1)^n \left(\frac{a}{r}\right)^n\)</span>: <span class="math display">\[
+U(r) = \frac{Q}{4 \pi \varepsilon r}
+\left[
+\sum_{n=0}^\infty P_n(\cos \theta) \left( \frac{a}{r} \right)^n -
+\sum_{n=0}^\infty P_n(\cos \theta) (-1)^n \left( \frac{a}{r} \right)^n
+\right].
+\]</span></p>
+</section>
+<section id="simplification" class="level3" data-number="18.2.3">
+<h3 data-number="18.2.3" class="anchored" data-anchor-id="simplification"><span class="header-section-number">18.2.3</span> Simplification</h3>
+<p>Terms with even powers cancel because <span class="math inline">\((-1)^{2n} = 1\)</span>.</p>
+<p>Thus, the potential simplifies to: <span class="math display">\[
+U(r) = \frac{2Q}{4 \pi \varepsilon r}
+\left[
+P_1(\cos \theta) \left( \frac{a}{r} \right) +
+P_3(\cos \theta) \left( \frac{a}{r} \right)^3 + \ldots
+\right].
+\]</span></p>
+<p>For <span class="math inline">\(r \gg a\)</span>, the term with <span class="math inline">\(P_1(\cos \theta)\)</span> dominates.</p>
+<p>This leads to the <em>electric dipole potential</em>: <span class="math display">\[
+U(r) = \frac{2aQ}{4 \pi \varepsilon}
+\cdot
+\frac{P_1(\cos \theta)}{r^2}.
+\]</span></p>
+</section>
+<section id="legendre-polynomial-for-n-1" class="level3" data-number="18.2.4">
+<h3 data-number="18.2.4" class="anchored" data-anchor-id="legendre-polynomial-for-n-1"><span class="header-section-number">18.2.4</span> Legendre Polynomial for <span class="math inline">\(n = 1\)</span></h3>
+<p>The Legendre polynomial of degree <span class="math inline">\(n=1\)</span> is: <span class="math display">\[
+P_1(\cos \theta) = \cos \theta.
+\]</span></p>
+<p>This corresponds to the equation (with the <em>electric dipole moment</em> <span class="math inline">\(p = 2aQ\)</span>) derived using the <a href="./electricaldipole.html">electric dipole and the superposition principle</a>.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -728,8 +996,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./hilbert.html" class="pagination-link" aria-label="Hilbert Transform">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span>
+      <a href="./legendre-intro.html" class="pagination-link" aria-label="Introduction to Legendre polynomials">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
