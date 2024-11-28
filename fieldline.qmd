@@ -122,11 +122,7 @@ The L-value describes the field lines which cross the Earth's magnetic equator a
 L-shells uniquely define regions of particular geophysical interest. 
 For instance, auroral light displays are most common around $L=6$, can reach $L=4$ and even $L=2$ during most severe geomagnetic storms.
 
-![Planar view of magnetic field lines for L-shells $L=3$ up to $L=9$ (simplified).](images/3dearth%20(2).png){#fig-fieldlinesearth}
-
-```{=html}
-<iframe src="https://trinket.io/embed/glowscript/a4c2ce25089f?outputOnly=true" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-```
+![Planar view of magnetic field lines for L-shells $L=3$ up to $L=7$ (simplified).](images/3dearth.png){#fig-fieldlinesearth}
 
 ## Differential geometry properties of field lines
 
