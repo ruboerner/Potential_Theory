@@ -119,7 +119,10 @@ We observe that the shape of the field line is invariant with respect to the rat
 In planetary geophysics, the _L-shell_ or _L-value_ is a particular set of magnetic field lines.
 The L-value describes the field lines which cross the Earth's magnetic equator at a number of Earth radii equal to the L-value.
 
-L-shells uniquely define regions of particular geophysical interest. For instance, auroral light displays are most common around $L=6$, can reach $L=4$ and even $L=2$ during most severe geomagnetic storms.
+L-shells uniquely define regions of particular geophysical interest. 
+For instance, auroral light displays are most common around $L=6$, can reach $L=4$ and even $L=2$ during most severe geomagnetic storms.
+
+![Planar view of magnetic field lines for L-shells $L=3$ up to $L=9$ (simplified).](images/3dearth%20(2).png){#fig-fieldlinesearth}
 
 ## Differential geometry properties of field lines
 
