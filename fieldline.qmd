@@ -124,6 +124,10 @@ For instance, auroral light displays are most common around $L=6$, can reach $L=
 
 ![Planar view of magnetic field lines for L-shells $L=3$ up to $L=9$ (simplified).](images/3dearth%20(2).png){#fig-fieldlinesearth}
 
+```{=html}
+<iframe src="https://trinket.io/embed/glowscript/a4c2ce25089f?outputOnly=true" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+```
+
 ## Differential geometry properties of field lines
 
 Two questions are of particular interest:
