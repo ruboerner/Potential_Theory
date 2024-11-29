@@ -475,7 +475,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 </section>
 <section id="magnetic-dipole" class="level2" data-number="16.4">
 <h2 data-number="16.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">16.4</span> Magnetic Dipole</h2>
-<div id="b18e0623" class="cell" data-execution_count="1">
+<div id="d8366652" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -488,7 +488,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="16.4.1">
 <h3 data-number="16.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">16.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="b7ed3ec9" class="cell" data-execution_count="2">
+<div id="ca8474d1" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -502,7 +502,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="9396d86f" class="cell" data-execution_count="3">
+<div id="6c9cdadd" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>

@@ -555,6 +555,66 @@ V_z(y) = +\frac{1}{\pi y} \ast V_y(y) = -\mathcal{H}\{V_y(y)\}.
 -\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{e^{-i k y}}{y} \, dy = i \, \mathrm{sign}(k).
 \]</span></p>
 <p>Derivation using the <em>Residue Theorem in Complex Analysis</em>: Replace <span class="math inline">\(\frac{1}{y}\)</span> with <span class="math inline">\(\lim_{a \to 0} \frac{y}{y^2 + a^2}\)</span>, <span class="math inline">\(y = u + iv\)</span>, apply the Residue Theorem, and integrate around poles <span class="math inline">\(+ia\)</span> and <span class="math inline">\(-ia\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Fourier spectrum of the Hilbert transform operator">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fourier spectrum of the Hilbert transform operator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The goal is to find <span class="math display">\[
+\mathcal F\{ -\frac{1}{\pi y}, k\} = -\frac{1}{\pi} \int_{-\infty}^\infty \frac{e^{-i k y}}{y}\, \dd y.
+\]</span> We replace <span class="math inline">\(\frac{1}{y}\)</span> with <span class="math inline">\(\frac{y}{y^2 + a^2}\)</span> and evaluate the integral in the limit <span class="math display">\[
+\lim_{a \to 0} \int_{-\infty}^\infty \frac{y}{y^2 + a^2} e^{-i k y}\, \dd y.
+\]</span> The integrand is a complex function of <span class="math inline">\(y = u + iv\)</span>, hence <span class="math display">\[
+e^{-iky}=e^{-iku}e^{+kv}
+\]</span> The roots of the polynomial in the denominator are at <span class="math inline">\(y=\pm ia\)</span>.</p>
+<p>We use the residual theorem for a simple pole <span class="math display">\[
+\text{Res} f(y) = \lim_{y \to y_{\text{pole}}}(y - y_{\text{pole}}) f(y) = \frac{1}{2 \pi i} \oint f(y) \, \dd y.
+\]</span> Since the path of integration is arbitrary, we choose a path such that <span class="math display">\[
+f(y) \to 0 \begin{cases}
+k&lt;0 \text{ and } v \to +\infty \\
+k&lt;0 \text{ and } v \to -\infty
+\end{cases}
+\]</span></p>
+<p>This reduces the integration to the real <span class="math inline">\(y\)</span>-axis from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>.</p>
+<div id="fig-integration-hilbert" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-integration-hilbert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/integraton-hilbert.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-integration-hilbert-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: Path of integration around the pole at <span class="math inline">\(y=-ia\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>For <span class="math inline">\(k&lt;0\)</span> we enclose the pole at <span class="math inline">\(y=-ia\)</span> and integrate clock-wise (sign!) <span class="math display">\[
+\int_{-\infty}^\infty \frac{y}{y^2 + a^2} e^{-i k y}\, \dd y =
+-\oint \frac{y}{y^2 + a^2} e^{-i k y}\, \dd y =
+-2 \pi i \text{Res} f(y).
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+-2 \pi i \text{Res}f(y) &amp; = -2 \pi i \lim_{y \to -ia} (y+ia)f(y) \\
+&amp; = -2 \pi i \lim_{y \to -ia} (y+ia) \frac{y e^{-i k y}}{(y-ia)(y+ia)} \\
+&amp; = -2 \pi i \frac{-ia e^{+i^2 k a}}{-ia -ia} \\
+&amp; = -\pi i e^{-ka}
+\end{align}
+\]</span> Now <span class="math display">\[
+\lim_{a\to 0} (- \pi i e^{-ka}) = -\pi i,
+\]</span> which leads to the final result <span class="math display">\[
+-\frac{1}{\pi} \int_{-\infty}^\infty \frac{e^{-i k y}}{y}\, \dd y =
+\begin{Bmatrix}
++i \qif k&gt;0 \\
+-i \qif k&lt;0
+\end{Bmatrix}
+= i \, \text{sign}(k).
+\]</span></p>
+</div>
+</div>
 <p>Thus, the spectrum of <span class="math inline">\(-\frac{1}{\pi y}\)</span> is <span class="math inline">\(i \, \mathrm{sign}(k)\)</span>!</p>
 <p>For negative and positive wave numbers <span class="math inline">\(k\)</span>, the spectrum of <span class="math inline">\(V_y\)</span> (or <span class="math inline">\(V_z\)</span>) is multiplied by <span class="math inline">\(-i\)</span> and <span class="math inline">\(+i\)</span>, respectively.</p>
 

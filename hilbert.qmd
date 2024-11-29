@@ -186,6 +186,67 @@ $$
 
 Derivation using the *Residue Theorem in Complex Analysis*: Replace $\frac{1}{y}$ with $\lim_{a \to 0} \frac{y}{y^2 + a^2}$, $y = u + iv$, apply the Residue Theorem, and integrate around poles $+ia$ and $-ia$.
 
+:::{.callout-note title="Fourier spectrum of the Hilbert transform operator"}
+The goal is to find 
+$$
+\mathcal F\{ -\frac{1}{\pi y}, k\} = -\frac{1}{\pi} \int_{-\infty}^\infty \frac{e^{-i k y}}{y}\, \dd y.
+$$
+We replace $\frac{1}{y}$ with $\frac{y}{y^2 + a^2}$ and evaluate the integral in the limit
+$$
+\lim_{a \to 0} \int_{-\infty}^\infty \frac{y}{y^2 + a^2} e^{-i k y}\, \dd y.
+$$
+The integrand is a complex function of $y = u + iv$, hence
+$$
+e^{-iky}=e^{-iku}e^{+kv}
+$$
+The roots of the polynomial in the denominator are at $y=\pm ia$.
+
+We use the residual theorem for a simple pole
+$$
+\text{Res} f(y) = \lim_{y \to y_{\text{pole}}}(y - y_{\text{pole}}) f(y) = \frac{1}{2 \pi i} \oint f(y) \, \dd y.
+$$
+Since the path of integration is arbitrary, we choose a path such that
+$$
+f(y) \to 0 \begin{cases} 
+k<0 \text{ and } v \to +\infty \\
+k<0 \text{ and } v \to -\infty
+\end{cases}
+$$
+
+This reduces the integration to the real $y$-axis from $-\infty$ to $+\infty$.
+
+![Path of integration around the pole at $y=-ia$.](images/integraton-hilbert.excalidraw.svg){#fig-integration-hilbert}
+
+For $k<0$ we enclose the pole at $y=-ia$ and integrate clock-wise (sign!)
+$$
+\int_{-\infty}^\infty \frac{y}{y^2 + a^2} e^{-i k y}\, \dd y =
+-\oint \frac{y}{y^2 + a^2} e^{-i k y}\, \dd y =
+-2 \pi i \text{Res} f(y).
+$$
+
+$$
+\begin{align}
+-2 \pi i \text{Res}f(y) & = -2 \pi i \lim_{y \to -ia} (y+ia)f(y) \\
+& = -2 \pi i \lim_{y \to -ia} (y+ia) \frac{y e^{-i k y}}{(y-ia)(y+ia)} \\
+& = -2 \pi i \frac{-ia e^{+i^2 k a}}{-ia -ia} \\
+& = -\pi i e^{-ka}
+\end{align}
+$$
+Now
+$$
+\lim_{a\to 0} (- \pi i e^{-ka}) = -\pi i,
+$$
+which leads to the final result
+$$
+-\frac{1}{\pi} \int_{-\infty}^\infty \frac{e^{-i k y}}{y}\, \dd y = 
+\begin{Bmatrix}
++i \qif k>0 \\
+-i \qif k<0
+\end{Bmatrix}
+= i \, \text{sign}(k).
+$$
+:::
+
 Thus, the spectrum of $-\frac{1}{\pi y}$ is $i \, \mathrm{sign}(k)$!
 
 For negative and positive wave numbers $k$, the spectrum of $V_y$ (or $V_z$) is multiplied by $-i$ and $+i$, respectively.
