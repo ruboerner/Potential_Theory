@@ -181,7 +181,7 @@ With the sphere introduced in the above example we obtain the following figure:
 ```{python}
 Vz_ = np.array([Vz_num(v) for v in yy], dtype=float)
 Vy_ = np.array([Vy_num(v) for v in yy], dtype=float)
-deflection = 3600 * 180 / np.pi * np.atan(Vy_ / (9.81 + Vz_))
+deflection = 3600 * 180 / np.pi * np.arctan(Vy_ / (9.81 + Vz_))
 
 fig, ax = plt.subplots(figsize=(6,4))
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Summary – Theory of Potential Field Methods in Geophysics</title>
+<title>14&nbsp; Implementation of the Hilbert transform – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./legendre.html" rel="prev">
+<link href="./three-dimensional-problems.html" rel="next">
+<link href="./hilbert.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -121,7 +155,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html">Summary</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./hilbert_implementation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -263,7 +297,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link">
+  <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
   </div>
 </li>
@@ -344,7 +378,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Summary</span></a>
   </div>
 </li>
@@ -359,15 +393,22 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#wavenumbers" id="toc-wavenumbers" class="nav-link active" data-scroll-target="#wavenumbers"><span class="header-section-number">14.0.1</span> Wavenumbers</a></li>
+  <li><a href="#application-to-the-2-d-gravity-problem" id="toc-application-to-the-2-d-gravity-problem" class="nav-link" data-scroll-target="#application-to-the-2-d-gravity-problem"><span class="header-section-number">14.1</span> Application to the 2-D gravity problem</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./line_of_mass.html">Two-dimensional problems</a></li><li class="breadcrumb-item"><a href="./hilbert_implementation.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Summary</h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></h1>
 </div>
 
 
@@ -384,9 +425,185 @@ window.Quarto = {
 </header>
 
 
-<p>WIP</p>
+<div id="bb930738" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.fft <span class="im">import</span> fft, ifft, fftfreq</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The Hilbert transform <span class="math inline">\(V_y(y) = \mathcal H(V_z(y))\)</span> is defined by <span class="math display">\[
+V_y(y) = - \frac{1}{\pi} -\!\!\!\!\!\! \int\limits_{-\infty}^\infty \frac{V_z(y')}{y - y'}\, \mathrm d y', \qquad\text{Cauchy principal value}
+\]</span> which can be interpreted as a convolutional integral with the abbreviation <span class="math display">\[
+V_y = -\frac{1}{\pi y} * V_z.
+\]</span> Exploiting the Fourier transform properties, we can equivalently replace the convolution in the spatial domain by a multiplication in the spectral domain, i.e., <span class="math display">\[
+\mathcal F(V_y) = \mathcal F\left(-\frac{1}{\pi y}\right) \cdot \mathcal F\left(V_z\right)
+\]</span> The spectrum of the Hilbert transform operator is <span class="math display">\[
+\mathcal F\left(-\frac{1}{\pi y}\right) = i \, \text{sign}(k),
+\]</span> where <span class="math inline">\(k\)</span> is the corresponding variable in the spectral domain. In our case, <span class="math inline">\(k\)</span> is referred to as <em>wave number</em>.</p>
+<p>Essentially, the Hilbert transform can be obtained by <span class="math display">\[
+V_y(y) = \mathcal H(V_z(y)) = \mathcal F^{-1} \left( i \, \text{sign}(k) \mathcal F(V_z(y)) \right)
+\]</span></p>
+<p>Since two spectra have to be multiplied properly, we have to know the precise location of the wavenumbers associated with the implementation of the FFT for a given programming language and/or library.</p>
+<p>In what follows we use the FFT implementation of the Python <code>numpy</code> library.</p>
+<section id="wavenumbers" class="level3" data-number="14.0.1">
+<h3 data-number="14.0.1" class="anchored" data-anchor-id="wavenumbers"><span class="header-section-number">14.0.1</span> Wavenumbers</h3>
+<p>For a given signal length <span class="math inline">\(N\)</span> and a sampling interval <span class="math inline">\(\Delta t\)</span>, the <em>Nyquist</em> frequency is <span class="math display">\[
+f_{N} = \frac{1}{2 \Delta t}.
+\]</span> A signal of length <span class="math inline">\(N\)</span> gets transformed into a spectrum of length <span class="math inline">\(N\)</span>. The location of the associated frequencies is</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, ...,   N<span class="op">/</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>,     <span class="op">-</span>N<span class="op">/</span><span class="dv">2</span>, ..., <span class="op">-</span><span class="dv">1</span>] <span class="op">/</span> (dt <span class="op">*</span> N)   <span class="co"># if N is even</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, ..., (N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>, <span class="op">-</span>(N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>, ..., <span class="op">-</span><span class="dv">1</span>] <span class="op">/</span> (dt <span class="op">*</span> N)   <span class="co"># if N is odd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6a927d51" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_wavenumber(n, dt <span class="op">=</span> <span class="dv">1</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> fftfreq(n, d <span class="op">=</span> dt)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We construct a sinusoidal signal <code>S</code> with a frequency of <span class="math inline">\(f=10\)</span> Hz, a period <span class="math inline">\(T=0.1\)</span> s, and a signal length of <span class="math inline">\(L=2\)</span> s. It holds <span class="math display">\[
+S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
+\]</span> The sampling frequency is <span class="math inline">\(200\)</span> Hz, which corresponds to a sampling interval of <span class="math inline">\(\Delta t=0.005\)</span> s and a resulting window length of <span class="math inline">\(n=400\)</span> samples.</p>
+<p>The <em>Nyquist frequency</em> is <span class="math inline">\(f_N = 100\)</span> Hz.</p>
+<div id="4fc180d6" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> f</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(start <span class="op">=</span> <span class="dv">0</span>, stop <span class="op">=</span> L, step <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> df, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> t <span class="op">/</span> T)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(S)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> L <span class="op">/</span> n</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.plot(t, S)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"t in s"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hilbert_implementation_files/figure-html/cell-4-output-1.png" width="590" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we calculate the Fourier spectrum of the signal. We use the FFT implementation of <code>numpy</code>. The array <code>X</code> contains the spectrum of <code>S</code>. Note that <code>X</code> is a complex-valued array.</p>
+<p>We recognize that the major Fourier component of the signal is associated with <span class="math inline">\(f=\pm 10\)</span> Hz.</p>
+<p>The order of the fourier coefficients in <code>X</code> depends on the implementation. It can be calulated using <code>fftfreq</code>.</p>
+<div id="87edb9b6" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> fft(S)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>power <span class="op">=</span> np.<span class="bu">abs</span>(X)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> n</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.vlines([<span class="op">-</span>f, f], ymin<span class="op">=</span><span class="dv">0</span>, ymax<span class="op">=</span><span class="dv">100</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">"f"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.plot(fftfreq(n, d<span class="op">=</span>dt), power, <span class="st">'o'</span>, markersize<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"spectrum"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"f in Hz"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hilbert_implementation_files/figure-html/cell-5-output-1.png" width="575" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let us compute the Hilbert transform of this signal. To this end, we provide the Fourier spectrum of the Hilbert transform operator, i.e., <span class="math display">\[
+\mathcal F(-\frac{1}{\pi t}, f) = i \, \text{sign}(f)
+\]</span> The Hilbert transform of the cosine is the sine function.</p>
+<div id="072278b1" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fi <span class="op">=</span> fftfreq(n, d<span class="op">=</span>dt)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="op">-</span><span class="ot">1j</span> <span class="op">*</span> np.sign(fi)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> ifft( k <span class="op">*</span> X)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.plot(t, S)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.plot(t, H.real)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hilbert_implementation_files/figure-html/cell-6-output-1.png" width="590" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A second application of the Hilbert transform reveals its property of an <em>anti-self adjoint operator</em>, i.e., <span class="math display">\[
+\mathcal H(\mathcal H(u(t))) = -u(t)
+\]</span></p>
+<div id="d38f7f91" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> ifft( k <span class="op">*</span> fft(H)).real</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t, S)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.plot(t, SH)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hilbert_implementation_files/figure-html/cell-7-output-1.png" width="590" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="application-to-the-2-d-gravity-problem" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="application-to-the-2-d-gravity-problem"><span class="header-section-number">14.1</span> Application to the 2-D gravity problem</h2>
+<p>We provide a Python function that calculates the horizontal and vertical component of the gravitational attraction caused by a horizontal cylinder of radius <span class="math inline">\(a\)</span>. The function requires as argument the point of observation <code>obs</code> and the point <code>axis</code> where the axis of the cylinder meets the plane of observation. Further, the mass <span class="math inline">\(m=\pi a^2 \rho\)</span> of the cylinder must be given.</p>
+<div id="1521e44a" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cylinder(obs, mass, axis):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="fl">6.674e-11</span> <span class="op">*</span> mass <span class="op">/</span> np.linalg.norm(obs <span class="op">-</span> axis)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> (obs <span class="op">-</span> axis)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="5ad67d9c" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">1000</span>, stop<span class="op">=</span><span class="dv">1000</span>, num<span class="op">=</span><span class="dv">2001</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> np.zeros([<span class="bu">len</span>(y), <span class="dv">2</span>])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> (y[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> y[<span class="dv">0</span>]) <span class="op">/</span> <span class="bu">len</span>(y)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>depth <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> np.pi <span class="op">*</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> rho</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(y):</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    g[i, :] <span class="op">=</span> cylinder(np.array([p, <span class="dv">0</span>]), mass, np.array([<span class="dv">0</span>, depth]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Now we take <span class="math inline">\(V_z(y)\)</span> and compute the Hilbert transform. Further, we compare to <span class="math inline">\(V_y(y)\)</span>.</p>
+<div id="4b980a8d" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> fftfreq(<span class="bu">len</span>(y), d<span class="op">=</span>dy)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>V_H <span class="op">=</span> ifft(<span class="ot">1j</span> <span class="op">*</span> np.sign(k) <span class="op">*</span> fft(g[:, <span class="dv">1</span>])).real</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="20a40b7a" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.plot(y, g[:, <span class="dv">0</span>], label<span class="op">=</span><span class="st">"V_y"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.plot(y, g[:, <span class="dv">1</span>], label<span class="op">=</span><span class="st">"V_z"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.plot(y, V_H, label<span class="op">=</span><span class="st">"V_y (Hilbert)"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hilbert_implementation_files/figure-html/cell-11-output-1.png" width="569" height="425" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We note that the Hilbert transform exhibits larger approximation errors towards the boundaries of the observation window.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -811,13 +1028,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./legendre.html" class="pagination-link" aria-label="Applications of the Legendre Polynomials">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span>
+      <a href="./hilbert.html" class="pagination-link" aria-label="Hilbert Transform">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./three-dimensional-problems.html" class="pagination-link" aria-label="Gravitational Field Caused by a Density Distribution in $\mathbb{R}^3$">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

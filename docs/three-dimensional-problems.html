@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.37">
+<meta name="generator" content="quarto-1.6.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Gravitational Field Caused by a Density Distribution in \mathbb{R}^3 – Theory of Potential Field Methods in Geophysics</title>
+<title>15&nbsp; Gravitational Field Caused by a Density Distribution in \mathbb{R}^3 – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,16 +31,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./electricaldipole.html" rel="next">
-<link href="./hilbert.html" rel="prev">
+<link href="./hilbert_implementation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./three-dimensional-problems.html">Three-dimensional problems</a></li><li class="breadcrumb-item"><a href="./three-dimensional-problems.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./three-dimensional-problems.html">Three-dimensional problems</a></li><li class="breadcrumb-item"><a href="./three-dimensional-problems.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -261,6 +261,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -275,7 +281,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -292,19 +298,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
   </div>
 </li>
       </ul>
@@ -321,13 +327,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
       </ul>
@@ -358,20 +364,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cartesian-components-of-the-gravitational-field" id="toc-cartesian-components-of-the-gravitational-field" class="nav-link active" data-scroll-target="#cartesian-components-of-the-gravitational-field"><span class="header-section-number">14.1</span> Cartesian Components of the Gravitational Field</a></li>
-  <li><a href="#surface-density-for-sub-areas" id="toc-surface-density-for-sub-areas" class="nav-link" data-scroll-target="#surface-density-for-sub-areas"><span class="header-section-number">14.2</span> Surface Density for Sub-Areas</a></li>
-  <li><a href="#curl-of-unit-vectors" id="toc-curl-of-unit-vectors" class="nav-link" data-scroll-target="#curl-of-unit-vectors"><span class="header-section-number">14.3</span> Curl of Unit Vectors</a></li>
-  <li><a href="#stokes-theorem" id="toc-stokes-theorem" class="nav-link" data-scroll-target="#stokes-theorem"><span class="header-section-number">14.4</span> Stokes’ Theorem</a></li>
-  <li><a href="#contributions-of-polygonal-edges" id="toc-contributions-of-polygonal-edges" class="nav-link" data-scroll-target="#contributions-of-polygonal-edges"><span class="header-section-number">14.5</span> Contributions of Polygonal Edges</a></li>
+  <li><a href="#cartesian-components-of-the-gravitational-field" id="toc-cartesian-components-of-the-gravitational-field" class="nav-link active" data-scroll-target="#cartesian-components-of-the-gravitational-field"><span class="header-section-number">15.1</span> Cartesian Components of the Gravitational Field</a></li>
+  <li><a href="#surface-density-for-sub-areas" id="toc-surface-density-for-sub-areas" class="nav-link" data-scroll-target="#surface-density-for-sub-areas"><span class="header-section-number">15.2</span> Surface Density for Sub-Areas</a></li>
+  <li><a href="#curl-of-unit-vectors" id="toc-curl-of-unit-vectors" class="nav-link" data-scroll-target="#curl-of-unit-vectors"><span class="header-section-number">15.3</span> Curl of Unit Vectors</a></li>
+  <li><a href="#stokes-theorem" id="toc-stokes-theorem" class="nav-link" data-scroll-target="#stokes-theorem"><span class="header-section-number">15.4</span> Stokes’ Theorem</a></li>
+  <li><a href="#contributions-of-polygonal-edges" id="toc-contributions-of-polygonal-edges" class="nav-link" data-scroll-target="#contributions-of-polygonal-edges"><span class="header-section-number">15.5</span> Contributions of Polygonal Edges</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./three-dimensional-problems.html">Three-dimensional problems</a></li><li class="breadcrumb-item"><a href="./three-dimensional-problems.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./three-dimensional-problems.html">Three-dimensional problems</a></li><li class="breadcrumb-item"><a href="./three-dimensional-problems.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></h1>
 </div>
 
 
@@ -405,7 +411,7 @@ window.Quarto = {
 <img src="images/three-dimensional-modelling.excalidraw.svg" id="fig-three-d" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-three-d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.1
+Figure&nbsp;15.1
 </figcaption>
 </figure>
 </div>
@@ -424,8 +430,8 @@ f \iint \frac{\sigma'}{r^2} \, \mathrm{d}s.
 \sigma'(\mathbf{r}) = \rho \mathbf{r} \cdot \mathbf{u}_n.
 \]</span></p>
 <p>The surface density is a purely computational quantity. Unlike the constant volume density, it is <em>position-dependent</em> and can be positive or negative for the same body.</p>
-<section id="cartesian-components-of-the-gravitational-field" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="cartesian-components-of-the-gravitational-field"><span class="header-section-number">14.1</span> Cartesian Components of the Gravitational Field</h2>
+<section id="cartesian-components-of-the-gravitational-field" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="cartesian-components-of-the-gravitational-field"><span class="header-section-number">15.1</span> Cartesian Components of the Gravitational Field</h2>
 <p>The components <span class="math inline">\(g_x\)</span>, <span class="math inline">\(g_y\)</span>, and <span class="math inline">\(g_z\)</span> of the field <span class="math inline">\(\mathbf{g}\)</span> are obtained by projecting the field onto the Cartesian unit vectors. In general: <span class="math display">\[
 a_b = \mathbf{a} \cdot \frac{\mathbf{b}}{|\mathbf{b}|} = |\mathbf{a}| \cos \theta,
 \]</span> where <span class="math inline">\(\theta\)</span> is the angle between the vector <span class="math inline">\(\mathbf{a}\)</span> and the direction of <span class="math inline">\(\mathbf{b}\)</span>.</p>
@@ -436,8 +442,8 @@ f \rho \iint \mathbf{r} \cdot \mathbf{u}_n \frac{z}{r^3} \, \mathrm{d}s.
 \]</span></p>
 <p>By dividing the surface of the body into a set of planar sub-areas, the integration can be performed separately for each sub-area. Summing the contributions from all sub-areas yields the gravitational acceleration.</p>
 </section>
-<section id="surface-density-for-sub-areas" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="surface-density-for-sub-areas"><span class="header-section-number">14.2</span> Surface Density for Sub-Areas</h2>
+<section id="surface-density-for-sub-areas" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="surface-density-for-sub-areas"><span class="header-section-number">15.2</span> Surface Density for Sub-Areas</h2>
 <p>For each <span class="math inline">\(i\)</span>th sub-area, the surface density is position-dependent: <span class="math display">\[
 \sigma_i'(\mathbf{r}) = \rho \mathbf{r} \cdot \mathbf{u}_i.
 \]</span></p>
@@ -461,8 +467,8 @@ n
 \Omega = \ell g_x + m g_y + n g_z.
 \]</span></p>
 </section>
-<section id="curl-of-unit-vectors" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="curl-of-unit-vectors"><span class="header-section-number">14.3</span> Curl of Unit Vectors</h2>
+<section id="curl-of-unit-vectors" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="curl-of-unit-vectors"><span class="header-section-number">15.3</span> Curl of Unit Vectors</h2>
 <p>The scalar products of <span class="math inline">\(\mathbf{u}_n\)</span> with the curl of unit vectors are: <span class="math display">\[
 \mathbf{u}_n \cdot \nabla \times \frac{\mathbf{i}}{r} = \frac{-mz + ny}{r^3},
 \]</span> <span class="math display">\[
@@ -488,8 +494,8 @@ g_z &amp; = n \Omega - m P + \ell Q.
 \end{align}
 \]</span></p>
 </section>
-<section id="stokes-theorem" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="stokes-theorem"><span class="header-section-number">14.4</span> Stokes’ Theorem</h2>
+<section id="stokes-theorem" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="stokes-theorem"><span class="header-section-number">15.4</span> Stokes’ Theorem</h2>
 <p>Using Stokes’ Theorem: <span class="math display">\[
 \iint (\nabla \times \mathbf{F}) \cdot \mathrm{d}\mathbf{S} = \oint \mathbf{F} \cdot \mathrm{d}\mathbf{r},
 \]</span> with: <span class="math display">\[
@@ -501,8 +507,8 @@ g_z &amp; = n \Omega - m P + \ell Q.
 \iint \mathbf{u}_n \cdot \nabla \times \frac{\mathbf{i}}{r} \, \mathrm{d}s = \oint \frac{\mathbf{i}}{r} \, \mathrm{d}\tau.
 \]</span></p>
 </section>
-<section id="contributions-of-polygonal-edges" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="contributions-of-polygonal-edges"><span class="header-section-number">14.5</span> Contributions of Polygonal Edges</h2>
+<section id="contributions-of-polygonal-edges" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="contributions-of-polygonal-edges"><span class="header-section-number">15.5</span> Contributions of Polygonal Edges</h2>
 <p>The contributions from the <span class="math inline">\(i\)</span>th edge of the polygon are: <span class="math display">\[
 \begin{align}
 P_i &amp; = I L_x, \\
@@ -634,6 +640,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -744,6 +752,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -971,13 +980,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./hilbert.html" class="pagination-link" aria-label="Hilbert Transform">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span>
+      <a href="./hilbert_implementation.html" class="pagination-link" aria-label="Implementation of the Hilbert transform">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./electricaldipole.html" class="pagination-link" aria-label="Potential of an electrical dipole">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

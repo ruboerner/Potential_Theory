@@ -38,6 +38,7 @@ book:
         - Talwani-Implementation.qmd
         - complex.qmd
         - hilbert.qmd
+        - hilbert_implementation.qmd
     - part: "Three-dimensional problems"
       chapters:
       - three-dimensional-problems.qmd

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.37">
+<meta name="generator" content="quarto-1.6.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,10 +91,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -315,6 +315,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -329,7 +335,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -346,19 +352,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
   </div>
 </li>
       </ul>
@@ -375,13 +381,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
   </div>
 </li>
       </ul>
@@ -509,7 +515,7 @@ g(y,z) &amp; = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \underbrace{\in
 \]</span></p>
 </div>
 </div>
-<div id="67315907" class="cell" data-execution_count="2">
+<div id="d0b728d6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -521,7 +527,7 @@ g(y,z) &amp; = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \underbrace{\in
 <p><span class="math inline">\(\displaystyle  g_z(y,z) = - \frac{2 f \rho_{L} \left(z - {z}'\right)}{\left(y - {y}'\right)^{2} + \left(z - {z}'\right)^{2}}\)</span></p>
 </div>
 </div>
-<div id="61e3d909" class="cell" data-execution_count="3">
+<div id="7b996041" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>integrate(<span class="op">-</span>diff(<span class="op">-</span>f <span class="op">*</span> rho_L <span class="op">/</span> sqrt(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> z<span class="op">**</span><span class="dv">2</span>), z), </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (x, <span class="op">-</span>oo, oo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
@@ -561,7 +567,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 <p>Note that we have set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
 <p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass.</p>
 <p>In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
-<div id="a9030fb2" class="cell" data-execution_count="4">
+<div id="5cbaadab" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
@@ -573,13 +579,13 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="line_of_mass_files/figure-html/cell-5-output-1.png" width="372" height="278" class="figure-img"></p>
+<p><img src="line_of_mass_files/figure-html/cell-5-output-1.png" width="371" height="276" class="figure-img"></p>
 <figcaption>Potential <span class="math inline">\(V\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=0.5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div id="11e17573" class="cell" data-execution_count="5">
+<div id="903993e2" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
@@ -589,7 +595,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="line_of_mass_files/figure-html/cell-6-output-1.png" width="372" height="278" class="figure-img"></p>
+<p><img src="line_of_mass_files/figure-html/cell-6-output-1.png" width="371" height="276" class="figure-img"></p>
 <figcaption>Vertical attraction <span class="math inline">\(g_z\)</span> of an infinite wire at <span class="math inline">\(y=0\)</span> and <span class="math inline">\(z=0.5\)</span>, <span class="math inline">\(f \rho_L = 1\)</span>.</figcaption>
 </figure>
 </div>
@@ -809,6 +815,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -919,6 +927,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
