@@ -138,6 +138,24 @@ $$
 G(s) = -2 f \rho i \iint_A \frac{1}{s - s'} \, dy' \, dz'.
 $$
 
+:::{.callout-note}
+
+Note that with $s = z + iy$, $s' = z' + iy'$ follows
+
+$$
+s - s' = (z - z') + i(y - y').
+$$
+With complex conjugation we get
+$$
+\overline{s - s'} = (z - z') - i(y - y'),
+$$
+such that
+$$
+|s|^2 = s \cdot \overline{s}.
+$$
+
+:::
+
 ### Computation of $G$ in a Source-Free Region
 
 Using the *Cauchy Integral Formula*, we find:
@@ -147,6 +165,11 @@ G(z_0) = \frac{1}{2 \pi i} \oint_C \frac{G(z)}{z - z_0} \, \mathrm{d}z.
 $$
 The values on the boundary completely determine those inside $C$.
 
+If $z_0$ is located on $C$, then the CIF reduces to
+$$
+G(z_0) = \frac{1}{ \pi i} \oint_C \frac{G(z)}{z - z_0} \, \mathrm{d}z.
+$$
+
 ### How to Choose the Integration Path?
 
 By the *Cauchy Integral Theorem*, the integration path can be chosen arbitrarily. Since $G(s) \to 0$ as $y^2 + z^2 \to \infty$, $z < 0$, the integration path is chosen to fully encompass the $y$-axis, returning along an arc in the upper half-plane, extending to infinity.
@@ -155,7 +178,7 @@ By the *Cauchy Integral Theorem*, the integration path can be chosen arbitrarily
 
 ### Derivation of the Hilbert Transform
 
-We obtain the *Hilbert Transform Pair*
+We separate real and imaginary parts of $G$ and obtain the *Hilbert Transform Pair*
 $$
 V_y(y) = +\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_z(y')}{y' - y} \, dy'
 $$
@@ -175,6 +198,14 @@ V_z(y) = +\frac{1}{\pi y} \ast V_y(y) = -\mathcal{H}\{V_y(y)\}.
 $$
 
 In the frequency domain, convolution becomes multiplication.
+
+:::{.callout-note}
+Note that
+$$
+\mathcal{H}(\mathcal{H}(u))(t) = -u(t),
+$$
+which follows from the effect of the Hilbert transform on the Fourier transform of $u(t)$ (see next section).
+:::
 
 
 ### What is the Fourier Spectrum of $-\frac{1}{\pi y}$?
@@ -249,4 +280,28 @@ $$
 
 Thus, the spectrum of $-\frac{1}{\pi y}$ is $i \, \mathrm{sign}(k)$!
 
+:::{.callout-important}
+
 For negative and positive wave numbers $k$, the spectrum of $V_y$ (or $V_z$) is multiplied by $-i$ and $+i$, respectively.
+
+:::
+
+The Hilbert transform is a multiplier operator. The multiplier is $\Phi_H(k) = -i \, \mathrm{sign}(k)$, where $\mathrm{sign}$ is the signum function.
+
+By Euler's formula,
+$$
+\Phi_H(k) =
+\begin{cases}
++i = e^{+i\pi/2} & \qfor k < 0 \\
+0 & \qfor k = 0 \\
+-i = e^{-i\pi/2} & \qfor k > 0
+\end{cases}
+$$
+
+The Hilbert transform has the effect of shifting the phase of the negative wavenumber components of the signal by +90$\textdegree$ and the phase of the positive wavenumber components by -90$\textdegree$.
+
+When applied twice, the phase of the negative and positive wavenumber components are shifted by +180$\textdegree$ and -180$\textdegree$, resp., which are equivalent amounts. The signal is negated, because
+$$
+(\Phi_H(k))^2 = e^{\pm i \pi} = -1 \qfor k \ne 0.
+$$
+

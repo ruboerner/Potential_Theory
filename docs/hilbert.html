@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.32">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -520,12 +520,35 @@ V_z(y, z) = - 2 f \rho \iint_A \frac{z - z'}{r^2} \, dy' \, dz'.
 <p>The gravitational acceleration in the complex plane can be expressed as <span class="math display">\[
 G(s) = -2 f \rho i \iint_A \frac{1}{s - s'} \, dy' \, dz'.
 \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that with <span class="math inline">\(s = z + iy\)</span>, <span class="math inline">\(s' = z' + iy'\)</span> follows</p>
+<p><span class="math display">\[
+s - s' = (z - z') + i(y - y').
+\]</span> With complex conjugation we get <span class="math display">\[
+\overline{s - s'} = (z - z') - i(y - y'),
+\]</span> such that <span class="math display">\[
+|s|^2 = s \cdot \overline{s}.
+\]</span></p>
+</div>
+</div>
 </section>
 <section id="computation-of-g-in-a-source-free-region" class="level3" data-number="13.2.3">
 <h3 data-number="13.2.3" class="anchored" data-anchor-id="computation-of-g-in-a-source-free-region"><span class="header-section-number">13.2.3</span> Computation of <span class="math inline">\(G\)</span> in a Source-Free Region</h3>
 <p>Using the <em>Cauchy Integral Formula</em>, we find: Let <span class="math inline">\(G : \Omega \to \mathbb{C}\)</span> be regular in a domain <span class="math inline">\(\Omega\)</span>, and let <span class="math inline">\(C : [a, b] \to \Omega \setminus \{z_0\}\)</span> be a closed, positively oriented, piecewise <span class="math inline">\(C^1\)</span>-continuous curve enclosing <span class="math inline">\(z_0 \in \Omega\)</span>. Then, <span class="math display">\[
 G(z_0) = \frac{1}{2 \pi i} \oint_C \frac{G(z)}{z - z_0} \, \mathrm{d}z.
 \]</span> The values on the boundary completely determine those inside <span class="math inline">\(C\)</span>.</p>
+<p>If <span class="math inline">\(z_0\)</span> is located on <span class="math inline">\(C\)</span>, then the CIF reduces to <span class="math display">\[
+G(z_0) = \frac{1}{ \pi i} \oint_C \frac{G(z)}{z - z_0} \, \mathrm{d}z.
+\]</span></p>
 </section>
 <section id="how-to-choose-the-integration-path" class="level3" data-number="13.2.4">
 <h3 data-number="13.2.4" class="anchored" data-anchor-id="how-to-choose-the-integration-path"><span class="header-section-number">13.2.4</span> How to Choose the Integration Path?</h3>
@@ -543,7 +566,7 @@ Figure&nbsp;13.1: Choice of the integration path
 </section>
 <section id="derivation-of-the-hilbert-transform" class="level3" data-number="13.2.5">
 <h3 data-number="13.2.5" class="anchored" data-anchor-id="derivation-of-the-hilbert-transform"><span class="header-section-number">13.2.5</span> Derivation of the Hilbert Transform</h3>
-<p>We obtain the <em>Hilbert Transform Pair</em> <span class="math display">\[
+<p>We separate real and imaginary parts of <span class="math inline">\(G\)</span> and obtain the <em>Hilbert Transform Pair</em> <span class="math display">\[
 V_y(y) = +\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_z(y')}{y' - y} \, dy'
 \]</span> and <span class="math display">\[
 V_z(y) = -\frac{1}{\pi} \int\limits_{-\infty}^\infty \frac{V_y(y')}{y' - y} \, dy'.
@@ -554,6 +577,21 @@ V_y(y) = -\frac{1}{\pi y} \ast V_z(y) = +\mathcal{H}\{V_z(y)\},
 V_z(y) = +\frac{1}{\pi y} \ast V_y(y) = -\mathcal{H}\{V_y(y)\}.
 \]</span></p>
 <p>In the frequency domain, convolution becomes multiplication.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that <span class="math display">\[
+\mathcal{H}(\mathcal{H}(u))(t) = -u(t),
+\]</span> which follows from the effect of the Hilbert transform on the Fourier transform of <span class="math inline">\(u(t)\)</span> (see next section).</p>
+</div>
+</div>
 </section>
 <section id="what-is-the-fourier-spectrum-of--frac1pi-y" class="level3" data-number="13.2.6">
 <h3 data-number="13.2.6" class="anchored" data-anchor-id="what-is-the-fourier-spectrum-of--frac1pi-y"><span class="header-section-number">13.2.6</span> What is the Fourier Spectrum of <span class="math inline">\(-\frac{1}{\pi y}\)</span>?</h3>
@@ -622,7 +660,32 @@ Figure&nbsp;13.2: Path of integration around the pole at <span class="math inlin
 </div>
 </div>
 <p>Thus, the spectrum of <span class="math inline">\(-\frac{1}{\pi y}\)</span> is <span class="math inline">\(i \, \mathrm{sign}(k)\)</span>!</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>For negative and positive wave numbers <span class="math inline">\(k\)</span>, the spectrum of <span class="math inline">\(V_y\)</span> (or <span class="math inline">\(V_z\)</span>) is multiplied by <span class="math inline">\(-i\)</span> and <span class="math inline">\(+i\)</span>, respectively.</p>
+</div>
+</div>
+<p>The Hilbert transform is a multiplier operator. The multiplier is <span class="math inline">\(\Phi_H(k) = -i \, \mathrm{sign}(k)\)</span>, where <span class="math inline">\(\mathrm{sign}\)</span> is the signum function.</p>
+<p>By Euler’s formula, <span class="math display">\[
+\Phi_H(k) =
+\begin{cases}
++i = e^{+i\pi/2} &amp; \qfor k &lt; 0 \\
+0 &amp; \qfor k = 0 \\
+-i = e^{-i\pi/2} &amp; \qfor k &gt; 0
+\end{cases}
+\]</span></p>
+<p>The Hilbert transform has the effect of shifting the phase of the negative wavenumber components of the signal by +90<span class="math inline">\(\textdegree\)</span> and the phase of the positive wavenumber components by -90<span class="math inline">\(\textdegree\)</span>.</p>
+<p>When applied twice, the phase of the negative and positive wavenumber components are shifted by +180<span class="math inline">\(\textdegree\)</span> and -180<span class="math inline">\(\textdegree\)</span>, resp., which are equivalent amounts. The signal is negated, because <span class="math display">\[
+(\Phi_H(k))^2 = e^{\pm i \pi} = -1 \qfor k \ne 0.
+\]</span></p>
 
 
 </section>
@@ -711,8 +774,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -823,7 +884,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

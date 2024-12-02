@@ -50,44 +50,40 @@ A signal of length $N$ gets transformed into a spectrum of length $N$. The locat
 f = [0, 1, ...,   N/2-1,     -N/2, ..., -1] / (dt * N)   # if N is even
 f = [0, 1, ..., (N-1)/2, -(N-1)/2, ..., -1] / (dt * N)   # if N is odd
 ```
-
-```{python}
-def get_wavenumber(n, dt = 1):
-    k = fftfreq(n, d = dt)
-    return k
-```
-
-We construct a sinusoidal signal `S` with a frequency of $f=10$ Hz, a period $T=0.1$ s, and a signal length of $L=2$ s.
+We construct a sinusoidal signal `S` with a frequency of $f=5$ Hz, a period $T=0.2$ s, and a signal length of $L=1$ s.
 It holds
 $$
 S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 $$
-The sampling frequency is $200$ Hz, which corresponds to a sampling interval of $\Delta t=0.005$ s and a resulting window length of $n=400$ samples.
+The sampling frequency is $200$ Hz, which corresponds to a sampling interval of $\Delta t=0.005$ s and a resulting window length of $n=200$ samples.
 
 The _Nyquist frequency_ is $f_N = 100$ Hz.
 
 ```{python}
-L = 2
-f = 10
+L = 1
+f = 5
 T = 1 / f
 df = 200
 t = np.arange(start = 0, stop = L, step = 1 / df, dtype=float)
 S = np.cos(2 * np.pi * t / T)
 n = len(S)
 dt = L / n
-plt.plot(t, S)
-plt.xlabel("t in s");
+fig, ax = plt.subplots(figsize=(6,4))
+ax.plot(t, S)
+ax.grid(True)
+ax.set_xlabel("t in s");
 ```
 
 Now we calculate the Fourier spectrum of the signal. We use the FFT implementation of `numpy`. The array `X` contains the spectrum of `S`. Note that `X` is a complex-valued array.
 
-We recognize that the major Fourier component of the signal is associated with $f=\pm 10$ Hz.
+We recognize that the major Fourier component of the signal is associated with $f=\pm 5$ Hz.
 
 The order of the fourier coefficients in `X` depends on the implementation. It can be calulated using `fftfreq`.
 
 ```{python}
 X = fft(S)
 power = np.abs(X)**2 / n
+fig, ax = plt.subplots(figsize=(6,4))
 plt.vlines([-f, f], ymin=0, ymax=100, color='red', linewidth=1, label="f")
 plt.plot(fftfreq(n, d=dt), power, 'o', markersize=2, label="spectrum")
 plt.legend()
@@ -106,8 +102,11 @@ fi = fftfreq(n, d=dt)
 k = -1j * np.sign(fi)
 
 H = ifft( k * X)
+fig, ax = plt.subplots(figsize=(6,4))
+
 plt.plot(t, S)
-plt.plot(t, H.real);
+plt.plot(t, H.real)
+plt.grid(True);
 ```
 
 A second application of the Hilbert transform reveals its property of an _anti-self adjoint operator_, i.e.,
@@ -117,8 +116,11 @@ $$
 
 ```{python}
 SH = ifft( k * fft(H)).real
+fig, ax = plt.subplots(figsize=(6,4))
+
 plt.plot(t, S)
-plt.plot(t, SH);
+plt.plot(t, SH)
+plt.grid(True);
 ```
 
 ## Application to the 2-D gravity problem
@@ -151,9 +153,12 @@ V_H = ifft(1j * np.sign(k) * fft(g[:, 1])).real
 ```
 
 ```{python}
+fig, ax = plt.subplots(figsize=(6,4))
+
 plt.plot(y, g[:, 0], label="V_y")
 plt.plot(y, g[:, 1], label="V_z")
 plt.plot(y, V_H, label="V_y (Hilbert)")
+plt.xlabel('y in m')
 plt.legend()
 plt.grid(True);
 ```
