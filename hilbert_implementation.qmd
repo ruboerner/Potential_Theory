@@ -136,10 +136,10 @@ def cylinder(obs, mass, axis):
 ```{python}
 y = np.linspace(start=-1000, stop=1000, num=2001)
 g = np.zeros([len(y), 2])
-dy = (y[-1] - y[0]) / len(y)
+dy = (y[-1] - y[0]) / (len(y)-1)
 a = 10
 rho = 500
-depth = 50
+depth = 20
 mass = np.pi * a**2 * rho
 for i, p in enumerate(y):
     g[i, :] = cylinder(np.array([p, 0]), mass, np.array([0, depth]))
