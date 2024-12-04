@@ -9,10 +9,14 @@ $$
 $$
 and has a potential
 $$
-\mathbf{H} = - \nabla V.
+\mathbf{H} = - \nabla \Psi.
 $$
 
-The potential $V$ satisfies the Laplace equation (due to $\nabla \cdot \mathbf{B} = 0$).
+The potential $\Psi$ satisfies the Laplace equation 
+$$
+\Delta \Psi = 0
+$$
+since it holds $\nabla \cdot \mathbf{B} = 0$.
 
 ## Derivation
 
@@ -25,14 +29,14 @@ where $\mathbf{J}$ is the magnetic polarization.
 Potential:
 $$
 \begin{align}
-V(\mathbf{r}) & = -\frac{1}{4 \pi} \mathbf{m} \cdot \nabla \frac{1}{| \mathbf{r} - \mathbf{r'}|} \\
+\Psi(\mathbf{r}) & = -\frac{1}{4 \pi} \mathbf{m} \cdot \nabla \frac{1}{| \mathbf{r} - \mathbf{r'}|} \\
 & = \frac{1}{4 \pi} \mathbf{m} \cdot \frac{\mathbf{r} - \mathbf{r'}}{| \mathbf{r} - \mathbf{r'}|^{3}}.
 \end{align}
 $$
 
 If $\mathbf{m} = (0, 0, m)^\top$ and $\mathbf{r'} = (0, 0, 0)^\top$, we refer to a vertical magnetic dipole at the origin. Then, with $r = |\mathbf{r}|$:
 $$
-V(\mathbf{r}) = \frac{m}{4 \pi} \frac{z}{r^{3}} = \frac{m}{4 \pi} \frac{\cos \theta}{r^{2}}.
+\Psi(\mathbf{r}) = \frac{m}{4 \pi} \frac{z}{r^{3}} = \frac{m}{4 \pi} \frac{\cos \theta}{r^{2}}.
 $$
 
 ## Magnetic Field
@@ -40,7 +44,7 @@ $$
 The magnetic field is given by:
 $$
 \begin{align}
-\mathbf{H} & = - \nabla V \\
+\mathbf{H} & = - \nabla \Psi \\
 & = -\frac{m}{4 \pi} \left( \hat{\mathbf{r}} \frac{\partial}{\partial r} + \frac{1}{r} \hat{\theta} \frac{\partial}{\partial \theta} + \frac{1}{r \sin \theta} \hat{\phi} \frac{\partial}{\partial \phi} \right) \frac{\cos \theta}{r^{2}} \\
 & = +\frac{m}{4 \pi} \left( \hat{\mathbf{r}} \frac{2 \cos \theta}{r^{3}} + \hat{\theta} \frac{\sin \theta}{r^{3}} \right) \\
 & = (H_{r}, H_{\theta}, 0)^\top.
@@ -61,19 +65,79 @@ The magnitude of the field along the dipole axis is twice as large as that in th
 
 Dipole density: Magnetization corresponds to the density of dipole moments:
 $$
-\mathbf{m} = \int_{V} \mathbf{M} \, \mathrm{d}V.
+\mathbf{m} = \int_{V} \mathbf{M} \, \mathrm{d}{^3\vb r}.
 $$
 
 Substituting the dipole moment into the potential equation gives:
 $$
-V(\mathbf{r}) = -\frac{1}{4 \pi} \int \mathbf{M} \cdot \nabla \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}V.
+\Psi(\mathbf{r}) = -\frac{1}{4 \pi} \int \mathbf{M} \cdot \nabla \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}{^3\vb r}.
 $$
 
 For homogeneous magnetization:
 $$
-V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}V.
+\Psi(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}{^3\vb r}.
 $$
 
+:::{.callout-note title="The Poisson-Eötvös relation"}
+
+We depart from the magnetic potential $\Psi$
+$$
+\Psi(\vb{r}) = -\frac{1}{4 \pi} \grad \cdot \int \vb{M} \frac{1}{|\vb{ r}|} \, \dd {^3\vb r}.
+$$
+In the case of a homogeneous magnetization we write
+$$
+\Psi(\vb{r}) = -\frac{1}{4 \pi} \vb{M} \cdot \grad  \int \frac{1}{|\vb{ r}|} \, \dd {^3\vb r}
+$$
+Recall the gravitational potential 
+$$
+V(\vb{r}) = f \rho \int \frac{1}{|\vb{r}|} \, \dd {^3\vb r}
+$$
+which we insert into the magnetic dipole potential to obtain
+$$
+\Psi(\vb{r}) = -\frac{1}{4 \pi} \frac{\vb{M}}{f \rho} \cdot \grad V(\vb{r}).
+$$
+This is the _Poisson formula_.
+In a Cartesian coordinate system we write for the partial derivatives
+$$
+V_{x} = \frac{ \partial V (\vb r)}{ \partial x} \text{ etc.} 
+$$
+and
+$$
+\vb{M} = (M_{1}, M_{2}, M_{3})^\top. 
+$$
+Now, with
+$$
+\Psi(\vb r) = -\frac{1}{4 \pi f \rho}(M_{1}V_{x}(\vb r) + M_{2}V_{y}(\vb r) + M_{3}V_{z}(\vb r))
+$$
+
+and
+$$
+\vb{B}(\vb r) = -\mu_{0}\grad \Psi(\vb r)
+$$
+we obtain
+$$
+\begin{align}
+B_{x}(\vb r) &= \frac{\mu_{0}}{4 \pi f \rho} (M_{1}V_{xx}(\vb r) + M_{2}V_{yx}(\vb r) + M_{3}V_{zx}(\vb r)) \\
+B_{y}(\vb r) &= \frac{\mu_{0}}{4 \pi f \rho} (M_{1}V_{xy}(\vb r) + M_{2}V_{yy}(\vb r) + M_{3}V_{zy}(\vb r)) \\ 
+B_{z}(\vb r) &= \frac{\mu_{0}}{4 \pi f \rho} (M_{1}V_{xz}(\vb r) + M_{2}V_{yz}(\vb r) + M_{3}V_{zz}(\vb r))
+\end{align}
+$$
+We introduce the _Poisson-Eötvös tensor_
+$$
+\tilde{G} = \tilde{G}(\vb r) = \frac{\mu_{0}}{4 \pi f \rho} 
+\begin{pmatrix}
+V_{x x} & V_{xy} & V_{xz} \\
+V_{y x} & V_{yy} & V_{yz} \\
+V_{z x} & V_{zy} & V_{zz}
+\end{pmatrix}
+$$
+and get
+$$
+\vb{B} = \tilde{G} \vb{M}.
+$$
+It is therefore possible to calculate the components of the magnetic anomaly of a body with homogeneous magnetization by providing the second-order partial derivatives of the gravitational potential of the same body with assumed homogeneous mass density.
+
+:::
 
 ## Magnetic Dipole
 

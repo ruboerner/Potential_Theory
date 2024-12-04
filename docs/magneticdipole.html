@@ -433,9 +433,11 @@ window.Quarto = {
 <p>The magnetic field <span class="math inline">\(\mathbf{B}\)</span> is curl-free outside the source distribution <span class="math display">\[
 \nabla \times \mathbf{B} = \mathbf{0}
 \]</span> and has a potential <span class="math display">\[
-\mathbf{H} = - \nabla V.
+\mathbf{H} = - \nabla \Psi.
 \]</span></p>
-<p>The potential <span class="math inline">\(V\)</span> satisfies the Laplace equation (due to <span class="math inline">\(\nabla \cdot \mathbf{B} = 0\)</span>).</p>
+<p>The potential <span class="math inline">\(\Psi\)</span> satisfies the Laplace equation <span class="math display">\[
+\Delta \Psi = 0
+\]</span> since it holds <span class="math inline">\(\nabla \cdot \mathbf{B} = 0\)</span>.</p>
 <section id="derivation" class="level2" data-number="17.1">
 <h2 data-number="17.1" class="anchored" data-anchor-id="derivation"><span class="header-section-number">17.1</span> Derivation</h2>
 <p>Induction: <span class="math display">\[
@@ -443,19 +445,19 @@ window.Quarto = {
 \]</span> where <span class="math inline">\(\mathbf{J}\)</span> is the magnetic polarization.</p>
 <p>Potential: <span class="math display">\[
 \begin{align}
-V(\mathbf{r}) &amp; = -\frac{1}{4 \pi} \mathbf{m} \cdot \nabla \frac{1}{| \mathbf{r} - \mathbf{r'}|} \\
+\Psi(\mathbf{r}) &amp; = -\frac{1}{4 \pi} \mathbf{m} \cdot \nabla \frac{1}{| \mathbf{r} - \mathbf{r'}|} \\
 &amp; = \frac{1}{4 \pi} \mathbf{m} \cdot \frac{\mathbf{r} - \mathbf{r'}}{| \mathbf{r} - \mathbf{r'}|^{3}}.
 \end{align}
 \]</span></p>
 <p>If <span class="math inline">\(\mathbf{m} = (0, 0, m)^\top\)</span> and <span class="math inline">\(\mathbf{r'} = (0, 0, 0)^\top\)</span>, we refer to a vertical magnetic dipole at the origin. Then, with <span class="math inline">\(r = |\mathbf{r}|\)</span>: <span class="math display">\[
-V(\mathbf{r}) = \frac{m}{4 \pi} \frac{z}{r^{3}} = \frac{m}{4 \pi} \frac{\cos \theta}{r^{2}}.
+\Psi(\mathbf{r}) = \frac{m}{4 \pi} \frac{z}{r^{3}} = \frac{m}{4 \pi} \frac{\cos \theta}{r^{2}}.
 \]</span></p>
 </section>
 <section id="magnetic-field" class="level2" data-number="17.2">
 <h2 data-number="17.2" class="anchored" data-anchor-id="magnetic-field"><span class="header-section-number">17.2</span> Magnetic Field</h2>
 <p>The magnetic field is given by: <span class="math display">\[
 \begin{align}
-\mathbf{H} &amp; = - \nabla V \\
+\mathbf{H} &amp; = - \nabla \Psi \\
 &amp; = -\frac{m}{4 \pi} \left( \hat{\mathbf{r}} \frac{\partial}{\partial r} + \frac{1}{r} \hat{\theta} \frac{\partial}{\partial \theta} + \frac{1}{r \sin \theta} \hat{\phi} \frac{\partial}{\partial \phi} \right) \frac{\cos \theta}{r^{2}} \\
 &amp; = +\frac{m}{4 \pi} \left( \hat{\mathbf{r}} \frac{2 \cos \theta}{r^{3}} + \hat{\theta} \frac{\sin \theta}{r^{3}} \right) \\
 &amp; = (H_{r}, H_{\theta}, 0)^\top.
@@ -470,18 +472,63 @@ H = \sqrt{H_{r}^{2} + H_{\theta}^{2}} = \frac{m}{4 \pi r^{3}} \sqrt{1 + 3 \cos^{
 <section id="spatial-distribution-of-the-dipole-moment" class="level2" data-number="17.3">
 <h2 data-number="17.3" class="anchored" data-anchor-id="spatial-distribution-of-the-dipole-moment"><span class="header-section-number">17.3</span> Spatial Distribution of the Dipole Moment</h2>
 <p>Dipole density: Magnetization corresponds to the density of dipole moments: <span class="math display">\[
-\mathbf{m} = \int_{V} \mathbf{M} \, \mathrm{d}V.
+\mathbf{m} = \int_{V} \mathbf{M} \, \mathrm{d}{^3\vb r}.
 \]</span></p>
 <p>Substituting the dipole moment into the potential equation gives: <span class="math display">\[
-V(\mathbf{r}) = -\frac{1}{4 \pi} \int \mathbf{M} \cdot \nabla \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}V.
+\Psi(\mathbf{r}) = -\frac{1}{4 \pi} \int \mathbf{M} \cdot \nabla \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}{^3\vb r}.
 \]</span></p>
 <p>For homogeneous magnetization: <span class="math display">\[
-V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}V.
+\Psi(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{r} - \mathbf{r'}|} \, \mathrm{d}{^3\vb r}.
 \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="The Poisson-Eötvös relation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Poisson-Eötvös relation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We depart from the magnetic potential <span class="math inline">\(\Psi\)</span> <span class="math display">\[
+\Psi(\vb{r}) = -\frac{1}{4 \pi} \grad \cdot \int \vb{M} \frac{1}{|\vb{ r}|} \, \dd {^3\vb r}.
+\]</span> In the case of a homogeneous magnetization we write <span class="math display">\[
+\Psi(\vb{r}) = -\frac{1}{4 \pi} \vb{M} \cdot \grad  \int \frac{1}{|\vb{ r}|} \, \dd {^3\vb r}
+\]</span> Recall the gravitational potential <span class="math display">\[
+V(\vb{r}) = f \rho \int \frac{1}{|\vb{r}|} \, \dd {^3\vb r}
+\]</span> which we insert into the magnetic dipole potential to obtain <span class="math display">\[
+\Psi(\vb{r}) = -\frac{1}{4 \pi} \frac{\vb{M}}{f \rho} \cdot \grad V(\vb{r}).
+\]</span> This is the <em>Poisson formula</em>. In a Cartesian coordinate system we write for the partial derivatives <span class="math display">\[
+V_{x} = \frac{ \partial V (\vb r)}{ \partial x} \text{ etc.}
+\]</span> and <span class="math display">\[
+\vb{M} = (M_{1}, M_{2}, M_{3})^\top.
+\]</span> Now, with <span class="math display">\[
+\Psi(\vb r) = -\frac{1}{4 \pi f \rho}(M_{1}V_{x}(\vb r) + M_{2}V_{y}(\vb r) + M_{3}V_{z}(\vb r))
+\]</span></p>
+<p>and <span class="math display">\[
+\vb{B}(\vb r) = -\mu_{0}\grad \Psi(\vb r)
+\]</span> we obtain <span class="math display">\[
+\begin{align}
+B_{x}(\vb r) &amp;= \frac{\mu_{0}}{4 \pi f \rho} (M_{1}V_{xx}(\vb r) + M_{2}V_{yx}(\vb r) + M_{3}V_{zx}(\vb r)) \\
+B_{y}(\vb r) &amp;= \frac{\mu_{0}}{4 \pi f \rho} (M_{1}V_{xy}(\vb r) + M_{2}V_{yy}(\vb r) + M_{3}V_{zy}(\vb r)) \\
+B_{z}(\vb r) &amp;= \frac{\mu_{0}}{4 \pi f \rho} (M_{1}V_{xz}(\vb r) + M_{2}V_{yz}(\vb r) + M_{3}V_{zz}(\vb r))
+\end{align}
+\]</span> We introduce the <em>Poisson-Eötvös tensor</em> <span class="math display">\[
+\tilde{G} = \tilde{G}(\vb r) = \frac{\mu_{0}}{4 \pi f \rho}
+\begin{pmatrix}
+V_{x x} &amp; V_{xy} &amp; V_{xz} \\
+V_{y x} &amp; V_{yy} &amp; V_{yz} \\
+V_{z x} &amp; V_{zy} &amp; V_{zz}
+\end{pmatrix}
+\]</span> and get <span class="math display">\[
+\vb{B} = \tilde{G} \vb{M}.
+\]</span> It is therefore possible to calculate the components of the magnetic anomaly of a body with homogeneous magnetization by providing the second-order partial derivatives of the gravitational potential of the same body with assumed homogeneous mass density.</p>
+</div>
+</div>
 </section>
 <section id="magnetic-dipole" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">17.4</span> Magnetic Dipole</h2>
-<div id="5843b4ff" class="cell" data-execution_count="1">
+<div id="735c7aef" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -494,7 +541,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="17.4.1">
 <h3 data-number="17.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">17.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="36b2a1f5" class="cell" data-execution_count="2">
+<div id="5e084f10" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -508,7 +555,7 @@ V(\mathbf{r}) = -\frac{1}{4 \pi} \mathbf{M} \cdot \nabla \int \frac{1}{|\mathbf{
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="153b1c4f" class="cell" data-execution_count="3">
+<div id="e51d7d7d" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>
