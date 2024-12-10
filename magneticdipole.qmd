@@ -224,6 +224,34 @@ $$
 $$
 which is the _projection_ of the anomaly $\vb B$ onto the _direction of the main field_ $\vb T_0$.
 
+:::{.callout-note title="Total field anomaly"}
+
+We denote $\vb T_a$ as the magnetic anomaly vector. Then the _total field anomaly_  $\delta T$ is given by
+
+$$
+\begin{align}
+\delta T & = |\mathbf{T}_{0} + \mathbf{T}_{a}| - | \mathbf{T}_{0} | \\
+& =  |\mathbf{T}_{0} + \mathbf{T}_{a}|  - T_{0} \\
+& = \sqrt{ (\mathbf{T}_{0} + \mathbf{T}_{a}) \cdot (\mathbf{T}_{0} + \mathbf{T}_{a}) } - T_{0} \\
+& = \sqrt{ T_{0}^{2} + 2 \mathbf{T}_{0} \cdot \mathbf{T}_{a} + T_{a}^{2}} - T_{0}.
+\end{align}
+$$
+
+For small anomalies with $T_a \ll T_0$ we can expand the root in a series
+
+$$
+\begin{align}
+\delta T & \approx T_{0} \left( \sqrt{ 1 + 2\frac{\mathbf{T}_{a} \cdot \mathbf{T}_{0}}{T_{0}^{2}} } - 1\right) \\
+& \approx T_{0} \left( 1 +  \frac{\mathbf{T}_{a} \cdot \mathbf{T}_{0}}{T_{0}^{2}} - 1\right)  \\
+& = \mathbf{T}_{a} \cdot \frac{\mathbf{T}_{0}}{T_{0}}.
+\end{align}
+$$
+We see that the total feld anomaly is the projection of the anomaly vector onto the direction of the inducing field.
+
+IIn the literature, the total field anomaly is often abbreviated as _TMI_ anomaly (total magnetic field intensity anomaly).
+
+:::
+
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt

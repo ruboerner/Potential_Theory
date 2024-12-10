@@ -529,7 +529,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </section>
 <section id="magnetic-dipole" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">17.4</span> Magnetic Dipole</h2>
-<div id="225720d9" class="cell" data-execution_count="1">
+<div id="5dbd3c5e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -542,7 +542,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="17.4.1">
 <h3 data-number="17.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">17.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="44c13403" class="cell" data-execution_count="2">
+<div id="c74821bf" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -556,7 +556,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="095a3a2a" class="cell" data-execution_count="3">
+<div id="a62d8c20" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>
@@ -600,7 +600,37 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 <p><span class="math display">\[
 \delta \vb T = \vb B \cdot \frac{ \vb T_0 }{| \vb T_0 | },
 \]</span> which is the <em>projection</em> of the anomaly <span class="math inline">\(\vb B\)</span> onto the <em>direction of the main field</em> <span class="math inline">\(\vb T_0\)</span>.</p>
-<div id="f73f05b5" class="cell" data-execution_count="4">
+<div class="callout callout-style-default callout-note callout-titled" title="Total field anomaly">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Total field anomaly
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We denote <span class="math inline">\(\vb T_a\)</span> as the magnetic anomaly vector. Then the <em>total field anomaly</em> <span class="math inline">\(\delta T\)</span> is given by</p>
+<p><span class="math display">\[
+\begin{align}
+\delta T &amp; = |\mathbf{T}_{0} + \mathbf{T}_{a}| - | \mathbf{T}_{0}&nbsp;| \\
+&amp; =  |\mathbf{T}_{0} + \mathbf{T}_{a}|  - T_{0} \\
+&amp; = \sqrt{ (\mathbf{T}_{0} + \mathbf{T}_{a}) \cdot (\mathbf{T}_{0} + \mathbf{T}_{a}) } - T_{0} \\
+&amp; = \sqrt{ T_{0}^{2} + 2 \mathbf{T}_{0} \cdot \mathbf{T}_{a} + T_{a}^{2}} - T_{0}.
+\end{align}
+\]</span></p>
+<p>For small anomalies with <span class="math inline">\(T_a \ll T_0\)</span> we can expand the root in a series</p>
+<p><span class="math display">\[
+\begin{align}
+\delta T &amp; \approx T_{0} \left( \sqrt{ 1 + 2\frac{\mathbf{T}_{a} \cdot \mathbf{T}_{0}}{T_{0}^{2}} } - 1\right) \\
+&amp; \approx T_{0} \left( 1 +  \frac{\mathbf{T}_{a} \cdot \mathbf{T}_{0}}{T_{0}^{2}} - 1\right)  \\
+&amp; = \mathbf{T}_{a} \cdot \frac{\mathbf{T}_{0}}{T_{0}}.
+\end{align}
+\]</span> We see that the total feld anomaly is the projection of the anomaly vector onto the direction of the inducing field.</p>
+<p>IIn the literature, the total field anomaly is often abbreviated as <em>TMI</em> anomaly (total magnetic field intensity anomaly).</p>
+</div>
+</div>
+<div id="141dd68d" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -663,7 +693,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>Profile along the <span class="math inline">\(x\)</span>-axis:</p>
-<div id="9d3a65b9" class="cell" data-execution_count="5">
+<div id="2b871930" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Bt <span class="op">=</span> bt[<span class="dv">30</span>, :]</span>
