@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Ralph-Uwe Börner">
-<meta name="dcterms.date" content="2024-12-11">
 
-<title>Theory of Potential Field Methods in Geophysics</title>
+<title>22&nbsp; Solution of the Laplace equation in spherical coordinates – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./summary.html" rel="next">
+<link href="./legendre-intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -142,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prerequisites</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spherical-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./laplace-in-sph-coord.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -169,7 +148,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prerequisites</span></a>
   </div>
 </li>
@@ -365,7 +344,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link">
+  <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
   </div>
 </li>
@@ -397,40 +376,32 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
-  <li><a href="#self-study" id="toc-self-study" class="nav-link" data-scroll-target="#self-study">Self study</a></li>
-  <li><a href="#recommended-reading" id="toc-recommended-reading" class="nav-link" data-scroll-target="#recommended-reading">Recommended Reading</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  <li><a href="#representations-of-the-laplace-operator" id="toc-representations-of-the-laplace-operator" class="nav-link active" data-scroll-target="#representations-of-the-laplace-operator"><span class="header-section-number">22.1</span> Representations of the Laplace operator</a>
+  <ul class="collapse">
+  <li><a href="#cartesian-coordinates" id="toc-cartesian-coordinates" class="nav-link" data-scroll-target="#cartesian-coordinates"><span class="header-section-number">22.1.1</span> Cartesian coordinates</a></li>
+  <li><a href="#spherical-coordinates" id="toc-spherical-coordinates" class="nav-link" data-scroll-target="#spherical-coordinates"><span class="header-section-number">22.1.2</span> Spherical coordinates</a></li>
+  <li><a href="#cylindrical-coordinates" id="toc-cylindrical-coordinates" class="nav-link" data-scroll-target="#cylindrical-coordinates"><span class="header-section-number">22.1.3</span> Cylindrical coordinates</a></li>
+  <li><a href="#polar-coordinates" id="toc-polar-coordinates" class="nav-link" data-scroll-target="#polar-coordinates"><span class="header-section-number">22.1.4</span> Polar coordinates</a></li>
+  </ul></li>
+  <li><a href="#the-radial-part-of-the-laplace-equation" id="toc-the-radial-part-of-the-laplace-equation" class="nav-link" data-scroll-target="#the-radial-part-of-the-laplace-equation"><span class="header-section-number">22.2</span> The radial part of the Laplace equation</a></li>
+  <li><a href="#zonal-spherical-harmonics" id="toc-zonal-spherical-harmonics" class="nav-link" data-scroll-target="#zonal-spherical-harmonics"><span class="header-section-number">22.3</span> Zonal spherical harmonics</a></li>
+  <li><a href="#the-angular-component-of-the-laplace-equation" id="toc-the-angular-component-of-the-laplace-equation" class="nav-link" data-scroll-target="#the-angular-component-of-the-laplace-equation"><span class="header-section-number">22.4</span> The angular component of the Laplace equation</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spherical-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./laplace-in-sph-coord.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Theory of Potential Field Methods in Geophysics</h1>
+<h1 class="title"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Ralph-Uwe Börner </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 11, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -440,61 +411,246 @@ window.Quarto = {
 </header>
 
 
-<section id="prerequisites" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>Here are the lecture notes for the 2024/2025 module covering the <strong>Theory of Potential Field Methods.</strong> These notes are tailored for Master’s students of Geophysics and Geoinformatics at the <a href="https://tu-freiberg.de/geophysik">Institute of Geophysics and Geoinformatics, TU Bergakademie Freiberg</a>.</p>
-<p>You can access all the materials on the GitHub repository <a href="https://github.com/ruboerner/Potential_Theory" class="uri">https://github.com/ruboerner/Potential_Theory</a>.</p>
-<p>Enjoy studying!</p>
+<p>Let <span class="math inline">\(u: \mathbb R^3 \mapsto \mathbb R\)</span> be a function defined in an open subset <span class="math inline">\(\Omega \subset \mathbb R^3\)</span>.</p>
+<p>Then <span class="math inline">\(u\)</span> is a solution to the Laplace equation, if <span class="math display">\[
+\Delta u = 0
+\]</span> holds in <span class="math inline">\(\Omega\)</span>.</p>
+<p>We refer to <span class="math inline">\(\Delta\)</span> as the <em>Laplace operator</em>.</p>
+<p>In different coordinate systems, <span class="math inline">\(\Delta\)</span> has different representations.</p>
+<section id="representations-of-the-laplace-operator" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="representations-of-the-laplace-operator"><span class="header-section-number">22.1</span> Representations of the Laplace operator</h2>
+<section id="cartesian-coordinates" class="level3" data-number="22.1.1">
+<h3 data-number="22.1.1" class="anchored" data-anchor-id="cartesian-coordinates"><span class="header-section-number">22.1.1</span> Cartesian coordinates</h3>
+<p><span id="eq-laplace-cart"><span class="math display">\[
+\frac{\partial^2 u}{\partial x^2}
++\frac{\partial^2 u}{\partial y^2}
++\frac{\partial^2 u}{\partial z^2}
+= 0
+\tag{22.1}\]</span></span></p>
 </section>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>This course targets Master’s students in their first semester, with a recommended understanding of fundamental potential field applications, such as Gravity, Magnetics, and DC resistivity methods. Additionally, prior completion of the Theoretical Physics – Electrodynamics course is strongly advised as a prerequisite for this lecture.</p>
+<section id="spherical-coordinates" class="level3" data-number="22.1.2">
+<h3 data-number="22.1.2" class="anchored" data-anchor-id="spherical-coordinates"><span class="header-section-number">22.1.2</span> Spherical coordinates</h3>
+<div id="fig-spherical" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spherical-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Kugelkoordinaten.excalidraw.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spherical-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22.1: Spherical coordinate system
+</figcaption>
+</figure>
+</div>
+<p>We transform from a Cartesian to a spherical system with <span class="math display">\[
+\begin{align}
+x &amp; = r \cos \phi \sin \theta \\
+y &amp; = r \sin \phi \sin \theta \\
+z &amp; = r \cos \theta \\
+r^2 &amp; = x^2 + y^2 + z^2
+\end{align}
+\]</span></p>
+<p><span id="eq-laplace-sph"><span class="math display">\[
+\frac{1}{r^2} \frac{\partial}{\partial r}
+  \left( r^2 \frac{\partial u}{\partial r} \right)
++ \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta}
+  \left( \sin \theta {\partial u \over \partial \theta} \right)
++ \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2 u}{\partial \varphi^2} = 0
+\tag{22.2}\]</span></span></p>
 </section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<p>The website’s course material includes sections with embedded Python and Julia code.</p>
-<p>You can easily copy the code and execute it in a compatible Python or Julia runtime environment.</p>
-<p>For an optimal experience, we recommend installing Python via <a href="https://docs.anaconda.com/free/miniconda/index.html">miniconda</a>.</p>
-<p>Further, you may wish to install Julia via <a href="https://julialang.org">this link</a>.</p>
-<p>Moreover, you have the freedom to explore your own concepts and delve deeper into the course content by creating your personalized Jupyter notebooks. You can utilize any of the following platforms:</p>
-<ul>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li><a href="https://jupyter.org">Jupyterlab</a></li>
-<li><a href="https://quarto.org">Quarto</a>.</li>
-</ul>
-<p>Working with Jupyter Notebooks in Visual Studio Code is <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">exceptionally straightforward</a>.</p>
+<section id="cylindrical-coordinates" class="level3" data-number="22.1.3">
+<h3 data-number="22.1.3" class="anchored" data-anchor-id="cylindrical-coordinates"><span class="header-section-number">22.1.3</span> Cylindrical coordinates</h3>
+<p><span id="eq-laplace-cyl"><span class="math display">\[
+\frac{1}{\rho} \frac{\partial}{\partial \rho}
+  \left( \rho \frac{\partial u}{\partial \rho} \right)
++ \frac{1}{\rho^2} \frac{\partial^2 u}{\partial \varphi^2}
++ \frac{\partial^2 u}{\partial z^2 } = 0
+\tag{22.3}\]</span></span></p>
+<p><span class="math inline">\(\rho^2 = x^2 + y^2\)</span></p>
 </section>
-<section id="self-study" class="level2">
-<h2 class="anchored" data-anchor-id="self-study">Self study</h2>
-<p>There are individual small tasks for self-study that are scattered throughout the lecture.</p>
-<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Self study">
+<section id="polar-coordinates" class="level3" data-number="22.1.4">
+<h3 data-number="22.1.4" class="anchored" data-anchor-id="polar-coordinates"><span class="header-section-number">22.1.4</span> Polar coordinates</h3>
+<p><span id="eq-laplace-polar"><span class="math display">\[
+\frac{1}{\rho} \frac{\partial}{\partial \rho}
+  \left( \rho \frac{\partial u}{\partial \rho} \right)
++ \frac{1}{\rho^2} \frac{\partial^2 u}{\partial \varphi^2} =0
+\tag{22.4}\]</span></span></p>
+<p><span class="math inline">\(\rho^2 = x^2 + y^2\)</span></p>
+</section>
+</section>
+<section id="the-radial-part-of-the-laplace-equation" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="the-radial-part-of-the-laplace-equation"><span class="header-section-number">22.2</span> The radial part of the Laplace equation</h2>
+<p>We consider the Laplace equation in spherical coordinates as defined in <a href="#eq-laplace-sph" class="quarto-xref"><span>22.2</span></a>.</p>
+<p>For now, we assume that <span class="math inline">\(u = u(r)\)</span> is a function of the radial distance.</p>
+<p>Thus, the Laplace equation reduces to an ordinary differential equation</p>
+<p><span class="math display">\[
+\frac{\mathrm d}{\mathrm d r}
+  \left( r^2 \frac{\mathrm d u}{\mathrm d r} \right) =
+  2r \frac{\mathrm d u}{\mathrm d r} + r^2
+  \frac{\mathrm d^2 u}{\mathrm d r^2} = 0.
+\]</span></p>
+<p>This equation is referred to as <em>Euler’s differential equation</em>.</p>
+<p>We solve this ODE with the <em>ansatz</em> <span class="math display">\[
+u(r) = r^\alpha, \quad u'(r) = \alpha r ^{\alpha - 1}, \quad
+u''(r) = (\alpha-1)\alpha r^{\alpha - 2}.
+\]</span></p>
+<p>It follows <span class="math display">\[
+\begin{align}
+2r \alpha r^{\alpha-1} + r^2 (\alpha-1)\alpha r^{\alpha - 2} &amp;= 0 \\
+2 \alpha u + (\alpha-1)\alpha u &amp;= 0 \\
+\alpha(\alpha+1)u &amp;= 0 \quad\text{(characteristic equation)}
+\end{align}
+\]</span></p>
+<p>The characteristic equation has the solution <span class="math display">\[
+u(r) = C_0 r^{-1} + C_1 r^0.
+\]</span></p>
+<p>At this point, we introduce the</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Homogeneous function">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Self study
+Homogeneous function
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can easily identify these callouts.</p>
+<p>We call a function <em>homogeneous of degree <span class="math inline">\(\lambda\)</span></em>, if under a proportional scaling of the variables <span class="math inline">\(x\)</span> by a factor <span class="math inline">\(t\)</span> the function scales with a factor <span class="math inline">\(t^\lambda\)</span>:</p>
+<p><span class="math display">\[
+f(t \mathbf x ) = t^\lambda f(\mathbf x)
+\]</span></p>
+<p>Example:</p>
+<p><span class="math inline">\(f(x,y) = x^2 + y^2\)</span> is a homogeneous function.</p>
+<p>We replace <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> by <span class="math inline">\(tx\)</span> and <span class="math inline">\(ty\)</span>, factor out powers of <span class="math inline">\(t\)</span>, i.e., <span class="math display">\[
+f(tx, ty) = (tx)^2 + (ty)^2 = t^2(x^2 + y^2)
+\]</span> and recognize that <span class="math inline">\(f(x,y)\)</span> is a homogeneous function of degree <span class="math inline">\(2\)</span>.</p>
 </div>
 </div>
+<p>Now we make the following ansatz:</p>
+<p>We assume that <span class="math inline">\(u\)</span> can be defined as a homogeneous function <span class="math inline">\(u_n\)</span> of dgree <span class="math inline">\(n\)</span>. This is a valid choice, since homogeneous functions are solutions to Laplace’s equation.</p>
+<p>We set <span class="math display">\[
+\begin{align}
+u_n(x,y,z) &amp; = u_n(r \cos\phi \sin\theta, r \sin\phi \sin\theta, r \cos\theta) \\
+&amp; = r^n u_n(\cos\phi \sin\theta, \sin\phi \sin\theta,  \cos\theta) \\
+&amp; = r^n S_n(\phi, \theta)
+\end{align}
+\]</span></p>
+<p><span class="math inline">\(u_n = r^n S_n(\phi, \theta)\)</span> is a <em>spherical harmonic</em>.</p>
+<p>Further, <span class="math display">\[
+\begin{align}
+2r  \frac{ \partial u_{n} }{ \partial r }
++ r^2 \frac{ \partial^{2} u_{n} }{ \partial r^{2} }
+   &amp; = 2 r n r^{n-1} S_n
+  + r^2 n(n-1)r^{n-2} S_n \\
+  &amp; = 2 n u_n + n(n-1) u_n \\
+  &amp; = n(n+1) u_n
+\end{align}
+\]</span></p>
+<p>We recognize that <span class="math inline">\(f(r) = u_n(r)\)</span> and <span class="math inline">\(\lambda = n(n+1)\)</span> are <em>eigenfunctions</em> and <em>eigenvalues</em> of the eigenvalue problem</p>
+<p><span class="math display">\[
+\Delta f(r) = \lambda f(r).
+\]</span></p>
+<p>We see that the radial part of the Laplace equation for <span class="math inline">\(u_n\)</span> can be equivalently replaced by <span class="math display">\[
+n (n+1) u_n,
+\]</span> which we insert back into the full Laplace equation <a href="#eq-laplace-sph" class="quarto-xref"><span>22.2</span></a> to obtain</p>
+<p><span class="math display">\[
+n(n+1) S_n + \frac{1}{\sin \theta} \frac{\partial}{\partial \theta}
+  \left( \sin \theta {\partial S_n \over \partial \theta} \right)
++ \frac{1}{\sin^2 \theta} \frac{\partial^2 S_n}{\partial \varphi^2} = 0.
+\]</span></p>
 </section>
-<section id="recommended-reading" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-reading">Recommended Reading</h2>
-<p>The most important source of supplementary information is the book by <span class="citation" data-cites="blakely1995">Blakely (<a href="references.html#ref-blakely1995" role="doc-biblioref">1995</a>)</span>.</p>
+<section id="zonal-spherical-harmonics" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="zonal-spherical-harmonics"><span class="header-section-number">22.3</span> Zonal spherical harmonics</h2>
+<p>Now we seek solutions <span class="math inline">\(S_n(\theta)\)</span>. These functions are referred to as <em>zonal spherical harmonics</em>. On a surface of a sphere they only vary with the polar angle <span class="math inline">\(\theta\)</span>. Their zeros are parallel to the equator of the sphere.</p>
+<p>The Laplace equation <a href="#eq-laplace-sph" class="quarto-xref"><span>22.2</span></a> reduces to <span class="math display">\[
+\frac{1}{\sin \theta} \frac{\mathrm d}{\mathrm d \theta}
+  \left( \sin \theta {\mathrm d S_n \over \mathrm d \theta} \right)
++ n(n+1) S_n = 0
+\]</span></p>
+<p>We substitute <span class="math inline">\(\cos\theta\)</span> and set <span class="math inline">\(S_n(\theta)=P_n(t)\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+t &amp; = \cos\theta \\
+\mathrm{d}t &amp; = -\sin \theta \,\mathrm{d}\theta \\
+S_n(\theta) &amp; = P_n(\cos\theta) = P_n(t)
+\end{align}
+\]</span> With the chain rule we obtain <span class="math display">\[
+\begin{align}
+\frac{\mathrm d P_n(t)}{\mathrm d \theta} &amp; = \frac{\mathrm d P_n(t)}{\mathrm d t} \frac{\mathrm d t}{\mathrm d \theta} \\
+&amp; = -\frac{\mathrm d P_n(t)}{\mathrm d t} \sin\theta \\
+\sin^2\theta &amp; = 1 - t^2
+\end{align}
+\]</span></p>
+<p>Useful steps: <span class="math display">\[
+\frac{1}{\sin \theta} \frac{\mathrm{d}}{\mathrm{d}\theta} =  
+\frac{1}{\sin \theta} \left( -\frac{\sin \theta}{\mathrm{d}t} \right) = -\frac{\mathrm{d}}{\mathrm{d}t}
+\]</span></p>
+<p><span class="math display">\[
+\sin \theta \frac{\mathrm{d}}{\mathrm{d}\theta} =
+\sin \theta \left( -\sin \theta \frac{\mathrm{d}}{\mathrm{d}t}  \right) = -\sin ^{2}\theta \frac{\mathrm{d}}{\mathrm{d}t}
+\]</span></p>
+<p>Finally, we end at the <em>Legendre differential equation</em></p>
+<p><span class="math display">\[
+\frac{\mathrm d}{\mathrm d t}
+\left[
+(1-t^2) \frac{\mathrm d P_n(t)}{\mathrm d t}
+\right] + n(n+1) P_n(t) = 0
+\]</span></p>
+<p>The functions <span class="math inline">\(P_n(t) = P_n(\cos\theta)\)</span> are the <em>Legendre polynomials</em>.</p>
+<p>When a pure dependency of <span class="math inline">\(\theta\)</span> is assumed, then <span class="math display">\[
+r^{n} S_{n}(\theta) = r^{n} P_{n}(\cos \theta)
+\]</span> and <span class="math display">\[
+r^{-(n+1)}S_n = r^{-(n+1)}P_{n}(\cos \theta)
+\]</span> are spherical harmonics.</p>
 </section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>This material is licensed under a Creative Commons License.</p>
+<section id="the-angular-component-of-the-laplace-equation" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="the-angular-component-of-the-laplace-equation"><span class="header-section-number">22.4</span> The angular component of the Laplace equation</h2>
+<p>Previously, we have encountered zonal spherical harmonics or Legendre polynomials as solutions to the Laplace equation.</p>
+<p>Formally, the zonal spherical harmonics <span class="math inline">\(S_n(\theta) = P_n(\cos\theta)\)</span> correspond to the Legendre polynomials.</p>
+<p>To arrive at <span class="math inline">\(S_n(\theta, \phi)\)</span>, we use a <em>separation of variables</em> approach of the form:</p>
+<p><span class="math display">\[S_n(\theta, \phi) = \Theta(\theta)\Phi(\phi)\]</span></p>
+<p>and write:</p>
+<p><span class="math display">\[
+\underbrace{ n(n+1)\Theta\Phi + \frac{\Phi}{\sin\theta}\frac{\mathrm d}{\mathrm d \theta}\left(\sin\theta \frac{\mathrm d \Theta}{\mathrm d \theta}\right) }_{ =m^{2} } +
+\underbrace{ \frac{\Theta}{\sin^2\theta}\frac{\mathrm d^2 \Phi}{\mathrm d \phi^2} }_{ =-m^{2} }
+=0
+\]</span></p>
+<p>or, after multiplying by <span class="math inline">\(\dfrac{\sin^{2}\theta}{\Theta \Phi}\)</span>:</p>
+<p><span class="math display">\[
+n(n+1) \sin^2\theta + \frac{\sin\theta}{\Theta} \frac{\mathrm d}{\mathrm d \theta}
+\left(\sin\theta \frac{\mathrm d \Theta}{\mathrm d \theta}\right) = m^2
+\]</span></p>
+<p><span class="math display">\[\frac{1}{\Phi} \frac{\mathrm d^2 \Phi}{\mathrm d \phi^2} = -m^2\]</span></p>
+<p>Solutions can be provided for both equations.</p>
+<p>First, we consider:</p>
+<p><span class="math display">\[\Phi''+m^2 \Phi = 0\]</span></p>
+<p>This is a harmonic differential equation with the solution:</p>
+<p><span class="math display">\[
+\Phi(\phi) = A_m \cos m \phi + B_m \sin m \phi
+\]</span></p>
+<p>The other equation is:</p>
+<p><span class="math display">\[\dfrac{1}{\sin\theta}\frac{\mathrm d}{\mathrm d \theta}
+\left(\sin\theta \frac{\mathrm d \Theta}{\mathrm d \theta}\right) +
+\left[
+n(n+1) - \frac{m^2}{\sin^2\theta}
+\right]\Theta = 0\]</span></p>
+<p>We seek the solution <span class="math inline">\(\Theta(\theta)\)</span>, substitute <span class="math inline">\(t = \cos\theta\)</span>, <span class="math inline">\(\mathrm d t = -\sin\theta \mathrm d\theta\)</span>, and assume <span class="math inline">\(\Theta(\theta) = P_n^m(\cos\theta) = P_n^m(t)\)</span>. Thus:</p>
+<p><span class="math display">\[\frac{\mathrm d}{\mathrm d t}
+\left[
+(1-t^2) \frac{\mathrm d P_n^m(t)}{\mathrm d t}
+\right] +
+\left[
+n(n+1) - \frac{m^2}{1-t^2}
+\right] P_n^m(t) = 0\]</span></p>
+<p>The desired <span class="math inline">\(P_n^m(t)\)</span> are <em>associated Legendre functions</em> of order <span class="math inline">\(m\)</span> and degree <span class="math inline">\(n\)</span>.</p>
+<p>The associated Legendre functions can be most easily defined through the derivatives of the Legendre polynomials with <span class="math inline">\(0 \le m \le n\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+P_n^m(t) &amp; = (1 - t^2)^{\frac{m}{2}} \frac{\mathrm d^m}{\mathrm dt^m}P_n(t)  \\
+P_n^m(\cos \theta)  &amp; = \sin ^{m}\theta P_n^{(m)}(\cos \theta)
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(P_{n}^{(m)}\)</span> is the <span class="math inline">\(m\)</span>-th derivative of <span class="math inline">\(P_{n}\)</span> with respect to <span class="math inline">\(\cos \theta\)</span>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-blakely1995" class="csl-entry" role="listitem">
-Blakely, R.J., 1995. <em>Potential <span>Theory</span> in <span>Gravity</span> and <span>Magnetic Applications</span></em>, 1st ed., Cambridge University Press. doi:<a href="https://doi.org/10.1017/CBO9780511549816">10.1017/CBO9780511549816</a>
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -917,10 +1073,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./legendre-intro.html" class="pagination-link" aria-label="Numerical computation of Legendre polynomials">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text">Summary</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

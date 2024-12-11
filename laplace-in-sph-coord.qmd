@@ -1,0 +1,305 @@
+---
+title: "Solution of the Laplace equation in spherical coordinates"
+---
+
+Let $u: \mathbb R^3 \mapsto \mathbb R$ be a function defined in an open subset $\Omega \subset \mathbb R^3$.
+
+Then $u$ is a solution to the Laplace equation, if 
+$$
+\Delta u = 0
+$$
+holds in $\Omega$.
+
+We refer to $\Delta$ as the _Laplace operator_.
+
+In different coordinate systems, $\Delta$ has different representations.
+
+## Representations of the Laplace operator 
+
+### Cartesian coordinates
+
+$$
+\frac{\partial^2 u}{\partial x^2}
++\frac{\partial^2 u}{\partial y^2}
++\frac{\partial^2 u}{\partial z^2}
+= 0
+$$ {#eq-laplace-cart}
+
+### Spherical coordinates
+
+![Spherical coordinate system](images/Kugelkoordinaten.excalidraw.svg){#fig-spherical}
+
+We transform from a Cartesian to a spherical system with
+$$
+\begin{align}
+x & = r \cos \phi \sin \theta \\
+y & = r \sin \phi \sin \theta \\
+z & = r \cos \theta \\
+r^2 & = x^2 + y^2 + z^2
+\end{align}
+$$
+
+$$
+\frac{1}{r^2} \frac{\partial}{\partial r}
+  \left( r^2 \frac{\partial u}{\partial r} \right) 
++ \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta}
+  \left( \sin \theta {\partial u \over \partial \theta} \right) 
++ \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2 u}{\partial \varphi^2} = 0
+$$ {#eq-laplace-sph}
+
+### Cylindrical coordinates
+
+$$
+\frac{1}{\rho} \frac{\partial}{\partial \rho}
+  \left( \rho \frac{\partial u}{\partial \rho} \right) 
++ \frac{1}{\rho^2} \frac{\partial^2 u}{\partial \varphi^2}
++ \frac{\partial^2 u}{\partial z^2 } = 0
+$$ {#eq-laplace-cyl}
+
+$\rho^2 = x^2 + y^2$
+
+### Polar coordinates
+
+$$
+\frac{1}{\rho} \frac{\partial}{\partial \rho}
+  \left( \rho \frac{\partial u}{\partial \rho} \right) 
++ \frac{1}{\rho^2} \frac{\partial^2 u}{\partial \varphi^2} =0
+$$ {#eq-laplace-polar}
+
+$\rho^2 = x^2 + y^2$
+
+
+## The radial part of the Laplace equation
+
+We consider the Laplace equation in spherical coordinates as defined in @eq-laplace-sph.
+
+For now, we assume that $u = u(r)$ is a function of the radial distance.
+
+Thus, the Laplace equation reduces to an ordinary differential equation
+
+$$
+\frac{\mathrm d}{\mathrm d r}
+  \left( r^2 \frac{\mathrm d u}{\mathrm d r} \right) =
+  2r \frac{\mathrm d u}{\mathrm d r} + r^2 
+  \frac{\mathrm d^2 u}{\mathrm d r^2} = 0.
+$$
+
+This equation is referred to as _Euler's differential equation_.
+
+We solve this ODE with the _ansatz_
+$$
+u(r) = r^\alpha, \quad u'(r) = \alpha r ^{\alpha - 1}, \quad
+ u''(r) = (\alpha-1)\alpha r^{\alpha - 2}.
+$$
+
+It follows
+$$
+\begin{align}
+2r \alpha r^{\alpha-1} + r^2 (\alpha-1)\alpha r^{\alpha - 2} &= 0 \\
+2 \alpha u + (\alpha-1)\alpha u &= 0 \\
+\alpha(\alpha+1)u &= 0 \quad\text{(characteristic equation)}
+\end{align}
+$$
+
+The characteristic equation has the solution
+$$
+u(r) = C_0 r^{-1} + C_1 r^0.
+$$
+
+At this point, we introduce the 
+
+:::{.callout-note title="Homogeneous function"}
+
+We call a function _homogeneous of degree $\lambda$_, if under a proportional scaling of the variables $x$ by a factor $t$ the function scales with a factor $t^\lambda$:
+
+$$
+f(t \mathbf x ) = t^\lambda f(\mathbf x)
+$$
+
+Example:
+
+$f(x,y) = x^2 + y^2$ is a homogeneous function.
+
+We replace $x$ and $y$ by $tx$ and $ty$, factor out powers of $t$, i.e.,
+$$
+f(tx, ty) = (tx)^2 + (ty)^2 = t^2(x^2 + y^2)
+$$
+and recognize that $f(x,y)$ is a homogeneous function of degree $2$.
+
+:::
+
+Now we make the following ansatz:
+
+We assume that $u$ can be defined as a homogeneous function $u_n$ of dgree $n$. This is a valid choice, since homogeneous functions are solutions to Laplace's equation.
+
+We set 
+$$
+\begin{align}
+u_n(x,y,z) & = u_n(r \cos\phi \sin\theta, r \sin\phi \sin\theta, r \cos\theta) \\
+& = r^n u_n(\cos\phi \sin\theta, \sin\phi \sin\theta,  \cos\theta) \\
+& = r^n S_n(\phi, \theta)
+\end{align}
+$$
+
+$u_n = r^n S_n(\phi, \theta)$ is a _spherical harmonic_.
+
+Further,
+$$
+\begin{align}
+2r  \frac{ \partial u_{n} }{ \partial r } 
+ + r^2 \frac{ \partial^{2} u_{n} }{ \partial r^{2} } 
+   & = 2 r n r^{n-1} S_n
+  + r^2 n(n-1)r^{n-2} S_n \\
+  & = 2 n u_n + n(n-1) u_n \\
+  & = n(n+1) u_n
+\end{align}
+$$
+
+We recognize that $f(r) = u_n(r)$ and $\lambda = n(n+1)$ are _eigenfunctions_ and _eigenvalues_ of the eigenvalue problem
+
+$$
+\Delta f(r) = \lambda f(r).
+$$
+
+We see that the radial part of the Laplace equation for $u_n$ can be equivalently replaced by
+$$
+n (n+1) u_n,
+$$
+which we insert back into the full Laplace equation @eq-laplace-sph to obtain
+
+$$
+n(n+1) S_n + \frac{1}{\sin \theta} \frac{\partial}{\partial \theta}
+  \left( \sin \theta {\partial S_n \over \partial \theta} \right) 
++ \frac{1}{\sin^2 \theta} \frac{\partial^2 S_n}{\partial \varphi^2} = 0.
+$$
+
+## Zonal spherical harmonics
+
+Now we seek solutions $S_n(\theta)$. These functions are referred to as _zonal spherical harmonics_. On a surface of a sphere they only vary with the polar angle $\theta$. Their zeros are parallel to the equator of the sphere.
+
+The Laplace equation @eq-laplace-sph reduces to
+$$
+\frac{1}{\sin \theta} \frac{\mathrm d}{\mathrm d \theta}
+  \left( \sin \theta {\mathrm d S_n \over \mathrm d \theta} \right) 
++ n(n+1) S_n = 0
+$$
+
+We substitute $\cos\theta$ and set $S_n(\theta)=P_n(t)$:
+
+$$
+\begin{align}
+t & = \cos\theta \\
+\mathrm{d}t & = -\sin \theta \,\mathrm{d}\theta \\
+S_n(\theta) & = P_n(\cos\theta) = P_n(t)
+\end{align} 
+$$
+With the chain rule we obtain
+$$
+\begin{align}
+\frac{\mathrm d P_n(t)}{\mathrm d \theta} & = \frac{\mathrm d P_n(t)}{\mathrm d t} \frac{\mathrm d t}{\mathrm d \theta} \\
+& = -\frac{\mathrm d P_n(t)}{\mathrm d t} \sin\theta \\
+\sin^2\theta & = 1 - t^2
+\end{align}
+$$
+
+Useful steps:
+$$
+\frac{1}{\sin \theta} \frac{\mathrm{d}}{\mathrm{d}\theta} =  
+\frac{1}{\sin \theta} \left( -\frac{\sin \theta}{\mathrm{d}t} \right) = -\frac{\mathrm{d}}{\mathrm{d}t} 
+$$
+
+$$
+\sin \theta \frac{\mathrm{d}}{\mathrm{d}\theta} =
+\sin \theta \left( -\sin \theta \frac{\mathrm{d}}{\mathrm{d}t}  \right) = -\sin ^{2}\theta \frac{\mathrm{d}}{\mathrm{d}t} 
+$$
+
+Finally, we end at the _Legendre differential equation_
+
+$$
+\frac{\mathrm d}{\mathrm d t}
+\left[
+(1-t^2) \frac{\mathrm d P_n(t)}{\mathrm d t}
+\right] + n(n+1) P_n(t) = 0
+$$
+
+The functions $P_n(t) = P_n(\cos\theta)$ are the _Legendre polynomials_.
+
+When a pure dependency of $\theta$ is assumed, then
+$$
+r^{n} S_{n}(\theta) = r^{n} P_{n}(\cos \theta)
+$$
+and
+$$
+r^{-(n+1)}S_n = r^{-(n+1)}P_{n}(\cos \theta)
+$$
+are spherical harmonics.
+
+## The angular component of the Laplace equation
+
+Previously, we have encountered zonal spherical harmonics or Legendre polynomials as solutions to the Laplace equation.
+
+Formally, the zonal spherical harmonics $S_n(\theta) = P_n(\cos\theta)$ correspond to the Legendre polynomials.
+
+To arrive at $S_n(\theta, \phi)$, we use a *separation of variables* approach of the form:
+
+$$S_n(\theta, \phi) = \Theta(\theta)\Phi(\phi)$$
+
+and write:
+
+$$
+\underbrace{ n(n+1)\Theta\Phi + \frac{\Phi}{\sin\theta}\frac{\mathrm d}{\mathrm d \theta}\left(\sin\theta \frac{\mathrm d \Theta}{\mathrm d \theta}\right) }_{ =m^{2} } +
+\underbrace{ \frac{\Theta}{\sin^2\theta}\frac{\mathrm d^2 \Phi}{\mathrm d \phi^2} }_{ =-m^{2} }
+=0
+$$
+
+or, after multiplying by $\dfrac{\sin^{2}\theta}{\Theta \Phi}$:
+
+$$
+n(n+1) \sin^2\theta + \frac{\sin\theta}{\Theta} \frac{\mathrm d}{\mathrm d \theta}
+\left(\sin\theta \frac{\mathrm d \Theta}{\mathrm d \theta}\right) = m^2
+$$
+
+$$\frac{1}{\Phi} \frac{\mathrm d^2 \Phi}{\mathrm d \phi^2} = -m^2$$
+
+Solutions can be provided for both equations.
+
+First, we consider:
+
+$$\Phi''+m^2 \Phi = 0$$
+
+This is a harmonic differential equation with the solution:
+
+$$
+\Phi(\phi) = A_m \cos m \phi + B_m \sin m \phi
+$$
+
+The other equation is:
+
+$$\dfrac{1}{\sin\theta}\frac{\mathrm d}{\mathrm d \theta}
+\left(\sin\theta \frac{\mathrm d \Theta}{\mathrm d \theta}\right) + 
+\left[
+n(n+1) - \frac{m^2}{\sin^2\theta}
+\right]\Theta = 0$$
+
+We seek the solution $\Theta(\theta)$, substitute $t = \cos\theta$, $\mathrm d t = -\sin\theta \mathrm d\theta$, and assume $\Theta(\theta) = P_n^m(\cos\theta) = P_n^m(t)$. Thus:
+
+$$\frac{\mathrm d}{\mathrm d t}
+\left[
+(1-t^2) \frac{\mathrm d P_n^m(t)}{\mathrm d t}
+\right] +
+\left[
+n(n+1) - \frac{m^2}{1-t^2}
+\right] P_n^m(t) = 0$$
+
+The desired $P_n^m(t)$ are *associated Legendre functions* of order $m$ and degree $n$.
+
+The associated Legendre functions can be most easily defined through the derivatives of the Legendre polynomials with $0 \le m \le n$:
+
+$$
+\begin{align}
+P_n^m(t) & = (1 - t^2)^{\frac{m}{2}} \frac{\mathrm d^m}{\mathrm dt^m}P_n(t)  \\
+P_n^m(\cos \theta)  & = \sin ^{m}\theta P_n^{(m)}(\cos \theta)
+\end{align}
+$$
+
+where $P_{n}^{(m)}$ is the $m$-th derivative of $P_{n}$ with respect to $\cos \theta$.

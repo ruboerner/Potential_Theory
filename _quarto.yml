@@ -49,8 +49,10 @@ book:
       - fieldline.qmd
     - part: "Spherical harmonics"
       chapters:
-        - legendre-intro.qmd
+        - spherical-intro.qmd
         - legendre.qmd
+        - legendre-intro.qmd
+        - laplace-in-sph-coord.qmd
     - part: "Boundary value problems"
     - summary.qmd
     - references.qmd

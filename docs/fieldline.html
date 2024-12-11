@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./legendre-intro.html" rel="next">
+<link href="./spherical-intro.html" rel="next">
 <link href="./magneticdipole.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -360,14 +360,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+  <a href="./spherical-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
   </div>
 </li>
       </ul>
@@ -399,7 +411,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#visualization" id="toc-visualization" class="nav-link active" data-scroll-target="#visualization"><span class="header-section-number">18.1</span> Visualization</a></li>
-  <li><a href="#differential-geometry-properties-of-field-lines" id="toc-differential-geometry-properties-of-field-lines" class="nav-link" data-scroll-target="#differential-geometry-properties-of-field-lines"><span class="header-section-number">18.2</span> Differential geometry properties of field lines</a>
+  <li><a href="#properties-of-field-lines-derived-from-differential-geometry" id="toc-properties-of-field-lines-derived-from-differential-geometry" class="nav-link" data-scroll-target="#properties-of-field-lines-derived-from-differential-geometry"><span class="header-section-number">18.2</span> Properties of field lines derived from differential geometry</a>
   <ul class="collapse">
   <li><a href="#curvature" id="toc-curvature" class="nav-link" data-scroll-target="#curvature"><span class="header-section-number">18.2.1</span> Curvature</a></li>
   <li><a href="#horizontal-slope" id="toc-horizontal-slope" class="nav-link" data-scroll-target="#horizontal-slope"><span class="header-section-number">18.2.2</span> Horizontal slope</a></li>
@@ -429,7 +441,7 @@ window.Quarto = {
 </header>
 
 
-<div id="22b1f33b" class="cell" data-execution_count="1">
+<div id="4cb589e6" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -469,7 +481,7 @@ Figure&nbsp;18.1: A schematic sketch of a field line of a dipole aligned with th
 \mathrm d \mathbf s = (\mathrm dr, r \, \mathrm d\theta, 0)^\top.
 \]</span></p>
 <p>Let’s compute the cross product with the help of <code>SymPy</code>.</p>
-<div id="df322d6d" class="cell" data-execution_count="2">
+<div id="dbf8a1d7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r, theta, d_r, d_theta, H_r, H_theta <span class="op">=</span> symbols(<span class="st">'r theta d_r d_theta H_r H_theta'</span>, real<span class="op">=</span><span class="va">True</span>) </span>
@@ -488,7 +500,7 @@ H_r r \mathrm{d}\theta = H_\theta \mathrm{d} r.
 <p>We rearrange the ODE using the definition of <span class="math inline">\(\mathbf H\)</span> given above into the following form: <span class="math display">\[
 \frac{\mathrm{d}r}{\mathrm{d}\theta} = 2 r \cot\theta
 \]</span> To obtain a solution using <code>SymPy</code>, we recast <code>r</code> as a symbolic function (of <span class="math inline">\(\theta\)</span>):</p>
-<div id="d1ac0bfa" class="cell" data-tags="[]" data-execution_count="3">
+<div id="ec328c48" class="cell" data-tags="[]" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> symbols(<span class="st">"r"</span>, cls<span class="op">=</span>Function)</span>
@@ -512,7 +524,7 @@ x &amp; = r(\theta) \cos\phi \\
 z &amp; = r(\theta) \sin\phi
 \end{align}
 \]</span> where <span class="math inline">\(\phi = \pi/2 - \theta\)</span>.</p>
-<div id="82862634" class="cell" data-tags="[]" data-execution_count="4">
+<div id="e5615ddb" class="cell" data-tags="[]" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span></span>
@@ -525,7 +537,7 @@ z &amp; = r(\theta) \sin\phi
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    z.append(r_0 <span class="op">*</span> np.sin(t)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> np.sin(np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> t))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="6b98808e" class="cell" data-tags="[]" data-execution_count="5">
+<div id="202423a6" class="cell" data-tags="[]" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -559,9 +571,13 @@ Figure&nbsp;18.2: Planar view of magnetic field lines for L-shells <span class="
 </figure>
 </div>
 </section>
-<section id="differential-geometry-properties-of-field-lines" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="differential-geometry-properties-of-field-lines"><span class="header-section-number">18.2</span> Differential geometry properties of field lines</h2>
-<p>Two questions are of particular interest: 1. What is the <em>curvature radius</em> of the field line in the equatorial plane? 2. At which angle <span class="math inline">\(\theta\)</span> the tangential line is horizontal?</p>
+<section id="properties-of-field-lines-derived-from-differential-geometry" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="properties-of-field-lines-derived-from-differential-geometry"><span class="header-section-number">18.2</span> Properties of field lines derived from differential geometry</h2>
+<p>Two questions are of particular interest:</p>
+<ol type="1">
+<li>What is the <em>curvature radius</em> of the field line in the equatorial plane?</li>
+<li>At which angle <span class="math inline">\(\theta\)</span> the tangential line is horizontal?</li>
+</ol>
 <section id="curvature" class="level3" data-number="18.2.1">
 <h3 data-number="18.2.1" class="anchored" data-anchor-id="curvature"><span class="header-section-number">18.2.1</span> Curvature</h3>
 <p>For the curvature <span class="math inline">\(\kappa(\theta)\)</span> of a parametric curve defined in polar coordinates <span class="math inline">\(r\)</span> and <span class="math inline">\(\theta\)</span> in the point <span class="math inline">\(r(\theta)\)</span> there holds (<a href="https://en.wikipedia.org/wiki/Curvature">cf.&nbsp;this Wikipedia article</a>)</p>
@@ -571,7 +587,7 @@ Figure&nbsp;18.2: Planar view of magnetic field lines for L-shells <span class="
 \]</span></p>
 <p>We implement this equation to obtain the curvature radius in the equatorial plane where <span class="math inline">\(\theta=\pi/2\)</span>.</p>
 <p>First, we introduce a symbolic function <code>R</code> which defines <span class="math inline">\(r(\theta) = \sin^2\theta\)</span>. Next, we implement the curvature function <span class="math inline">\(\kappa(\theta)\)</span> using <code>SymPy</code>. Finally, in <span class="math inline">\(\kappa\)</span> we substitute <span class="math inline">\(\theta\)</span> by <span class="math inline">\(\pi/2\)</span>.</p>
-<div id="9f25d318" class="cell" data-tags="[]" data-execution_count="6">
+<div id="a791d683" class="cell" data-tags="[]" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> sin(theta)<span class="op">**</span><span class="dv">2</span></span>
@@ -579,7 +595,7 @@ Figure&nbsp;18.2: Planar view of magnetic field lines for L-shells <span class="
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        sqrt(R<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> diff(R, theta)<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="ba0bd548" class="cell" data-tags="[]" data-execution_count="7">
+<div id="006bc038" class="cell" data-tags="[]" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">'</span><span class="ch">\\</span><span class="st">kappa = '</span> <span class="op">+</span> latex(kappa.subs(theta, pi<span class="op">/</span><span class="dv">2</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -592,7 +608,7 @@ Figure&nbsp;18.2: Planar view of magnetic field lines for L-shells <span class="
 <p>We note that the <em>curvature radius</em> is the inverse of the curvature. Hence, when <span class="math inline">\(r_0 = 1\)</span>, the curvature radius at the equator is <span class="math inline">\(r_\kappa = 1/3\)</span>.</p>
 <p>Let’s check this:</p>
 <p>The origin of a circle with curvature radius of <span class="math inline">\(r_\kappa=1/3\)</span> is at the point <span class="math inline">\((2/3, 0)\)</span>. We expect that the shape of this circle approximates the field line near the equatorial plane.</p>
-<div id="7095b13a" class="cell" data-tags="[]" data-execution_count="8">
+<div id="961222b2" class="cell" data-tags="[]" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -633,7 +649,7 @@ z = z(\theta), \qquad x = x(\theta).
 \frac{z'(\theta)}{x'(\theta)} = 0.
 \]</span></p>
 <p>We search all angles <span class="math inline">\(\theta\)</span> for which this condition is fulfilled.</p>
-<div id="40804cf8" class="cell" data-tags="[]" data-execution_count="9">
+<div id="cd6b2ef1" class="cell" data-tags="[]" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> R <span class="op">*</span> cos(pi<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> theta)</span>
@@ -648,7 +664,7 @@ z = z(\theta), \qquad x = x(\theta).
 </div>
 </div>
 <p>As seen from the dipole position, the field lines are horizontal at an angle of approx. <span class="math inline">\(\pm 35\textdegree\)</span> below and above the equatorial plane.</p>
-<div id="ece77ce3" class="cell" data-tags="[]" data-execution_count="10">
+<div id="0231f53c" class="cell" data-tags="[]" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -674,7 +690,7 @@ z = z(\theta), \qquad x = x(\theta).
 </div>
 <p>The distance from the dipole to the points where the slope is horizontal is <span class="math inline">\(r^* = r_0 \sin^2 \theta^*\)</span>.</p>
 <p>It is always <span class="math inline">\(\frac{2}{3}r_0\)</span>.</p>
-<div id="330ccc70" class="cell" data-tags="[]" data-execution_count="11">
+<div id="41edaa8e" class="cell" data-tags="[]" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[sin(t.evalf())<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> t <span class="kw">in</span> theta_star]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1113,8 +1129,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./legendre-intro.html" class="pagination-link" aria-label="Introduction to Legendre polynomials">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./spherical-intro.html" class="pagination-link" aria-label="Introduction to Spherical Harmonic Analysis">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

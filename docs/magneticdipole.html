@@ -360,14 +360,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Legendre polynomials</span></span></a>
+  <a href="./spherical-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Applications of the Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
   </div>
 </li>
       </ul>
@@ -529,7 +541,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </section>
 <section id="magnetic-dipole" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">17.4</span> Magnetic Dipole</h2>
-<div id="5dbd3c5e" class="cell" data-execution_count="1">
+<div id="552d8c9b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -542,7 +554,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="17.4.1">
 <h3 data-number="17.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">17.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="c74821bf" class="cell" data-execution_count="2">
+<div id="1f78aadd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -556,7 +568,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="a62d8c20" class="cell" data-execution_count="3">
+<div id="d8f1ef96" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>
@@ -630,7 +642,7 @@ Total field anomaly
 <p>IIn the literature, the total field anomaly is often abbreviated as <em>TMI</em> anomaly (total magnetic field intensity anomaly).</p>
 </div>
 </div>
-<div id="141dd68d" class="cell" data-execution_count="4">
+<div id="92ce6adb" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -693,7 +705,7 @@ Total field anomaly
 </div>
 </div>
 <p>Profile along the <span class="math inline">\(x\)</span>-axis:</p>
-<div id="2b871930" class="cell" data-execution_count="5">
+<div id="f2340b48" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Bt <span class="op">=</span> bt[<span class="dv">30</span>, :]</span>

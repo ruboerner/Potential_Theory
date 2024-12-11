@@ -124,9 +124,10 @@ For instance, auroral light displays are most common around $L=6$, can reach $L=
 
 ![Planar view of magnetic field lines for L-shells $L=3$ up to $L=7$ (simplified).](images/3dearth.png){#fig-fieldlinesearth}
 
-## Differential geometry properties of field lines
+## Properties of field lines derived from differential geometry
 
 Two questions are of particular interest:
+
 1. What is the _curvature radius_ of the field line in the equatorial plane?
 2. At which angle $\theta$ the tangential line is horizontal?
 

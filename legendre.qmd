@@ -1,6 +1,8 @@
 ---
-title: "Applications of the Legendre Polynomials"
+title: "Legendre Polynomials"
 ---
+
+Legendre Polynomials are an important tool for modelling dipole and multi-pole potentials. In this chapter, we introduce some examples of their usefulness.
 
 ## Gravitational Potential
 
