@@ -438,13 +438,13 @@ V(\mathbf{r}) = -f \frac{m}{|\mathbf{r} - \mathbf{r}'|}.
 <h3 data-number="20.1.1" class="anchored" data-anchor-id="expansion-of-the-term-1mathbfr---mathbfr"><span class="header-section-number">20.1.1</span> Expansion of the term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span></h3>
 <p>The frequently occurring term <span class="math inline">\(1/|\mathbf{r} - \mathbf{r}'|\)</span> can be expanded into a power series when <span class="math inline">\(|\mathbf{r}'| \ll |\mathbf{r}|\)</span>.</p>
 <p>Let <span class="math inline">\(\mathbf{r} = (x, y, z)^\top\)</span> (observation point) and <span class="math inline">\(\mathbf{r}' = (0, 0, s)^\top\)</span> (source point of the mass). The Euclidean distance between the observation and source points is <span class="math inline">\(q = |\mathbf{r} - \mathbf{r}'|\)</span>.</p>
-<p>Using the magnitudes <span class="math inline">\(r = |\mathbf{r}|\)</span> and <span class="math inline">\(s = |\mathbf{r}'|\)</span>, and applying the [[Kosinussatz|law of cosines]], we have: <span class="math display">\[
+<p>Using the magnitudes <span class="math inline">\(r = |\mathbf{r}|\)</span> and <span class="math inline">\(s = |\mathbf{r}'|\)</span>, and applying the <em>law of cosines</em>, we have: <span class="math display">\[
 \frac{1}{q} = f(r, \theta) = \frac{1}{r} \left[1 + \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta \right]^{-1/2}.
 \]</span></p>
 </section>
 <section id="binomial-expansion-for-small-displacements" class="level3" data-number="20.1.2">
 <h3 data-number="20.1.2" class="anchored" data-anchor-id="binomial-expansion-for-small-displacements"><span class="header-section-number">20.1.2</span> Binomial Expansion for Small Displacements</h3>
-<p>For a small displacement of the source point away from the origin, i.e., <span class="math inline">\(s \ll r\)</span>, <span class="math inline">\(f(r, \theta)\)</span> can be expanded as a <em>binomial series</em> <span class="math display">\[
+<p>For a small displacement of the source point away from the origin, i.e., for <span class="math inline">\(s \ll r\)</span>, the function <span class="math inline">\(f(r, \theta)\)</span> can be expanded as a <em>binomial series</em> <span class="math display">\[
 f(r, \theta) = \frac{1}{r} (1 + b)^{-1/2} = \frac{1}{r} \sum_{n=0}^\infty \binom{-1/2}{n} b^n,
 \]</span> where <span class="math display">\[
 b = \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta, \quad |b| &lt; 1.

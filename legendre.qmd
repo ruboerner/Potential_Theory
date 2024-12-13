@@ -24,14 +24,14 @@ The frequently occurring term $1/|\mathbf{r} - \mathbf{r}'|$  can be expanded in
 
 Let $\mathbf{r} = (x, y, z)^\top$ (observation point) and $\mathbf{r}' = (0, 0, s)^\top$ (source point of the mass). The Euclidean distance between the observation and source points is $q = |\mathbf{r} - \mathbf{r}'|$.
 
-Using the magnitudes $r = |\mathbf{r}|$ and $s = |\mathbf{r}'|$, and applying the [[Kosinussatz|law of cosines]], we have:
+Using the magnitudes $r = |\mathbf{r}|$ and $s = |\mathbf{r}'|$, and applying the _law of cosines_, we have:
 $$
 \frac{1}{q} = f(r, \theta) = \frac{1}{r} \left[1 + \left(\frac{s}{r}\right)^2 - 2 \frac{s}{r} \cos \theta \right]^{-1/2}.
 $$
 
 
 ### Binomial Expansion for Small Displacements
-For a small displacement of the source point away from the origin, i.e., $s \ll r$, $f(r, \theta)$ can be expanded as a *binomial series*
+For a small displacement of the source point away from the origin, i.e., for $s \ll r$, the function $f(r, \theta)$ can be expanded as a *binomial series*
 $$
 f(r, \theta) = \frac{1}{r} (1 + b)^{-1/2} = \frac{1}{r} \sum_{n=0}^\infty \binom{-1/2}{n} b^n,
 $$
