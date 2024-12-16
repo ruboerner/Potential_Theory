@@ -38,6 +38,7 @@ V(r, \theta, \phi) = a \sum_{n=1}^{\infty} \left( \frac{a}{r} \right)^{n+1} \sum
 $$
 
 where:
+
 - $a$ is the Earth's mean radius,
 - $r$ is the radial distance from the Earth's center,
 - $g_{n}^{m}$ and $h_{n}^{m}$ are the Gauss coefficients, which are determined from observations.
