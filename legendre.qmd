@@ -2,7 +2,9 @@
 title: "Legendre Polynomials"
 ---
 
-Legendre Polynomials are an important tool for modelling dipole and multi-pole potentials. In this chapter, we introduce some examples of their usefulness.
+Legendre Polynomials are an important tool for modelling dipole and multi-pole potentials with **axial-symmetric symmetry**. In this chapter, we introduce some examples of their usefulness.
+
+Key applications include modeling the Earth’s oblateness, gravitational potential, tidal effects, satellite orbit perturbations, global circulation patterns, and large-scale geomagnetic and seismic phenomena. The simplification to axisymmetric phenomena is particularly useful when longitudinal variations are negligible or when studying global-scale effects.
 
 ## Gravitational Potential
 

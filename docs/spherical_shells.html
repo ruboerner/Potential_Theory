@@ -439,7 +439,7 @@ window.Quarto = {
 </header>
 
 
-<div id="5a752cd6" class="cell" data-execution_count="1">
+<div id="5a66e8da" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -508,13 +508,13 @@ V(r) = \int_{r'=0}^a V^F(r') \, \mathrm d r' = \frac{2 \pi f}{r } \int_{r'=0}^{a
 \]</span></p>
 <p>To this end, we make use of <code>SymPy</code>, a <code>Python</code> library for symbolic mathematics.</p>
 <p>We first define symbolic variables.</p>
-<div id="64eed3af" class="cell" data-execution_count="2">
+<div id="c6162bce" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r, rp, a, f, rho, theta <span class="op">=</span> sp.symbols(<span class="st">"r r' a f rho theta"</span>, positive<span class="op">=</span><span class="va">True</span>, real<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="1ef4aa08" class="cell" data-execution_count="3">
+<div id="f1703a73" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> rho <span class="op">*</span> sp.integrate(a<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> sp.sin(theta) <span class="op">/</span> sp.sqrt(r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>a<span class="op">*</span>r<span class="op">*</span>sp.cos(theta)), (theta, <span class="dv">0</span>, pi))</span>
@@ -533,7 +533,7 @@ r - a &amp; \text{if } r &gt; a \\
 a - r &amp; \text{if } r &lt; a
 \end{cases}
 \]</span> we have to be careful with the integrand.</p>
-<div id="90fa329e" class="cell" data-execution_count="4">
+<div id="9d0122f3" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Voutside <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> rho <span class="op">/</span> r <span class="op">*</span> sp.integrate((r <span class="op">+</span> rp <span class="op">-</span> (r <span class="op">-</span> rp)) <span class="op">*</span> rp, (rp, <span class="dv">0</span>, a))</span>
@@ -550,7 +550,7 @@ V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + 
 <p>In the interior of a homogeneous sphere with a mean density of <span class="math inline">\(\bar\rho\)</span> we obtain for <span class="math inline">\(0 \le r \le a\)</span> <span class="math display">\[
 V(r) = \frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
 \]</span></p>
-<div id="f70f8f83" class="cell" data-execution_count="5">
+<div id="59b60577" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Vinside <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> rho <span class="op">/</span> r <span class="op">*</span> (sp.integrate(rp<span class="op">**</span><span class="dv">2</span>, (rp, <span class="dv">0</span>, r)) <span class="op">+</span> sp.integrate(rp <span class="op">*</span> r, (rp, r, a)))</span>
@@ -565,14 +565,14 @@ V(r) = \frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
 <p>Now, we introduce non-trivial density laws, such as a linear density law <span class="math display">\[
 \rho(r) = \rho(0) - b r, \quad b &gt; 0.
 \]</span></p>
-<div id="2727e02a" class="cell" data-execution_count="6">
+<div id="980f7326" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rho_m, rho_0, rho_R, R_E, b <span class="op">=</span> sp.symbols(<span class="st">"rho_m rho_0 rho_R R_E b"</span>, positive<span class="op">=</span><span class="va">True</span>, real<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>With the known mean density of the Earth we can evaluate Earth’s mass.</p>
-<div id="867597be" class="cell" data-execution_count="7">
+<div id="c982cdeb" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m_E <span class="op">=</span> rho_m <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> R_E<span class="op">**</span><span class="dv">3</span></span>
@@ -585,7 +585,7 @@ V(r) = \frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
 <p>This is not very helpful. Instead, we can evaluate Earth’s mass using a volume integral over a density function, e.g., <span class="math display">\[
 m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 \]</span> Using <code>SymPy</code> we obtain the expression</p>
-<div id="dad95567" class="cell" data-execution_count="8">
+<div id="de7d9751" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m_E_int <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> r) <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>, (r, <span class="dv">0</span>, R_E))</span>
@@ -600,14 +600,14 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 \rho(R_E) = \rho(0) - b R_E.
 \]</span></p>
 <p>The density at the Earth’s surface is about <span class="math inline">\(2700\)</span> <span class="math inline">\(kg/m^3\)</span>.</p>
-<div id="ef62cb0d" class="cell" data-execution_count="9">
+<div id="6ccb7c42" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>eq1 <span class="op">=</span> m_E_int <span class="op">-</span> m_E</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>eq2 <span class="op">=</span> rho_0 <span class="op">-</span> b <span class="op">*</span> R_E <span class="op">-</span> rho_R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="ab1dbdd1" class="cell" data-execution_count="10">
+<div id="a81d74a8" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> sp.solve((eq1, eq2), (rho_0, b),<span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
@@ -615,7 +615,7 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>coeff_b <span class="op">=</span> coeffs[<span class="dv">0</span>][b]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="920f14ff" class="cell" data-execution_count="11">
+<div id="c95642f1" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>coeff_rho_0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -624,7 +624,7 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 <p><span class="math inline">\(\displaystyle - 3 \rho_{R} + 4 \rho_{m}\)</span></p>
 </div>
 </div>
-<div id="e9c926ad" class="cell" data-execution_count="12">
+<div id="aba7187c" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>coeff_b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -633,13 +633,13 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 <p><span class="math inline">\(\displaystyle \frac{- 4 \rho_{R} + 4 \rho_{m}}{R_{E}}\)</span></p>
 </div>
 </div>
-<div id="a1ae6953" class="cell" data-execution_count="13">
+<div id="6913c422" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rho_num <span class="op">=</span> coeff_rho_0.subs(rho_R, <span class="dv">2700</span>).subs(rho_m, <span class="dv">5515</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="574d0d4c" class="cell" data-execution_count="14">
+<div id="176b75b6" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b_num <span class="op">=</span> coeff_b.subs(rho_R, <span class="dv">2700</span>).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -652,7 +652,7 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^{R_E} \rho(r') r r' \, \mathrm d r'\right]
 \]</span> The first integral amounts for the potential at the surface of a sphere with radius , whereas the second computes the potential taken at the inner surface of a hollow sphere.</p>
 <p>With the constants derived above we want to evaluate these integrals.</p>
-<div id="dea44644" class="cell" data-execution_count="15">
+<div id="b0e64e4e" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>i1 <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">/</span> r <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> rp) <span class="op">*</span> rp<span class="op">**</span><span class="dv">2</span>, (rp, <span class="dv">0</span>, r))</span>
@@ -662,7 +662,7 @@ V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + 
 <p><span class="math inline">\(\displaystyle \frac{\pi f r^{2} \left(- 3 b r + 4 \rho_{0}\right)}{3}\)</span></p>
 </div>
 </div>
-<div id="ba57bec1" class="cell" data-execution_count="16">
+<div id="af81c5cb" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>i2 <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> rp) <span class="op">*</span> rp, (rp, r, R_E))</span>
@@ -673,14 +673,14 @@ V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + 
 </div>
 </div>
 <p>Next, we add both contributions to obtain the potential inside the Earth.</p>
-<div id="102ecf32" class="cell" data-execution_count="17">
+<div id="9f02b942" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#V = sp.Function("V")</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> i1 <span class="op">+</span> i2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="73c79e9e" class="cell" data-execution_count="18">
+<div id="a16b1e46" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>V.simplify()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -693,7 +693,7 @@ V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + 
 <p><span class="math display">\[
 g(r) = \nabla V(r) \cdot \hat{\mathbf r}
 \]</span></p>
-<div id="bd66db63" class="cell" data-execution_count="19">
+<div id="11db3d1d" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sp.diff(V, r)</span>
@@ -708,14 +708,14 @@ g(r) = \nabla V(r) \cdot \hat{\mathbf r}
 <h2 data-number="5.3" class="anchored" data-anchor-id="visualization-of-the-result"><span class="header-section-number">5.3</span> Visualization of the result</h2>
 <p>We plot the curve of <span class="math inline">\(g(r)\)</span> inside the Earth.</p>
 <p>Further, we check if <span class="math inline">\(g(r)\)</span> has an extremum inside the Earth.</p>
-<div id="6a1a46f4" class="cell" data-execution_count="20">
+<div id="215485e6" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>f_ <span class="op">=</span> <span class="fl">6.674e-11</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>g_num <span class="op">=</span> <span class="kw">lambda</span> r: np.pi <span class="op">*</span> f_ <span class="op">*</span> r <span class="op">*</span> (<span class="dv">3</span> <span class="op">*</span> b_num <span class="op">*</span> r <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> rho_num) <span class="op">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="74fee62a" class="cell" data-execution_count="21">
+<div id="3e6fab8c" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rstar <span class="op">=</span> sp.solve(sp.diff(g, r), (r))</span>
@@ -725,7 +725,7 @@ g(r) = \nabla V(r) \cdot \hat{\mathbf r}
 <p><span class="math inline">\(\displaystyle \frac{2 \rho_{0}}{3 b}\)</span></p>
 </div>
 </div>
-<div id="1546b0fd" class="cell" data-execution_count="22">
+<div id="7ba52365" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rextrem <span class="op">=</span> rstar[<span class="dv">0</span>].subs(rho_0, rho_num).subs(b, b_num)</span>
@@ -735,7 +735,7 @@ g(r) = \nabla V(r) \cdot \hat{\mathbf r}
 <p><span class="math inline">\(\displaystyle 5.26578804026051\)</span></p>
 </div>
 </div>
-<div id="cc33ac1f" class="cell" data-execution_count="23">
+<div id="36f90a7a" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.371e6</span> <span class="op">-</span> rextrem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -745,13 +745,13 @@ g(r) = \nabla V(r) \cdot \hat{\mathbf r}
 </div>
 </div>
 <p>The extremal value of <span class="math inline">\(g(r)\)</span> in the interior of the Earth appears at <span class="math inline">\(r=5.26 \times 10^6\)</span> m, i.e., at a depth of 1105 km.</p>
-<div id="2acff503" class="cell" data-execution_count="24">
+<div id="5887bad1" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rr <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">6.367e6</span>, <span class="dv">41</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="706502c3" class="cell" data-execution_count="25">
+<div id="c6476442" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.plot(rr, g_num(rr))</span>
@@ -784,7 +784,7 @@ I=\frac{2}{3} \int\limits_0^{R_E}  \rho(r) r^2 \, \mathrm d V =
 \alpha = \frac{I}{mR_E^2}.
 \]</span> This factor is <span class="math inline">\(0.4\)</span> for a solid sphere.</p>
 <p>Check using <code>SymPy</code>:</p>
-<div id="d8793a98" class="cell" data-execution_count="26">
+<div id="8ff4583c" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> </span>
@@ -799,7 +799,7 @@ I=\frac{2}{3} \int\limits_0^{R_E}  \rho(r) r^2 \, \mathrm d V =
 <p><span class="math inline">\(\alpha\)</span> should be smaller for a sphere when there is an increasing density with depth.</p>
 <p>For our density model, we observe <span class="math inline">\(\alpha=0.3319\)</span>, which is slightly more than reported in the literature, where <span class="math inline">\(\alpha=0.3307144\)</span> (Williams, 1994).</p>
 <p>Check:</p>
-<div id="4961fec8" class="cell" data-execution_count="27">
+<div id="6e566414" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> </span>
