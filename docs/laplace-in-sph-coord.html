@@ -385,7 +385,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#the-radial-part-of-the-laplace-equation" id="toc-the-radial-part-of-the-laplace-equation" class="nav-link" data-scroll-target="#the-radial-part-of-the-laplace-equation"><span class="header-section-number">22.2</span> The radial part of the Laplace equation</a></li>
   <li><a href="#zonal-spherical-harmonics" id="toc-zonal-spherical-harmonics" class="nav-link" data-scroll-target="#zonal-spherical-harmonics"><span class="header-section-number">22.3</span> Zonal spherical harmonics</a></li>
-  <li><a href="#the-angular-component-of-the-laplace-equation" id="toc-the-angular-component-of-the-laplace-equation" class="nav-link" data-scroll-target="#the-angular-component-of-the-laplace-equation"><span class="header-section-number">22.4</span> The angular component of the Laplace equation</a></li>
+  <li><a href="#the-angular-component-of-the-laplace-equation" id="toc-the-angular-component-of-the-laplace-equation" class="nav-link" data-scroll-target="#the-angular-component-of-the-laplace-equation"><span class="header-section-number">22.4</span> The angular component of the Laplace equation</a>
+  <ul class="collapse">
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties"><span class="header-section-number">22.4.1</span> Properties</a></li>
+  </ul></li>
+  <li><a href="#schmidt-semi-normalized-legendre-functions" id="toc-schmidt-semi-normalized-legendre-functions" class="nav-link" data-scroll-target="#schmidt-semi-normalized-legendre-functions"><span class="header-section-number">22.5</span> Schmidt semi-normalized Legendre functions</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">22.6</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -649,6 +654,49 @@ P_n^m(\cos \theta)  &amp; = \sin ^{m}\theta P_n^{(m)}(\cos \theta)
 \end{align}
 \]</span></p>
 <p>where <span class="math inline">\(P_{n}^{(m)}\)</span> is the <span class="math inline">\(m\)</span>-th derivative of <span class="math inline">\(P_{n}\)</span> with respect to <span class="math inline">\(\cos \theta\)</span>.</p>
+<section id="properties" class="level3" data-number="22.4.1">
+<h3 data-number="22.4.1" class="anchored" data-anchor-id="properties"><span class="header-section-number">22.4.1</span> Properties</h3>
+<p>Orthogonality:</p>
+<p><span class="math display">\[
+\int\limits_{-1}^{+1} P_n^m(t) P_{n'}^m(t) \, \dd t =
+\begin{cases}
+0 &amp; n \ne n' \\
+\frac{2 (n+m)!}{(2n+1)(n-m)!} &amp; n = n'
+\end{cases}
+\]</span></p>
+<p>Symmetry: Follows from properties of Legendre polynomials <span class="math inline">\(P_n\)</span>, i.e., from <span class="math inline">\(P_n(-t) = (-1)^n P_n(t)\)</span> we obtain</p>
+<p><span class="math display">\[
+P_n^m(-t) = (-1)^{n+m} P_n^m(t)
+\]</span></p>
+<p>For <span class="math inline">\(m=0\)</span>, the associated Legendre functions are Legendre polynomials, i.e.,</p>
+<p><span class="math display">\[
+P_n^m(t) = P_n(t) \text{ for } m=0.
+\]</span></p>
+<p>When <span class="math inline">\(m&gt;0\)</span>, the order represents the index <span class="math inline">\(m\)</span> of the associated azimuthal Fourier coefficient in <span class="math inline">\(\sin m \varphi\)</span> and <span class="math inline">\(\cos m \varphi\)</span>.</p>
+<p>The magnitude of the <span class="math inline">\(P_n^m\)</span> strongly varies with <span class="math inline">\(m\)</span>, e.g.,</p>
+<p><span class="math display">\[
+\frac{P_4^1}{P_4^4} = \frac{1}{2016}.
+\]</span></p>
+</section>
+</section>
+<section id="schmidt-semi-normalized-legendre-functions" class="level2" data-number="22.5">
+<h2 data-number="22.5" class="anchored" data-anchor-id="schmidt-semi-normalized-legendre-functions"><span class="header-section-number">22.5</span> Schmidt semi-normalized Legendre functions</h2>
+<p>To better reflect the relative weight of the spherical harmonic coefficients, A. Schmidt has introduced a normalization, such that</p>
+<p><span class="math display">\[
+Y_n^m(t) =
+\begin{cases}
+P_n^m(t) &amp; m = 0 \\
+\sqrt{2 \frac{(n-m)!}{(n+m)!}} P_n^m(t) &amp; m&gt;0.
+\end{cases}
+\]</span></p>
+</section>
+<section id="summary" class="level2" data-number="22.6">
+<h2 data-number="22.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">22.6</span> Summary</h2>
+<p>The variations in latitude can be described by associated Legendre functions, while longitudinal variations can be represented by a Fourier series.</p>
+<p>We can therefore write</p>
+<p><span class="math display">\[
+f(\theta, \varphi) = \sum\limits_{n=0}^\infty \sum\limits_{m=0}^n \underbrace{(g_n^m \cos m \varphi + h_n^m \sin m \varphi)}_{\text{Fourier series in longitude}} \underbrace{P_n^m(\cos\theta)}_{\text{assoc. LF in latitude}}
+\]</span></p>
 
 
 </section>
