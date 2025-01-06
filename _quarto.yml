@@ -53,6 +53,7 @@ book:
         - legendre.qmd
         - legendre-intro.qmd
         - laplace-in-sph-coord.qmd
+        - igrf.qmd
     - part: "Boundary value problems"
     - summary.qmd
     - references.qmd

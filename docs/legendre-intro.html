@@ -382,6 +382,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./igrf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -437,7 +443,7 @@ window.Quarto = {
 </header>
 
 
-<div id="5e942ef3" class="cell" data-execution_count="1">
+<div id="57a5bf60" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -460,7 +466,7 @@ P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n} (x^2 - 1)^n.
 <p>It is straightforward to compute these polynomials with the help of <code>SymPy</code>.</p>
 <p>We implement the above equation and later substitute <span class="math inline">\(x=:\cos\theta\)</span>.</p>
 <p>First, we introduce symbolic variables.</p>
-<div id="77795c67" class="cell" data-execution_count="2">
+<div id="45f492b6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x, theta <span class="op">=</span> symbols(<span class="st">'x theta'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -468,7 +474,7 @@ P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n} (x^2 - 1)^n.
 </details>
 </div>
 <p>Next, we define a symbolic expression which provides (not evaluates) the formula of Rodrigues. Note that we introduce a symbolic differentiation (up to order <code>n</code>) by using the <code>Derivative</code> function. The differentiation can later be carried out explicitly by calling the method <code>.doit()</code>.</p>
-<div id="4407228d" class="cell" data-execution_count="3">
+<div id="f0cf02de" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Pn <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> ( <span class="dv">2</span><span class="op">**</span>n <span class="op">*</span> factorial(n)) <span class="op">*</span> Derivative((x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span>)<span class="op">**</span>n, (x, n))</span>
@@ -480,7 +486,7 @@ P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n} (x^2 - 1)^n.
 </div>
 <p>Let’s evaluate the Legendre polynomials <span class="math inline">\(P_n(\cos\theta)\)</span> for a small range of order <span class="math inline">\(n\)</span>, say <span class="math inline">\(0 \le n \le 5\)</span>.</p>
 <p>Note: - First, we iterate through a list of orders <code>n</code> (<code>for i in range(0,5):</code>) and substitute the desired value of <code>n</code> with <code>i</code> (<code>subs(n, i)</code>) - Second, with the fixed order of the derivative, we carry out the differentiation by calling <code>doit()</code> - Finally, we substitute <code>x</code> with <code>cos(theta)</code> and expand the expression.</p>
-<div id="f94da809" class="cell" data-execution_count="4">
+<div id="f60c2d9e" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">5</span>):</span>
@@ -504,7 +510,7 @@ P_n(x) = \frac{1}{2^n n!} \frac{\mathrm d^n}{\mathrm dx^n} (x^2 - 1)^n.
 </div>
 <p>We observe that Legendre polynomials are polynomials in <span class="math inline">\(\cos\theta\)</span>.</p>
 <p>Let’s visualize:</p>
-<div id="664d6950" class="cell" data-execution_count="5">
+<div id="94ff18c6" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">51</span>)</span>
@@ -554,7 +560,7 @@ f(r, \theta) = \frac{1}{r} \sum\limits_{n=0}^\infty\left(\frac{s}{r} \right)^n P
 <p>The polynomial coefficients in the binomial series are <em>binomial coefficients</em> given by <span class="math display">\[
 \left( -1/2 \atop n \right)
 \]</span> The binomial coefficients for <span class="math inline">\(0 \le n \le 4\)</span> are:</p>
-<div id="6ae254c1" class="cell" data-execution_count="6">
+<div id="de5cb8f9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>[binomial(Rational(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>), i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -566,7 +572,7 @@ f(r, \theta) = \frac{1}{r} \sum\limits_{n=0}^\infty\left(\frac{s}{r} \right)^n P
 <p>Next, we expand <span class="math display">\[
 f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}\cos\theta}}
 \]</span> into a series. To this end, we define a symbolic expression for <span class="math inline">\(f\)</span>.</p>
-<div id="a102b1af" class="cell" data-execution_count="7">
+<div id="5a3f03b8" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>r, s, b <span class="op">=</span> symbols(<span class="st">'r s b'</span>)</span>
@@ -578,7 +584,7 @@ f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}
 </div>
 </div>
 <p>We expand in a power series of <span class="math inline">\(b\)</span>:</p>
-<div id="5cd5b697" class="cell" data-execution_count="8">
+<div id="73e278cc" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>series(f, b, n<span class="op">=</span><span class="dv">3</span>).removeO().collect(s<span class="op">/</span>r).expand(basic<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -588,7 +594,7 @@ f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}
 </div>
 </div>
 <p>We repeat this step, but replace <code>b</code> to obtain the following result:</p>
-<div id="f34fe4af" class="cell" data-execution_count="9">
+<div id="12c6034b" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>series(f, b, n<span class="op">=</span><span class="dv">4</span>).removeO().subs(b, (s<span class="op">/</span>r)<span class="op">**</span><span class="dv">2</span> <span class="op">-</span><span class="dv">2</span><span class="op">*</span>s<span class="op">/</span>r<span class="op">*</span>cos(theta)).collect(cos(theta)).collect(s<span class="op">/</span>r).expand()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -601,7 +607,7 @@ f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}
 <p>The following cell forms the expression <span class="math display">\[
 \sum_{n=0}^\infty \left( -1/2 \atop n \right) b^n
 \]</span> (Note that we have omitted the leading term <span class="math inline">\(1/r\)</span>).</p>
-<div id="e095f4ea" class="cell" data-execution_count="10">
+<div id="fc0de254" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (s <span class="op">/</span> r)<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> s <span class="op">/</span> r <span class="op">*</span> cos(theta)</span>
@@ -616,7 +622,7 @@ f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}
 \sum_{n=0}^\infty \left( \frac{s}{r}\right)^n \, P_n(\cos\theta)
 \]</span></p>
 <p>(Note that the number of terms differs when we stop the summation for a finite value of <span class="math inline">\(n\)</span>.)</p>
-<div id="4df26184" class="cell" data-execution_count="11">
+<div id="d45f55b9" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ss <span class="op">=</span> <span class="dv">1</span></span>
@@ -632,7 +638,7 @@ f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}
 <h2 data-number="21.1" class="anchored" data-anchor-id="visualization-on-a-sphere"><span class="header-section-number">21.1</span> Visualization on a sphere</h2>
 <p>We illustrate the Legendre polynomials on the surface of a sphere, i.e., for <span class="math inline">\(r=const\)</span>. The potential function is a function of <span class="math inline">\(\theta\)</span> only. Hence, Legendre polynomials are referred to as <em>zonal spherical harmonics</em>.</p>
 <p>Let’s plot <span class="math inline">\(P_4(\cos\theta)\)</span>:</p>
-<div id="c92b693e" class="cell" data-execution_count="12">
+<div id="d881193b" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>deg2rad <span class="op">=</span> <span class="kw">lambda</span> x: x <span class="op">*</span> np.pi <span class="op">/</span> <span class="fl">180.0</span></span>
@@ -651,7 +657,7 @@ f(r, \theta) = \frac{1}{r \sqrt{1 + \left(\dfrac{s}{r}\right)^2 - 2 \dfrac{s}{r}
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>drm <span class="op">=</span> np.transpose(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="70cdc14e" class="cell" data-execution_count="13">
+<div id="2c9aee4b" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),tight_layout <span class="op">=</span> {<span class="st">'pad'</span>: <span class="dv">0</span>})</span>
