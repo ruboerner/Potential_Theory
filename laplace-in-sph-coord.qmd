@@ -130,7 +130,7 @@ and recognize that $f(x,y)$ is a homogeneous function of degree $2$.
 
 Now we make the following ansatz:
 
-We assume that $u$ can be defined as a homogeneous function $u_n$ of dgree $n$. This is a valid choice, since homogeneous functions are solutions to Laplace's equation.
+We assume that $u$ can be defined as a homogeneous function $u_n$ of degree $n$. This is a valid choice, since homogeneous functions are solutions to Laplace's equation.
 
 We set 
 $$
@@ -141,7 +141,7 @@ u_n(x,y,z) & = u_n(r \cos\phi \sin\theta, r \sin\phi \sin\theta, r \cos\theta) \
 \end{align}
 $$
 
-$u_n = r^n S_n(\phi, \theta)$ is a _spherical harmonic_.
+$u_n = r^n S_n(\phi, \theta)$ is called a _solid spherical harmonic_.
 
 Further,
 $$
@@ -172,6 +172,8 @@ n(n+1) S_n + \frac{1}{\sin \theta} \frac{\partial}{\partial \theta}
   \left( \sin \theta {\partial S_n \over \partial \theta} \right) 
 + \frac{1}{\sin^2 \theta} \frac{\partial^2 S_n}{\partial \varphi^2} = 0.
 $$
+
+Note that the equation has no dependence on $r$.
 
 ## Zonal spherical harmonics
 
@@ -232,7 +234,7 @@ and
 $$
 r^{-(n+1)}S_n = r^{-(n+1)}P_{n}(\cos \theta)
 $$
-are spherical harmonics.
+are solid spherical harmonics. Note that we have arrived at these two equations by replacing $n$ with $-(n+1)$.
 
 ## The angular component of the Laplace equation
 

@@ -1,3 +1,81 @@
 ---
-title: "IGRF"
+title: "Mathematical description of the Earth's global magnetic field"
 ---
+
+The goal of this section is to describe the main geomagetic field $\vb B(r, \theta, \varphi, t)$ produced primarily by internal sources inside Earth's core.
+
+The description in terms of a potential is valid on and above Earth's surface, where the main magnetic field can be represented by the gradient of a scalar function, i.e., $\vb B = -\grad V$.
+
+The potential function $V(r, \theta, \varphi, t)$ is represented as a finite series expansion in terms of spherical harmonic coefficients, $g_n^m$ and $h_n^m$, also known as _Gauss coefficients_:
+
+$$
+V(r, \theta, \varphi, t) = a \sum\limits_{n=1}^N \sum\limits_{m=0}^n \left( \frac{a}{r} \right)^{n+1}
+\left[
+g_n^m(t) \cos m \varphi + h_n^m(t) \sin m \varphi
+\right]
+P_n^m(\cos\theta).
+$$
+
+Here, $r, \theta$ and $\varphi$ refer to coordinates in a geocentric spherical coordinate system with $r$ being the radial distance from the center of the Earth, and $\theta, \varphi$ being geocentric co-latitude and longitude, resp.
+
+As reference radius, the approximate mean radius of the Earth of $a=6371.2$ km is chosen. The factor $a^{n+2}$ is chosen so that the Gauss coefficients will have units of magnetic flux density.
+
+The $P_n^m(\cos\theta)$ are Schmidt semi-normalized associated Legendre functions of degree $n$ and order $m$.
+
+The parameter $N$ specifies the maximum spherical harmonic degree of expansion.
+
+The Gauss coefficients change in time.
+
+
+## The geomagnetic components
+
+The magnetic field on or above the Earth is usually described in terms of its Cartesian components $X, Y$ and $Z$.
+
+The coordinate system is oriented such that $X$ is pointing towards true magnetic North, $Y$ is pointing eastwards, $Z$ is pointing downwards.
+
+The projection of the magnetic field line onto the horizontal plane tangential to the Earth's surface is called $H$.
+The angle between $H$ and true North is referred to as _magnetic declination_.
+
+![](images/magnetic_components.excalidraw.svg)
+
+The geomagnetic field of internal origin is
+
+$$
+\vb B(r, \theta, \varphi) = -\pdv{V}{r}\vb e_r - \frac{1}{r}\pdv{V}{\theta}\vb e_\theta
+-\frac{1}{r \sin\theta} \pdv{V}{\varphi}\vb e_\varphi,
+$$
+
+in which $\vb e_r$, $\vb e_\theta$, $\vb e_\varphi$ are unit vectors in spherical coordinates.
+
+The following table shows the relation between the field components in Cartesian and spherical coordinates:
+
+| $\mathbf B(x,y,z)=$ | $\mathbf B(r, \varphi, \theta)=$ | $-\nabla V=$                                                    |
+| ------------------- | ----------------------------- | --------------------------------------------------------------- |
+| $X \mathbf e_x$     | $-B_\theta \mathbf e_\theta$  | $+\dfrac{1}{r}\dfrac{\partial V}{\partial \theta}\mathbf e_\theta$         |
+| $Y \mathbf e_y$     | $+B_\varphi \mathbf e_\varphi$      | $-\dfrac{1}{r \sin\theta}\dfrac{\partial V}{\partial \varphi}\mathbf e_\varphi$ |
+| $Z \mathbf e_z$     | $-B_r \mathbf e_r$            | $+\dfrac{\partial V}{\partial r}\mathbf e_r$                     |
+
+For the components in spherical coordinates we find
+
+$$
+B_r = -Z = -\frac{\partial V}{\partial r} =+\sum_{n=1}^{\infty} \sum_{m=0}^{n}(n+1)
+\left(
+\frac{a}{r}\right)^{n+2}
+\left[g_{n}^{m} \cos m \varphi+h_{n}^{m} \sin m \varphi\right] P_{n}^{m}(\cos \theta)
+$$
+
+$$
+B_\theta = -X = -\frac{1}{r}\dfrac{\partial V}{\partial \theta} = -\sum_{n=1}^{\infty} \sum_{m=0}^{n}\left( \frac{a}{r} \right)^{n+2} \left[g_{n}^{m} \cos m \varphi+h_{n}^{m} \sin m \varphi\right] \frac{\partial P_{n}^{m}(\cos \theta)}{\partial \theta}
+$$
+
+$$
+B_\varphi = +Y =  -\frac{1}{r \sin\theta}\dfrac{\partial V}{\partial \varphi}
+=-\sum_{n=1}^{\infty} \sum_{m=0}^{n}\left( \frac{a}{r} \right)^{n+2}\left[-g_{n}^{m} \sin m \varphi+h_{n}^{m} \cos m \varphi\right] \frac{1}{\sin \theta} P_{n}^{m}(\cos \theta)
+$$
+
+## The International Geomagnetic Reference Field (IGRF)
+
+Link to the Gauss coefficients and general information about the 14th generation of the IGRF is [here](https://www.ncei.noaa.gov/products/international-geomagnetic-reference-field).
+
+The IGRF provides Gauss coefficients and their respective time derivatives (in units of nT and nT/year, resp.) for a truncated spherical harmonic expansion up to degree $N=13$.
+The IGRF is valid for a 5-year interval referred to as epcoh.

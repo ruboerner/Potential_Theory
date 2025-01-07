@@ -351,7 +351,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./igrf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
   </div>
 </li>
       </ul>
@@ -536,7 +536,7 @@ f(tx, ty) = (tx)^2 + (ty)^2 = t^2(x^2 + y^2)
 </div>
 </div>
 <p>Now we make the following ansatz:</p>
-<p>We assume that <span class="math inline">\(u\)</span> can be defined as a homogeneous function <span class="math inline">\(u_n\)</span> of dgree <span class="math inline">\(n\)</span>. This is a valid choice, since homogeneous functions are solutions to Laplace’s equation.</p>
+<p>We assume that <span class="math inline">\(u\)</span> can be defined as a homogeneous function <span class="math inline">\(u_n\)</span> of degree <span class="math inline">\(n\)</span>. This is a valid choice, since homogeneous functions are solutions to Laplace’s equation.</p>
 <p>We set <span class="math display">\[
 \begin{align}
 u_n(x,y,z) &amp; = u_n(r \cos\phi \sin\theta, r \sin\phi \sin\theta, r \cos\theta) \\
@@ -544,7 +544,7 @@ u_n(x,y,z) &amp; = u_n(r \cos\phi \sin\theta, r \sin\phi \sin\theta, r \cos\thet
 &amp; = r^n S_n(\phi, \theta)
 \end{align}
 \]</span></p>
-<p><span class="math inline">\(u_n = r^n S_n(\phi, \theta)\)</span> is a <em>spherical harmonic</em>.</p>
+<p><span class="math inline">\(u_n = r^n S_n(\phi, \theta)\)</span> is called a <em>solid spherical harmonic</em>.</p>
 <p>Further, <span class="math display">\[
 \begin{align}
 2r  \frac{ \partial u_{n} }{ \partial r }
@@ -567,6 +567,7 @@ n(n+1) S_n + \frac{1}{\sin \theta} \frac{\partial}{\partial \theta}
   \left( \sin \theta {\partial S_n \over \partial \theta} \right)
 + \frac{1}{\sin^2 \theta} \frac{\partial^2 S_n}{\partial \varphi^2} = 0.
 \]</span></p>
+<p>Note that the equation has no dependence on <span class="math inline">\(r\)</span>.</p>
 </section>
 <section id="zonal-spherical-harmonics" class="level2" data-number="22.3">
 <h2 data-number="22.3" class="anchored" data-anchor-id="zonal-spherical-harmonics"><span class="header-section-number">22.3</span> Zonal spherical harmonics</h2>
@@ -610,7 +611,7 @@ S_n(\theta) &amp; = P_n(\cos\theta) = P_n(t)
 r^{n} S_{n}(\theta) = r^{n} P_{n}(\cos \theta)
 \]</span> and <span class="math display">\[
 r^{-(n+1)}S_n = r^{-(n+1)}P_{n}(\cos \theta)
-\]</span> are spherical harmonics.</p>
+\]</span> are solid spherical harmonics. Note that we have arrived at these two equations by replacing <span class="math inline">\(n\)</span> with <span class="math inline">\(-(n+1)\)</span>.</p>
 </section>
 <section id="the-angular-component-of-the-laplace-equation" class="level2" data-number="22.4">
 <h2 data-number="22.4" class="anchored" data-anchor-id="the-angular-component-of-the-laplace-equation"><span class="header-section-number">22.4</span> The angular component of the Laplace equation</h2>
@@ -1132,8 +1133,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./igrf.html" class="pagination-link" aria-label="IGRF">
-        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./igrf.html" class="pagination-link" aria-label="Mathematical description of the Earth's global magnetic field">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

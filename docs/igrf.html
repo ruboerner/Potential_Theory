@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>23&nbsp; IGRF – Theory of Potential Field Methods in Geophysics</title>
+<title>23&nbsp; Mathematical description of the Earth’s global magnetic field – Theory of Potential Field Methods in Geophysics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spherical-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./igrf.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spherical-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./igrf.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -351,7 +351,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./igrf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
   </div>
 </li>
       </ul>
@@ -377,15 +377,22 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-geomagnetic-components" id="toc-the-geomagnetic-components" class="nav-link active" data-scroll-target="#the-geomagnetic-components"><span class="header-section-number">23.1</span> The geomagnetic components</a></li>
+  <li><a href="#the-international-geomagnetic-reference-field-igrf" id="toc-the-international-geomagnetic-reference-field-igrf" class="nav-link" data-scroll-target="#the-international-geomagnetic-reference-field-igrf"><span class="header-section-number">23.2</span> The International Geomagnetic Reference Field (IGRF)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spherical-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./igrf.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spherical-intro.html">Spherical harmonics</a></li><li class="breadcrumb-item"><a href="./igrf.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">IGRF</span></h1>
+<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></h1>
 </div>
 
 
@@ -402,8 +409,87 @@ window.Quarto = {
 </header>
 
 
+<p>The goal of this section is to describe the main geomagetic field <span class="math inline">\(\vb B(r, \theta, \varphi, t)\)</span> produced primarily by internal sources inside Earth’s core.</p>
+<p>The description in terms of a potential is valid on and above Earth’s surface, where the main magnetic field can be represented by the gradient of a scalar function, i.e., <span class="math inline">\(\vb B = -\grad V\)</span>.</p>
+<p>The potential function <span class="math inline">\(V(r, \theta, \varphi, t)\)</span> is represented as a finite series expansion in terms of spherical harmonic coefficients, <span class="math inline">\(g_n^m\)</span> and <span class="math inline">\(h_n^m\)</span>, also known as <em>Gauss coefficients</em>:</p>
+<p><span class="math display">\[
+V(r, \theta, \varphi, t) = a \sum\limits_{n=1}^N \sum\limits_{m=0}^n \left( \frac{a}{r} \right)^{n+1}
+\left[
+g_n^m(t) \cos m \varphi + h_n^m(t) \sin m \varphi
+\right]
+P_n^m(\cos\theta).
+\]</span></p>
+<p>Here, <span class="math inline">\(r, \theta\)</span> and <span class="math inline">\(\varphi\)</span> refer to coordinates in a geocentric spherical coordinate system with <span class="math inline">\(r\)</span> being the radial distance from the center of the Earth, and <span class="math inline">\(\theta, \varphi\)</span> being geocentric co-latitude and longitude, resp.</p>
+<p>As reference radius, the approximate mean radius of the Earth of <span class="math inline">\(a=6371.2\)</span> km is chosen. The factor <span class="math inline">\(a^{n+2}\)</span> is chosen so that the Gauss coefficients will have units of magnetic flux density.</p>
+<p>The <span class="math inline">\(P_n^m(\cos\theta)\)</span> are Schmidt semi-normalized associated Legendre functions of degree <span class="math inline">\(n\)</span> and order <span class="math inline">\(m\)</span>.</p>
+<p>The parameter <span class="math inline">\(N\)</span> specifies the maximum spherical harmonic degree of expansion.</p>
+<p>The Gauss coefficients change in time.</p>
+<section id="the-geomagnetic-components" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="the-geomagnetic-components"><span class="header-section-number">23.1</span> The geomagnetic components</h2>
+<p>The magnetic field on or above the Earth is usually described in terms of its Cartesian components <span class="math inline">\(X, Y\)</span> and <span class="math inline">\(Z\)</span>.</p>
+<p>The coordinate system is oriented such that <span class="math inline">\(X\)</span> is pointing towards true magnetic North, <span class="math inline">\(Y\)</span> is pointing eastwards, <span class="math inline">\(Z\)</span> is pointing downwards.</p>
+<p>The projection of the magnetic field line onto the horizontal plane tangential to the Earth’s surface is called <span class="math inline">\(H\)</span>. The angle between <span class="math inline">\(H\)</span> and true North is referred to as <em>magnetic declination</em>.</p>
+<p><img src="images/magnetic_components.excalidraw.svg" class="img-fluid"></p>
+<p>The geomagnetic field of internal origin is</p>
+<p><span class="math display">\[
+\vb B(r, \theta, \varphi) = -\pdv{V}{r}\vb e_r - \frac{1}{r}\pdv{V}{\theta}\vb e_\theta
+-\frac{1}{r \sin\theta} \pdv{V}{\varphi}\vb e_\varphi,
+\]</span></p>
+<p>in which <span class="math inline">\(\vb e_r\)</span>, <span class="math inline">\(\vb e_\theta\)</span>, <span class="math inline">\(\vb e_\varphi\)</span> are unit vectors in spherical coordinates.</p>
+<p>The following table shows the relation between the field components in Cartesian and spherical coordinates:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\mathbf B(x,y,z)=\)</span></th>
+<th><span class="math inline">\(\mathbf B(r, \varphi, \theta)=\)</span></th>
+<th><span class="math inline">\(-\nabla V=\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X \mathbf e_x\)</span></td>
+<td><span class="math inline">\(-B_\theta \mathbf e_\theta\)</span></td>
+<td><span class="math inline">\(+\dfrac{1}{r}\dfrac{\partial V}{\partial \theta}\mathbf e_\theta\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Y \mathbf e_y\)</span></td>
+<td><span class="math inline">\(+B_\varphi \mathbf e_\varphi\)</span></td>
+<td><span class="math inline">\(-\dfrac{1}{r \sin\theta}\dfrac{\partial V}{\partial \varphi}\mathbf e_\varphi\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Z \mathbf e_z\)</span></td>
+<td><span class="math inline">\(-B_r \mathbf e_r\)</span></td>
+<td><span class="math inline">\(+\dfrac{\partial V}{\partial r}\mathbf e_r\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For the components in spherical coordinates we find</p>
+<p><span class="math display">\[
+B_r = -Z = -\frac{\partial V}{\partial r} =+\sum_{n=1}^{\infty} \sum_{m=0}^{n}(n+1)
+\left(
+\frac{a}{r}\right)^{n+2}
+\left[g_{n}^{m} \cos m \varphi+h_{n}^{m} \sin m \varphi\right] P_{n}^{m}(\cos \theta)
+\]</span></p>
+<p><span class="math display">\[
+B_\theta = -X = -\frac{1}{r}\dfrac{\partial V}{\partial \theta} = -\sum_{n=1}^{\infty} \sum_{m=0}^{n}\left( \frac{a}{r} \right)^{n+2} \left[g_{n}^{m} \cos m \varphi+h_{n}^{m} \sin m \varphi\right] \frac{\partial P_{n}^{m}(\cos \theta)}{\partial \theta}
+\]</span></p>
+<p><span class="math display">\[
+B_\varphi = +Y =  -\frac{1}{r \sin\theta}\dfrac{\partial V}{\partial \varphi}
+=-\sum_{n=1}^{\infty} \sum_{m=0}^{n}\left( \frac{a}{r} \right)^{n+2}\left[-g_{n}^{m} \sin m \varphi+h_{n}^{m} \cos m \varphi\right] \frac{1}{\sin \theta} P_{n}^{m}(\cos \theta)
+\]</span></p>
+</section>
+<section id="the-international-geomagnetic-reference-field-igrf" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="the-international-geomagnetic-reference-field-igrf"><span class="header-section-number">23.2</span> The International Geomagnetic Reference Field (IGRF)</h2>
+<p>Link to the Gauss coefficients and general information about the 14th generation of the IGRF is <a href="https://www.ncei.noaa.gov/products/international-geomagnetic-reference-field">here</a>.</p>
+<p>The IGRF provides Gauss coefficients and their respective time derivatives (in units of nT and nT/year, resp.) for a truncated spherical harmonic expansion up to degree <span class="math inline">\(N=13\)</span>. The IGRF is valid for a 5-year interval referred to as epcoh.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
