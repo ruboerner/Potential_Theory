@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -384,6 +384,8 @@ window.Quarto = {
   <ul>
   <li><a href="#the-geomagnetic-components" id="toc-the-geomagnetic-components" class="nav-link active" data-scroll-target="#the-geomagnetic-components"><span class="header-section-number">23.1</span> The geomagnetic components</a></li>
   <li><a href="#the-international-geomagnetic-reference-field-igrf" id="toc-the-international-geomagnetic-reference-field-igrf" class="nav-link" data-scroll-target="#the-international-geomagnetic-reference-field-igrf"><span class="header-section-number">23.2</span> The International Geomagnetic Reference Field (IGRF)</a></li>
+  <li><a href="#the-dipole-field" id="toc-the-dipole-field" class="nav-link" data-scroll-target="#the-dipole-field"><span class="header-section-number">23.3</span> The dipole field</a></li>
+  <li><a href="#estimation-of-the-gauss-coefficients" id="toc-estimation-of-the-gauss-coefficients" class="nav-link" data-scroll-target="#estimation-of-the-gauss-coefficients"><span class="header-section-number">23.4</span> Estimation of the Gauss coefficients</a></li>
   </ul>
 </nav>
     </div>
@@ -409,16 +411,22 @@ window.Quarto = {
 </header>
 
 
-<p>The goal of this section is to describe the main geomagetic field <span class="math inline">\(\vb B(r, \theta, \varphi, t)\)</span> produced primarily by internal sources inside Earth’s core.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/totalfield-globe-tilted.gif" class="img-fluid figure-img"></p>
+<figcaption>Earth’s total magnetic field intensity at the WGS84 surface for Jan 1st, 2025. Contour lines in nT.</figcaption>
+</figure>
+</div>
+<p>The goal of this section is to describe the main geomagnetic field <span class="math inline">\(\vb B(r, \theta, \varphi, t)\)</span> produced primarily by internal sources inside Earth’s core.</p>
 <p>The description in terms of a potential is valid on and above Earth’s surface, where the main magnetic field can be represented by the gradient of a scalar function, i.e., <span class="math inline">\(\vb B = -\grad V\)</span>.</p>
 <p>The potential function <span class="math inline">\(V(r, \theta, \varphi, t)\)</span> is represented as a finite series expansion in terms of spherical harmonic coefficients, <span class="math inline">\(g_n^m\)</span> and <span class="math inline">\(h_n^m\)</span>, also known as <em>Gauss coefficients</em>:</p>
-<p><span class="math display">\[
+<p><span id="eq-igrf-potential"><span class="math display">\[
 V(r, \theta, \varphi, t) = a \sum\limits_{n=1}^N \sum\limits_{m=0}^n \left( \frac{a}{r} \right)^{n+1}
 \left[
 g_n^m(t) \cos m \varphi + h_n^m(t) \sin m \varphi
 \right]
 P_n^m(\cos\theta).
-\]</span></p>
+\tag{23.1}\]</span></span></p>
 <p>Here, <span class="math inline">\(r, \theta\)</span> and <span class="math inline">\(\varphi\)</span> refer to coordinates in a geocentric spherical coordinate system with <span class="math inline">\(r\)</span> being the radial distance from the center of the Earth, and <span class="math inline">\(\theta, \varphi\)</span> being geocentric co-latitude and longitude, resp.</p>
 <p>As reference radius, the approximate mean radius of the Earth of <span class="math inline">\(a=6371.2\)</span> km is chosen. The factor <span class="math inline">\(a^{n+2}\)</span> is chosen so that the Gauss coefficients will have units of magnetic flux density.</p>
 <p>The <span class="math inline">\(P_n^m(\cos\theta)\)</span> are Schmidt semi-normalized associated Legendre functions of degree <span class="math inline">\(n\)</span> and order <span class="math inline">\(m\)</span>.</p>
@@ -486,7 +494,107 @@ B_\varphi = +Y =  -\frac{1}{r \sin\theta}\dfrac{\partial V}{\partial \varphi}
 <section id="the-international-geomagnetic-reference-field-igrf" class="level2" data-number="23.2">
 <h2 data-number="23.2" class="anchored" data-anchor-id="the-international-geomagnetic-reference-field-igrf"><span class="header-section-number">23.2</span> The International Geomagnetic Reference Field (IGRF)</h2>
 <p>Link to the Gauss coefficients and general information about the 14th generation of the IGRF is <a href="https://www.ncei.noaa.gov/products/international-geomagnetic-reference-field">here</a>.</p>
-<p>The IGRF provides Gauss coefficients and their respective time derivatives (in units of nT and nT/year, resp.) for a truncated spherical harmonic expansion up to degree <span class="math inline">\(N=13\)</span>. The IGRF is valid for a 5-year interval referred to as epcoh.</p>
+<p>The IGRF provides Gauss coefficients <span class="math inline">\(g_n^m, h_n^m\)</span> and their respective time derivatives <span class="math inline">\(\dot{g}_n^m, \dot{h}_n^m\)</span> (in units of nT and nT/year, resp.) for a truncated spherical harmonic expansion up to degree <span class="math inline">\(N=13\)</span>. The IGRF is valid for a 5-year interval referred to as epoch.</p>
+<p>The Gauss coefficients have a linear time dependency valid for one epoch. In the case of IGRF-14, the epoch starts with Jan 1st, 2025, and ends Jan 1st, 2030. Starting from <span class="math inline">\(T_0=2025\)</span>, we can extrapolate</p>
+<p><span class="math display">\[
+g_n^m(t) = g_n^m(T_0) + \dot{g}_n^m(T_0)(t - T_0)
+\]</span> and <span class="math display">\[
+h_n^m(t) = h_n^m(T_0) + \dot{h}_n^m(T_0)(t - T_0).
+\]</span></p>
+</section>
+<section id="the-dipole-field" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="the-dipole-field"><span class="header-section-number">23.3</span> The dipole field</h2>
+<p>The first three Gauss coefficients <span class="math inline">\(g_1^0, g_1^1, h_1^1\)</span> can be used to calculate the contribution to the dipole field of the Earth.</p>
+<p>From the IGRF-14, we get</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>g/h</th>
+<th>n</th>
+<th>m</th>
+<th>coeff. in nT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>g</td>
+<td>1</td>
+<td>0</td>
+<td>-29350.0</td>
+</tr>
+<tr class="even">
+<td>g</td>
+<td>1</td>
+<td>1</td>
+<td>-1410.3</td>
+</tr>
+<tr class="odd">
+<td>h</td>
+<td>1</td>
+<td>1</td>
+<td>4545.5</td>
+</tr>
+</tbody>
+</table>
+<p>We see from <a href="#eq-igrf-potential" class="quarto-xref"><span>23.1</span></a>, that for <span class="math inline">\(n=1\)</span> we can write the dipole potential as</p>
+<p><span class="math display">\[
+V^D(r, \theta, \varphi) = \frac{a^3}{r^2} \left[
+    g_1^0 P_1^0(\cos\theta) + (g_1^1 \cos\varphi + h_1^1 \sin\varphi)P_1^1(\cos\theta)
+\right].
+\]</span></p>
+<p>Note that</p>
+<p><span class="math display">\[
+P_1^0(\cos\theta) = \cos\theta, \quad P_1^1(\cos\theta) = \sin\theta,
+\]</span></p>
+<p>which yields</p>
+<p><span class="math display">\[
+V_D = \frac{a^3}{r^2} \left[
+    g_1^0 \cos\theta + g_1^1 \cos\varphi \sin\theta + h_1^1 \sin\varphi \sin\theta
+    \right].
+\]</span></p>
+<p>Change from spherical to Cartesian coordinates gives</p>
+<p><span class="math display">\[
+V^D = \frac{a^3}{r^2} \left[  g_1^0 \frac{z}{r} + g_1^1 \frac{x}{r} + h_1^1 \frac{y}{r}
+\right].
+\]</span></p>
+<p>We compare this result with the well-known potential for a magnetic dipole with dipole moment <span class="math inline">\(\vb m = [m_x, m_y, m_z]^\top\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+V &amp; = \frac{\mu_0}{4 \pi} \frac{\vb m \cdot \vb e_r}{r^2} \\
+&amp; = \frac{\mu_0}{4 \pi} \left[  m_x \frac{x}{r} + m_y \frac{y}{r} + m_z \frac{z}{r} \right]
+\end{align}
+\]</span></p>
+<p>We identify, e.g., that</p>
+<p><span class="math display">\[
+\frac{a^3}{r^2}g_1^0 = \frac{\mu_0}{4 \pi} m_z,
+\]</span></p>
+<p>which enables us to calculate the magnetic dipole moment of the Earth in units of A<span class="math inline">\(\cdot\)</span>m<span class="math inline">\(^2\)</span> component-wise:</p>
+<p><span class="math display">\[
+\begin{align}
+m_x &amp; = \frac{4 \pi}{\mu_0} a^3 g_1^1 =  -0.37 \times 10^{22} \\
+m_x &amp; = \frac{4 \pi}{\mu_0} a^3 g_1^1 = 1.18 \times 10^{22} \\
+m_x &amp; = \frac{4 \pi}{\mu_0} a^3 g_1^1 = -7.59 \times 10^{22}
+\end{align}
+\]</span></p>
+<p>The magnititude of the dipole moment is <span class="math inline">\(m = 7.69 \times 10^{22}\)</span> A<span class="math inline">\(\cdot\)</span>m<span class="math inline">\(^2\)</span>.</p>
+<p>From the components of the dipole moment we can infer the axis of the dipole in terms of the angles of orientation.</p>
+<p>We get</p>
+<p><span class="math display">\[
+\theta_S = \arccos\frac{m_z}{m} = 170.7\textdegree
+\]</span> and <span class="math display">\[
+\varphi_S = \arccos\frac{m_x}{\sqrt{m_x^2 + m_y^2}} = 107.4\textdegree.
+\]</span></p>
+<p>This refers to the point where the dipole axis intersects the surface of the Earth ain the southern hemisphere. In the northern hemisphere, we have</p>
+<p><span class="math display">\[
+\theta_N = 9.3\textdegree \text{ and } \varphi_N = 72.6\textdegree.
+\]</span></p>
+<p>We refer to these points as the <em>geomagnetic pole</em>.</p>
+<p>The <em>magnetic poles</em> are located at the points where the observed magnetic field is purely vertical with respect to the surface of the Earth, i.e., where we observe <span class="math inline">\(H=0\)</span> and an inclination angle of 90<span class="math inline">\(\textdegree\)</span>.</p>
+</section>
+<section id="estimation-of-the-gauss-coefficients" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="estimation-of-the-gauss-coefficients"><span class="header-section-number">23.4</span> Estimation of the Gauss coefficients</h2>
+<p>In the spherical harmonics expansion <a href="#eq-igrf-potential" class="quarto-xref"><span>23.1</span></a>, the Gauss coefficients appear as linear coefficients.</p>
+<p>Given suffiently many observations of the field components, the coefficients can be estimated using the Method of Least Squares.</p>
 
 
 </section>

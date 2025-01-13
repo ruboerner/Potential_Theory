@@ -2,7 +2,9 @@
 title: "Mathematical description of the Earth's global magnetic field"
 ---
 
-The goal of this section is to describe the main geomagetic field $\vb B(r, \theta, \varphi, t)$ produced primarily by internal sources inside Earth's core.
+![Earth's total magnetic field intensity at the WGS84 surface for Jan 1st, 2025. Contour lines in nT.](images/totalfield-globe-tilted.gif)
+
+The goal of this section is to describe the main geomagnetic field $\vb B(r, \theta, \varphi, t)$ produced primarily by internal sources inside Earth's core.
 
 The description in terms of a potential is valid on and above Earth's surface, where the main magnetic field can be represented by the gradient of a scalar function, i.e., $\vb B = -\grad V$.
 
@@ -14,7 +16,7 @@ V(r, \theta, \varphi, t) = a \sum\limits_{n=1}^N \sum\limits_{m=0}^n \left( \fra
 g_n^m(t) \cos m \varphi + h_n^m(t) \sin m \varphi
 \right]
 P_n^m(\cos\theta).
-$$
+$$ {#eq-igrf-potential}
 
 Here, $r, \theta$ and $\varphi$ refer to coordinates in a geocentric spherical coordinate system with $r$ being the radial distance from the center of the Earth, and $\theta, \varphi$ being geocentric co-latitude and longitude, resp.
 
@@ -77,5 +79,113 @@ $$
 
 Link to the Gauss coefficients and general information about the 14th generation of the IGRF is [here](https://www.ncei.noaa.gov/products/international-geomagnetic-reference-field).
 
-The IGRF provides Gauss coefficients and their respective time derivatives (in units of nT and nT/year, resp.) for a truncated spherical harmonic expansion up to degree $N=13$.
-The IGRF is valid for a 5-year interval referred to as epcoh.
+The IGRF provides Gauss coefficients $g_n^m, h_n^m$ and their respective time derivatives $\dot{g}_n^m, \dot{h}_n^m$ (in units of nT and nT/year, resp.) for a truncated spherical harmonic expansion up to degree $N=13$.
+The IGRF is valid for a 5-year interval referred to as epoch.
+
+The Gauss coefficients have a linear time dependency valid for one epoch. In the case of IGRF-14, the epoch starts with Jan 1st, 2025, and ends Jan 1st, 2030.
+Starting from $T_0=2025$, we can extrapolate
+
+$$
+g_n^m(t) = g_n^m(T_0) + \dot{g}_n^m(T_0)(t - T_0)
+$$
+and
+$$
+h_n^m(t) = h_n^m(T_0) + \dot{h}_n^m(T_0)(t - T_0).
+$$
+
+## The dipole field
+
+The first three Gauss coefficients $g_1^0, g_1^1, h_1^1$ can be used to calculate the contribution to the dipole field of the Earth.
+
+From the IGRF-14, we get
+
+| g/h | n | m | coeff. in nT |
+|---|---|---|----------------|
+| g | 1 | 0 | -29350.0      |
+| g | 1 | 1 | -1410.3        |
+| h | 1 | 1 | 4545.5         |
+
+We see from @eq-igrf-potential, that for $n=1$ we can write the dipole potential as
+
+$$
+V^D(r, \theta, \varphi) = \frac{a^3}{r^2} \left[ 
+    g_1^0 P_1^0(\cos\theta) + (g_1^1 \cos\varphi + h_1^1 \sin\varphi)P_1^1(\cos\theta)
+\right].
+$$
+
+Note that
+
+$$
+P_1^0(\cos\theta) = \cos\theta, \quad P_1^1(\cos\theta) = \sin\theta,
+$$
+
+which yields
+
+$$
+V_D = \frac{a^3}{r^2} \left[ 
+    g_1^0 \cos\theta + g_1^1 \cos\varphi \sin\theta + h_1^1 \sin\varphi \sin\theta
+    \right].
+$$
+
+Change from spherical to Cartesian coordinates gives
+
+$$
+V^D = \frac{a^3}{r^2} \left[  g_1^0 \frac{z}{r} + g_1^1 \frac{x}{r} + h_1^1 \frac{y}{r}
+\right].
+$$
+
+We compare this result with the well-known potential for a magnetic dipole with dipole moment $\vb m = [m_x, m_y, m_z]^\top$:
+
+$$
+\begin{align}
+V & = \frac{\mu_0}{4 \pi} \frac{\vb m \cdot \vb e_r}{r^2} \\
+& = \frac{\mu_0}{4 \pi} \left[  m_x \frac{x}{r} + m_y \frac{y}{r} + m_z \frac{z}{r} \right]
+\end{align}
+$$
+
+We identify, e.g., that
+
+$$
+\frac{a^3}{r^2}g_1^0 = \frac{\mu_0}{4 \pi} m_z,
+$$
+
+which enables us to calculate the magnetic dipole moment of the Earth in units of A$\cdot$m$^2$ component-wise:
+
+$$
+\begin{align}
+m_x & = \frac{4 \pi}{\mu_0} a^3 g_1^1 =  -0.37 \times 10^{22} \\
+m_x & = \frac{4 \pi}{\mu_0} a^3 g_1^1 = 1.18 \times 10^{22} \\
+m_x & = \frac{4 \pi}{\mu_0} a^3 g_1^1 = -7.59 \times 10^{22}
+\end{align}
+$$
+
+The magnititude of the dipole moment is $m = 7.69 \times 10^{22}$  A$\cdot$m$^2$.
+
+From the components of the dipole moment we can infer the axis of the dipole in terms of the angles of orientation.
+
+We get
+
+$$
+\theta_S = \arccos\frac{m_z}{m} = 170.7\textdegree
+$$
+and
+$$
+\varphi_S = \arccos\frac{m_x}{\sqrt{m_x^2 + m_y^2}} = 107.4\textdegree.
+$$
+
+This refers to the point where the dipole axis intersects the surface of the Earth ain the southern hemisphere.
+In the northern hemisphere, we have
+
+$$
+\theta_N = 9.3\textdegree \text{ and } \varphi_N = 72.6\textdegree. 
+$$
+
+We refer to these points as the _geomagnetic pole_.
+
+The _magnetic poles_ are located at the points where the observed magnetic field is purely vertical with respect to the surface of the Earth, i.e., where we observe $H=0$ and an inclination angle of 90$\textdegree$.
+
+## Estimation of the Gauss coefficients
+
+In the spherical harmonics expansion @eq-igrf-potential, the Gauss coefficients appear as linear coefficients.
+
+Given suffiently many observations of the field components, the coefficients can be estimated using the Method of Least Squares.
