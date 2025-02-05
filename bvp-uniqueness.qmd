@@ -1,0 +1,97 @@
+---
+title: "The uniqueness theorem"
+---
+
+The uniqueness theorem for Poisson's equation states that, for a large class of boundary conditions, the equation may have many solutions, but the gradient of every solution is the same. In the case of electrostatics, this means that there is a unique electric field derived from a potential function satisfying Poisson's equation under the boundary conditions.
+
+## Proof
+
+Consider the general case of Poisson's equation in electrostatics over some region $\Omega$ with boundary $\partial\Omega$:
+
+$$
+-\Delta \varphi = \frac{\rho_E}{\varepsilon_0}
+$$
+
+Suppose that there are two solutions, $\varphi_1$ and $\varphi_2$. Then
+
+$$
+\begin{align}
+-\Delta \varphi_1 = \frac{\rho_E}{\varepsilon_0} \\
+-\Delta \varphi_2 = \frac{\rho_E}{\varepsilon_0}
+\end{align}
+$$
+
+It follows that $\varphi = \varphi_2 - \varphi_1$ is a solution of the Laplace equation.
+
+
+Subtracting these equations gives
+
+$$
+\Delta \varphi = \Delta \varphi_1 - \Delta \varphi_2 = 0.
+$$
+
+We know that 
+
+$$
+\div (\varphi \grad \varphi) = \grad\varphi\cdot\grad\varphi + \varphi \Delta \varphi.
+$$
+
+Since $\Delta\varphi=0$, we find that
+
+$$
+\div (\varphi \grad \varphi) = \grad\varphi\cdot\grad\varphi
+$$
+
+Integrate over $\Omega$:
+$$
+\int_\Omega 
+\div (\varphi \grad \varphi) \,\dd V = \int_\Omega (\grad\varphi)^2\,\dd V
+$$
+
+
+We rewrite using the divergence theorem as
+
+$$
+\int_{\partial\Omega} 
+(\varphi \grad \varphi) \cdot \dd {\vb S} = \int_\Omega \grad\varphi\cdot\grad\varphi\,\dd V
+$$ {#eq-proof_div}
+
+We now consider the boundary conditions.
+
+First, consider a _Dirichlet boundary_ condition as $\varphi=0$ on the boundary of the region.
+
+Since this condition is satisfied on the boundary, i.e., on $\partial\Omega$, the left-hand is zero.
+
+We find that 
+
+$$
+\int_\Omega (\grad\varphi)^2\,\dd V = 
+\int_\Omega \grad\varphi\cdot\grad\varphi\,\dd V = 0
+$$
+
+It follows that $\grad\varphi = 0$ at all points in $\Omega$.
+Further, since the gradient is zero and $\varphi$ is zero on the boundary, $\varphi$ must be zero everywhere throughout the region. Therefore, $\varphi_1 = \varphi_2$ throughout the whole region.     $\square$
+
+
+Second, we consider _Neumann boundary conditions_ specified as $\grad\varphi = 0$ on $\partial\Omega$.
+
+The left-hand side of (@eq-proof_div) is zero. We find that
+
+$$
+\int_\Omega \grad\varphi\cdot\grad\varphi\,\dd V = 0
+$$
+
+Again, we must have $\grad\varphi = 0$ at all points in $\Omega$.
+The gradient of $\varphi$ is zero within the volume, and because the gradient is zero on the boundary, it follows that $\varphi$ must be constant throughout the whole region.
+Therefore, since $\varphi = \varphi_2 - \varphi_1 = k$,
+
+$$
+\varphi_1 = \varphi_2 - k
+$$
+
+The solution is unique up to an additive constant.    $\square$
+
+
+## Summary
+
+In all cases, the gradient $\grad\varphi$ is unique. This is the only relevant quantity as seen from the physics perspective.

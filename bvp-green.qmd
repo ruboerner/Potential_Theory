@@ -1,0 +1,280 @@
+---
+title: "Green's identities"
+---
+
+## Divergence theorem
+
+If $U$ is harmonic in a domain $\Omega$, i.e., $U$ satisfies Laplace's equation
+$$
+\nabla^{2}U = 0
+$$
+then the surface integral of the normal derivative of  $U$ over the boundary of $\Omega$ has a special property. Specifically, this integral evaluates to zero under certain conditions.
+
+For a harmonic function $U$, the surface integral of its normal derivative over the boundary  $\partial\Omega$  is
+$$
+\int _{\partial\Omega} \frac{ \partial U }{ \partial n }  \, \dd S = 0 
+$$
+
+
+### Explanation
+This results follows from the _divergence theorem_ (or Gauss' theorem), from which we obtain
+$$
+\int_{\Omega} \nabla^{2}U \, \dd V = \int_{\partial \Omega} \nabla U \cdot \vb{n} \, \dd S 
+$$
+Since $U$ is harmonic, the volume integral on the left-hand side vanishes.
+Therefore
+$$
+\int _{\partial\Omega} \frac{ \partial U }{ \partial n }  \, \dd S = 0 
+$$
+
+### Implications
+This result has important consequences in potential theory and physics:
+
+1. **Mass Conservation Analogy**: The integral represents the net “flux” of  $U$  through the boundary. For a harmonic function, the flux is zero, analogous to conservation laws.
+2. **Boundary Conditions**: If  $U$  and  $\frac{\partial U}{\partial n}$  are known on the boundary, they are often constrained by this zero-flux condition.
+
+This property is a fundamental characteristic of harmonic functions and is widely used in solving boundary value problems.
+
+## Green's identity
+
+Green’s identity can be used to evaluate the value of a potential  $U$  at a point  $\mathbf{r}_0$  in terms of a surface integral over the boundary of a domain. This is commonly referred to as **Green’s third identity**, which relates the potential  $U$  at  $\mathbf{r}_0$  to its values and normal derivatives on the boundary surface.
+
+Green’s third identity is expressed as:
+$$
+U(\mathbf{r}_0) = \frac{1}{4\pi} \int_{\partial\Omega} \left[ U(\mathbf{r}) \frac{\partial G(\mathbf{r}, \mathbf{r}_0)}{\partial n} - G(\mathbf{r}, \mathbf{r}_0) \frac{\partial U(\mathbf{r})}{\partial n} \right] \, \dd S
+$$
+where
+
+- $\Omega$  is the surface bounding the domain
+- $U(\mathbf{r})$  is the potential function
+- $G(\mathbf{r}, \mathbf{r}_0)$  is the Green’s function, which satisfies the Laplace equation and has a singularity at $\mathbf{r} = \mathbf{r}_0$
+- $\frac{\partial}{\partial n}$  denotes the derivative in the direction of the outward normal to the surface  $\partial\Omega$
+- $\dd{S}$  is the infinitesimal surface element
+
+
+### Key points
+
+**Green’s function:** For the Laplace equation,  $G(\mathbf{r}, \mathbf{r}_0)$ is typically chosen as:
+
+$$
+G(\mathbf{r}, \mathbf{r}_0) = \frac{1}{|\mathbf{r} - \mathbf{r}_0|}.
+$$
+
+**Interpretation:** Green’s third identity provides a way to reconstruct the potential  $U(\mathbf{r}_0)$  inside the domain if  $U$  and its normal derivative  $\frac{\partial U}{\partial n}$  are known on the boundary  $\partial \Omega$ .
+
+This identity is particularly useful in solving boundary value problems in electrostatics, fluid mechanics, and other fields where the Laplace equation governs the potential.
+
+## Mean value theorem
+
+Gauss’ mean value theorem is a fundamental result in potential theory and the study of harmonic functions. It states that the value of a harmonic function at a point is equal to the average of its values over the surface of a sphere centered at that point.
+
+
+
+Let  $U$  be a harmonic function in a domain  $\Omega$. 
+For any point  $\mathbf{r}_0$  in  $\Omega$  and any sphere $S$  of radius  $R$  centered at  $\mathbf{r}_0$  (with the sphere lying entirely within  $\Omega$), we have:
+
+$$
+U(\mathbf{r}_0) = \frac{1}{4\pi R^2} \int_{\partial\Omega} U(\mathbf{r}) \, \dd{S},
+$$
+
+where:
+
+-	$\mathbf{r}_0$  is the center of the sphere,
+-	$R$  is the radius of the sphere,
+-	$\partial \Omega$  is the surface of the sphere,
+-	$\dd{S}$  is the surface area element on  $\partial \Omega$,
+-	$U(\mathbf{r})$  is the harmonic function.
+
+
+### Interpretation
+
+- The theorem says that the value of a harmonic function at the center of a sphere equals the average value of the function over the sphere’s surface.
+- This property characterizes harmonic functions and is often used to prove uniqueness and regularity results for solutions to Laplace’s equation.
+
+
+### Consequences
+
+- **Maximum Principle:** Since the value at the center of the sphere is an average, a harmonic function cannot have a maximum or minimum inside a domain unless it is constant.
+- **Uniqueness:** If two harmonic functions agree on the boundary of a domain, they must agree throughout the domain.
+- **Physical Interpretation:** In electrostatics, the theorem reflects the fact that the potential at a point inside a charge-free region depends only on its surrounding values, not on interior contributions.
+
+
+### Uniqueness
+
+We consider a sphere $\Omega$ of radius $a$ and a homogeneous charge density $\rho_{E}$. For any point inside $\Omega$ the Poisson equation holds
+$$
+\nabla^{2} U(r) = -\frac{\rho_{E}}{\varepsilon_{0}}, \quad r \le a
+$$
+On the surface $\partial\Omega$ we fix the potential and its normal derivative, such that
+$$
+U = 0, \qquad \frac{ \partial U }{ \partial n } = 0
+$$
+
+
+Inside the sphere, we obtain for the potential
+$$
+U(r) = \frac{\rho_{E}}{2\varepsilon_{0}}a^{2} - \frac{\rho_{E}}{6\varepsilon_{0}}r^{2}
+$$
+whereas for $r > a$ we find
+$$
+U(r) = \frac{\rho_{E}a^{3}}{3\varepsilon_{0}r}
+$$
+
+
+For $r=a$ we obtain
+$$
+U(a) = \frac{\rho_{E}}{3\varepsilon_{0}}a^{2} \qquad \frac{ \partial U }{ \partial n } \bigg|_{r=a} = -\frac{\rho_{E}}{3\varepsilon_{0}}a
+$$
+which is not consistent with the assumption.
+It follows that the values at the boundary are determined by $\nabla^{2}U$ alone. A simultaneous choice of $U$ and $\frac{ \partial U }{ \partial n }$ at the boundary overdetermines the problem and typically leaves no room for a solution.
+Imposing both Dirichlet and Neumann conditions on the same boundary can result in inconsistencies.
+
+
+## First boundary value problem
+
+### How can we eliminate the Neumann term in the Green's third identity?
+
+We consider the function $U$ defined on an open domain $\Omega \subset \mathbb{R}^{3}$ 
+$$
+\nabla^{2} U(r) = 0
+$$
+The goal is to eliminate the term $\dfrac{\partial U}{\partial n}$ from Green's third identity.
+$$
+U(\mathbf{r}_0) = \frac{1}{4\pi} \int_{\partial\Omega} \left[ U(\mathbf{r}) \frac{\partial }{\partial n} \frac{1}{r} -  \frac{1}{r}  \frac{\partial U(\mathbf{r})}{\partial n} \right] \, \dd S
+$$
+
+
+We introduce a harmonic auxiliary function $g(\vb{r},\vb{r_{0}})$ such that for any $\vb{r} \in \Omega$
+$$
+\nabla^{2} g(\vb{r},\vb{r_{0}}) = 0
+$$
+Further,
+$$
+g(\vb{r},\vb{r_{0}}) = \frac{1}{|\vb{r} - \vb{r_{0}|}} = \frac{1}{r}, \quad \vb{r_{0}}\in \partial\Omega 
+$$
+
+Green's second identity states
+$$
+\frac{1}{4\pi}\int_\Omega \left( u \nabla^2 v - v \nabla^2 u \right) \,\dd{V} = \frac{1}{4\pi} \int_{\partial \Omega} \left( u \frac{\partial v}{\partial n} - v \frac{\partial u}{\partial n} \right) \,\dd{S}
+$$
+
+
+If both $u$ and $v$ are harmonic functions, then
+$$
+\frac{1}{4\pi}\int_{\partial \Omega} \left( u \frac{\partial v}{\partial n} - v \frac{\partial u}{\partial n} \right) \,\dd{S} = 0
+$$
+For $u=U$ and $v=g$ we obtain
+$$
+\frac{1}{4\pi} \int_{\partial \Omega} \left( U \frac{\partial g}{\partial n} - g \frac{\partial U}{\partial n} \right) \,\dd{S} = 0
+$$
+
+
+We subtract this from equation to $U(\vb{r_{0}})$:
+$$
+\begin{align}
+U(\vb{r_{0}}) & = \frac{1}{4\pi} \int_{\partial \Omega} \left( U \frac{\partial}{\partial n}\left( g - \frac{1}{r} \right)  - \left( g - \frac{1}{r} \right)  \frac{\partial U}{\partial n} \right) \,\dd{S} \\
+& =  \frac{1}{4\pi} \int_{\partial \Omega} \left( U \frac{\partial}{\partial n}\left( g - \frac{1}{r} \right) \right) \,\dd{S}
+\end{align}
+$$
+We denote 
+$$
+G_{1}(\vb{r},\vb{r_{0}})=g(\vb{r},\vb{r_{0}})-\frac{1}{r}
+$$
+as _Green's function_ which satisfies
+$$
+\begin{align}
+\nabla^{2}G_{1} & = 0 \text{ in } \Omega \\
+G_{1} & = 0 \text{ on } \partial\Omega 
+\end{align}
+$$
+
+
+Note that for $\vb{r}=\vb{r_{0}}$, the Green's function $G_{1}$ has a singularity.
+
+## Second (exterior) boundary value problem
+
+We restrict $\dfrac{\partial U}{\partial n}$ at the boundary $\partial\Omega$.
+With the Green's third identity, we are able to find a solution $U$ in the exterior of $\Omega$ by construction of an auxiliary function
+$$
+G_{2} = g - \frac{1}{r}
+$$
+such that
+$$
+\begin{align}
+\nabla^{2}G_{2} &= 0 \text{ in } \Omega \\
+\frac{ \partial  }{ \partial n }G_{2} & = 0 \text{ on } \partial\Omega  
+\end{align}
+$$
+
+
+
+The solution in the exterior is
+$$
+U(\vb{r_{0}}) = \frac{1}{4 \pi} \int _{\partial\Omega } G_{2}(\vb{r, \vb{r_{0}}}) \frac{\partial U}{\partial n}  \, \dd S 
+$$
+
+
+## Second (interior) BVP
+
+For the interior BVP the derivative at the boundary cannot be defined arbitrarily, since both
+$$
+\nabla^{2}U = 0 \text{ in } \Omega
+$$
+and
+$$
+\int \frac{\partial U}{\partial n}  \, \dd S = 0
+$$
+must be fulfilled. The same restriction holds for $g$.
+
+
+
+To eliminate the boundary values of $U$ in Green's third identity, it is required that
+$$
+\frac{\partial g}{\partial n} = \frac{\partial }{\partial n} \frac{1}{r}
+$$
+
+because of the property of $G_{2}$ [[#^31751b]]. However, with $\dd{S} = r^{2}\sin \theta \,\dd{\theta}\,\dd{\varphi}$, 
+$$
+\int \frac{\partial }{\partial n} \frac{1}{r} \, \dd S = -\int \frac{\cos(\vb{r},\vb{n})}{r^{2}} \, \dd S = -\int  \, \dd \Omega = -4 \pi  
+$$
+
+
+
+We have to force that the condition
+$$
+\frac{\partial g}{\partial n} = \frac{\partial }{\partial n} \frac{1}{r} + K
+$$
+is fulfilled such that
+$$
+\int \frac{\partial g}{\partial n}   \, \dd S = \int \frac{\partial }{\partial n} \frac{1}{r} \, \dd S = 0 
+$$
+
+
+
+It follows
+$$
+K = \frac{4 \pi}{\int  \, \dd S } = \frac{4 \pi}{A_{0}}
+$$
+and
+$$
+U(\vb{r_{0}}) = \frac{1}{A_{0}} \int U \, \dd S - \frac{1}{4\pi} \int G_{2}(\vb{r},\vb{r_{0}})   \frac{\partial U}{\partial n}  \, \dd S   
+$$
+The solution of the second BVP is
+$$
+U(\vb{r_{0}}) = C - \frac{1}{4\pi} \int G_{2}(\vb{r},\vb{r_{0}})   \frac{\partial U}{\partial n}  \, \dd S 
+$$
+which is uniquely determined up to a constant.
+
+
+
+The Green's function $G_{2}$
+$$
+G_{2}(\vb{r, \vb{r_{0}}}) = g_{2}(\vb{r, \vb{r_{0}}})-\frac{1}{r}
+$$
+is harmonic for $\vb{r} \ne \vb{r_{0}}$, such that it holds
+$$
+\begin{align}
+\nabla^{2}G_{2}(\vb{r},\vb{r_{0}}) & = 0 \text{ for } \vb{r} \ne \vb{r_{0}} \\
+\frac{\partial G_{2}}{\partial n} & = \frac{4 \pi}{A_{0}}
+\end{align}
+$$

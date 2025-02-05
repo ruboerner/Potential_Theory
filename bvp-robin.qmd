@@ -1,0 +1,48 @@
+---
+title: "Robin problems"
+---
+
+The _Robin problem_ is a boundary value problem for partial differential equations, where the boundary condition is a combination of the function value and its normal derivative. It is a generalization of both the Dirichlet and Neumann problems.
+
+The _Robin boundary condition_ combines the function value $u$ and its normal derivative 
+$\pdv{u}{n}$ on the boundary:
+
+$$
+\alpha u + \beta \pdv{u}{n} = w \text{ on } \partial\Omega,
+$$
+
+where
+
+- $\alpha$ and $\beta$ are given coefficients, which can be functions defined on $\partial\Omega$,
+- $w$ is a given function defined on $\partial\Omega$.
+
+## Objective
+
+The goal is to find a function $u$ such that
+
+1. $u$ satisfies the Poisson equation $\Delta u = f$ in the domain $\Omega$,
+2. $u$ satisfies the Robin boundary condition $\alpha u + \beta \pdv{u}{n} = w$ on $\partial\Omega$.
+
+## Formal definition
+
+Find a function $u: \overline{\Omega} \mapsto \mathbb R$ such that
+$$
+\begin{align}
+\Delta u & = f \text{ in } \Omega \\
+\alpha u + \beta \pdv{u}{n} & = w \text{ on } \partial\Omega
+\end{align}
+$$
+
+## Special cases
+
+- If $\beta=0$, the Robin condition reduces to the Dirichlet boundary condition $u = w/\alpha$,
+- If $\alpha=0$, the Robin condition reduces to the Neumann boundary condition $\pdv{u}{n} = w/\beta$,
+
+## Applications
+
+The Robin problem is used in various physical contexts, such as:
+
+- Heat transfer, where the boundary condition represents a combination of conduction and convection,
+- DC resistivity problems, where Robin conditions model the behaviour of the problem at the boundary.
+
+The Robin problem provides a more flexible model that can interpolate between purely Dirichlet or Neumann conditions and model more complex boundary interactions.

@@ -1,0 +1,102 @@
+---
+title: Introduction
+jupyter: python3
+---
+
+In the previous chapters we have studied solutions to the Poisson and Laplace equations for simple geometries with homogeneous density distributions.
+
+![](images/sketch-potential.excalidraw.svg)
+
+
+The following chapters introduce techniques which will enable us to calculate potentials and their gradients in a subdomain $\Omega$ that does not contain the sources.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](images/sketch-charges-dirichlet.excalidraw.svg){width=90%}
+:::
+
+::: {.column width="50%"}
+However, we incorporate the _effect_ of the sources by enforcing boundary conditions along the boundaries $\partial\Omega$ of the subdomain. 
+
+:::
+
+::::
+
+The ultimate goal is to find a solution of the Poisson (or similar) PDE.
+
+The Poisson equation
+
+$$
+\Delta U(\vb r) = f(\vb r)
+$$
+
+with $\vb r \in \Omega \subset \mathbb R^3$ has no unique solution, if no further conditions on $U(\vb r)$ are enforced.
+
+::: {.callout-tip title="Example"}
+The function
+$$
+\Phi(x,y,z) = e^{\alpha x + \beta y} \sin(\sqrt{\alpha^2 + \beta^2}z)
+$$
+
+is a solution of the PDE $\Delta \Phi = 0$ for arbitrary choices of $\alpha$ and $\beta$.
+
+Hence, the solution is _non-unique_.
+
+However, the solution space can be restricted by proper choices of $\alpha$ and $\beta$.
+
+Check using `SymPy`:
+
+```{python}
+import sympy as sp
+from IPython.display import display, Math
+alpha, beta, x, y, z = sp.symbols('alpha beta x y z') 
+Phi = sp.exp(alpha * x + beta * y) * sp.sin(sp.sqrt(alpha**2 + beta**2) * z)
+display(Math('\\Phi = ' + sp.latex(Phi)))
+Phi
+```
+
+```{python}
+LPhi = sp.diff(Phi, x, 2) + sp.diff(Phi, y, 2) + sp.diff(Phi, z, 2)
+display(Math('\\Delta\\Phi = ' + sp.latex(LPhi.simplify())))
+```
+
+:::
+
+## Classification of Boundary Value Problems (BVP)
+
+In potential theory we will study the following _boundary value problems_:
+
+- Dirichlet problem
+- Neumann problem
+- Robin or Mixed Dirichlet-Neumann problem
+
+::: {.callout-note title="Typical problems"}
+
+- Point source within a conducting half-space
+- Point source embedded in one of two adjacent conducting half-spaces
+- Point source in the top layer of a 2-layer case
+- Potential of a conductive semi-sphere embedded in a homogeneous half-space
+- Horizontal cylinder in a homogeneous electrical field
+- DC resistivity sounding over a half-space consisting of $N$ horizontal layers
+
+:::
+
+For the solution of these problems, we will use the following tools:
+
+- Green's function
+- Method of images
+- Finite Element Method
+
+## Notation
+
+Domain: $\Omega$
+
+Boundary: $\partial\Omega$
+
+![](images/sketch-omega-domega.excalidraw.svg)
+
+We distinguish between the _open domain_ $\Omega$ and its _boundary_ $\partial\Omega$.
+
+The _closed domain_ $\overline\Omega$ is the union of the interior and the boundary.
+

@@ -411,8 +411,69 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Boundary value problems</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Boundary value problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-dirichlet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Dirichlet problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-neumann.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Neumann problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-robin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Robin problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-uniqueness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">The uniqueness theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-domains.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Domains</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Examples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-green.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -464,7 +525,7 @@ window.Quarto = {
 </header>
 
 
-<div id="f73e382c" class="cell" data-execution_count="1">
+<div id="dc811e51" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -480,7 +541,7 @@ window.Quarto = {
 \]</span> for any shell enclosed by the radii <span class="math inline">\(r_{i-1}\)</span> and <span class="math inline">\(r_i\)</span>, <span class="math inline">\(i=1,2,\dots,11\)</span>.</p>
 <p>The coefficients <span class="math inline">\(a_i, b_i, c_i\)</span> as well as the layer boundaries <span class="math inline">\(r_i\)</span> have been published by <span class="citation" data-cites="dziewonskiPreliminaryReferenceEarth1981">Dziewonski &amp; Anderson (<a href="references.html#ref-dziewonskiPreliminaryReferenceEarth1981" role="doc-biblioref">1981</a>)</span>.</p>
 <p>The following <code>Python</code> code reads the content of the file <code>PREM.csv</code> into memory.</p>
-<div id="37ad8b9d" class="cell" data-execution_count="2">
+<div id="b49bd67f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'PREM.csv'</span>, </span>
@@ -490,7 +551,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>[<span class="st">'i'</span>, <span class="st">'layer'</span>, <span class="st">'height'</span>, <span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="042bef11" class="cell" data-execution_count="3">
+<div id="261b9fdb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> df[<span class="st">'height'</span>].to_numpy()</span>
@@ -502,7 +563,7 @@ window.Quarto = {
 <section id="density-profile" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="density-profile"><span class="header-section-number">6.1</span> Density profile</h2>
 <p>We define a function <code>rho(r,a,b,c)</code> which evaluates for any <span class="math inline">\(r\)</span> a second order polynomial with the given coefficients <span class="math inline">\(a,b,c\)</span>:</p>
-<div id="fd68f229" class="cell" data-execution_count="4">
+<div id="bd70ef84" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="kw">lambda</span> r, a, b, c: a <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b <span class="op">*</span> r <span class="op">+</span> c</span>
@@ -549,7 +610,7 @@ m_E = 4 \pi \int\limits_0^{R_E} \rho(r) r^2 \, \mathrm dr.
 <p>However, there are density discontinuities which require a split of the integral at the jumps of <span class="math inline">\(\rho(r)\)</span>. We integrate layer-wise, such that the mass of layer <span class="math inline">\(i\)</span> is obtained by <span class="math display">\[
 m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 11.
 \]</span> We use <code>Python</code>’s <code>Sympy</code> library.</p>
-<div id="5f83c4e1" class="cell" data-execution_count="5">
+<div id="edc9c899" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a, b, c, r, h_1, h_2 <span class="op">=</span> sp.symbols(<span class="st">'a b c r h_1 h_2'</span>, real<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -558,7 +619,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 <p>We denote with i1 the following lambda function which is equivalent to the evaluation of the integral <span class="math display">\[
 4 \pi \int_{h_1}^{h_2} (a r^2 + b r + c) r^2 \, \mathrm d r
 \]</span></p>
-<div id="a67addfe" class="cell" data-execution_count="6">
+<div id="8045d912" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>i1 <span class="op">=</span> <span class="kw">lambda</span> h_1, h_2: <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> sp.integrate((a <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b <span class="op">*</span> r <span class="op">+</span> c) <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>, (r, h_1, h_2))</span>
@@ -579,7 +640,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 5.972734577607561e+24</code></pre>
 </div>
 </div>
-<div id="70ed1960" class="cell" data-execution_count="7">
+<div id="51419503" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -602,7 +663,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </section>
 <section id="gravity-profile" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="gravity-profile"><span class="header-section-number">6.3</span> Gravity profile</h2>
-<div id="0c96913d" class="cell" data-execution_count="8">
+<div id="02a2adbe" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constants and assumptions</span></span>
@@ -633,7 +694,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>myg[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> G <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> M_Earth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="5077b1e5" class="cell" data-execution_count="9">
+<div id="2b091be7" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rext <span class="op">=</span> np.linspace(R_E, <span class="dv">2</span><span class="op">*</span>R_E, <span class="dv">41</span>)</span>
@@ -657,7 +718,7 @@ m_i = 4 \pi \int_{r_{i-1}}^{r_i} \rho(r) r^2 \, \mathrm d r ,\quad 1 \le i \le 1
 </div>
 </div>
 <p>The results above do not agree well with the true surface acceleration due to the Earth’s ellipsoidal shape. The WGS84 gravity formula is valid for points at the Earth’s surface and accounts for the change of acceleration due to the ellipticity:</p>
-<div id="8f25b55c" class="cell" data-execution_count="10">
+<div id="e934927c" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>g_equator <span class="op">=</span> <span class="fl">9.7803253359</span></span>

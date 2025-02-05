@@ -1,0 +1,19 @@
+---
+title: "Domains"
+---
+
+The domain $\Omega$ in which we seek the solution to the Poisson equation, consists of $n$ subdomains $\Omega_i$, where the union of the subdomains is
+
+$$
+\Omega = \Omega_1 \cup \Omega_2 \cup \dots \cup \Omega_n
+$$
+
+and the intersection of two subdomains is always
+
+$$
+\Omega_i \cap \Omega_k = \emptyset, \quad i \ne k.
+$$
+
+Across the individual $\Omega_i$ the physical parameters, e.g., conductivity, density, are usually constant.
+
+![](images/RWA-gebietsraender.excalidraw.svg)

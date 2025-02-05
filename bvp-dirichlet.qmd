@@ -1,0 +1,52 @@
+---
+title: "Dirichlet problems"
+---
+
+
+The Dirichlet problem in mathematics is a classic boundary value problem that seeks to find a function which solves a partial differential equation (PDE) within a domain, subject to specific boundary conditions. In the context of the Poisson equation, the Dirichlet problem can be stated as follows:
+
+The Poisson equation is given by 
+
+$$
+\Delta u(\vb r) = f(\vb r) \text{ in } \Omega,
+$$
+
+where $\Omega$ is an open, bounded domain in $\mathbb R^3$ with sufficiently smooth boundary $\partial\Omega$.
+
+The _Dirichlet problem_ specifies the value of $u$ on the boundary of the domain
+
+$$
+u = g \text{ on } \partial\Omega
+$$
+
+where $g$ is a given continuous function defined on the boundary $\partial\Omega$.
+
+## Objective
+
+The goal is to find a function $u$ such that
+
+1. $u$ satisfies the Poisson equation $\Delta u = f$ in the domain $\Omega$
+2. $u$ matches the given boudary values, $u = g$, on $\partial\Omega$.
+
+## Formal definition
+
+Find a function $u: \overline{\Omega} \mapsto \mathbb R$ such that
+$$
+\begin{align}
+\Delta u & = f \text{ in } \Omega \\
+u & = g \text{ on } \partial\Omega
+\end{align}
+$$
+
+## Existence and uniqueness
+
+Under appropriate conditions, such as:
+
+- $\Omega$ being a bounded domain with a sufficiently regular (e.g., Lipschitz continuous) boundary,
+- $f \in L^2(\Omega)$ or another appropriate function space,
+- $g$ being a continuous function on $\partial\Omega$,
+
+there exists a unique solution $u$ to the Dirichlet problem for the Poisson equation, often obtained using variational methods, Green's functions, or numerical approximations like finite element methods.
+
+The Dirichlet problem is fundamental in physics, as it models phenomena such as heat conduction, electromagnetics, and potential flows where boundary conditions dictate the behavior of the solution within the domain.
+

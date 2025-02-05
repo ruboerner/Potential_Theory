@@ -1,0 +1,36 @@
+---
+title: "Neumann problems"
+---
+
+The Neumann problem is another classic boundary value problem for partial differential equations, particularly for the Poisson equation. Instead of prescribing the value of the function on the boundary (as in the Dirichlet problem), the Neumann problem specifies the value of the derivative (or normal derivative) of the function on the boundary.
+
+The _Neumann problem_ specifies the value of the normal derivative of $u$ on the boundary:
+
+$$
+\pdv{u}{n} = h \text{ on } \partial\Omega
+$$
+
+where
+
+- $\pdv{u}{n} = \grad u \cdot \vb n$ is the normal derivative of $u$,
+- $\vb n$ is the unit outward normal vector to the boundary $\partial\Omega$,
+- $h$ is a given function defined on $\partial\Omega$. 
+
+## Objective
+
+The goal is to find a function $u$ such that
+
+1. $u$ satisfies the Poisson equation $\Delta u = f$ in the domain $\Omega$,
+2. the normal derivative $\pdv{u}{n}$ matches the given boundary values $h$ on $\partial\Omega$.
+
+## Formal definition
+
+Find a function $u: \overline{\Omega} \mapsto \mathbb R$ such that
+$$
+\begin{align}
+\Delta u & = f \text{ in } \Omega \\
+\pdv{u}{n} & = h \text{ on } \partial\Omega
+\end{align}
+$$
+
+The Neumann problem is commonly encountered in physics, particularly in scenarios involving conservation laws, such as heat flux or electric currents, where the flux across the boundary is specified.

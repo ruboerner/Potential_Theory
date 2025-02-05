@@ -1,0 +1,105 @@
+---
+title: "Examples"
+---
+## Conductive sphere in homogeneous field
+
+We consider an electrically conductive sphere embedded in a full-space of uniform conductivity.
+The sphere is exposed to a uniform electrical field $\vb E_0$.
+
+Find the total electrical potential inside and outside of the sphere.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+![](images/RWA-cylinder-in-field.excalidraw.svg){width=90%}
+
+:::
+
+::: {.column width="40%"}
+
+$\vb E_0 = \vb e_z E_0 = -\grad U_0$
+
+$U_0 = -z E_0 + C_0$
+
+With $C_0 = 0$ we have:
+
+$U_0(r, \theta) = -E_0 \underbrace{r \cos\theta}_{=z}$
+
+:::
+
+::::
+
+We distinguish two potentials: one for the interior and one for the exterior of the sphere.
+In each subdomain the potential is composed of a primary and a secondary potential.
+
+
+$$
+\begin{align}
+U_{ex}(r, \theta) & = U_0 + U_{1}(r, \theta) \\
+U_{in}(r, \theta) & = U_0 + U_{2}(r, \theta)
+\end{align}
+$$
+
+In $r=R$ we enforce continuity of the potential and the current density across the surface of the sphere.
+
+$$
+\begin{align}
+U_{ex}(R, \theta) & = U_{in}(R, \theta) \\
+\sigma_1 \pdv{U_{ex}}{r} & = \sigma_2 \pdv{U_{in}}{r}
+\end{align}
+$$
+
+For the secondary potentials $U_i$ we make the following ansatz
+
+$$
+U_{i}(r, \theta) = \sum_{n=0}^\infty f_i(r) P_n(\cos\theta), \quad i=1,2
+$$
+
+## Choice of expansion degree $n=1$
+
+- The external electric field is uniform and introduces only a linear angular dependence proportional to $\cos\theta$ which corresponds to the $n=1$ term in the spherical harmonic expansion.
+- The spherical symmetry of the conductive sphere ensures that higher-order terms $n \geq 2$, which represent quadrupole, octupole, and higher moments, are not induced. The uniform field cannot create these complex angular variations because the sphere's response is limited to the simplest, symmetric redistribution of charges.
+- The $n=0$ term corresponds to a monopole potential, however, the sphere is neutral as a whole, no net monopole charge is present.
+- A homogeneous external field does not induce a monopole moment, as it creates a dipole-like separation of charges.
+
+
+We obtain $f_i(r)$ from the conditions
+
+- $U_i$ is a solution of the Laplace equation $\Delta U_i = 0$ in $\Omega_i$
+- $f_1(r) \to 0$ for $r \to \infty$
+- $f_2$ finite for $r \le R$
+
+We solve the problem using the method of separation of variables and obtain
+
+$$
+f_1(r) = a_1 r + b r^{-2}
+$$
+
+The conditions are fulfilled with $a_1 = 0$ in the exterior and $b=0$ in the interior of the sphere.
+
+
+We get from the conditions of continuity the following system
+
+$$
+\begin{align}
+-R E_0 + b R^{-2} & = R a \\
+-\sigma_1 (E_0 + 2 b R^{-3}) & = \sigma_2 a
+\end{align}
+$$
+
+with the solutions
+$$
+a = \frac{3 \sigma_1}{2 \sigma_1 + \sigma_2} E_0 ,
+\qquad b = \frac{\sigma_2 - \sigma_1}{2 \sigma_1 + \sigma_2} R^3 E_0
+$$
+
+The potentials are
+
+$$
+\begin{align}
+U_{ex} & = \left(- E_{0} r + \frac{E_{0} R^{3} \left(\sigma_{2} - \sigma_{1}\right)}{r^{2} \left(2 \sigma_{1} + \sigma_{2}\right)} \right) \cos\theta \\
+U_{in} & = -E_0 r\cos\theta \frac{3  \sigma_1 }{2\sigma_1 + \sigma_2} 
+\end{align}
+$$
+

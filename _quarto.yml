@@ -11,7 +11,7 @@ book:
   announcement: 
     icon: info-circle
     dismissable: true
-    content: "New chapters on dipole and Legendre polynomials added."
+    content: "**New**: Chapters on Boundary Value Problems added."
     type: primary
     position: below-navbar
   chapters: 
@@ -55,6 +55,16 @@ book:
         - laplace-in-sph-coord.qmd
         - igrf.qmd
     - part: "Boundary value problems"
+      chapters:
+        - bvp-intro.qmd
+        - bvp-dirichlet.qmd
+        - bvp-neumann.qmd
+        - bvp-robin.qmd
+        - bvp-uniqueness.qmd
+        - bvp-domains.qmd
+        - bvp-examples.qmd
+        - bvp-green.qmd
+        - bvp-applications.qmd
     - summary.qmd
     - references.qmd
 
