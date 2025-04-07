@@ -32,7 +32,7 @@ We depart from a very general idea of a _field_:
 
 A _field_ describes the spatial distribution of a physical quantity. Such quantities can be 
 
--   pressure, density, temperatur
+-   pressure, density, temperature
 -   acceleration, velocity, flux, electric field, magnetic flux density, etc.
 
 We observe an important difference between the two examples.
@@ -48,11 +48,12 @@ Vector fields can be visualized by arrows or field lines.
 Potential field methods are fundamental in geophysics for studying Earth's subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving potential field equations to interpret subsurface structures or properties.
 
 ### The Scalar Potential Function
-   - **Potential Field**: A potential field $\Phi(\mathbf{r})$ is a scalar field where the field intensity (such as gravitational acceleration $\mathbf{g}$ or magnetic field $\mathbf{B}$) can be derived as the gradient of the potential:
+   - **Potential Field**: A potential field $F(\mathbf{r})$ is a vector field to which a scalar field $\Phi(\mathbf{r})$ exists such that:
      $$
      \mathbf{F}(\mathbf{r}) = -\grad \Phi(\mathbf{r})
      $$
-     where $\mathbf{F}(\mathbf{r})$ represents the force field (e.g., gravitational or magnetic), and $\grad \Phi(\mathbf{r})$ is the gradient of the potential function.
+     $F(\mathbf{r})$ is also called gradient field or conservative vector field. Examples are gravitational acceleration $\mathbf{g}$ or the magnetic field $\mathbf{B}$). 
+     $\Phi(\mathbf{r})$ is called scalar potential.
 
    - **Gravitational Potential** $\Phi_g$: The gravitational potential $\Phi_g$ at a point $\mathbf{r}$ due to a mass distribution $\rho(\mathbf{r})$ is given by:
      $$
