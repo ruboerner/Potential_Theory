@@ -29,7 +29,7 @@ Newton stated that:
 
 The potential outside of a solid sphere of radius $a$ and density law $\rho=\rho(r)$ can be obtained by integration over spherical shells using the _law of cosines_:
 $$
-V(r)  = f \int_{r'=0}^a \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi} 
+V(r)  = -f \int_{r'=0}^a \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi} 
     \frac{\rho(r') {r'}^2 \, \mathrm d r' \sin\theta \, \mathrm d \theta \, \mathrm d \phi}{[{r'}^2 + r^2 -2 r r' \cos\theta]^{1/2}}.
 $$
 
@@ -37,18 +37,18 @@ $$
 
 We depart from the potential of one spherical shell of radius $a$ with surface density $\rho_F$, which can be evaluated as
 $$
-V^F(r) = 2 \pi f \rho_F \int_{\theta=0}^\pi \frac{a^2 \sin\theta \, \mathrm d \theta}{\sqrt{r^2 + a^2 - 2ar\cos\theta}}.
+V^F(r) = -2 \pi f \rho_F \int_{\theta=0}^\pi \frac{a^2 \sin\theta \, \mathrm d \theta}{\sqrt{r^2 + a^2 - 2ar\cos\theta}}.
 $$
 
 The potential $V^F(r)$ inside or outside of such a spherical shell with surface density $\rho_F$ and radius $a$ is
 $$
-V^F(r) = 2 \pi f \frac{a}{r} \rho_F \left[ r + a - |r - a| \right].
+V^F(r) = -2 \pi f \frac{a}{r} \rho_F \left[ r + a - |r - a| \right].
 $$
 Because $r$ can be either less or greater than $a$, we obtain two solution for $V^F(r)$:
 $$
 V^F(r) = \begin{cases}
-4 \pi f \rho_F \frac{a^2}{r} & \quad\text{ if } r > a \\
-4 \pi f \rho_F a & \quad\text{ if } r < a
+-4 \pi f \rho_F \frac{a^2}{r} & \quad\text{ if } r > a \\
+-4 \pi f \rho_F a & \quad\text{ if } r < a
 \end{cases}
 $$
 
@@ -56,7 +56,7 @@ We now introduce a solid sphere with a density law $\rho = \rho(r)$.
 To obtain the potential $V(r)$ outside this sphere, we integrate 
 
 $$
-V(r) = \int_{r'=0}^a V^F(r') \, \mathrm d r' = \frac{2 \pi f}{r } \int_{r'=0}^{a} \rho(r') [r + r' - |r - r'|] r' \, \mathrm d r'
+V(r) = \int_{r'=0}^a V^F(r') \, \mathrm d r' = -\frac{2 \pi f}{r } \int_{r'=0}^{a} \rho(r') [r + r' - |r - r'|] r' \, \mathrm d r'
 $$
 
 To this end, we make use of `SymPy`, a `Python` library for symbolic mathematics.
@@ -68,7 +68,7 @@ r, rp, a, f, rho, theta = sp.symbols("r r' a f rho theta", positive=True, real=T
 ```
 
 ```{python}
-V = 2 * pi * f * rho * sp.integrate(a**2 * sp.sin(theta) / sp.sqrt(r**2 + a**2 - 2*a*r*sp.cos(theta)), (theta, 0, pi))
+V = -2 * pi * f * rho * sp.integrate(a**2 * sp.sin(theta) / sp.sqrt(r**2 + a**2 - 2*a*r*sp.cos(theta)), (theta, 0, pi))
 V.simplify()
 ```
 
@@ -87,7 +87,7 @@ $$
 we have to be careful with the integrand.
 
 ```{python}
-Voutside = 2 * pi * f * rho / r * sp.integrate((r + rp - (r - rp)) * rp, (rp, 0, a))
+Voutside = -2 * pi * f * rho / r * sp.integrate((r + rp - (r - rp)) * rp, (rp, 0, a))
 Voutside
 ```
 
@@ -95,16 +95,16 @@ To get the potential inside the sphere, i.e., for $r < a$, we have to decompose 
 
 First, we evaluate the potential due to a sphere of radius $r$, to which we add the contribution of a hollow sphere with inner radius $r$ and outer radius $a$:
 $$
-V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^a \rho(r') r r' \, \mathrm d r'\right]
+V(r) = -\frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^a \rho(r') r r' \, \mathrm d r'\right]
 $$
 
 In the interior of a homogeneous sphere with a mean density of $\bar\rho$ we obtain for $0 \le r \le a$
 $$
-V(r) = \frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
+V(r) = -\frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
 $$
 
 ```{python}
-Vinside = 4 * pi * f * rho / r * (sp.integrate(rp**2, (rp, 0, r)) + sp.integrate(rp * r, (rp, r, a)))
+Vinside = -4 * pi * f * rho / r * (sp.integrate(rp**2, (rp, 0, r)) + sp.integrate(rp * r, (rp, r, a)))
 Vinside.simplify()
 ```
 
@@ -176,19 +176,19 @@ b_num = coeff_b.subs(rho_R, 2700).subs(rho_m, 5515).subs(R_E, 6.371e6)
 ## Gravitational attraction inside the Earth
 It is known that the gravitational potential inside a sphere with a radially symmetric density function is
 $$
-V(r) = \frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^{R_E} \rho(r') r r' \, \mathrm d r'\right]
+V(r) = -\frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^{R_E} \rho(r') r r' \, \mathrm d r'\right]
 $$
 The first integral amounts for the potential at the surface of a sphere with radius , whereas the second computes the potential taken at the inner surface of a hollow sphere.
 
 With the constants derived above we want to evaluate these integrals.
 
 ```{python}
-i1 = 4 * pi * f / r * sp.integrate((rho_0 - b * rp) * rp**2, (rp, 0, r))
+i1 = -4 * pi * f / r * sp.integrate((rho_0 - b * rp) * rp**2, (rp, 0, r))
 i1.simplify()
 ```
 
 ```{python}
-i2 = 4 * pi * f * sp.integrate((rho_0 - b * rp) * rp, (rp, r, R_E))
+i2 = -4 * pi * f * sp.integrate((rho_0 - b * rp) * rp, (rp, r, R_E))
 i2.simplify()
 ```
 
@@ -206,11 +206,11 @@ V.simplify()
 We obtain the gravitational attraction by taking the gradient of $V$ in the direction of $\mathbf r$:
 
 $$
-g(r) = \nabla V(r) \cdot \hat{\mathbf r}
+g(r) = -\nabla V(r) \cdot \hat{\mathbf r}
 $$
 
 ```{python}
-g = sp.diff(V, r)
+g = -sp.diff(V, r)
 g.simplify()
 ```
 
