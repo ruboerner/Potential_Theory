@@ -48,7 +48,7 @@ V
 The vertical component of the gravitational attraction is
 
 $$
-V_z (y) := -\pdv{V}{y}.
+V_z (y) := -\pdv{V}{z}.
 $$
 
 For $z=0$ we obtain the expression
