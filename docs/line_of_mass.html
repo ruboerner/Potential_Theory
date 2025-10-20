@@ -599,7 +599,7 @@ g(y,z) &amp; = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \underbrace{\in
 \]</span></p>
 </div>
 </div>
-<div id="d1a67736" class="cell" data-execution_count="2">
+<div id="ae358c21" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x, y, z, xprime, yprime, zprime, f, rho_L <span class="op">=</span> symbols(<span class="st">'x y z xprime yprime zprime f rho_L'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -611,7 +611,7 @@ g(y,z) &amp; = -f \rho_L \frac{ z-z' }{(y - y')^2 + (z - z')^2 } \underbrace{\in
 <p><span class="math inline">\(\displaystyle  g_z(y,z) = - \frac{2 f \rho_{L} \left(z - {z}'\right)}{\left(y - {y}'\right)^{2} + \left(z - {z}'\right)^{2}}\)</span></p>
 </div>
 </div>
-<div id="505a32a9" class="cell" data-execution_count="3">
+<div id="345c60e7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>integrate(<span class="op">-</span>diff(<span class="op">-</span>f <span class="op">*</span> rho_L <span class="op">/</span> sqrt(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> z<span class="op">**</span><span class="dv">2</span>), z), </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (x, <span class="op">-</span>oo, oo))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
@@ -651,7 +651,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 <p>Note that we have set <span class="math inline">\(C = 0 = 2 f \rho_L \ln 1\)</span>.</p>
 <p>Thus, with a proper choice of <span class="math inline">\(C\)</span>, we can shift the potential such that <span class="math inline">\(V\)</span> takes a desired value at a given distance from the line of mass.</p>
 <p>In our case, the potential is zero at the <em>finite</em> distance of <span class="math inline">\(r=1\)</span>, and not at infinity as it would be the case for finite bodies where <span class="math inline">\(V \sim 1/r\)</span>. In the 2-D case, the masses extend to infinity.</p>
-<div id="fc4188dd" class="cell" data-execution_count="4">
+<div id="a3febbde" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> f <span class="op">*</span> rho_L <span class="op">*</span> log(<span class="dv">1</span> <span class="op">/</span> sqrt((y <span class="op">-</span> yprime)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (z <span class="op">-</span> zprime)<span class="op">**</span><span class="dv">2</span>))</span>
@@ -669,7 +669,7 @@ V(y,z) = 2 f \rho_L \ln \frac{1}{r}
 </div>
 </div>
 </div>
-<div id="003fc569" class="cell" data-execution_count="5">
+<div id="de3d430d" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot(g_z.subs([(f, <span class="dv">1</span>), (rho_L, <span class="dv">1</span>), (z, <span class="dv">0</span>), (zprime, <span class="fl">0.5</span>), (yprime, <span class="dv">0</span>)]), </span>
