@@ -509,7 +509,7 @@ window.Quarto = {
 </header>
 
 
-<div id="94b30757" class="cell" data-execution_count="1">
+<div id="b0206ade" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -542,7 +542,7 @@ f_{N} = \frac{1}{2 \Delta t}.
 S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 \]</span> The sampling frequency is <span class="math inline">\(200\)</span> Hz, which corresponds to a sampling interval of <span class="math inline">\(\Delta t=0.005\)</span> s and a resulting window length of <span class="math inline">\(n=200\)</span> samples.</p>
 <p>The <em>Nyquist frequency</em> is <span class="math inline">\(f_N = 100\)</span> Hz.</p>
-<div id="44fd0751" class="cell" data-execution_count="2">
+<div id="f7a44911" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> <span class="dv">1</span></span>
@@ -569,7 +569,7 @@ S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 <p>Now we calculate the Fourier spectrum of the signal. We use the FFT implementation of <code>numpy</code>. The array <code>X</code> contains the spectrum of <code>S</code>. Note that <code>X</code> is a complex-valued array.</p>
 <p>We recognize that the major Fourier component of the signal is associated with <span class="math inline">\(f=\pm 5\)</span> Hz.</p>
 <p>The order of the fourier coefficients in <code>X</code> depends on the implementation. It can be calulated using <code>fftfreq</code>.</p>
-<div id="d8659eee" class="cell" data-execution_count="3">
+<div id="0108536c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> fft(S)</span>
@@ -592,7 +592,7 @@ S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 <p>Now let us compute the Hilbert transform of this signal. To this end, we provide the Fourier spectrum of the Hilbert transform operator, i.e., <span class="math display">\[
 \mathcal F(-\frac{1}{\pi t}, f) = i \, \text{sign}(f)
 \]</span> The Hilbert transform of the cosine is the sine function.</p>
-<div id="838e12ee" class="cell" data-execution_count="4">
+<div id="8160bbec" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fi <span class="op">=</span> fftfreq(n, d<span class="op">=</span>dt)</span>
@@ -616,7 +616,7 @@ S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 <p>A second application of the Hilbert transform reveals its property of an <em>anti-self adjoint operator</em>, i.e., <span class="math display">\[
 \mathcal H(\mathcal H(u(t))) = -u(t)
 \]</span></p>
-<div id="87816a7b" class="cell" data-execution_count="5">
+<div id="87bfeb5d" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> ifft( k <span class="op">*</span> fft(H)).real</span>
@@ -638,7 +638,7 @@ S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 <section id="application-to-the-2-d-gravity-problem" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="application-to-the-2-d-gravity-problem"><span class="header-section-number">14.1</span> Application to the 2-D gravity problem</h2>
 <p>We provide a Python function that calculates the horizontal and vertical component of the gravitational attraction caused by a horizontal cylinder of radius <span class="math inline">\(a\)</span>. The function requires as argument the point of observation <code>obs</code> and the point <code>axis</code> where the axis of the cylinder meets the plane of observation. Further, the mass <span class="math inline">\(m=\pi a^2 \rho\)</span> of the cylinder must be given.</p>
-<div id="95dc291e" class="cell" data-execution_count="6">
+<div id="75a63c12" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cylinder(obs, mass, axis):</span>
@@ -646,7 +646,7 @@ S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="0330b213" class="cell" data-execution_count="7">
+<div id="af125803" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">1000</span>, stop<span class="op">=</span><span class="dv">1000</span>, num<span class="op">=</span><span class="dv">2001</span>)</span>
@@ -661,14 +661,14 @@ S(t) = \sin(\frac{2 \pi}{T}t) = \sin(2 \pi f t)
 </details>
 </div>
 <p>Now we take <span class="math inline">\(V_z(y)\)</span> and compute the Hilbert transform. Further, we compare to <span class="math inline">\(V_y(y)\)</span>.</p>
-<div id="875cd4a3" class="cell" data-execution_count="8">
+<div id="90129722" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> fftfreq(<span class="bu">len</span>(y), d<span class="op">=</span>dy)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>V_H <span class="op">=</span> ifft(<span class="ot">1j</span> <span class="op">*</span> np.sign(k) <span class="op">*</span> fft(g[:, <span class="dv">1</span>])).real</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="6bd6774b" class="cell" data-execution_count="9">
+<div id="781a23aa" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>

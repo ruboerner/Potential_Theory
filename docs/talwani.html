@@ -534,11 +534,11 @@ window.Quarto = {
 <h2 data-number="10.1" class="anchored" data-anchor-id="problem-description"><span class="header-section-number">10.1</span> Problem description</h2>
 <p>Recall that the vertical component of the gravitational attraction caused by an elongated prismatic body of cross section <span class="math inline">\(S\)</span> is</p>
 <p><span class="math display">\[
-g_z(x,z) = \frac{\partial}{\partial z}V(x,z) = -2 f \Delta \rho \int\limits_S \frac{(z - z')\, dx' \,dz'}{\sqrt{(x-x')^2 + (z-z')^2}}.
+g_z(x,z) = \frac{\partial}{\partial z}V(x,z) = -2 f \Delta \rho \int\limits_S \frac{(z - z')\, dx' \,dz'}{{(x-x')^2 + (z-z')^2}}.
 \]</span></p>
 <p>If the point of observation is at the origin, we obtain</p>
 <p><span class="math display">\[
-g_z(0,0) = \frac{\partial}{\partial z}V(0,0) = 2 f \Delta \rho \int\limits_S \frac{z\, dx \, dz}{\sqrt{x^2 + z^2}}.
+g_z(0,0) = \frac{\partial}{\partial z}V(0,0) = 2 f \Delta \rho \int\limits_S \frac{z\, dx \, dz}{{x^2 + z^2}}.
 \]</span></p>
 <p>It can be shown that this surface integral can be equivalently replaced by a line integral taken along the periphery of <span class="math inline">\(S\)</span>.</p>
 </section>
@@ -593,7 +593,7 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </section>
 <section id="implementation" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="implementation"><span class="header-section-number">10.3</span> Implementation</h2>
-<div id="efaca351" class="cell" data-execution_count="2">
+<div id="a3fa96ee" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, x, z, phi, theta, Z <span class="op">=</span> symbols(<span class="st">'a x z phi theta Z'</span>, real<span class="op">=</span><span class="va">True</span>)</span>

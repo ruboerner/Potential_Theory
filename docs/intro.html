@@ -524,9 +524,10 @@ window.Quarto = {
 <section id="the-scalar-potential-function" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="the-scalar-potential-function"><span class="header-section-number">1.3.1</span> The Scalar Potential Function</h3>
 <ul>
-<li><p><strong>Potential Field</strong>: A potential field <span class="math inline">\(\Phi(\mathbf{r})\)</span> is a scalar field where the field intensity (such as gravitational acceleration <span class="math inline">\(\mathbf{g}\)</span> or magnetic field <span class="math inline">\(\mathbf{B}\)</span>) can be derived as the gradient of the potential: <span class="math display">\[
+<li><p><strong>Potential Field</strong>: A potential field <span class="math inline">\(\mathbf{F}(\mathbf{r})\)</span> is a vector field to which a scalar field <span class="math inline">\(\Phi(\mathbf{r})\)</span> exists such that:</p>
+<p><span class="math display">\[
 \mathbf{F}(\mathbf{r}) = -\grad \Phi(\mathbf{r})
-\]</span> where <span class="math inline">\(\mathbf{F}(\mathbf{r})\)</span> represents the force field (e.g., gravitational or magnetic), and <span class="math inline">\(\grad \Phi(\mathbf{r})\)</span> is the gradient of the potential function.</p></li>
+\]</span> where <span class="math inline">\(\mathbf{F}(\mathbf{r})\)</span> represents the force field (e.g., gravitational or magnetic), and <span class="math inline">\(\grad \Phi(\mathbf{r})\)</span> is the gradient of the potential function. <span class="math inline">\(\mathbf{F}(\mathbf{r})\)</span> is also called gradient field or conservative vector field.</p></li>
 <li><p><strong>Gravitational Potential</strong> <span class="math inline">\(\Phi_g\)</span>: The gravitational potential <span class="math inline">\(\Phi_g\)</span> at a point <span class="math inline">\(\mathbf{r}\)</span> due to a mass distribution <span class="math inline">\(\rho(\mathbf{r})\)</span> is given by: <span class="math display">\[
 \Phi_g(\mathbf{r}) = f \int_V \frac{\rho(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} \dd V'
 \]</span> where <span class="math inline">\(f\)</span> is the gravitational constant, <span class="math inline">\(\rho(\mathbf{r'})\)</span> is the density at point <span class="math inline">\(\mathbf{r'}\)</span>, and <span class="math inline">\(\dd V'\)</span> is the volume element.</p></li>

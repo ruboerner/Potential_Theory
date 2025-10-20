@@ -52,11 +52,13 @@ Potential field methods are fundamental in geophysics for studying Earth's subsu
 
 ### The Scalar Potential Function
 
-   - **Potential Field**: A potential field $\Phi(\mathbf{r})$ is a scalar field where the field intensity (such as gravitational acceleration $\mathbf{g}$ or magnetic field $\mathbf{B}$) can be derived as the gradient of the potential:
+  - **Potential Field**: A potential field $\mathbf{F}(\mathbf{r})$ is a vector field to which a scalar field $\Phi(\mathbf{r})$ exists such that:
+
      $$
      \mathbf{F}(\mathbf{r}) = -\grad \Phi(\mathbf{r})
      $$
      where $\mathbf{F}(\mathbf{r})$ represents the force field (e.g., gravitational or magnetic), and $\grad \Phi(\mathbf{r})$ is the gradient of the potential function.
+     $\mathbf{F}(\mathbf{r})$ is also called gradient field or conservative vector field.
 
    - **Gravitational Potential** $\Phi_g$: The gravitational potential $\Phi_g$ at a point $\mathbf{r}$ due to a mass distribution $\rho(\mathbf{r})$ is given by:
      $$

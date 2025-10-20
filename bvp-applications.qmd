@@ -318,11 +318,6 @@ $$
 V = \frac{I \rho_{1}}{2 \pi} \left( \frac{1}{r} + 2 \sum_{m=1}^{\infty} \frac{k_{12}^{m}}{\sqrt{ r^{2} + (2 m z)^{2} }} \right) 
 $$
 
-
-$$
-V = \frac{I \rho_{1}}{2 \pi} \left( \frac{1}{r} + 2 \sum_{m=1}^{\infty} \frac{k_{12}^{m}}{\sqrt{ r^{2} + (2 m z)^{2} }} \right) 
-$$
-
 The first term represents the normal potemtial, while the summation provides the effect of the anomalous potential caused by the finite thickness $h$.
 
 The series converges because $|k_{12}|<1$.
