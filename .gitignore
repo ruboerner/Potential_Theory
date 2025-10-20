@@ -18,3 +18,7 @@
 *.html
 
 **/*.quarto_ipynb
+
+Untitled.ipynb
+
+cylinder_in_hom_field.ipynb
