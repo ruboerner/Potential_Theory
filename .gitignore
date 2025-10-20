@@ -3,16 +3,23 @@
 .RData
 .Ruserdata
 
+.ipynb_checkpoints
+
 /.quarto/
+/.jupyter/
 /.vscode/
 
 /*_files/
 
 /_book/
 /_site/
+/_freeze/
 
 Untitled.ipynb
 cylinder_in_hom_field.ipynb
+
+Talwani-Implementation.ipynb
+Untitled*.ipynb
 
 *.html
 
