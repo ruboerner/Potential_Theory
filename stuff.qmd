@@ -72,3 +72,10 @@ ax.set_ylim(15, 0)
 ax.grid(True)
 ax.legend();
 ```
+
+$$
+
+
+
+$$
+

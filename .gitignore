@@ -4,6 +4,7 @@
 .Ruserdata
 
 /.quarto/
+/.vscode/
 
 /*_files/
 
@@ -12,3 +13,7 @@
 
 Untitled.ipynb
 cylinder_in_hom_field.ipynb
+
+*.html
+
+**/*.quarto_ipynb

@@ -20,7 +20,10 @@ Hilbert transform
 
 ## Why is Potential Theory important?
 
-Potential theory is essential in geophysics because it provides a mathematical framework for understanding and analyzing natural physical fields, such as gravity and magnetism, that originate from the Earth’s subsurface. These fields are governed by the principles of potential theory, allowing geophysicists to interpret variations in these fields to infer the distribution of subsurface properties like density and magnetization. Potential theory forms the basis for various geophysical methods, such as gravity and magnetic surveys, which are non-invasive and cost-effective techniques for exploring natural resources, studying tectonic structures, and assessing geological hazards. Its mathematical tools, like Laplace’s and Poisson’s equations, also facilitate solving complex inverse problems to reconstruct the hidden subsurface structures from field data.
+Potential theory is essential in geophysics because it provides a __mathematical framework__ for understanding and analyzing natural physical fields, such as gravity and magnetism, that originate from the Earth’s subsurface.
+These fields are governed by the principles of potential theory, allowing geophysicists to interpret variations in these fields to infer the distribution of subsurface properties like density and magnetization.
+Potential theory forms the basis for various geophysical methods, such as gravity and magnetic surveys, which are non-invasive and cost-effective techniques for exploring natural resources, studying tectonic structures, and assessing geological hazards.
+Its mathematical tools, like Laplace’s and Poisson’s equations, also facilitate solving complex inverse problems to reconstruct the hidden subsurface structures from field data.
 
 ## What are fields?
 
@@ -32,7 +35,7 @@ We depart from a very general idea of a _field_:
 
 A _field_ describes the spatial distribution of a physical quantity. Such quantities can be 
 
--   pressure, density, temperatur
+-   pressure, density, temperature
 -   acceleration, velocity, flux, electric field, magnetic flux density, etc.
 
 We observe an important difference between the two examples.
@@ -45,9 +48,10 @@ Vector fields can be visualized by arrows or field lines.
 
 ## Definitions
 
-Potential field methods are fundamental in geophysics for studying Earth's subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving potential field equations to interpret subsurface structures or properties.
+Potential field methods are fundamental in geophysics for studying Earth's subsurface using measurements of physical fields like gravity and magnetism. These methods often rely on solving __potential field equations__ to interpret subsurface structures or properties.
 
 ### The Scalar Potential Function
+
    - **Potential Field**: A potential field $\Phi(\mathbf{r})$ is a scalar field where the field intensity (such as gravitational acceleration $\mathbf{g}$ or magnetic field $\mathbf{B}$) can be derived as the gradient of the potential:
      $$
      \mathbf{F}(\mathbf{r}) = -\grad \Phi(\mathbf{r})
@@ -67,6 +71,7 @@ Potential field methods are fundamental in geophysics for studying Earth's subsu
      where $\Phi_m$ is analogous to the gravitational potential.
 
 ### Laplace's Equation
+
    - In regions where there are no sources (e.g., mass or magnetic charge), the potential satisfies **Laplace’s equation**:
      $$
      \laplacian \Phi = 0
@@ -122,7 +127,7 @@ Potential field methods are fundamental in geophysics for studying Earth's subsu
 
 ---
 
-## Summary of Key Equations:
+## Summary of Key Equations
 
 - **Gravitational Field**: $\mathbf{g} = -\grad \Phi_g$
 - **Magnetic Field**: $\mathbf{B} = -\grad \Phi_m$

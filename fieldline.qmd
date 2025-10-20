@@ -54,7 +54,7 @@ display(Math('\\mathbf H \\times \\mathrm d \\mathbf s = ' + latex(H.cross(ds)) 
 
 We arrive at
 $$
-H_r r \mathrm{d}\theta = H_\theta \mathrm{d} r.
+H_r r \,\mathrm{d}\theta = H_\theta \,\mathrm{d} r.
 $$
 This is the differential equation of a field line. We need a parametric solution of the form $r = r(\theta)$.
 
