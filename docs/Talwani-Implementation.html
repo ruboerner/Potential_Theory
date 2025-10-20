@@ -513,7 +513,7 @@ window.Quarto = {
 <li>it stores all vertices an a convenient manner</li>
 <li>it sorts the vertices in CCW order.</li>
 </ul>
-<div id="b3685027" class="cell" data-execution_count="2">
+<div id="8232fa58" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Polygon:</span>
@@ -539,7 +539,7 @@ window.Quarto = {
 </div>
 <p>To compare the numerical results, we provide here a simple function which computes the gravitational attraction of a horizontal cylinder of mass m that intersects the vertical plane at the coordinate given by the 2-D array <code>axis</code>. The point of observation is given by the coordinates in the 2-D array <code>obs</code>:</p>
 <p><code>g = cylinder(obs, mass, axis)</code></p>
-<div id="6a5bddd0" class="cell" data-execution_count="3">
+<div id="53bf83cc" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cylinder(obs, mass, axis):</span>
@@ -548,7 +548,7 @@ window.Quarto = {
 </details>
 </div>
 <p>The following code implements the Talwani approach:</p>
-<div id="cf3630d0" class="cell" data-execution_count="4">
+<div id="1d499783" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> talwani(obs, polygon):</span>
@@ -609,7 +609,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 <section id="numerical-experiment" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="numerical-experiment"><span class="header-section-number">11.1</span> Numerical experiment</h2>
 <p>We define a cylinder of radius <span class="math inline">\(r=1\)</span> that will be approximated in the <span class="math inline">\(x-z\)</span>-plane by a sufficiently large number of line segments around its enclosing circle.</p>
-<div id="65103be7" class="cell" data-execution_count="5">
+<div id="79d1106f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">101</span></span>
@@ -621,7 +621,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> Polygon(x, z, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="d6decbcf" class="cell" data-execution_count="6">
+<div id="e9725857" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
@@ -638,7 +638,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </div>
 <p>We define a profile perpendicular to the strike of the cylinder.</p>
 <p>The arrays <code>gtal</code> and <code>gcyl</code> store the values obtained by the Talwani method and the analytical solution for the cylinder, respectively.</p>
-<div id="f8589779" class="cell" data-execution_count="7">
+<div id="1d944fd0" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">40</span>, stop<span class="op">=</span><span class="dv">40</span>, num<span class="op">=</span><span class="dv">81</span>)</span>
@@ -652,7 +652,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </details>
 </div>
 <p>The following plots illustrate the accuracy of the Talwani approach.</p>
-<div id="ed0f399d" class="cell" data-execution_count="8">
+<div id="219d97b0" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
@@ -672,7 +672,7 @@ Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \p
 </div>
 </div>
 <p>The relative error is</p>
-<div id="f35f0999" class="cell" data-execution_count="9">
+<div id="25d0ac89" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(norm(gtal <span class="op">-</span> gcyl) <span class="op">/</span> norm(gcyl))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
