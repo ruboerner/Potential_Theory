@@ -218,3 +218,64 @@ PlotGrid(1, 2, p1, p2, size=(7,3));
     -   It has no curvature
 -   The solution of the *Poisson equation* has local minima and maxima
     -   Its extrema might get larger or smaller than those of the Dirichlet values at the boundary
+
+
+## Mean value theorem
+
+We observe an important property of harmonic functions:
+
+A continuous function $f: \Omega \subset \mathbb R_{n} \mapsto \mathbb R$ is a harmonic function, if there holds
+
+$$
+f(\mathbf{x}) = \frac{1}{r^{n-1}s_{n}} \int_{\partial K(\mathbf{x}, r)} f(\mathbf{y}) \, \mathrm d \sigma(\mathbf{y}) 
+$$
+for any sphere $K(\mathbf{x}, r)$ of radius $r$ in $\mathbf{x}$ enclosed by $\Omega$. $s_{n}$ is the surface measure of the n-dimansional unit sphere.
+
+In $\mathbb R^3$ we have
+$$
+f(\mathbf{x}) = \frac{1}{4 \pi r^{2}} \int_{\partial K(\mathbf{x}, r)} f(\mathbf{y}) \, \mathrm d  \sigma(\mathbf{y}) 
+$$
+
+The value of a harmonic function at any given point $\mathbf{x}$ is the average of its neighboring values.
+
+From the definition of the second derivative we can infer an alternative approach for the 1-D case:
+
+From the definition of the second derivative
+$$
+\frac{\mathrm d^{2}\Phi(x)}{\mathrm d x^{2}} = \lim_{\Delta x \to 0}
+\frac{\Phi(x + \Delta x) - 2 \Phi(x) + \Phi(x - \Delta x)}{\Delta x^{2}}
+$$
+we obtain
+$$
+\lim_{\Delta x \to 0} \frac{1}{\Delta x^{2}} \left(
+\Phi(x) - \frac{1}{2}(\Phi(x - \Delta x) + \Phi(x + \Delta x))
+\right) = -\frac{1}{2}\frac{\mathrm d^{2}\Phi}{\mathrm d x^{2}}
+$$
+from which it follows that
+$$
+\Phi(x) = \frac{1}{2} \lim_{\Delta x \to 0}
+(\Phi(x - \Delta x) + \Phi(x + \Delta x)).
+$$
+
+
+## Min-Max Property
+
+From the mean value theorem follows the min-max property, which states that the solution $\Phi$ of the Laplace equation in a closed domain $\Omega$ never has its minimum and maximum values in its interior.
+
+$$
+\begin{align}
+\max(\Phi(x), x \in \Omega) & \lt \max(\Phi(x), x \in \overline{\Omega}) = \max(\Phi(x), x \in \partial \Omega) \\
+\min(\Phi(x), x \in \partial \Omega) & = \min(\Phi(x), x \in \overline{\Omega}) \lt \min(\Phi(x), x \in \Omega)
+\end{align}
+$$
+
+Here, $\overline \Omega$ is the _closure_ of $\Omega$, which is the smallest closed set containing $\Omega$.
+
+Equivalently,
+$$
+\overline\Omega = \Omega \cup \partial \Omega
+$$
+where $\partial\Omega$ denotes the boundary of $\Omega$.
+
+On the other hand, the domain $\Omega$ is an open subset of $\mathbb R^{n}$. Open means that every point $x \in \Omega$ has a small ball $B_{\varepsilon}(x)$ that is still contained in $\Omega$. Thus, _the boundary points are not included in $\Omega$_.
+

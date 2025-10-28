@@ -531,7 +531,7 @@ V(z) = -f \frac{m}{r} = -2 \pi f \rho_F \int\limits_{r=0}^a \frac{r \, \dd r}{\s
 V(z) = 2 \pi f \rho_{F} (|z| - \sqrt{ a^2 + z^2 })
 \]</span></p>
 <p>Sympy check:</p>
-<div id="9061bb00" class="cell" data-execution_count="1">
+<div id="0302564b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -584,7 +584,7 @@ Figure&nbsp;8.2: Potential of a circular disc of radius <span class="math inline
 \]</span></p>
 <p>This is the attraction of a disc of density <span class="math inline">\(\rho_{F}\)</span> aligned with the plane <span class="math inline">\(z=0\)</span> observed at some point at the <span class="math inline">\(z\)</span> axis.</p>
 <p>Sympy check:</p>
-<div id="8d73a663" class="cell" data-execution_count="3">
+<div id="da85c994" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="op">-</span>sp.diff(V, z)</span>
@@ -633,7 +633,7 @@ Figure&nbsp;8.3: Vertical attraction of a circular disc of radius <span class="m
 </div>
 </div>
 <p>The vertical component of the gravitational attraction obviously has a jump, which equals <span class="math inline">\(4 \pi f \rho_F\)</span>.</p>
-<div id="37867039" class="cell" data-execution_count="5">
+<div id="dff0a8b0" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sp.limit(g, z, <span class="dv">0</span>, <span class="st">'-'</span>) <span class="op">-</span> sp.limit(g, z, <span class="dv">0</span>, <span class="st">'+'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -668,7 +668,7 @@ g(z) &amp; = 2 \pi f \rho \left(h + \sqrt{ a^2 + z^2 } - \sqrt{ a^2 + (h - z)^{2
 \end{align}
 \]</span></p>
 <p>Sympy check:</p>
-<div id="91a2228f" class="cell" data-execution_count="6">
+<div id="05568f1e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> sp.symbols(<span class="st">'h'</span>, real<span class="op">=</span><span class="va">True</span>, positive<span class="op">=</span><span class="va">True</span>)</span>
@@ -680,7 +680,7 @@ g(z) &amp; = 2 \pi f \rho \left(h + \sqrt{ a^2 + z^2 } - \sqrt{ a^2 + (h - z)^{2
 <p><span class="math inline">\(\displaystyle \begin{cases} 2 \pi f \rho \left(h + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{for}\: z &lt; 0 \\2 \pi f \rho \left(h - 2 z + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{for}\: h &gt; z \\2 \pi f \rho \left(- h + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{otherwise} \end{cases}\)</span></p>
 </div>
 </div>
-<div id="475d0074" class="cell" data-execution_count="7">
+<div id="a0b6c351" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hh <span class="op">=</span> <span class="fl">1.0</span></span>

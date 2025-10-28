@@ -144,6 +144,28 @@
     ]
   },
   {
+    "objectID": "fields.html#mean-value-theorem",
+    "href": "fields.html#mean-value-theorem",
+    "title": "2  Fields",
+    "section": "2.4 Mean value theorem",
+    "text": "2.4 Mean value theorem\nWe observe an important property of harmonic functions:\nA continuous function \\(f: \\Omega \\subset \\mathbb R_{n} \\mapsto \\mathbb R\\) is a harmonic function, if there holds\n\\[\nf(\\mathbf{x}) = \\frac{1}{r^{n-1}s_{n}} \\int_{\\partial K(\\mathbf{x}, r)} f(\\mathbf{y}) \\, \\mathrm d \\sigma(\\mathbf{y})\n\\] for any sphere \\(K(\\mathbf{x}, r)\\) of radius \\(r\\) in \\(\\mathbf{x}\\) enclosed by \\(\\Omega\\). \\(s_{n}\\) is the surface measure of the n-dimansional unit sphere.\nIn \\(\\mathbb R^3\\) we have \\[\nf(\\mathbf{x}) = \\frac{1}{4 \\pi r^{2}} \\int_{\\partial K(\\mathbf{x}, r)} f(\\mathbf{y}) \\, \\mathrm d  \\sigma(\\mathbf{y})\n\\]\nThe value of a harmonic function at any given point \\(\\mathbf{x}\\) is the average of its neighboring values.\nFrom the definition of the second derivative we can infer an alternative approach for the 1-D case:\nFrom the definition of the second derivative \\[\n\\frac{\\mathrm d^{2}\\Phi(x)}{\\mathrm d x^{2}} = \\lim_{\\Delta x \\to 0}\n\\frac{\\Phi(x + \\Delta x) - 2 \\Phi(x) + \\Phi(x - \\Delta x)}{\\Delta x^{2}}\n\\] we obtain \\[\n\\lim_{\\Delta x \\to 0} \\frac{1}{\\Delta x^{2}} \\left(\n\\Phi(x) - \\frac{1}{2}(\\Phi(x - \\Delta x) + \\Phi(x + \\Delta x))\n\\right) = -\\frac{1}{2}\\frac{\\mathrm d^{2}\\Phi}{\\mathrm d x^{2}}\n\\] from which it follows that \\[\n\\Phi(x) = \\frac{1}{2} \\lim_{\\Delta x \\to 0}\n(\\Phi(x - \\Delta x) + \\Phi(x + \\Delta x)).\n\\]",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
+    "objectID": "fields.html#min-max-property",
+    "href": "fields.html#min-max-property",
+    "title": "2  Fields",
+    "section": "2.5 Min-Max Property",
+    "text": "2.5 Min-Max Property\nFrom the mean value theorem follows the min-max property, which states that the solution \\(\\Phi\\) of the Laplace equation in a closed domain \\(\\Omega\\) never has its minimum and maximum values in its interior.\n\\[\n\\begin{align}\n\\max(\\Phi(x), x \\in \\Omega) & \\lt \\max(\\Phi(x), x \\in \\overline{\\Omega}) = \\max(\\Phi(x), x \\in \\partial \\Omega) \\\\\n\\min(\\Phi(x), x \\in \\partial \\Omega) & = \\min(\\Phi(x), x \\in \\overline{\\Omega}) \\lt \\min(\\Phi(x), x \\in \\Omega)\n\\end{align}\n\\]\nHere, \\(\\overline \\Omega\\) is the closure of \\(\\Omega\\), which is the smallest closed set containing \\(\\Omega\\).\nEquivalently, \\[\n\\overline\\Omega = \\Omega \\cup \\partial \\Omega\n\\] where \\(\\partial\\Omega\\) denotes the boundary of \\(\\Omega\\).\nOn the other hand, the domain \\(\\Omega\\) is an open subset of \\(\\mathbb R^{n}\\). Open means that every point \\(x \\in \\Omega\\) has a small ball \\(B_{\\varepsilon}(x)\\) that is still contained in \\(\\Omega\\). Thus, the boundary points are not included in \\(\\Omega\\).",
+    "crumbs": [
+      "Mathematical foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fields</span>"
+    ]
+  },
+  {
     "objectID": "pointmass.html",
     "href": "pointmass.html",
     "title": "3  Point mass",

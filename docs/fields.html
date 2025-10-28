@@ -493,6 +493,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#solution-of-the-laplace-and-poisson-equations" id="toc-solution-of-the-laplace-and-poisson-equations" class="nav-link" data-scroll-target="#solution-of-the-laplace-and-poisson-equations"><span class="header-section-number">2.2</span> Solution of the Laplace and Poisson equations</a></li>
   <li><a href="#what-can-be-observed-in-the-1-d-case" id="toc-what-can-be-observed-in-the-1-d-case" class="nav-link" data-scroll-target="#what-can-be-observed-in-the-1-d-case"><span class="header-section-number">2.3</span> What can be observed in the 1-D case?</a></li>
+  <li><a href="#mean-value-theorem" id="toc-mean-value-theorem" class="nav-link" data-scroll-target="#mean-value-theorem"><span class="header-section-number">2.4</span> Mean value theorem</a></li>
+  <li><a href="#min-max-property" id="toc-min-max-property" class="nav-link" data-scroll-target="#min-max-property"><span class="header-section-number">2.5</span> Min-Max Property</a></li>
   </ul>
 </nav>
     </div>
@@ -707,7 +709,7 @@ x = \abs{\vb x} = \langle \vb x , \vb x  \rangle^{1/2}
 <li>The desired solution is <code>y(x)</code></li>
 <li>Boundary conditions can be enforced by the values following the keyword <code>ics</code>. In the example, <code>y(0)=1</code> and <code>y(1)=0</code>.</li>
 </ul>
-<div id="7d177f73" class="cell" data-execution_count="1">
+<div id="92a2512b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Function, dsolve, diff, cos, sin</span>
@@ -756,6 +758,45 @@ x = \abs{\vb x} = \langle \vb x , \vb x  \rangle^{1/2}
 <li>Its extrema might get larger or smaller than those of the Dirichlet values at the boundary</li>
 </ul></li>
 </ul>
+</section>
+<section id="mean-value-theorem" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="mean-value-theorem"><span class="header-section-number">2.4</span> Mean value theorem</h2>
+<p>We observe an important property of harmonic functions:</p>
+<p>A continuous function <span class="math inline">\(f: \Omega \subset \mathbb R_{n} \mapsto \mathbb R\)</span> is a harmonic function, if there holds</p>
+<p><span class="math display">\[
+f(\mathbf{x}) = \frac{1}{r^{n-1}s_{n}} \int_{\partial K(\mathbf{x}, r)} f(\mathbf{y}) \, \mathrm d \sigma(\mathbf{y})
+\]</span> for any sphere <span class="math inline">\(K(\mathbf{x}, r)\)</span> of radius <span class="math inline">\(r\)</span> in <span class="math inline">\(\mathbf{x}\)</span> enclosed by <span class="math inline">\(\Omega\)</span>. <span class="math inline">\(s_{n}\)</span> is the surface measure of the n-dimansional unit sphere.</p>
+<p>In <span class="math inline">\(\mathbb R^3\)</span> we have <span class="math display">\[
+f(\mathbf{x}) = \frac{1}{4 \pi r^{2}} \int_{\partial K(\mathbf{x}, r)} f(\mathbf{y}) \, \mathrm d  \sigma(\mathbf{y})
+\]</span></p>
+<p>The value of a harmonic function at any given point <span class="math inline">\(\mathbf{x}\)</span> is the average of its neighboring values.</p>
+<p>From the definition of the second derivative we can infer an alternative approach for the 1-D case:</p>
+<p>From the definition of the second derivative <span class="math display">\[
+\frac{\mathrm d^{2}\Phi(x)}{\mathrm d x^{2}} = \lim_{\Delta x \to 0}
+\frac{\Phi(x + \Delta x) - 2 \Phi(x) + \Phi(x - \Delta x)}{\Delta x^{2}}
+\]</span> we obtain <span class="math display">\[
+\lim_{\Delta x \to 0} \frac{1}{\Delta x^{2}} \left(
+\Phi(x) - \frac{1}{2}(\Phi(x - \Delta x) + \Phi(x + \Delta x))
+\right) = -\frac{1}{2}\frac{\mathrm d^{2}\Phi}{\mathrm d x^{2}}
+\]</span> from which it follows that <span class="math display">\[
+\Phi(x) = \frac{1}{2} \lim_{\Delta x \to 0}
+(\Phi(x - \Delta x) + \Phi(x + \Delta x)).
+\]</span></p>
+</section>
+<section id="min-max-property" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="min-max-property"><span class="header-section-number">2.5</span> Min-Max Property</h2>
+<p>From the mean value theorem follows the min-max property, which states that the solution <span class="math inline">\(\Phi\)</span> of the Laplace equation in a closed domain <span class="math inline">\(\Omega\)</span> never has its minimum and maximum values in its interior.</p>
+<p><span class="math display">\[
+\begin{align}
+\max(\Phi(x), x \in \Omega) &amp; \lt \max(\Phi(x), x \in \overline{\Omega}) = \max(\Phi(x), x \in \partial \Omega) \\
+\min(\Phi(x), x \in \partial \Omega) &amp; = \min(\Phi(x), x \in \overline{\Omega}) \lt \min(\Phi(x), x \in \Omega)
+\end{align}
+\]</span></p>
+<p>Here, <span class="math inline">\(\overline \Omega\)</span> is the <em>closure</em> of <span class="math inline">\(\Omega\)</span>, which is the smallest closed set containing <span class="math inline">\(\Omega\)</span>.</p>
+<p>Equivalently, <span class="math display">\[
+\overline\Omega = \Omega \cup \partial \Omega
+\]</span> where <span class="math inline">\(\partial\Omega\)</span> denotes the boundary of <span class="math inline">\(\Omega\)</span>.</p>
+<p>On the other hand, the domain <span class="math inline">\(\Omega\)</span> is an open subset of <span class="math inline">\(\mathbb R^{n}\)</span>. Open means that every point <span class="math inline">\(x \in \Omega\)</span> has a small ball <span class="math inline">\(B_{\varepsilon}(x)\)</span> that is still contained in <span class="math inline">\(\Omega\)</span>. Thus, <em>the boundary points are not included in <span class="math inline">\(\Omega\)</span></em>.</p>
 
 
 </section>
