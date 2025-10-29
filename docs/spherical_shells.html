@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -105,6 +105,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script>
 window.MathJax = {
   loader: {
@@ -511,14 +514,17 @@ window.Quarto = {
 </header>
 
 
-<div id="fc1244f8" class="cell" data-execution_count="1">
+<div id="c1e368d1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> pi, oo</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.assumptions <span class="im">import</span> assuming, Q</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Latex, HTML, Math</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> pi, oo</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>showlatex <span class="op">=</span> <span class="kw">lambda</span> s: display(HTML(<span class="ss">f"$$</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">$$"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.assumptions <span class="im">import</span> assuming, Q</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>We want to investigate spheres with an arbitrary radial density distribution <span class="math inline">\(\rho = \rho(r)\)</span>. The following results have been described 1687 in Newton’s <em>Philosophiae Naturalis Principia Mathematica</em> and have since then been known as <em>Newton’s shell theorem</em>.</p>
@@ -567,8 +573,8 @@ Figure&nbsp;5.2
 V^F(r) = -2 \pi f \rho_F \int_{\theta=0}^\pi \frac{a^2 \sin\theta \, \mathrm d \theta}{\sqrt{r^2 + a^2 - 2ar\cos\theta}}.
 \]</span></p>
 <p>The potential <span class="math inline">\(V^F(r)\)</span> inside or outside of such a spherical shell with surface density <span class="math inline">\(\rho_F\)</span> and radius <span class="math inline">\(a\)</span> is <span class="math display">\[
-V^F(r) = 2 \pi f \frac{a}{r} \rho_F \left[ r + a - |r - a| \right].
-\]</span> Because <span class="math inline">\(r\)</span> can be either less or greater than <span class="math inline">\(a\)</span>, we obtain two solution for <span class="math inline">\(V^F(r)\)</span>: <span class="math display">\[
+V^F(r) = -2 \pi f \frac{a}{r} \rho_F \left[ r + a - |r - a| \right].
+\]</span> Because <span class="math inline">\(r\)</span> can be either less or greater than <span class="math inline">\(a\)</span>, we distinguish between <span class="math display">\[
 V^F(r) = \begin{cases}
 -4 \pi f \rho_F \frac{a^2}{r} &amp; \quad\text{ if } r &gt; a \\
 -4 \pi f \rho_F a &amp; \quad\text{ if } r &lt; a
@@ -578,15 +584,15 @@ V^F(r) = \begin{cases}
 <p><span class="math display">\[
 V(r) = \int_{r'=0}^a V^F(r') \, \mathrm d r' = -\frac{2 \pi f}{r } \int_{r'=0}^{a} \rho(r') [r + r' - |r - r'|] r' \, \mathrm d r'
 \]</span></p>
-<p>To this end, we make use of <code>SymPy</code>, a <code>Python</code> library for symbolic mathematics.</p>
+<p>To illustrate this, we make use of <code>SymPy</code>, a <code>Python</code> library for symbolic mathematics.</p>
 <p>We first define symbolic variables.</p>
-<div id="9f779b70" class="cell" data-execution_count="2">
+<div id="1da6a9fe" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r, rp, a, f, rho, theta <span class="op">=</span> sp.symbols(<span class="st">"r r' a f rho theta"</span>, positive<span class="op">=</span><span class="va">True</span>, real<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="89b36677" class="cell" data-execution_count="3">
+<div id="ad1612ad" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> rho <span class="op">*</span> sp.integrate(a<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> sp.sin(theta) <span class="op">/</span> sp.sqrt(r<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>a<span class="op">*</span>r<span class="op">*</span>sp.cos(theta)), (theta, <span class="dv">0</span>, pi))</span>
@@ -605,65 +611,146 @@ r - a &amp; \text{if } r &gt; a \\
 a - r &amp; \text{if } r &lt; a
 \end{cases}
 \]</span> we have to be careful with the integrand.</p>
-<div id="f2289c0b" class="cell" data-execution_count="4">
+<p>The potential outside of the sphere is</p>
+<div id="32bc9ded" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Voutside <span class="op">=</span> <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> rho <span class="op">/</span> r <span class="op">*</span> sp.integrate((r <span class="op">+</span> rp <span class="op">-</span> (r <span class="op">-</span> rp)) <span class="op">*</span> rp, (rp, <span class="dv">0</span>, a))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Voutside</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>showlatex(<span class="vs">r"V</span><span class="kw">(</span><span class="vs">r</span><span class="kw">)</span><span class="vs"> = "</span> <span class="op">+</span> sp.latex(Voutside) <span class="op">+</span> <span class="vs">r" = -f </span><span class="ch">\f</span><span class="vs">rac{m}{r}"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
-<p><span class="math inline">\(\displaystyle - \frac{4 \pi a^{3} f \rho}{3 r}\)</span></p>
+<div class="cell-output cell-output-display">
+$$V(r) = - \frac{4 \pi a^{3} f \rho}{3 r} = -f \frac{m}{r}$$
 </div>
 </div>
+<p>We recognize that this is just the <strong>potential of an equivalent point mass</strong> of <span class="math inline">\(m = \frac{4 \pi a^{3} \rho}{3}\)</span> concentrated at the center of the sphere.</p>
 <p>To get the potential inside the sphere, i.e., for <span class="math inline">\(r &lt; a\)</span>, we have to decompose the integral into two contributions.</p>
-<p>First, we evaluate the potential due to a sphere of radius <span class="math inline">\(r\)</span>, to which we add the contribution of a hollow sphere with inner radius <span class="math inline">\(r\)</span> and outer radius <span class="math inline">\(a\)</span>: <span class="math display">\[
+<p>First, we evaluate the potential due to an <strong>embedded sphere of radius <span class="math inline">\(r\)</span></strong>, to which we add the contribution of a <strong>hollow sphere with inner radius <span class="math inline">\(r\)</span> and outer radius <span class="math inline">\(a\)</span></strong>: <span class="math display">\[
 V(r) = -\frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^a \rho(r') r r' \, \mathrm d r'\right]
 \]</span></p>
-<p>In the interior of a homogeneous sphere with a mean density of <span class="math inline">\(\bar\rho\)</span> we obtain for <span class="math inline">\(0 \le r \le a\)</span> <span class="math display">\[
-V(r) = \frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
+<p>In the interior of a homogeneous sphere with an averaged mean density of <span class="math inline">\(\bar\rho\)</span> we obtain for <span class="math inline">\(0 \le r \le a\)</span> <span class="math display">\[
+V(r) = -\frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
 \]</span></p>
-<div id="62eec992" class="cell" data-execution_count="5">
+<p><code>SymPy</code> gets the same result:</p>
+<div id="cc4b2201" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Vinside <span class="op">=</span> <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> rho <span class="op">/</span> r <span class="op">*</span> (sp.integrate(rp<span class="op">**</span><span class="dv">2</span>, (rp, <span class="dv">0</span>, r)) <span class="op">+</span> sp.integrate(rp <span class="op">*</span> r, (rp, r, a)))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Vinside.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>showlatex(<span class="vs">r"V</span><span class="kw">(</span><span class="vs">r</span><span class="kw">)</span><span class="vs"> = "</span> <span class="op">+</span> sp.latex(Vinside.simplify()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
-<p><span class="math inline">\(\displaystyle \frac{2 \pi f \rho \left(- 3 a^{2} + r^{2}\right)}{3}\)</span></p>
+<div class="cell-output cell-output-display">
+$$V(r) = \frac{2 \pi f \rho \left(- 3 a^{2} + r^{2}\right)}{3}$$
 </div>
 </div>
+<p>We make some plots to illustrate the potential and its radial derivative. Note that in what follows, we have set <span class="math inline">\(f \rho = 1\)</span>.</p>
+<div id="5ddf87e4" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">5.0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>r_in <span class="op">=</span> np.arange(<span class="dv">0</span>, a<span class="op">+</span><span class="fl">0.01</span>, <span class="fl">0.1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>r_out <span class="op">=</span> np.arange(a, <span class="fl">10.01</span>, <span class="fl">0.1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>V_in <span class="op">=</span> <span class="kw">lambda</span> r: <span class="op">-</span><span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> (<span class="dv">3</span> <span class="op">*</span> a<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> r<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>V_out <span class="op">=</span> <span class="kw">lambda</span> r: <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> a<span class="op">**</span><span class="dv">3</span> <span class="op">/</span> <span class="dv">3</span> <span class="op">/</span> r</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.plot(r_in, V_in(r_in), label<span class="op">=</span><span class="st">"inside"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax.plot(r_out, V_out(r_out), label<span class="op">=</span><span class="st">"outside"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"potential"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"distance from center"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Potential inside and outside of a sphere"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ax.grid(alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="spherical_shells_files/figure-html/cell-7-output-1.png" width="530" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the plot we recognize that the <strong>potential is continuous</strong> at <span class="math inline">\(r=a\)</span>!</p>
+<p>Now let’s study the gravitational attraction of our sphere.</p>
+<p>The gravitational attraction is <span class="math display">\[
+g(r) = -\frac{ \partial V }{ \partial r }
+\]</span></p>
+<p>Inside the sphere, we get</p>
+<div id="487d9321" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>g_in <span class="op">=</span> <span class="op">-</span>sp.diff(Vinside, r)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>showlatex(<span class="vs">r"g</span><span class="kw">(</span><span class="vs">r</span><span class="kw">)</span><span class="vs"> = "</span> <span class="op">+</span> sp.latex(g_in.simplify()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+$$g(r) = - \frac{4 \pi f r \rho}{3}$$
+</div>
+</div>
+<p>Outside, we get</p>
+<div id="fd8dabb6" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>g_out <span class="op">=</span> <span class="op">-</span>sp.diff(Voutside, r)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>showlatex(<span class="vs">r"g</span><span class="kw">(</span><span class="vs">r</span><span class="kw">)</span><span class="vs"> = "</span> <span class="op">+</span> sp.latex(g_out.simplify()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+$$g(r) = - \frac{4 \pi a^{3} f \rho}{3 r^{2}}$$
+</div>
+</div>
+<p>When multiplied by the unit radial vector, the attraction acquires a direction that points radially inward, toward the center of the sphere.</p>
+<div id="65c13704" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Vr_in <span class="op">=</span> <span class="kw">lambda</span> r: <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> r</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Vr_out <span class="op">=</span> <span class="kw">lambda</span> r: <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> a<span class="op">**</span><span class="dv">3</span> <span class="op">/</span> <span class="dv">3</span> <span class="op">/</span> r<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ax.plot(r_in, np.<span class="bu">abs</span>(Vr_in(r_in)), label<span class="op">=</span><span class="st">"inside"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax.plot(r_out, np.<span class="bu">abs</span>(Vr_out(r_out)), label<span class="op">=</span><span class="st">"outside"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"|g(r)|"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"distance from center"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Gravitational attraction inside and outside of a sphere"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ax.grid(alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="spherical_shells_files/figure-html/cell-10-output-1.png" width="511" height="376" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The gravitational attraction is continuous but not continuously differentiable at <span class="math inline">\(r = a\)</span>. Within the sphere, it varies linearly with the distance from the center and vanishes at <span class="math inline">\(r = 0\)</span>. Outside the sphere, the attraction follows an inverse-square law, equivalent to that of a point mass located at the sphere’s center.</p>
 <section id="density-laws" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="density-laws"><span class="header-section-number">5.1</span> Density laws</h2>
 <p>Now, we introduce non-trivial density laws, such as a linear density law <span class="math display">\[
 \rho(r) = \rho(0) - b r, \quad b &gt; 0.
 \]</span></p>
-<div id="f0b8a9b3" class="cell" data-execution_count="6">
+<div id="38a1a911" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rho_m, rho_0, rho_R, R_E, b <span class="op">=</span> sp.symbols(<span class="st">"rho_m rho_0 rho_R R_E b"</span>, positive<span class="op">=</span><span class="va">True</span>, real<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rho_m, rho_0, rho_R, R_E, b <span class="op">=</span> sp.symbols(<span class="st">"rho_m rho_0 rho_R R_E b"</span>, positive<span class="op">=</span><span class="va">True</span>, real<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>With the known mean density of the Earth we can evaluate Earth’s mass.</p>
-<div id="d7b7ded9" class="cell" data-execution_count="7">
+<div id="f59421cd" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m_E <span class="op">=</span> rho_m <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> R_E<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m_E</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>m_E <span class="op">=</span> rho_m <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> R_E<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>m_E</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="7">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="11">
 <p><span class="math inline">\(\displaystyle \frac{4 \pi R_{E}^{3} \rho_{m}}{3}\)</span></p>
 </div>
 </div>
 <p>This is not very helpful. Instead, we can evaluate Earth’s mass using a volume integral over a density function, e.g., <span class="math display">\[
 m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 \]</span> Using <code>SymPy</code> we obtain the expression</p>
-<div id="afcb19b2" class="cell" data-execution_count="8">
+<div id="1770863e" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m_E_int <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> r) <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>, (r, <span class="dv">0</span>, R_E))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>m_E_int.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m_E_int <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> r) <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>, (r, <span class="dv">0</span>, R_E))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>m_E_int.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="12">
 <p><span class="math inline">\(\displaystyle \frac{\pi R_{E}^{3} \left(- 3 R_{E} b + 4 \rho_{0}\right)}{3}\)</span></p>
 </div>
 </div>
@@ -672,49 +759,49 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 \rho(R_E) = \rho(0) - b R_E.
 \]</span></p>
 <p>The density at the Earth’s surface is about <span class="math inline">\(2700\)</span> <span class="math inline">\(kg/m^3\)</span>.</p>
-<div id="d400a73e" class="cell" data-execution_count="9">
+<div id="1c59873c" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>eq1 <span class="op">=</span> m_E_int <span class="op">-</span> m_E</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>eq2 <span class="op">=</span> rho_0 <span class="op">-</span> b <span class="op">*</span> R_E <span class="op">-</span> rho_R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>eq1 <span class="op">=</span> m_E_int <span class="op">-</span> m_E</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>eq2 <span class="op">=</span> rho_0 <span class="op">-</span> b <span class="op">*</span> R_E <span class="op">-</span> rho_R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="5cdc37c4" class="cell" data-execution_count="10">
+<div id="64abb67c" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> sp.solve((eq1, eq2), (rho_0, b),<span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>coeff_rho_0 <span class="op">=</span> coeffs[<span class="dv">0</span>][rho_0]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>coeff_b <span class="op">=</span> coeffs[<span class="dv">0</span>][b]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> sp.solve((eq1, eq2), (rho_0, b),<span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>coeff_rho_0 <span class="op">=</span> coeffs[<span class="dv">0</span>][rho_0]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>coeff_b <span class="op">=</span> coeffs[<span class="dv">0</span>][b]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="f2548844" class="cell" data-execution_count="11">
+<div id="bc602dfe" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>coeff_rho_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coeff_rho_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="11">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="15">
 <p><span class="math inline">\(\displaystyle - 3 \rho_{R} + 4 \rho_{m}\)</span></p>
 </div>
 </div>
-<div id="f1cd23ee" class="cell" data-execution_count="12">
+<div id="e1685167" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>coeff_b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>coeff_b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="12">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="16">
 <p><span class="math inline">\(\displaystyle \frac{- 4 \rho_{R} + 4 \rho_{m}}{R_{E}}\)</span></p>
 </div>
 </div>
-<div id="9ac2c99f" class="cell" data-execution_count="13">
+<div id="7c4c707d" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rho_num <span class="op">=</span> coeff_rho_0.subs(rho_R, <span class="dv">2700</span>).subs(rho_m, <span class="dv">5515</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rho_num <span class="op">=</span> coeff_rho_0.subs(rho_R, <span class="dv">2700</span>).subs(rho_m, <span class="dv">5515</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="c4d92eb2" class="cell" data-execution_count="14">
+<div id="dd132bef" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b_num <span class="op">=</span> coeff_b.subs(rho_R, <span class="dv">2700</span>).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>b_num <span class="op">=</span> coeff_b.subs(rho_R, <span class="dv">2700</span>).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -724,40 +811,40 @@ m_E = 4 \pi \int_0^{R_E} (\rho_0 - br) r^2 \, \mathrm d r
 V(r) = -\frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^{R_E} \rho(r') r r' \, \mathrm d r'\right]
 \]</span> The first integral amounts for the potential at the surface of a sphere with radius , whereas the second computes the potential taken at the inner surface of a hollow sphere.</p>
 <p>With the constants derived above we want to evaluate these integrals.</p>
-<div id="eda003c5" class="cell" data-execution_count="15">
+<div id="5f11ea70" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>i1 <span class="op">=</span> <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">/</span> r <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> rp) <span class="op">*</span> rp<span class="op">**</span><span class="dv">2</span>, (rp, <span class="dv">0</span>, r))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>i1.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>i1 <span class="op">=</span> <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">/</span> r <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> rp) <span class="op">*</span> rp<span class="op">**</span><span class="dv">2</span>, (rp, <span class="dv">0</span>, r))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>i1.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="15">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="19">
 <p><span class="math inline">\(\displaystyle \frac{\pi f r^{2} \left(3 b r - 4 \rho_{0}\right)}{3}\)</span></p>
 </div>
 </div>
-<div id="94614eee" class="cell" data-execution_count="16">
+<div id="d879b904" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>i2 <span class="op">=</span> <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> rp) <span class="op">*</span> rp, (rp, r, R_E))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>i2.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>i2 <span class="op">=</span> <span class="op">-</span><span class="dv">4</span> <span class="op">*</span> pi <span class="op">*</span> f <span class="op">*</span> sp.integrate((rho_0 <span class="op">-</span> b <span class="op">*</span> rp) <span class="op">*</span> rp, (rp, r, R_E))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>i2.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="16">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="20">
 <p><span class="math inline">\(\displaystyle \frac{2 \pi f \left(2 R_{E}^{3} b - 3 R_{E}^{2} \rho_{0} - 2 b r^{3} + 3 r^{2} \rho_{0}\right)}{3}\)</span></p>
 </div>
 </div>
 <p>Next, we add both contributions to obtain the potential inside the Earth.</p>
-<div id="89ea94a1" class="cell" data-execution_count="17">
+<div id="386ae966" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#V = sp.Function("V")</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> i1 <span class="op">+</span> i2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#V = sp.Function("V")</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> i1 <span class="op">+</span> i2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="cfac0b63" class="cell" data-execution_count="18">
+<div id="e4988c1d" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>V.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>V.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="18">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="22">
 <p><span class="math inline">\(\displaystyle \frac{\pi f \left(4 R_{E}^{3} b - 6 R_{E}^{2} \rho_{0} - b r^{3} + 2 r^{2} \rho_{0}\right)}{3}\)</span></p>
 </div>
 </div>
@@ -765,13 +852,13 @@ V(r) = -\frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' +
 <p><span class="math display">\[
 g(r) = -\nabla V(r) \cdot \hat{\mathbf r}
 \]</span></p>
-<div id="1ff7439d" class="cell" data-execution_count="19">
+<div id="aeab618e" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="op">-</span>sp.diff(V, r)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>g.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="op">-</span>sp.diff(V, r)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>g.simplify()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="19">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="23">
 <p><span class="math inline">\(\displaystyle \frac{\pi f r \left(3 b r - 4 \rho_{0}\right)}{3}\)</span></p>
 </div>
 </div>
@@ -780,62 +867,62 @@ g(r) = -\nabla V(r) \cdot \hat{\mathbf r}
 <h2 data-number="5.3" class="anchored" data-anchor-id="visualization-of-the-result"><span class="header-section-number">5.3</span> Visualization of the result</h2>
 <p>We plot the curve of <span class="math inline">\(g(r)\)</span> inside the Earth.</p>
 <p>Further, we check if <span class="math inline">\(g(r)\)</span> has an extremum inside the Earth.</p>
-<div id="28a34b47" class="cell" data-execution_count="20">
+<div id="5cd1576c" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>f_ <span class="op">=</span> <span class="fl">6.674e-11</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>g_num <span class="op">=</span> <span class="kw">lambda</span> r: np.pi <span class="op">*</span> f_ <span class="op">*</span> r <span class="op">*</span> (<span class="dv">3</span> <span class="op">*</span> b_num <span class="op">*</span> r <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> rho_num) <span class="op">/</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f_ <span class="op">=</span> <span class="fl">6.674e-11</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>g_num <span class="op">=</span> <span class="kw">lambda</span> r: np.pi <span class="op">*</span> f_ <span class="op">*</span> r <span class="op">*</span> (<span class="dv">3</span> <span class="op">*</span> b_num <span class="op">*</span> r <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> rho_num) <span class="op">/</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="e6861ea1" class="cell" data-execution_count="21">
+<div id="247537d1" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rstar <span class="op">=</span> sp.solve(sp.diff(g, r), (r))</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>rstar[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rstar <span class="op">=</span> sp.solve(sp.diff(g, r), (r))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>rstar[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="21">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="25">
 <p><span class="math inline">\(\displaystyle \frac{2 \rho_{0}}{3 b}\)</span></p>
 </div>
 </div>
-<div id="ce977ea8" class="cell" data-execution_count="22">
+<div id="9f305275" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rextrem <span class="op">=</span> rstar[<span class="dv">0</span>].subs(rho_0, rho_num).subs(b, b_num)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rextrem <span class="op">/</span> <span class="fl">1e6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rextrem <span class="op">=</span> rstar[<span class="dv">0</span>].subs(rho_0, rho_num).subs(b, b_num)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>rextrem <span class="op">/</span> <span class="fl">1e6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="22">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="26">
 <p><span class="math inline">\(\displaystyle 5.26578804026051\)</span></p>
 </div>
 </div>
-<div id="96054245" class="cell" data-execution_count="23">
+<div id="7945ff4f" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.371e6</span> <span class="op">-</span> rextrem</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fl">6.371e6</span> <span class="op">-</span> rextrem</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="23">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="27">
 <p><span class="math inline">\(\displaystyle 1105211.95973949\)</span></p>
 </div>
 </div>
 <p>The extremal value of <span class="math inline">\(g(r)\)</span> in the interior of the Earth appears at <span class="math inline">\(r=5.26 \times 10^6\)</span> m, i.e., at a depth of 1105 km.</p>
-<div id="86f09a26" class="cell" data-execution_count="24">
+<div id="1ea42083" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rr <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">6.367e6</span>, <span class="dv">41</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>rr <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">6.367e6</span>, <span class="dv">41</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="9f5e377e" class="cell" data-execution_count="25">
+<div id="02ce1017" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.plot(rr, g_num(rr))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(rextrem, g_num(rextrem), color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"r in m"</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"g(r)"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.plot(rr, g_num(rr))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(rextrem, g_num(rextrem), color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"r in m"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"g(r)"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="spherical_shells_files/figure-html/cell-26-output-1.png" width="596" height="429" class="figure-img"></p>
+<p><img src="spherical_shells_files/figure-html/cell-30-output-1.png" width="596" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -856,30 +943,30 @@ I=\frac{2}{3} \int\limits_0^{R_E}  \rho(r) r^2 \, \mathrm d V =
 \alpha = \frac{I}{mR_E^2}.
 \]</span> This factor is <span class="math inline">\(0.4\)</span> for a solid sphere.</p>
 <p>Check using <code>SymPy</code>:</p>
-<div id="573b759c" class="cell" data-execution_count="26">
+<div id="e8110bb5" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    sp.integrate(rho_m <span class="op">*</span> r<span class="op">**</span><span class="dv">4</span>, (r, <span class="dv">0</span>, R_E)) <span class="op">/</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    m_E <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    ).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    sp.integrate(rho_m <span class="op">*</span> r<span class="op">**</span><span class="dv">4</span>, (r, <span class="dv">0</span>, R_E)) <span class="op">/</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    m_E <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    ).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="26">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="30">
 <p><span class="math inline">\(\displaystyle \frac{2}{5}\)</span></p>
 </div>
 </div>
 <p><span class="math inline">\(\alpha\)</span> should be smaller for a sphere when there is an increasing density with depth.</p>
 <p>For our density model, we observe <span class="math inline">\(\alpha=0.3319\)</span>, which is slightly more than reported in the literature, where <span class="math inline">\(\alpha=0.3307144\)</span> (Williams, 1994).</p>
 <p>Check:</p>
-<div id="b9d2fa0e" class="cell" data-execution_count="27">
+<div id="82e03a60" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    sp.integrate((rho_num <span class="op">-</span> b_num <span class="op">*</span> r) <span class="op">*</span> r<span class="op">**</span><span class="dv">4</span>, (r, <span class="dv">0</span>, R_E)) <span class="op">/</span> </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    m_E <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    ).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="op">*</span> pi <span class="op">/</span> <span class="dv">3</span> <span class="op">*</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    sp.integrate((rho_num <span class="op">-</span> b_num <span class="op">*</span> r) <span class="op">*</span> r<span class="op">**</span><span class="dv">4</span>, (r, <span class="dv">0</span>, R_E)) <span class="op">/</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    m_E <span class="op">/</span> R_E<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    ).subs(rho_m, <span class="dv">5515</span>).subs(R_E, <span class="fl">6.371e6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="27">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="31">
 <p><span class="math inline">\(\displaystyle 0.331943185252342\)</span></p>
 </div>
 </div>

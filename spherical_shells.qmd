@@ -8,7 +8,10 @@ jupyter: python3
 ```{python}
 import numpy as np
 import sympy as sp
+from IPython.display import display, Latex, HTML, Math
 from sympy import pi, oo
+showlatex = lambda s: display(HTML(f"$${s}$$"))
+
 from sympy.assumptions import assuming, Q
 import matplotlib.pyplot as plt
 ```
@@ -42,9 +45,9 @@ $$
 
 The potential $V^F(r)$ inside or outside of such a spherical shell with surface density $\rho_F$ and radius $a$ is
 $$
-V^F(r) = 2 \pi f \frac{a}{r} \rho_F \left[ r + a - |r - a| \right].
+V^F(r) = -2 \pi f \frac{a}{r} \rho_F \left[ r + a - |r - a| \right].
 $$
-Because $r$ can be either less or greater than $a$, we obtain two solution for $V^F(r)$:
+Because $r$ can be either less or greater than $a$, we distinguish between
 $$
 V^F(r) = \begin{cases}
 -4 \pi f \rho_F \frac{a^2}{r} & \quad\text{ if } r > a \\
@@ -59,7 +62,7 @@ $$
 V(r) = \int_{r'=0}^a V^F(r') \, \mathrm d r' = -\frac{2 \pi f}{r } \int_{r'=0}^{a} \rho(r') [r + r' - |r - r'|] r' \, \mathrm d r'
 $$
 
-To this end, we make use of `SymPy`, a `Python` library for symbolic mathematics.
+To illustrate this, we make use of `SymPy`, a `Python` library for symbolic mathematics.
 
 We first define symbolic variables.
 
@@ -86,27 +89,94 @@ a - r & \text{if } r < a
 $$
 we have to be careful with the integrand.
 
+The potential outside of the sphere is
+
 ```{python}
 Voutside = -2 * pi * f * rho / r * sp.integrate((r + rp - (r - rp)) * rp, (rp, 0, a))
-Voutside
+showlatex(r"V(r) = " + sp.latex(Voutside) + r" = -f \frac{m}{r}")
 ```
+
+We recognize that this is just the __potential of an equivalent point mass__ of $m = \frac{4 \pi a^{3} \rho}{3}$ concentrated at the center of the sphere. 
 
 To get the potential inside the sphere, i.e., for $r < a$, we have to decompose the integral into two contributions.
 
-First, we evaluate the potential due to a sphere of radius $r$, to which we add the contribution of a hollow sphere with inner radius $r$ and outer radius $a$:
+First, we evaluate the potential due to an __embedded sphere of radius $r$__, to which we add the contribution of a __hollow sphere with inner radius $r$ and outer radius $a$__:
 $$
 V(r) = -\frac{4 \pi f}{r} \left[ \int_{r'=0}^r \rho(r') {r'}^2 \, \mathrm d r' + \int_r^a \rho(r') r r' \, \mathrm d r'\right]
 $$
 
-In the interior of a homogeneous sphere with a mean density of $\bar\rho$ we obtain for $0 \le r \le a$
+In the interior of a homogeneous sphere with an averaged mean density of $\bar\rho$ we obtain for $0 \le r \le a$
 $$
-V(r) = \frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
+V(r) = -\frac{2 \pi f \bar\rho}{3} \left(3a^2 - r^2 \right)
 $$
+
+`SymPy` gets the same result:
 
 ```{python}
 Vinside = -4 * pi * f * rho / r * (sp.integrate(rp**2, (rp, 0, r)) + sp.integrate(rp * r, (rp, r, a)))
-Vinside.simplify()
+showlatex(r"V(r) = " + sp.latex(Vinside.simplify()))
 ```
+
+
+We make some plots to illustrate the potential and its radial derivative. Note that in what follows, we have set $f \rho = 1$.
+```{python}
+import matplotlib.pyplot as plt
+a = 5.0
+r_in = np.arange(0, a+0.01, 0.1)
+r_out = np.arange(a, 10.01, 0.1)
+fig, ax = plt.subplots(figsize=(6,4))
+V_in = lambda r: -2 * np.pi / 3 * (3 * a**2 - r**2)
+V_out = lambda r: -4 * np.pi * a**3 / 3 / r
+ax.plot(r_in, V_in(r_in), label="inside")
+ax.plot(r_out, V_out(r_out), label="outside")
+ax.legend()
+ax.set_ylabel("potential")
+ax.set_xlabel("distance from center")
+ax.set_title("Potential inside and outside of a sphere")
+ax.grid(alpha=0.5)
+```
+
+From the plot we recognize that the __potential is continuous__ at $r=a$!
+
+Now let's study the gravitational attraction of our sphere.
+
+The gravitational attraction is
+$$
+g(r) = -\frac{ \partial V }{ \partial r }
+$$
+
+Inside the sphere, we get
+```{python}
+g_in = -sp.diff(Vinside, r)
+showlatex(r"g(r) = " + sp.latex(g_in.simplify()))
+```
+
+Outside, we get
+```{python}
+g_out = -sp.diff(Voutside, r)
+showlatex(r"g(r) = " + sp.latex(g_out.simplify()))
+```
+
+When multiplied by the unit radial vector, the attraction acquires a direction that points radially inward, toward the center of the sphere.
+
+```{python}
+fig, ax = plt.subplots(figsize=(6,4))
+Vr_in = lambda r: -4 * np.pi / 3 * r
+Vr_out = lambda r: -4 * np.pi * a**3 / 3 / r**2
+ax.plot(r_in, np.abs(Vr_in(r_in)), label="inside")
+ax.plot(r_out, np.abs(Vr_out(r_out)), label="outside")
+ax.legend()
+ax.set_ylabel("|g(r)|")
+ax.set_xlabel("distance from center")
+ax.set_title("Gravitational attraction inside and outside of a sphere")
+ax.grid(alpha=0.5)
+```
+
+The gravitational attraction is continuous but not continuously differentiable at $r = a$.
+Within the sphere, it varies linearly with the distance from the center and vanishes at $r = 0$.
+Outside the sphere, the attraction follows an inverse-square law, equivalent to that of a point mass located at the sphere’s center.
+
+
 
 ## Density laws
 
