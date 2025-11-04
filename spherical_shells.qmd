@@ -237,11 +237,16 @@ coeff_b
 
 ```{python}
 rho_num = coeff_rho_0.subs(rho_R, 2700).subs(rho_m, 5515)
+showlatex(r"\rho_0 = " + f"{rho_num:.0f}" + r"\ \mathrm{kg/m^3}")
 ```
 
 ```{python}
 b_num = coeff_b.subs(rho_R, 2700).subs(rho_m, 5515).subs(R_E, 6.371e6)
+showlatex(r"b = " + f"{b_num:.3g}" + r"\ \mathrm{kg/m^4}")
+showlatex(r"b = " + f"{1e3 * b_num:.3g}" + r"\ \frac{\mathrm{kg/m^3}}{\mathrm{km}}")
 ```
+
+Based on this linear density law, the Earth’s density decreases at a rate of $1.77\,\mathrm{kg/m^3}$ per kilometer from the planet’s center.
 
 ## Gravitational attraction inside the Earth
 It is known that the gravitational potential inside a sphere with a radially symmetric density function is
@@ -254,12 +259,12 @@ With the constants derived above we want to evaluate these integrals.
 
 ```{python}
 i1 = -4 * pi * f / r * sp.integrate((rho_0 - b * rp) * rp**2, (rp, 0, r))
-i1.simplify()
+showlatex(r"-\frac{4 \pi f}{r} \int_{r'=0}^r (\rho_0 - b r') {r'}^2 \, \mathrm d r' = " + sp.latex(i1.simplify()))
 ```
 
 ```{python}
 i2 = -4 * pi * f * sp.integrate((rho_0 - b * rp) * rp, (rp, r, R_E))
-i2.simplify()
+showlatex(r"-\frac{4 \pi f}{r} \int_{r'=r}^{R_E} (\rho_0 - b r') r {r'} \, \mathrm d r' = " + sp.latex(i2.simplify()))
 ```
 
 Next, we add both contributions to obtain the potential inside the Earth.
@@ -270,7 +275,7 @@ V = i1 + i2
 ```
 
 ```{python}
-V.simplify()
+showlatex(r"V(r) = " + sp.latex(V.simplify()))
 ```
 
 We obtain the gravitational attraction by taking the gradient of $V$ in the direction of $\mathbf r$:
@@ -281,7 +286,7 @@ $$
 
 ```{python}
 g = -sp.diff(V, r)
-g.simplify()
+showlatex(r"g(r) = " + sp.latex(g.simplify()))
 ```
 
 ## Visualization of the result
@@ -297,19 +302,19 @@ g_num = lambda r: np.pi * f_ * r * (3 * b_num * r - 4 * rho_num) / 3
 
 ```{python}
 rstar = sp.solve(sp.diff(g, r), (r))
-rstar[0]
+showlatex(r"r^* = " + sp.latex(rstar[0]))
 ```
 
 ```{python}
-rextrem = rstar[0].subs(rho_0, rho_num).subs(b, b_num)
-rextrem / 1e6
+rextrem = rstar[0].subs(rho_0, rho_num).subs(b, b_num).evalf()
+showlatex(r"r^* = " + f"{rextrem / 1e3:.1f}" + r"\ \mathrm{km}")
 ```
 
 ```{python}
-6.371e6 - rextrem
+showlatex(r"d = R_E - r^* = " + f"{6.371e3 - rextrem / 1e3:.1f}" + r"\ \mathrm{km}")
 ```
 
-The extremal value of $g(r)$ in the interior of the Earth appears at $r=5.26 \times 10^6$ m, i.e., at a depth of 1105 km.
+The extremal value of $g(r)$ in the interior of the Earth appears at $r=5.26 \times 10^6$ m, i.e., at a depth $d$ of 1105 km.
 
 ```{python}
 rr = np.linspace(0, 6.367e6, 41)
