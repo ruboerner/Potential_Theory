@@ -51,6 +51,9 @@ def cylinder(obs, mass, axis):
 The following code implements the Talwani approach:
 
 ```{python}
+ATOL = 1e-8
+RTOL = 1e-8
+
 def talwani(obs, polygon):
     gz = 0.0
     density = polygon.density
@@ -64,7 +67,7 @@ def talwani(obs, polygon):
         zv = z[k] - zp
         xvp1 = x[k+1] - xp
         zvp1 = z[k+1] - zp
-        if not isclose(zv, zvp1):
+        if not isclose(zv, zvp1, atol=ATOL, rtol=RTOL):
             a_i = xvp1 + zvp1 * (xvp1 - xv) / (zv - zvp1)
         theta_v = np.arctan2(zv, xv)
         theta_vp1 = np.arctan2(zvp1, xvp1)
@@ -75,22 +78,27 @@ def talwani(obs, polygon):
         if theta_vp1 < 0:
             theta_vp1 += np.pi
             
-        if isclose(xv, 0.0): # A
+        if isclose(xv, 0.0, atol=ATOL, rtol=RTOL): # A
             Zi = -a_i * np.sin(phi_i) * np.cos(phi_i) * (
                 theta_vp1 - np.pi/2 + np.tan(phi_i) * np.log(np.cos(theta_vp1) * (np.tan(theta_vp1) - np.tan(phi_i))))
-        elif isclose(xvp1, 0.0): # B
+
+        elif isclose(xvp1, 0.0, atol=ATOL, rtol=RTOL): # B
             Zi = a_i * np.sin(phi_i) * np.cos(phi_i) * (
                 theta_v - np.pi/2 + np.tan(phi_i) * np.log(np.cos(theta_v) * (np.tan(theta_v) - np.tan(phi_i))))
-        elif isclose(zv, zvp1): # C
+
+        elif isclose(zv, zvp1, atol=ATOL, rtol=RTOL): # C
             Zi = zv * (theta_vp1 - theta_v)
-        elif isclose(xv, xvp1): # D
+
+        elif isclose(xv, xvp1, atol=ATOL, rtol=RTOL): # D
             Zi = xv * np.log(np.cos(theta_v) / np.cos(theta_vp1))
-        elif isclose(theta_v, theta_vp1): # E
+
+        elif (
+            np.isclose(theta_v, theta_vp1, atol=ATOL, rtol=RTOL)   # E
+            or np.isclose(xv, zv, atol=ATOL, rtol=RTOL)           # F
+            or np.isclose(xvp1, zvp1, atol=ATOL, rtol=RTOL)       # G
+            or np.isclose(theta_vp1, phi_i, atol=ATOL, rtol=RTOL)):
             Zi = 0.0
-        elif isclose(xv, zv): # F
-            Zi = 0.0
-        elif isclose(xvp1, zvp1): # G
-            Zi = 0.0
+
         else:
             a_i = xvp1 + zvp1 * (xvp1 - xv) / (zv - zvp1)
             Zi = a_i * np.sin(phi_i) * np.cos(phi_i) * ( 
@@ -98,27 +106,30 @@ def talwani(obs, polygon):
             np.log( 
                 np.cos(theta_v) * ( np.tan(theta_v) - np.tan(phi_i) ) /
                 np.cos(theta_vp1) / ( np.tan(theta_vp1) - np.tan(phi_i) )))
+
         gz += Zi
+
     gz = gz * 2 * 6.674e-11 * density
+
     return gz
 ```
 
 $$
-Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
+Z_{i} =a_{i} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{e} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{i}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
 $$
 
 ## Numerical experiment
 
-We define a cylinder of radius $r=1$ that will be approximated in the $x-z$-plane by a sufficiently large number of line segments around its enclosing circle. 
+We define a cylinder of radius $r=8$ m at a depth of $z=20$ m that will be approximated in the $x-z$-plane by a sufficiently large number of line segments around its enclosing circle. 
 
 ```{python}
 #| code-fold: true
-n = 101
+n = 32
 xc = 0.0
 zc = 20.0
-radius = 1.0
-x = np.array([xc + radius * np.cos(0.01 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])
-z = np.array([zc + radius * np.sin(0.01 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])
+radius = 8.0
+x = np.array([xc + radius * np.cos(1e-6 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])
+z = np.array([zc + radius * np.sin(1e-6 + 2 * np.pi * k / n) for k in np.linspace(0, n-1, n)])
 poly = Polygon(x, z, 500)
 ```
 
@@ -127,6 +138,8 @@ poly = Polygon(x, z, 500)
 #| code-fold: true
 fig, ax = plt.subplots()
 plt.plot(poly.x, poly.z, marker='.')
+plt.ylim((40, 0))
+plt.xlim((-100, 100))
 ax.set_aspect('equal', 'box');
 ```
 
@@ -136,11 +149,14 @@ The arrays `gtal` and `gcyl` store the values obtained by the Talwani method and
 
 ```{python}
 #| code-fold: true
-profile = np.linspace(start=-40, stop=40, num=81)
+profile = np.arange(-100, 101, 4)
 npts = profile.size
 gtal = np.zeros(npts)
 gcyl = np.zeros(npts)
-mass = poly.density * np.pi * radius**2
+
+A = n * 0.5 * radius**2 * np.sin(2 * np.pi / n)
+
+mass = poly.density * A # np.pi * radius**2
 for k in range(npts):
     gtal[k] = talwani(np.array([profile[k], 0]), poly)
     gcyl[k] = cylinder(np.array([profile[k], 0]), mass, np.array([xc, zc]))[1]
@@ -150,8 +166,9 @@ The following plots illustrate the accuracy of the Talwani approach.
 #| code-fold: true
 #| fig-cap: Comparison of analytical and numerical solutions (left) and absolute difference (right).
 fig, (ax1, ax2) = plt.subplots(1, 2)
-ax1.plot(profile, gtal, marker='.')
-ax1.plot(profile, gcyl, marker='.')
+ax1.plot(profile, gtal, marker='.', label="Talwani")
+ax1.plot(profile, gcyl, marker='.', label="cylinder")
+ax1.legend()
 ax2.plot(profile, gcyl - gtal, marker='.')
 ax1.set_title('anomaly')
 ax2.set_title('difference');
@@ -159,6 +176,11 @@ ax2.set_title('difference');
 The relative error is
 ```{python}
 print(norm(gtal - gcyl) / norm(gcyl))
+Ac = np.pi * radius**2
+print(f"Area ratio is {A/Ac:.4e}") 
 ```
 
 
+::: {.callout-caution title="Note"}
+We have seen that in Python a comparison of floats to zero is dangerous. This is why we use `np.isclose()` with appropriate tolerances (`ATOL` and `RTOL`) throughout the `talwani` function instead of direct equality checks. Direct comparisons like `xv == 0.0` can fail due to floating-point arithmetic precision issues, leading to incorrect results in the special case handling (cases A through G in the implementation).
+:::

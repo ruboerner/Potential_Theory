@@ -513,7 +513,7 @@ window.Quarto = {
 <li>it stores all vertices an a convenient manner</li>
 <li>it sorts the vertices in CCW order.</li>
 </ul>
-<div id="10a489f0" class="cell" data-execution_count="2">
+<div id="62a4e69c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Polygon:</span>
@@ -539,7 +539,7 @@ window.Quarto = {
 </div>
 <p>To compare the numerical results, we provide here a simple function which computes the gravitational attraction of a horizontal cylinder of mass m that intersects the vertical plane at the coordinate given by the 2-D array <code>axis</code>. The point of observation is given by the coordinates in the 2-D array <code>obs</code>:</p>
 <p><code>g = cylinder(obs, mass, axis)</code></p>
-<div id="a348f5d7" class="cell" data-execution_count="3">
+<div id="2cf336da" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cylinder(obs, mass, axis):</span>
@@ -548,137 +548,170 @@ window.Quarto = {
 </details>
 </div>
 <p>The following code implements the Talwani approach:</p>
-<div id="cd705065" class="cell" data-execution_count="4">
+<div id="30e2e581" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> talwani(obs, polygon):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    gz <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    density <span class="op">=</span> polygon.density</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> polygon.x</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> polygon.z</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> polygon.n</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    xp <span class="op">=</span> obs[<span class="dv">0</span>]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    zp <span class="op">=</span> obs[<span class="dv">1</span>]</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):   </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        xv <span class="op">=</span> x[k] <span class="op">-</span> xp</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        zv <span class="op">=</span> z[k] <span class="op">-</span> zp</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        xvp1 <span class="op">=</span> x[k<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> xp</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        zvp1 <span class="op">=</span> z[k<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> zp</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> isclose(zv, zvp1):</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            a_i <span class="op">=</span> xvp1 <span class="op">+</span> zvp1 <span class="op">*</span> (xvp1 <span class="op">-</span> xv) <span class="op">/</span> (zv <span class="op">-</span> zvp1)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        theta_v <span class="op">=</span> np.arctan2(zv, xv)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        theta_vp1 <span class="op">=</span> np.arctan2(zvp1, xvp1)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        phi_i <span class="op">=</span> np.arctan2(zvp1 <span class="op">-</span> zv, xvp1 <span class="op">-</span> xv)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> theta_v <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            theta_v <span class="op">+=</span> np.pi</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> theta_vp1 <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            theta_vp1 <span class="op">+=</span> np.pi</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> isclose(xv, <span class="fl">0.0</span>): <span class="co"># A</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> <span class="op">-</span>a_i <span class="op">*</span> np.sin(phi_i) <span class="op">*</span> np.cos(phi_i) <span class="op">*</span> (</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                theta_vp1 <span class="op">-</span> np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> np.tan(phi_i) <span class="op">*</span> np.log(np.cos(theta_vp1) <span class="op">*</span> (np.tan(theta_vp1) <span class="op">-</span> np.tan(phi_i))))</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(xvp1, <span class="fl">0.0</span>): <span class="co"># B</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> a_i <span class="op">*</span> np.sin(phi_i) <span class="op">*</span> np.cos(phi_i) <span class="op">*</span> (</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                theta_v <span class="op">-</span> np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> np.tan(phi_i) <span class="op">*</span> np.log(np.cos(theta_v) <span class="op">*</span> (np.tan(theta_v) <span class="op">-</span> np.tan(phi_i))))</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(zv, zvp1): <span class="co"># C</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> zv <span class="op">*</span> (theta_vp1 <span class="op">-</span> theta_v)</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(xv, xvp1): <span class="co"># D</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> xv <span class="op">*</span> np.log(np.cos(theta_v) <span class="op">/</span> np.cos(theta_vp1))</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(theta_v, theta_vp1): <span class="co"># E</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(xv, zv): <span class="co"># F</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(xvp1, zvp1): <span class="co"># G</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>            a_i <span class="op">=</span> xvp1 <span class="op">+</span> zvp1 <span class="op">*</span> (xvp1 <span class="op">-</span> xv) <span class="op">/</span> (zv <span class="op">-</span> zvp1)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> a_i <span class="op">*</span> np.sin(phi_i) <span class="op">*</span> np.cos(phi_i) <span class="op">*</span> ( </span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            theta_v <span class="op">-</span> theta_vp1 <span class="op">+</span> np.tan(phi_i) <span class="op">*</span> </span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            np.log( </span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>                np.cos(theta_v) <span class="op">*</span> ( np.tan(theta_v) <span class="op">-</span> np.tan(phi_i) ) <span class="op">/</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>                np.cos(theta_vp1) <span class="op">/</span> ( np.tan(theta_vp1) <span class="op">-</span> np.tan(phi_i) )))</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        gz <span class="op">+=</span> Zi</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    gz <span class="op">=</span> gz <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="fl">6.674e-11</span> <span class="op">*</span> density</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ATOL <span class="op">=</span> <span class="fl">1e-8</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>RTOL <span class="op">=</span> <span class="fl">1e-8</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> talwani(obs, polygon):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    gz <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    density <span class="op">=</span> polygon.density</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> polygon.x</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> polygon.z</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> polygon.n</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    xp <span class="op">=</span> obs[<span class="dv">0</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    zp <span class="op">=</span> obs[<span class="dv">1</span>]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(n):   </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        xv <span class="op">=</span> x[k] <span class="op">-</span> xp</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        zv <span class="op">=</span> z[k] <span class="op">-</span> zp</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        xvp1 <span class="op">=</span> x[k<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> xp</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        zvp1 <span class="op">=</span> z[k<span class="op">+</span><span class="dv">1</span>] <span class="op">-</span> zp</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> isclose(zv, zvp1, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL):</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            a_i <span class="op">=</span> xvp1 <span class="op">+</span> zvp1 <span class="op">*</span> (xvp1 <span class="op">-</span> xv) <span class="op">/</span> (zv <span class="op">-</span> zvp1)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        theta_v <span class="op">=</span> np.arctan2(zv, xv)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        theta_vp1 <span class="op">=</span> np.arctan2(zvp1, xvp1)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        phi_i <span class="op">=</span> np.arctan2(zvp1 <span class="op">-</span> zv, xvp1 <span class="op">-</span> xv)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> theta_v <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            theta_v <span class="op">+=</span> np.pi</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> theta_vp1 <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            theta_vp1 <span class="op">+=</span> np.pi</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> isclose(xv, <span class="fl">0.0</span>, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL): <span class="co"># A</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> <span class="op">-</span>a_i <span class="op">*</span> np.sin(phi_i) <span class="op">*</span> np.cos(phi_i) <span class="op">*</span> (</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                theta_vp1 <span class="op">-</span> np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> np.tan(phi_i) <span class="op">*</span> np.log(np.cos(theta_vp1) <span class="op">*</span> (np.tan(theta_vp1) <span class="op">-</span> np.tan(phi_i))))</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(xvp1, <span class="fl">0.0</span>, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL): <span class="co"># B</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> a_i <span class="op">*</span> np.sin(phi_i) <span class="op">*</span> np.cos(phi_i) <span class="op">*</span> (</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                theta_v <span class="op">-</span> np.pi<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> np.tan(phi_i) <span class="op">*</span> np.log(np.cos(theta_v) <span class="op">*</span> (np.tan(theta_v) <span class="op">-</span> np.tan(phi_i))))</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(zv, zvp1, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL): <span class="co"># C</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> zv <span class="op">*</span> (theta_vp1 <span class="op">-</span> theta_v)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> isclose(xv, xvp1, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL): <span class="co"># D</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> xv <span class="op">*</span> np.log(np.cos(theta_v) <span class="op">/</span> np.cos(theta_vp1))</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> (</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>            np.isclose(theta_v, theta_vp1, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL)   <span class="co"># E</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            <span class="kw">or</span> np.isclose(xv, zv, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL)           <span class="co"># F</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            <span class="kw">or</span> np.isclose(xvp1, zvp1, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL)       <span class="co"># G</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            <span class="kw">or</span> np.isclose(theta_vp1, phi_i, atol<span class="op">=</span>ATOL, rtol<span class="op">=</span>RTOL)):</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>            a_i <span class="op">=</span> xvp1 <span class="op">+</span> zvp1 <span class="op">*</span> (xvp1 <span class="op">-</span> xv) <span class="op">/</span> (zv <span class="op">-</span> zvp1)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>            Zi <span class="op">=</span> a_i <span class="op">*</span> np.sin(phi_i) <span class="op">*</span> np.cos(phi_i) <span class="op">*</span> ( </span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>            theta_v <span class="op">-</span> theta_vp1 <span class="op">+</span> np.tan(phi_i) <span class="op">*</span> </span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>            np.log( </span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                np.cos(theta_v) <span class="op">*</span> ( np.tan(theta_v) <span class="op">-</span> np.tan(phi_i) ) <span class="op">/</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>                np.cos(theta_vp1) <span class="op">/</span> ( np.tan(theta_vp1) <span class="op">-</span> np.tan(phi_i) )))</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        gz <span class="op">+=</span> Zi</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    gz <span class="op">=</span> gz <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="fl">6.674e-11</span> <span class="op">*</span> density</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><span class="math display">\[
-Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
+Z_{i} =a_{i} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{e} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{i}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
 \]</span></p>
 <section id="numerical-experiment" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="numerical-experiment"><span class="header-section-number">11.1</span> Numerical experiment</h2>
-<p>We define a cylinder of radius <span class="math inline">\(r=1\)</span> that will be approximated in the <span class="math inline">\(x-z\)</span>-plane by a sufficiently large number of line segments around its enclosing circle.</p>
-<div id="efe96063" class="cell" data-execution_count="5">
+<p>We define a cylinder of radius <span class="math inline">\(r=8\)</span> m at a depth of <span class="math inline">\(z=20\)</span> m that will be approximated in the <span class="math inline">\(x-z\)</span>-plane by a sufficiently large number of line segments around its enclosing circle.</p>
+<div id="a897dc9d" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">101</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">32</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>xc <span class="op">=</span> <span class="fl">0.0</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>zc <span class="op">=</span> <span class="fl">20.0</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([xc <span class="op">+</span> radius <span class="op">*</span> np.cos(<span class="fl">0.01</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> k <span class="op">/</span> n) <span class="cf">for</span> k <span class="kw">in</span> np.linspace(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>, n)])</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.array([zc <span class="op">+</span> radius <span class="op">*</span> np.sin(<span class="fl">0.01</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> k <span class="op">/</span> n) <span class="cf">for</span> k <span class="kw">in</span> np.linspace(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>, n)])</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="fl">8.0</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([xc <span class="op">+</span> radius <span class="op">*</span> np.cos(<span class="fl">1e-6</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> k <span class="op">/</span> n) <span class="cf">for</span> k <span class="kw">in</span> np.linspace(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>, n)])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.array([zc <span class="op">+</span> radius <span class="op">*</span> np.sin(<span class="fl">1e-6</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> k <span class="op">/</span> n) <span class="cf">for</span> k <span class="kw">in</span> np.linspace(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>, n)])</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>poly <span class="op">=</span> Polygon(x, z, <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="c30a814f" class="cell" data-execution_count="6">
+<div id="dc9049c6" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(poly.x, poly.z, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.ylim((<span class="dv">40</span>, <span class="dv">0</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.xlim((<span class="op">-</span><span class="dv">100</span>, <span class="dv">100</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Talwani-Implementation_files/figure-html/cell-7-output-1.png" width="436" height="411" class="figure-img"></p>
+<p><img src="Talwani-Implementation_files/figure-html/cell-7-output-1.png" width="579" height="151" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We define a profile perpendicular to the strike of the cylinder.</p>
 <p>The arrays <code>gtal</code> and <code>gcyl</code> store the values obtained by the Talwani method and the analytical solution for the cylinder, respectively.</p>
-<div id="1f82d594" class="cell" data-execution_count="7">
+<div id="ca515945" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> np.linspace(start<span class="op">=-</span><span class="dv">40</span>, stop<span class="op">=</span><span class="dv">40</span>, num<span class="op">=</span><span class="dv">81</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">100</span>, <span class="dv">101</span>, <span class="dv">4</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>npts <span class="op">=</span> profile.size</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gtal <span class="op">=</span> np.zeros(npts)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gcyl <span class="op">=</span> np.zeros(npts)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> poly.density <span class="op">*</span> np.pi <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(npts):</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    gtal[k] <span class="op">=</span> talwani(np.array([profile[k], <span class="dv">0</span>]), poly)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    gcyl[k] <span class="op">=</span> cylinder(np.array([profile[k], <span class="dv">0</span>]), mass, np.array([xc, zc]))[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> n <span class="op">*</span> <span class="fl">0.5</span> <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">/</span> n)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>mass <span class="op">=</span> poly.density <span class="op">*</span> A <span class="co"># np.pi * radius**2</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(npts):</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    gtal[k] <span class="op">=</span> talwani(np.array([profile[k], <span class="dv">0</span>]), poly)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    gcyl[k] <span class="op">=</span> cylinder(np.array([profile[k], <span class="dv">0</span>]), mass, np.array([xc, zc]))[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>The following plots illustrate the accuracy of the Talwani approach.</p>
-<div id="b7c7af6a" class="cell" data-execution_count="8">
+<div id="f6dbd9d9" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gtal, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gcyl, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax2.plot(profile, gcyl <span class="op">-</span> gtal, marker<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'anomaly'</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'difference'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gtal, marker<span class="op">=</span><span class="st">'.'</span>, label<span class="op">=</span><span class="st">"Talwani"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(profile, gcyl, marker<span class="op">=</span><span class="st">'.'</span>, label<span class="op">=</span><span class="st">"cylinder"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax1.legend()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax2.plot(profile, gcyl <span class="op">-</span> gtal, marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'anomaly'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'difference'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Talwani-Implementation_files/figure-html/cell-9-output-1.png" width="571" height="431" class="figure-img"></p>
+<p><img src="Talwani-Implementation_files/figure-html/cell-9-output-1.png" width="560" height="431" class="figure-img"></p>
 <figcaption>Comparison of analytical and numerical solutions (left) and absolute difference (right).</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>The relative error is</p>
-<div id="621b9587" class="cell" data-execution_count="9">
+<div id="fcfdcc28" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(norm(gtal <span class="op">-</span> gcyl) <span class="op">/</span> norm(gcyl))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(norm(gtal <span class="op">-</span> gcyl) <span class="op">/</span> norm(gcyl))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Ac <span class="op">=</span> np.pi <span class="op">*</span> radius<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Area ratio is </span><span class="sc">{</span>A<span class="op">/</span>Ac<span class="sc">:.4e}</span><span class="ss">"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0018837709519435105</code></pre>
+<pre><code>5.711301342967773e-15
+Area ratio is 9.9359e-01</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have seen that in Python a comparison of floats to zero is dangerous. This is why we use <code>np.isclose()</code> with appropriate tolerances (<code>ATOL</code> and <code>RTOL</code>) throughout the <code>talwani</code> function instead of direct equality checks. Direct comparisons like <code>xv == 0.0</code> can fail due to floating-point arithmetic precision issues, leading to incorrect results in the special case handling (cases A through G in the implementation).</p>
 </div>
 </div>
 

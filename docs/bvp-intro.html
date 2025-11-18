@@ -542,7 +542,7 @@ window.Quarto = {
 <p>Hence, the solution is <em>non-unique</em>.</p>
 <p>However, the solution space can be restricted by proper choices of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</p>
 <p>Check using <code>SymPy</code>:</p>
-<div id="661c5c36" class="cell" data-execution_count="1">
+<div id="9546a6b3" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -559,7 +559,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle e^{\alpha x + \beta y} \sin{\left(z \sqrt{\alpha^{2} + \beta^{2}} \right)}\)</span></p>
 </div>
 </div>
-<div id="50a3e2a6" class="cell" data-execution_count="2">
+<div id="d497c518" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>LPhi <span class="op">=</span> sp.diff(Phi, x, <span class="dv">2</span>) <span class="op">+</span> sp.diff(Phi, y, <span class="dv">2</span>) <span class="op">+</span> sp.diff(Phi, z, <span class="dv">2</span>)</span>

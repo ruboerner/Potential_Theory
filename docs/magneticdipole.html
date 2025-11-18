@@ -613,7 +613,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </section>
 <section id="magnetic-dipole" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">17.4</span> Magnetic Dipole</h2>
-<div id="942d90f7" class="cell" data-execution_count="1">
+<div id="a0deeba6" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -626,7 +626,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="17.4.1">
 <h3 data-number="17.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">17.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="89a3fec6" class="cell" data-execution_count="2">
+<div id="3aa5407b" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -640,7 +640,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="26337d6c" class="cell" data-execution_count="3">
+<div id="dc997261" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>
@@ -714,7 +714,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 <p>IIn the literature, the total field anomaly is often abbreviated as <em>TMI</em> anomaly (total magnetic field intensity anomaly).</p>
 </div>
 </div>
-<div id="9a02d8a0" class="cell" data-execution_count="4">
+<div id="88c300df" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -777,7 +777,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>Profile along the <span class="math inline">\(x\)</span>-axis:</p>
-<div id="3a0e45ed" class="cell" data-execution_count="5">
+<div id="1afa8bb4" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Bt <span class="op">=</span> bt[<span class="dv">30</span>, :]</span>

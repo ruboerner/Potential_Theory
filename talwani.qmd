@@ -117,9 +117,10 @@ Note that with
 $$
 \log\left( \frac{1}{\cos^2\theta}\right) = - 2 \log \cos\theta
 $$
-and after combining the $\log$ terms we obtain the desired integral taken in the limit of integration, i.e., $\theta_i$ and $\theta_{i+1}$
+and after combining the $\log$ terms we obtain the desired integral taken in the limit of integration, i.e., $\theta_i$ and $\theta_{i+1}$,
 $$
-Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
+Z_{i} =a_{i} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{e} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{i}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right] 
 $$
 which is the equation for $Z_i$ given in @talwani1959, p. 50.
----
+
+

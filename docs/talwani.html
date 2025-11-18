@@ -593,7 +593,7 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </section>
 <section id="implementation" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="implementation"><span class="header-section-number">10.3</span> Implementation</h2>
-<div id="a54c1d12" class="cell" data-execution_count="2">
+<div id="4ef6337a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a, x, z, phi, theta, Z <span class="op">=</span> symbols(<span class="st">'a x z phi theta Z'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -609,9 +609,9 @@ g_z(0, 0) = 2 f \Delta \rho \sum_{i=1}^n Z_i.
 </div>
 <p>Note that with <span class="math display">\[
 \log\left( \frac{1}{\cos^2\theta}\right) = - 2 \log \cos\theta
-\]</span> and after combining the <span class="math inline">\(\log\)</span> terms we obtain the desired integral taken in the limit of integration, i.e., <span class="math inline">\(\theta_i\)</span> and <span class="math inline">\(\theta_{i+1}\)</span> <span class="math display">\[
-Z_{i} =a_{1} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{s} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{j}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
-\]</span> which is the equation for <span class="math inline">\(Z_i\)</span> given in <span class="citation" data-cites="talwani1959">Talwani <em>et al.</em> (<a href="references.html#ref-talwani1959" role="doc-biblioref">1959</a>)</span>, p.&nbsp;50. —</p>
+\]</span> and after combining the <span class="math inline">\(\log\)</span> terms we obtain the desired integral taken in the limit of integration, i.e., <span class="math inline">\(\theta_i\)</span> and <span class="math inline">\(\theta_{i+1}\)</span>, <span class="math display">\[
+Z_{i} =a_{i} \sin \phi_{i} \cos \phi_{i} \left[ \theta_{i}-\theta_{i+1} +\tan \phi_{i} \log _{e} \frac{\cos \theta_{i}\left(\tan \theta_{i}-\tan \phi_{i}\right)}{\cos \theta_{i+1}\left(\tan \theta_{i+1}-\tan \phi_{i}\right)}\right]
+\]</span> which is the equation for <span class="math inline">\(Z_i\)</span> given in <span class="citation" data-cites="talwani1959">Talwani <em>et al.</em> (<a href="references.html#ref-talwani1959" role="doc-biblioref">1959</a>)</span>, p.&nbsp;50.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
