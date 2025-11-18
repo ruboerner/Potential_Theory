@@ -179,15 +179,15 @@ plot(g_z.subs([(f, 1), (rho_L, 1), (z, 0), (zprime, 0.5), (yprime, 0)]),
 
 ## Attraction of a plane lamina
 
-The vertical component of attraction $\dd g$ due to an element of area $\dd S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is
+The __vertical component__ of attraction $\dd g$ due to an element of area $\dd S$ on an infinite horizontal plane lamina with density $\rho$ bounded by the planes $z$ and $z+\mathrm{d}z$ is
 
 $$
-\mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega 
+\mathrm{d}g = f \rho \mathrm{d}z \mathrm{d}\Omega ,
 $$ 
 
 where $\mathrm{d}\Omega$ is the solid angle subtended at the origin by the area $\mathrm{d}S$ (@fig-sS-sketch).
 
-![Attraction of an infinite plane lamina of thickness $\dd z$.](images/hubbert_01.png){#fig-sS-sketch}
+![Attraction of a surface element $\mathrm{d} S$ of thickness $\dd z$.](images/lamina.excalidraw.svg){#fig-sS-sketch}
 
 It holds with $\dd m = \rho \dd z \dd S$ that
 
