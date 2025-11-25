@@ -47,7 +47,7 @@ f'(x +iy) = \lim_{ a \to 0 } \frac{F(x + a, y) - F(x, y)}{a} = \frac{\partial F}
 $$
 Now we repeat the same story and instead of restricting to the real axis we restrict to the imaginary axis.
 $$
-f'(x +iy) = \lim_{ a =\to= 0, b \to 0 } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
+f'(x +iy) = \lim_{ a = 0, b \to 0 } \frac{F(x + a, y + b) - F(x, y)}{a + ib}
 $$
 $$
 f'(x +iy) = \lim_{ b \to 0 } \frac{F(x, y + b) - F(x, y)}{ib} = \frac{1}{i}\frac{\partial F}{\partial y}(x,y)
@@ -197,7 +197,7 @@ $$
 V_z(y) = +\frac{1}{\pi y} \ast V_y(y) = -\mathcal{H}\{V_y(y)\}.
 $$
 
-In the frequency domain, convolution becomes multiplication.
+In the spectral domain, convolution becomes multiplication.
 
 :::{.callout-note}
 Note that
