@@ -496,9 +496,46 @@ window.Quarto = {
 <section id="cauchys-integral-theorem" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="cauchys-integral-theorem"><span class="header-section-number">12.3</span> Cauchy’s Integral Theorem</h2>
 <p>In real analysis, the value of an integral depends on the <em>integration bounds</em>. For complex functions, the <em>path</em> also matters.</p>
-<p>Let <span class="math inline">\(U \subset \mathbb{C}\)</span> be a simply connected (no holes) open domain (<em>elementary domain</em>), and <span class="math inline">\(f: U \mapsto \mathbb{C}\)</span> a [[Holomorphy|holomorphic]] function. Furthermore, let <span class="math inline">\(\gamma : [a, b] \to U\)</span> be a smooth, closed curve. Then: <span class="math display">\[
+<p>Let <span class="math inline">\(U \subset \mathbb{C}\)</span> be a simply connected (no holes) open domain (<em>elementary domain</em>), and <span class="math inline">\(f: U \mapsto \mathbb{C}\)</span> a holomorphic function. Furthermore, let <span class="math inline">\(\gamma : [a, b] \to U\)</span> be a smooth, closed curve. Then: <span class="math display">\[
 \oint_{\gamma} f(z) \, \mathrm{d}z = 0.
-\]</span> <strong>Proof:</strong> With <span class="math inline">\(f = u + i v\)</span> and <span class="math inline">\(\mathrm{d}z = \mathrm{d}x + i \mathrm{d}y\)</span>, it follows: <span class="math display">\[
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>holomorphic function</strong> is a complex-valued function <span class="math inline">\(f:\mathbb C\to\mathbb C\)</span> that is complex differentiable at every point of an open set in the complex plane.</p>
+<p>The key property is complex differentiability in the sense of the limit <span class="math display">\[
+f’(z_0)=\lim_{h\to 0}\frac{f(z_0+h)-f(z_0)}{h}
+\]</span> existing for all complex directions of <span class="math inline">\(h\)</span>. This requirement is far stronger than real differentiability and leads to remarkable consequences.</p>
+<p>Holomorphic functions preserve angles and local geometric structure in the following precise sense:</p>
+<p><strong>Conformal behaviour</strong></p>
+<p>Let <span class="math display">\[f:\Omega\subset\mathbb C\to\mathbb C\]</span> be holomorphic with a non-vanishing derivative <span class="math inline">\(f’(z_0)\neq 0\)</span>. Then, in a neighbourhood of <span class="math inline">\(z_0\)</span>, the mapping acts like a complex linear map <span class="math display">\[
+w = f(z) \approx f(z_0) + f’(z_0)(z - z_0).
+\]</span></p>
+<p>This map consists of two elementary operations:</p>
+<ol type="1">
+<li>Rotation: Multiplication by <span class="math inline">\(e^{i\theta}\)</span> rotates all small line segments by the same angle <span class="math inline">\(\theta\)</span>.</li>
+<li>Uniform scaling: Multiplication by <span class="math inline">\(|a|\)</span> stretches or shrinks all small line segments by the same factor.</li>
+</ol>
+<p>There is no shearing, no anisotropic distortion, and no reflection.</p>
+<p><strong>Angle preservation</strong></p>
+<p>Suppose two smooth curves meet at <span class="math inline">\(z_0\)</span> under an angle <span class="math inline">\(\alpha\)</span>. Under <span class="math inline">\(f\)</span>, the corresponding tangent vectors are multiplied by the same complex number <span class="math inline">\(f’(z_0)\)</span>, which rotates and scales them uniformly. Therefore, the angle between the curves is unchanged.</p>
+<p>Formally, if <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are tangent directions at <span class="math inline">\(z_0\)</span>, then <span class="math display">\[
+\arg\!\left(\frac{f’(z_0)v_2}{f’(z_0)v_1}\right)
+=\arg\!\left(\frac{v_2}{v_1}\right),
+\]</span> so the orientation of the angle is preserved.</p>
+<p><strong>Preservation of local structure</strong></p>
+<p>A holomorphic function with <span class="math inline">\(f’(z_0)\neq 0\)</span> maps a sufficiently small neighbourhood of <span class="math inline">\(z_0\)</span> onto a small neighbourhood of <span class="math inline">\(f(z_0)\)</span> in a way that is locally similar: shapes become rotated and uniformly scaled copies of themselves. Circles become circles, small grids become locally rotated/scaled grids, and the mapping remains injective in a small neighbourhood.</p>
+<p>This behaviour is what is meant by saying that holomorphic functions are conformal at points where their derivative is non-zero.</p>
+</div>
+</div>
+<p><strong>Proof:</strong> With <span class="math inline">\(f = u + i v\)</span> and <span class="math inline">\(\mathrm{d}z = \mathrm{d}x + i \mathrm{d}y\)</span>, it follows: <span class="math display">\[
 \oint_{\gamma} f(z) \, \mathrm{d}z =
 \oint_{\gamma} (u + i v) (\mathrm{d}x + i \mathrm{d}y) =
 \oint_{\gamma} (u \mathrm{d}x - v \mathrm{d}y) +
@@ -510,7 +547,7 @@ i \oint_{\gamma} (v \mathrm{d}x + u \mathrm{d}y).
 \oint_\gamma (u \, \mathrm{d}x - v \, \mathrm{d}y) &amp; = \iint_D \left( -\frac{\partial v}{\partial x} -\frac{\partial u}{\partial y} \right) \, \mathrm{d}x\,\mathrm{d}y, \\
 \oint_\gamma (v \, \mathrm{d}x + u \, \mathrm{d}y) &amp; = \iint_D \left(  \frac{\partial u}{\partial x} - \frac{\partial v}{\partial y} \right) \, \mathrm{d}x\,\mathrm{d}y.
 \end{align}
-\]</span> For the real and imaginary parts <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> of holomorphic functions in the domain <span class="math inline">\(D\)</span>, the <em>Cauchy-Riemann differential equations</em> hold: <span class="math display">\[
+\]</span> For the real and imaginary parts <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> of holomorphic functions in the domain <span class="math inline">\(D\)</span>, the <strong>Cauchy-Riemann differential equations</strong> hold: <span class="math display">\[
 \begin{align}
 u_x &amp; = +v_y, \\
 u_y &amp; = -v_x.
@@ -526,6 +563,7 @@ u_y &amp; = -v_x.
 </section>
 <section id="cauchys-integral-formula-cif" class="level2" data-number="12.4">
 <h2 data-number="12.4" class="anchored" data-anchor-id="cauchys-integral-formula-cif"><span class="header-section-number">12.4</span> Cauchy’s Integral Formula (CIF)</h2>
+<p>The <strong>Cauchy integral formula</strong> is one of the central results of complex analysis. It expresses the value of a holomorphic function inside a closed curve <strong>entirely in terms of its boundary values</strong>.</p>
 <p>Let <span class="math inline">\(U\)</span> be an open subset of the complex plane <span class="math inline">\(\mathbb{C}\)</span>. Consider the closed disk <span class="math inline">\(D\)</span> fully contained within <span class="math inline">\(U\)</span>, defined as: <span class="math display">\[
 D = \{ z : |z - z_{0}| \le r \}.
 \]</span> Let <span class="math inline">\(f: U \mapsto \mathbb{C}\)</span> be a holomorphic function, and <span class="math inline">\(\gamma\)</span> a counterclockwise-oriented circle along the boundary of <span class="math inline">\(D\)</span>. Then, for any point <span class="math inline">\(a\)</span> inside <span class="math inline">\(D\)</span>: <span class="math display">\[

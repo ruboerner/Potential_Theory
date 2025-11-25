@@ -21,10 +21,66 @@ A complex-valued function $f: U \subset \mathbb{C} \to \mathbb{C}$ on an open su
 ## Cauchy's Integral Theorem
 In real analysis, the value of an integral depends on the _integration bounds_. For complex functions, the _path_ also matters.
 
-Let $U \subset \mathbb{C}$ be a simply connected (no holes) open domain (_elementary domain_), and $f: U \mapsto \mathbb{C}$ a [[Holomorphy|holomorphic]] function. Furthermore, let $\gamma : [a, b] \to U$ be a smooth, closed curve. Then:
+Let $U \subset \mathbb{C}$ be a simply connected (no holes) open domain (_elementary domain_), and $f: U \mapsto \mathbb{C}$ a holomorphic function. Furthermore, let $\gamma : [a, b] \to U$ be a smooth, closed curve. Then:
 $$
 \oint_{\gamma} f(z) \, \mathrm{d}z = 0.
 $$
+
+::: {.callout-note}
+
+A __holomorphic function__ is a complex-valued function
+$f:\mathbb C\to\mathbb C$
+that is complex differentiable at every point of an open set in the complex plane.
+
+The key property is complex differentiability in the sense of the limit
+$$
+f’(z_0)=\lim_{h\to 0}\frac{f(z_0+h)-f(z_0)}{h}
+$$
+existing for all complex directions of $h$. This requirement is far stronger than real differentiability and leads to remarkable consequences.
+
+Holomorphic functions preserve angles and local geometric structure in the following precise sense:
+
+__Conformal behaviour__
+
+Let
+$$f:\Omega\subset\mathbb C\to\mathbb C$$
+be holomorphic with a non-vanishing derivative $f’(z_0)\neq 0$.
+Then, in a neighbourhood of $z_0$, the mapping acts like a complex linear map
+$$
+w = f(z) \approx f(z_0) + f’(z_0)(z - z_0).
+$$
+
+This map consists of two elementary operations:
+
+1.	Rotation:
+Multiplication by $e^{i\theta}$ rotates all small line segments by the same angle $\theta$.
+2.	Uniform scaling:
+Multiplication by $|a|$ stretches or shrinks all small line segments by the same factor.
+
+There is no shearing, no anisotropic distortion, and no reflection.
+
+__Angle preservation__
+
+Suppose two smooth curves meet at $z_0$ under an angle $\alpha$.
+Under $f$, the corresponding tangent vectors are multiplied by the same complex number $f’(z_0)$, which rotates and scales them uniformly. Therefore, the angle between the curves is unchanged.
+
+Formally, if $v_1$ and $v_2$ are tangent directions at $z_0$, then
+$$
+\arg\!\left(\frac{f’(z_0)v_2}{f’(z_0)v_1}\right)
+=\arg\!\left(\frac{v_2}{v_1}\right),
+$$
+so the orientation of the angle is preserved.
+
+__Preservation of local structure__
+
+A holomorphic function with $f’(z_0)\neq 0$ maps a sufficiently small neighbourhood of $z_0$ onto a small neighbourhood of $f(z_0)$ in a way that is locally similar:
+shapes become rotated and uniformly scaled copies of themselves. Circles become circles, small grids become locally rotated/scaled grids, and the mapping remains injective in a small neighbourhood.
+
+This behaviour is what is meant by saying that holomorphic functions are conformal at points where their derivative is non-zero.
+
+
+:::
+
 **Proof:** With $f = u + i v$ and $\mathrm{d}z = \mathrm{d}x + i \mathrm{d}y$, it follows:
 $$
 \oint_{\gamma} f(z) \, \mathrm{d}z = 
@@ -43,14 +99,14 @@ $$
 \oint_\gamma (v \, \mathrm{d}x + u \, \mathrm{d}y) & = \iint_D \left(  \frac{\partial u}{\partial x} - \frac{\partial v}{\partial y} \right) \, \mathrm{d}x\,\mathrm{d}y.
 \end{align}
 $$
-For the real and imaginary parts $u$ and $v$ of holomorphic functions in the domain $D$, the _Cauchy-Riemann differential equations_ hold:
+For the real and imaginary parts $u$ and $v$ of holomorphic functions in the domain $D$, the __Cauchy-Riemann differential equations__ hold:
 $$
 \begin{align}
 u_x & = +v_y, \\
 u_y & = -v_x.
 \end{align}
 $$
-Thus, both integrands—and consequently the integral—are zero:
+Thus, both integrands---and consequently the integral---are zero:
 $$
 \iint_D \left( -\frac{\partial v}{\partial x} -\frac{\partial u}{\partial y} \right) \, \mathrm{d}x\,\mathrm{d}y = \iint_D \left( \frac{\partial u}{\partial y} -\frac{\partial u}{\partial y} \right) \, \mathrm{d}x\,\mathrm{d}y = 0,
 $$
@@ -65,6 +121,9 @@ $$
 $$
 
 ## Cauchy's Integral Formula (CIF)
+
+The __Cauchy integral formula__ is one of the central results of complex analysis. It expresses the value of a holomorphic function inside a closed curve __entirely in terms of its boundary values__.
+
 Let $U$ be an open subset of the complex plane $\mathbb{C}$. Consider the closed disk $D$ fully contained within $U$, defined as:
 $$
 D = \{ z : |z - z_{0}| \le r \}.
@@ -74,6 +133,8 @@ $$
 f(a) = \frac{1}{2 \pi i} \oint_{\gamma} \frac{f(z)}{z - a} \, \mathrm{d}z.
 $$
 The _CIF_ states that the values of a holomorphic function $f$ inside a disk are fully determined by its values on the boundary of that disk.
+
+
 
 ## Residue Theorem
 If $f(z)$ is holomorphic in the neighborhood of a point $z_{0}$, then:
