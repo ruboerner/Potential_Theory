@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -171,9 +171,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Theory of Potential Field Methods in Geophysics</a> 
     </div>
@@ -531,7 +529,7 @@ V(z) = -f \frac{m}{r} = -2 \pi f \rho_F \int\limits_{r=0}^a \frac{r \, \dd r}{\s
 V(z) = 2 \pi f \rho_{F} (|z| - \sqrt{ a^2 + z^2 })
 \]</span></p>
 <p>Sympy check:</p>
-<div id="2fef325d" class="cell" data-execution_count="1">
+<div id="c3c97678" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -584,7 +582,7 @@ Figure&nbsp;8.2: Potential of a circular disc of radius <span class="math inline
 \]</span></p>
 <p>This is the attraction of a disc of density <span class="math inline">\(\rho_{F}\)</span> aligned with the plane <span class="math inline">\(z=0\)</span> observed at some point at the <span class="math inline">\(z\)</span> axis.</p>
 <p>Sympy check:</p>
-<div id="e0f30630" class="cell" data-execution_count="3">
+<div id="6f466bb7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="op">-</span>sp.diff(V, z)</span>
@@ -633,7 +631,7 @@ Figure&nbsp;8.3: Vertical attraction of a circular disc of radius <span class="m
 </div>
 </div>
 <p>The vertical component of the gravitational attraction obviously has a jump, which equals <span class="math inline">\(4 \pi f \rho_F\)</span>.</p>
-<div id="cdd3c47e" class="cell" data-execution_count="5">
+<div id="9b42c2a1" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sp.limit(g, z, <span class="dv">0</span>, <span class="st">'-'</span>) <span class="op">-</span> sp.limit(g, z, <span class="dv">0</span>, <span class="st">'+'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -668,7 +666,7 @@ g(z) &amp; = 2 \pi f \rho \left(h + \sqrt{ a^2 + z^2 } - \sqrt{ a^2 + (h - z)^{2
 \end{align}
 \]</span></p>
 <p>Sympy check:</p>
-<div id="19bcbeb3" class="cell" data-execution_count="6">
+<div id="2bccfce7" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> sp.symbols(<span class="st">'h'</span>, real<span class="op">=</span><span class="va">True</span>, positive<span class="op">=</span><span class="va">True</span>)</span>
@@ -680,7 +678,7 @@ g(z) &amp; = 2 \pi f \rho \left(h + \sqrt{ a^2 + z^2 } - \sqrt{ a^2 + (h - z)^{2
 <p><span class="math inline">\(\displaystyle \begin{cases} 2 \pi f \rho \left(h + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{for}\: z &lt; 0 \\2 \pi f \rho \left(h - 2 z + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{for}\: h &gt; z \\2 \pi f \rho \left(- h + \sqrt{a^{2} + z^{2}} - \sqrt{a^{2} + \left(h - z\right)^{2}}\right) &amp; \text{otherwise} \end{cases}\)</span></p>
 </div>
 </div>
-<div id="61a0dad6" class="cell" data-execution_count="7">
+<div id="e05941fc" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hh <span class="op">=</span> <span class="fl">1.0</span></span>

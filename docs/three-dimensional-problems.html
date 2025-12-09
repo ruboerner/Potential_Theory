@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -136,9 +136,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Theory of Potential Field Methods in Geophysics</a> 
     </div>
@@ -477,14 +475,14 @@ window.Quarto = {
 </header>
 
 
-<p>We consider a density distribution <span class="math inline">\(\rho\)</span> in a volume within <span class="math inline">\(\mathbb{R}^3\)</span>. The component of the gravitational field vector <span class="math inline">\(\mathbf{g}\)</span> induced by this density distribution in the direction of <span class="math inline">\(\mathbf{a}\)</span>, at a distance <span class="math inline">\(r\)</span> from the origin, can be expressed as a surface integral:</p>
+<p>We consider a density distribution <span class="math inline">\(\rho\)</span> in a volume within <span class="math inline">\(\mathbb{R}^3\)</span>. The component of the gravitational field vector <span class="math inline">\(\mathbf{g}\)</span> induced by this density distribution in the direction of <span class="math inline">\(\mathbf{a}\)</span>, at a distance <span class="math inline">\(r\)</span> from the origin, can be expressed as a surface integral</p>
 <p><span class="math display">\[
-\mathbf{g} \cdot \mathbf{a} = -\nabla V \cdot \mathbf{a} = -f \rho \iint \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s
+\mathbf{g} \cdot \mathbf{a} = -\nabla V \cdot \mathbf{a} = -f \rho \iint \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s.
 \]</span></p>
-<p>We use the following identity: <span class="math display">\[
-\mathbf{a} \cdot \nabla V = \nabla \cdot (V \mathbf{a}) - V \underbrace{\nabla \cdot \mathbf{a}}_{= 0}.
+<p>To obtain this equation, we use the identity <span class="math display">\[
+\nabla V \cdot \mathbf{a} = \nabla \cdot (V \mathbf{a}) - V \underbrace{\nabla \cdot \mathbf{a}}_{= 0}.
 \]</span></p>
-<p>Thus: <span class="math display">\[
+<p>and apply Gauss’ integral theorem, which yields <span class="math display">\[
 -f \rho \int_V \mathbf{a} \cdot \nabla \frac{1}{r} \, \mathrm{d}V = -f \rho \int_V \nabla \cdot \left( \frac{1}{r} \mathbf{a} \right) \, \mathrm{d}V =
 -f \rho \iint_S \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s.
 \]</span></p>
@@ -515,10 +513,10 @@ f \iint \frac{\sigma'}{r^2} \, \mathrm{d}s.
 <p>The surface density is a purely computational quantity. Unlike the constant volume density, it is <em>position-dependent</em> and can be positive or negative for the same body.</p>
 <section id="cartesian-components-of-the-gravitational-field" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="cartesian-components-of-the-gravitational-field"><span class="header-section-number">15.1</span> Cartesian Components of the Gravitational Field</h2>
-<p>The components <span class="math inline">\(g_x\)</span>, <span class="math inline">\(g_y\)</span>, and <span class="math inline">\(g_z\)</span> of the field <span class="math inline">\(\mathbf{g}\)</span> are obtained by projecting the field onto the Cartesian unit vectors. In general: <span class="math display">\[
+<p>The components <span class="math inline">\(g_x\)</span>, <span class="math inline">\(g_y\)</span>, and <span class="math inline">\(g_z\)</span> of the field <span class="math inline">\(\mathbf{g}\)</span> are obtained by projecting the field onto the Cartesian unit vectors. In general, the projection of the vector <span class="math inline">\(\mathbf{a}\)</span> onto the direction of <span class="math inline">\(\mathbf{b}\)</span> is <span class="math display">\[
 a_b = \mathbf{a} \cdot \frac{\mathbf{b}}{|\mathbf{b}|} = |\mathbf{a}| \cos \theta,
 \]</span> where <span class="math inline">\(\theta\)</span> is the angle between the vector <span class="math inline">\(\mathbf{a}\)</span> and the direction of <span class="math inline">\(\mathbf{b}\)</span>.</p>
-<p>The <span class="math inline">\(z\)</span>-component of <span class="math inline">\(\mathbf{g}\)</span> is: <span class="math display">\[
+<p>We may now calculate the <span class="math inline">\(z\)</span>-component of <span class="math inline">\(\mathbf{g}\)</span> as <span class="math display">\[
 g_z := \mathbf{g} \cdot \mathbf{e}_z =
 f \rho \iint \frac{\mathbf{r} \cdot \mathbf{u}_n}{r^2} \frac{z}{r} \, \mathrm{d}s =
 f \rho \iint \mathbf{r} \cdot \mathbf{u}_n \frac{z}{r^3} \, \mathrm{d}s.
@@ -633,7 +631,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <code>MATLAB</code> implementation of this approach can be downloaded at <a href="https://github.com/ruboerner/GravMag3D">https://github.com/ruboerner/GravMag3D</a>.</p>
+<p><code>MATLAB</code> and <code>Python</code> implementations of this approach can be downloaded at <a href="https://github.com/ruboerner/GravMag3D">https://github.com/ruboerner/GravMag3D</a> and <a href="https://github.com/ruboerner/pygravmag3d">https://github.com/ruboerner/pygravmag3d</a>, resp.</p>
 </div>
 </div>
 

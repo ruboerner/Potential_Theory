@@ -2,18 +2,18 @@
 title: "Gravitational Field Caused by a Density Distribution in $\\mathbb{R}^3$"
 ---
 
-We consider a density distribution $\rho$ in a volume within $\mathbb{R}^3$. The component of the gravitational field vector $\mathbf{g}$ induced by this density distribution in the direction of $\mathbf{a}$, at a distance $r$ from the origin, can be expressed as a surface integral:
+We consider a density distribution $\rho$ in a volume within $\mathbb{R}^3$. The component of the gravitational field vector $\mathbf{g}$ induced by this density distribution in the direction of $\mathbf{a}$, at a distance $r$ from the origin, can be expressed as a surface integral
 
 $$
-\mathbf{g} \cdot \mathbf{a} = -\nabla V \cdot \mathbf{a} = -f \rho \iint \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s
+\mathbf{g} \cdot \mathbf{a} = -\nabla V \cdot \mathbf{a} = -f \rho \iint \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s.
 $$
 
-We use the following identity:
+To obtain this equation, we use the identity
 $$
-\mathbf{a} \cdot \nabla V = \nabla \cdot (V \mathbf{a}) - V \underbrace{\nabla \cdot \mathbf{a}}_{= 0}.
+\nabla V \cdot \mathbf{a} = \nabla \cdot (V \mathbf{a}) - V \underbrace{\nabla \cdot \mathbf{a}}_{= 0}.
 $$
 
-Thus:
+and apply Gauss' integral theorem, which yields
 $$
 -f \rho \int_V \mathbf{a} \cdot \nabla \frac{1}{r} \, \mathrm{d}V = -f \rho \int_V \nabla \cdot \left( \frac{1}{r} \mathbf{a} \right) \, \mathrm{d}V =
 -f \rho \iint_S \frac{\mathbf{a} \cdot \mathbf{u}_n}{r} \, \mathrm{d}s.
@@ -48,13 +48,13 @@ The surface density is a purely computational quantity. Unlike the constant volu
 
 ## Cartesian Components of the Gravitational Field
 
-The components $g_x$, $g_y$, and $g_z$ of the field $\mathbf{g}$ are obtained by projecting the field onto the Cartesian unit vectors. In general:
+The components $g_x$, $g_y$, and $g_z$ of the field $\mathbf{g}$ are obtained by projecting the field onto the Cartesian unit vectors. In general, the projection of the vector $\mathbf{a}$ onto the direction of $\mathbf{b}$ is
 $$
 a_b = \mathbf{a} \cdot \frac{\mathbf{b}}{|\mathbf{b}|} = |\mathbf{a}| \cos \theta,
 $$
 where $\theta$ is the angle between the vector $\mathbf{a}$ and the direction of $\mathbf{b}$.
 
-The $z$-component of $\mathbf{g}$ is:
+We may now calculate the $z$-component of $\mathbf{g}$ as
 $$
 g_z := \mathbf{g} \cdot \mathbf{e}_z = 
 f \rho \iint \frac{\mathbf{r} \cdot \mathbf{u}_n}{r^2} \frac{z}{r} \, \mathrm{d}s =
@@ -197,5 +197,5 @@ I = \frac{1}{L} \ln \frac{|L - r_1|}{r_1}.
 $$
 
 ::: {.callout-note}
-A `MATLAB` implementation of this approach can be downloaded at [https://github.com/ruboerner/GravMag3D](https://github.com/ruboerner/GravMag3D).
+`MATLAB` and `Python` implementations of this approach can be downloaded at [https://github.com/ruboerner/GravMag3D](https://github.com/ruboerner/GravMag3D) and [https://github.com/ruboerner/pygravmag3d](https://github.com/ruboerner/pygravmag3d), resp.
 :::
