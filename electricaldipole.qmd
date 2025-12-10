@@ -3,6 +3,8 @@ title: "Potential of an electrical dipole"
 jupyter: python3
 ---
 
+![](images/VFPt_dipole_animation_electric.gif)
+
 ## Derivation Using Taylor Series
 
 Two charges $Q$ with opposite signs are separated by a distance $\mathbf{a}$.  
