@@ -101,3 +101,6 @@ format:
 editor:
   render-on-save: true
 
+execute:
+  freeze: auto
+  cache: true

@@ -334,3 +334,16 @@ The following two cases are of particular interest:
 
 with `X0, Z0` positive values given in nT. 
 :::
+
+## Interactive tool
+
+[![](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/notebooks/nb_LGxH8PsX7p84GXJS1Rsk3Q)
+
+Use the following [marimo](https://marimo.io) notebook to play with all parameters:
+
+<iframe src="https://molab.marimo.io/notebooks/nb_LGxH8PsX7p84GXJS1Rsk3Q/app"
+sandbox="allow-scripts allow-same-origin  allow-popups"
+  width="100%"
+  height="600"
+  style="border: 1px solid #ddd; border-radius: 8px;">
+</iframe>

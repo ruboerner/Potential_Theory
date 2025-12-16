@@ -2,6 +2,8 @@
 title: "Introduction to Spherical Harmonic Analysis"
 ---
 
+
+
 Spherical harmonic analysis is a mathematical method used extensively in geophysics to represent functions on the surface of a sphere. This technique is particularly useful for modeling the global geomagnetic field, which is inherently complex and varies both spatially and temporally.
 
 In this chapter, we will cover the following topics:

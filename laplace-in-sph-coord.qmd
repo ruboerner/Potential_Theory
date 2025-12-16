@@ -359,3 +359,16 @@ We can therefore write
 $$
 f(\theta, \varphi) = \sum\limits_{n=0}^\infty \sum\limits_{m=0}^n \underbrace{(g_n^m \cos m \varphi + h_n^m \sin m \varphi)}_{\text{Fourier series in longitude}} \underbrace{P_n^m(\cos\theta)}_{\text{assoc. LF in latitude}}
 $$
+
+## Interactive tool
+
+[![](https://molab.marimo.io/molab-shield.svg)](https://molab.marimo.io/notebooks/nb_63wMhPFYkF3VfHXzPhLnso)
+
+With the following marimo notebook you can inspect the pattern of the spherical harmonics $P_{n}^m(\cos\theta) e^{ i m \varphi }$:
+
+<iframe src="https://molab.marimo.io/notebooks/nb_63wMhPFYkF3VfHXzPhLnso/app?show-code=false&download=false"
+sandbox="allow-scripts allow-same-origin  allow-popups"
+  width="100%"
+  height="1200"
+  style="border: 1px solid #ddd; border-radius: 8px;">
+</iframe>

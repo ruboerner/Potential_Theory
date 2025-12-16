@@ -488,6 +488,7 @@ window.Quarto = {
   <li><a href="#derivation-using-sympy" id="toc-derivation-using-sympy" class="nav-link" data-scroll-target="#derivation-using-sympy"><span class="header-section-number">17.4.1</span> Derivation using <code>SymPy</code></a></li>
   </ul></li>
   <li><a href="#numerical-example" id="toc-numerical-example" class="nav-link" data-scroll-target="#numerical-example"><span class="header-section-number">17.5</span> Numerical example</a></li>
+  <li><a href="#interactive-tool" id="toc-interactive-tool" class="nav-link" data-scroll-target="#interactive-tool"><span class="header-section-number">17.6</span> Interactive tool</a></li>
   </ul>
 </nav>
     </div>
@@ -611,7 +612,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </section>
 <section id="magnetic-dipole" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="magnetic-dipole"><span class="header-section-number">17.4</span> Magnetic Dipole</h2>
-<div id="8f21e073" class="cell" data-execution_count="1">
+<div id="2e026f96" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -624,7 +625,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 \]</span></p>
 <section id="derivation-using-sympy" class="level3" data-number="17.4.1">
 <h3 data-number="17.4.1" class="anchored" data-anchor-id="derivation-using-sympy"><span class="header-section-number">17.4.1</span> Derivation using <code>SymPy</code></h3>
-<div id="edab5336" class="cell" data-execution_count="2">
+<div id="e8cf80a2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>m_x, m_y, m_z, x, y, z, mu <span class="op">=</span> symbols(<span class="st">'m_x m_y m_z x y z mu_0'</span>, real<span class="op">=</span><span class="va">True</span>)</span>
@@ -638,7 +639,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>The field can be obtained by taking the negative gradient of the potential:</p>
-<div id="7a304ebd" class="cell" data-execution_count="3">
+<div id="671c3cf4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="op">-</span>diff(V, p) <span class="cf">for</span> p <span class="kw">in</span> [x,y,z]]</span>
@@ -712,7 +713,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 <p>IIn the literature, the total field anomaly is often abbreviated as <em>TMI</em> anomaly (total magnetic field intensity anomaly).</p>
 </div>
 </div>
-<div id="4d7d8c30" class="cell" data-execution_count="4">
+<div id="cb4cbb3d" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -775,7 +776,7 @@ V_{z x} &amp; V_{zy} &amp; V_{zz}
 </div>
 </div>
 <p>Profile along the <span class="math inline">\(x\)</span>-axis:</p>
-<div id="0bfdd924" class="cell" data-execution_count="5">
+<div id="efbc36e7" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Bt <span class="op">=</span> bt[<span class="dv">30</span>, :]</span>
@@ -818,6 +819,13 @@ Tip
 <p>with <code>X0, Z0</code> positive values given in nT.</p>
 </div>
 </div>
+</section>
+<section id="interactive-tool" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="interactive-tool"><span class="header-section-number">17.6</span> Interactive tool</h2>
+<p><a href="https://molab.marimo.io/notebooks/nb_LGxH8PsX7p84GXJS1Rsk3Q"><img src="https://molab.marimo.io/molab-shield.svg" class="img-fluid"></a></p>
+<p>Use the following <a href="https://marimo.io">marimo</a> notebook to play with all parameters:</p>
+<iframe src="https://molab.marimo.io/notebooks/nb_LGxH8PsX7p84GXJS1Rsk3Q/app" sandbox="allow-scripts allow-same-origin  allow-popups" width="100%" height="600" style="border: 1px solid #ddd; border-radius: 8px;">
+</iframe>
 
 
 </section>

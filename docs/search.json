@@ -683,6 +683,17 @@
     ]
   },
   {
+    "objectID": "magneticdipole.html#interactive-tool",
+    "href": "magneticdipole.html#interactive-tool",
+    "title": "17  Potential of a magnetic dipole",
+    "section": "17.6 Interactive tool",
+    "text": "17.6 Interactive tool\n\nUse the following marimo notebook to play with all parameters:",
+    "crumbs": [
+      "Dipole potential",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Potential of a magnetic dipole</span>"
+    ]
+  },
+  {
     "objectID": "fieldline.html",
     "href": "fieldline.html",
     "title": "18  Equation of a dipole field line",
@@ -864,6 +875,17 @@
     "title": "22  Solution of the Laplace equation in spherical coordinates",
     "section": "22.6 Summary",
     "text": "22.6 Summary\nThe variations in latitude can be described by associated Legendre functions, while longitudinal variations can be represented by a Fourier series.\nWe can therefore write\n\\[\nf(\\theta, \\varphi) = \\sum\\limits_{n=0}^\\infty \\sum\\limits_{m=0}^n \\underbrace{(g_n^m \\cos m \\varphi + h_n^m \\sin m \\varphi)}_{\\text{Fourier series in longitude}} \\underbrace{P_n^m(\\cos\\theta)}_{\\text{assoc. LF in latitude}}\n\\]",
+    "crumbs": [
+      "Spherical harmonics",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Solution of the Laplace equation in spherical coordinates</span>"
+    ]
+  },
+  {
+    "objectID": "laplace-in-sph-coord.html#interactive-tool",
+    "href": "laplace-in-sph-coord.html#interactive-tool",
+    "title": "22  Solution of the Laplace equation in spherical coordinates",
+    "section": "22.7 Interactive tool",
+    "text": "22.7 Interactive tool\n\nWith the following marimo notebook you can inspect the pattern of the spherical harmonics \\(P_{n}^m(\\cos\\theta) e^{ i m \\varphi }\\):",
     "crumbs": [
       "Spherical harmonics",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>Solution of the Laplace equation in spherical coordinates</span>"
