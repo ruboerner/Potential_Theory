@@ -49,6 +49,7 @@ mydisplay('P_n(x) = ', Pn, '')
 Let's evaluate the Legendre polynomials $P_n(\cos\theta)$ for a small range of order $n$, say $0 \le n \le 5$.
 
 Note:
+
 - First, we iterate through a list of orders `n` (`for i in range(0,5):`) and substitute the desired value of `n` with `i` (`subs(n, i)`)
 - Second, with the fixed order of the derivative, we carry out the differentiation by calling `doit()`
 - Finally, we substitute `x` with `cos(theta)` and expand the expression.

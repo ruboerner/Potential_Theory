@@ -14,7 +14,7 @@ We refer to $\Delta$ as the _Laplace operator_.
 
 In different coordinate systems, $\Delta$ has different representations.
 
-## Representations of the Laplace operator 
+## Representations of the Laplace equation 
 
 ### Cartesian coordinates
 
@@ -161,7 +161,7 @@ $$
 \Delta f(r) = \lambda f(r).
 $$
 
-We see that the radial part of the Laplace equation for $u_n$ can be equivalently replaced by
+We see that the radial part of the Laplace equation for $u_n$ can be equivalently expressed by
 $$
 n (n+1) u_n,
 $$

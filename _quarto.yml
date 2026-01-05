@@ -76,6 +76,7 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+    mainfont: "Fira Sans"
     crossref:
       chapters: true
       eq-prefix: ""
