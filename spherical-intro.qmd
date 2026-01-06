@@ -2,9 +2,18 @@
 title: "Introduction to Spherical Harmonic Analysis"
 ---
 
+::: {.callout-tip title="Learning objectives"}
 
+- Expansion of functions or observations in terms of spherical harmonics
+- Mathematical background
+- Application to global geophysical problems, e.g., the planetary magnetic field
+- Modelling Earth's global magnetic field
+- Estimation of expansion coefficients from data
 
-Spherical harmonic analysis is a mathematical method used extensively in geophysics to represent functions on the surface of a sphere. This technique is particularly useful for modeling the global geomagnetic field, which is inherently complex and varies both spatially and temporally.
+:::
+
+Spherical harmonic analysis is a mathematical method used extensively in geophysics to represent functions (based on observations) on the surface of a sphere.
+This technique is particularly useful for modeling the global geomagnetic field, which is inherently complex and varies both spatially and temporally.
 
 In this chapter, we will cover the following topics:
 
@@ -17,7 +26,7 @@ Further, we emphasize the value of spherical harmonics in the mathematical descr
 
 ## Basics of Spherical Harmonics
 
-Spherical harmonics are a set of orthogonal functions defined on the surface of a sphere. They are the spherical analogues of the Fourier series used in periodic functions. A spherical harmonic function$Y_{n}^{m}(\theta, \phi)$is defined by:
+Spherical harmonics are a set of orthogonal functions defined on the surface of a sphere. They are the spherical analogues of the Fourier series used in periodic functions. A spherical harmonic function$Y_{n}^{m}(\theta, \phi) \in \mathbb C$ is defined by:
 
 $$
 Y_{n}^{m}(\theta, \phi) = \sqrt{\frac{(2n+1)(n-m)!}{4\pi(n+m)!}} P_{n}^{m}(\cos \theta) e^{im\phi}
@@ -25,11 +34,19 @@ $$
 
 where:
 
+::: {.columns}
+::: {.column width="65%"}
 - $n$ is the degree,
 - $m$ is the order,
-- $\theta$ is the colatitude,
-- $\phi$ is the longitude,
-- $P_{n}^{m}$ are the associated Legendre polynomials.
+- $0 \le \theta \le \pi$ is the colatitude,
+- $0 \le \phi \le 2 \pi$ is the longitude,
+- $P_{n}^{m}(\cos\theta)$ are the _associated Legendre polynomials_.
+:::
+::: {.column width="30%"}
+![](images/Spherical-angles.excalidraw.svg)
+:::
+:::
+
 
 ### Application to the Global Geomagnetic Field
 
@@ -56,3 +73,22 @@ where:
 
 - **Resolution**: The degree $n$ determines the resolution of the model; higher degrees provide more detail but require more data and computational power.
 - **Data Quality**: Accurate spherical harmonic models depend on high-quality, globally distributed magnetic field measurements.
+
+## Example
+
+The following figures illustrate the Earth's total magnetic field (in nT) computed from the 15th generation of the _International Geomagnetic Reference Field_ (IGRF) model. From left to right, the spherical harmonic degree $n$ increases from 1 to 6 and then to 13.
+
+For $n=1$, the field exhibits a dipolar structure whose dipole axis is inclined relative to the Earth’s rotation axis.
+For degrees greater than 1, higher-order multipole contributions are present.
+
+::: {.columns}
+::: {.column width="32%"}
+![n=1](images/IGRF_n01.png)
+:::
+::: {.column width="32%"}
+![n=6](images/IGRF_n06.png)
+:::
+::: {.column width="32%"}
+![n=13](images/IGRF_n13.png)
+:::
+:::

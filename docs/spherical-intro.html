@@ -451,6 +451,7 @@ window.Quarto = {
   <li><a href="#importance-in-geophysics" id="toc-importance-in-geophysics" class="nav-link" data-scroll-target="#importance-in-geophysics"><span class="header-section-number">19.1.2</span> Importance in Geophysics</a></li>
   <li><a href="#challenges-and-considerations" id="toc-challenges-and-considerations" class="nav-link" data-scroll-target="#challenges-and-considerations"><span class="header-section-number">19.1.3</span> Challenges and Considerations</a></li>
   </ul></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">19.2</span> Example</a></li>
   </ul>
 </nav>
     </div>
@@ -476,7 +477,26 @@ window.Quarto = {
 </header>
 
 
-<p>Spherical harmonic analysis is a mathematical method used extensively in geophysics to represent functions on the surface of a sphere. This technique is particularly useful for modeling the global geomagnetic field, which is inherently complex and varies both spatially and temporally.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Learning objectives">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Expansion of functions or observations in terms of spherical harmonics</li>
+<li>Mathematical background</li>
+<li>Application to global geophysical problems, e.g., the planetary magnetic field</li>
+<li>Modelling Earth’s global magnetic field</li>
+<li>Estimation of expansion coefficients from data</li>
+</ul>
+</div>
+</div>
+<p>Spherical harmonic analysis is a mathematical method used extensively in geophysics to represent functions (based on observations) on the surface of a sphere. This technique is particularly useful for modeling the global geomagnetic field, which is inherently complex and varies both spatially and temporally.</p>
 <p>In this chapter, we will cover the following topics:</p>
 <ul>
 <li>Legendre polynomials</li>
@@ -487,18 +507,24 @@ window.Quarto = {
 <p>Further, we emphasize the value of spherical harmonics in the mathematical description of the global magnetic field of the Earth.</p>
 <section id="basics-of-spherical-harmonics" class="level2" data-number="19.1">
 <h2 data-number="19.1" class="anchored" data-anchor-id="basics-of-spherical-harmonics"><span class="header-section-number">19.1</span> Basics of Spherical Harmonics</h2>
-<p>Spherical harmonics are a set of orthogonal functions defined on the surface of a sphere. They are the spherical analogues of the Fourier series used in periodic functions. A spherical harmonic function<span class="math inline">\(Y_{n}^{m}(\theta, \phi)\)</span>is defined by:</p>
+<p>Spherical harmonics are a set of orthogonal functions defined on the surface of a sphere. They are the spherical analogues of the Fourier series used in periodic functions. A spherical harmonic function<span class="math inline">\(Y_{n}^{m}(\theta, \phi) \in \mathbb C\)</span> is defined by:</p>
 <p><span class="math display">\[
 Y_{n}^{m}(\theta, \phi) = \sqrt{\frac{(2n+1)(n-m)!}{4\pi(n+m)!}} P_{n}^{m}(\cos \theta) e^{im\phi}
 \]</span></p>
 <p>where:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <ul>
 <li><span class="math inline">\(n\)</span> is the degree,</li>
 <li><span class="math inline">\(m\)</span> is the order,</li>
-<li><span class="math inline">\(\theta\)</span> is the colatitude,</li>
-<li><span class="math inline">\(\phi\)</span> is the longitude,</li>
-<li><span class="math inline">\(P_{n}^{m}\)</span> are the associated Legendre polynomials.</li>
+<li><span class="math inline">\(0 \le \theta \le \pi\)</span> is the colatitude,</li>
+<li><span class="math inline">\(0 \le \phi \le 2 \pi\)</span> is the longitude,</li>
+<li><span class="math inline">\(P_{n}^{m}(\cos\theta)\)</span> are the <em>associated Legendre polynomials</em>.</li>
 </ul>
+</div><div class="column" style="width:30%;">
+<p><img src="images/Spherical-angles.excalidraw.svg" class="img-fluid"></p>
+</div>
+</div>
 <section id="application-to-the-global-geomagnetic-field" class="level3" data-number="19.1.1">
 <h3 data-number="19.1.1" class="anchored" data-anchor-id="application-to-the-global-geomagnetic-field"><span class="header-section-number">19.1.1</span> Application to the Global Geomagnetic Field</h3>
 <p>The Earth’s magnetic field can be expressed as a potential field, which is the gradient of a scalar potential <span class="math inline">\(V\)</span>. This potential can be expanded in terms of spherical harmonics:</p>
@@ -526,9 +552,38 @@ V(r, \theta, \phi) = a \sum_{n=1}^{\infty} \left( \frac{a}{r} \right)^{n+1} \sum
 <li><strong>Resolution</strong>: The degree <span class="math inline">\(n\)</span> determines the resolution of the model; higher degrees provide more detail but require more data and computational power.</li>
 <li><strong>Data Quality</strong>: Accurate spherical harmonic models depend on high-quality, globally distributed magnetic field measurements.</li>
 </ul>
-
-
 </section>
+</section>
+<section id="example" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="example"><span class="header-section-number">19.2</span> Example</h2>
+<p>The following figures illustrate the Earth’s total magnetic field (in nT) computed from the 15th generation of the <em>International Geomagnetic Reference Field</em> (IGRF) model. From left to right, the spherical harmonic degree <span class="math inline">\(n\)</span> increases from 1 to 6 and then to 13.</p>
+<p>For <span class="math inline">\(n=1\)</span>, the field exhibits a dipolar structure whose dipole axis is inclined relative to the Earth’s rotation axis. For degrees greater than 1, higher-order multipole contributions are present.</p>
+<div class="columns">
+<div class="column" style="width:32%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IGRF_n01.png" class="img-fluid figure-img"></p>
+<figcaption>n=1</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:32%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IGRF_n06.png" class="img-fluid figure-img"></p>
+<figcaption>n=6</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:32%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/IGRF_n13.png" class="img-fluid figure-img"></p>
+<figcaption>n=13</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->

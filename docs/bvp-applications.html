@@ -584,7 +584,12 @@ U_{2} &amp; = \frac{\rho_{2}I}{4 \pi R_{3}} \frac{2 \rho_{1}}{\rho_{1}+\rho_{2}}
 <h2 data-number="32.2" class="anchored" data-anchor-id="a-conducting-semi-sphere-as-an-electrode"><span class="header-section-number">32.2</span> A conducting semi-sphere as an electrode</h2>
 <p>We consider a uniform halfspace with resistivity <span class="math inline">\(\rho_2\)</span>. There is a point source <span class="math inline">\(I\)</span> located at the origin. The semi-sphere of radius <span class="math inline">\(a\)</span> has a resistivity of <span class="math inline">\(\rho_1\)</span>. The semi-sphere is aligned with the <span class="math inline">\(z\)</span>-axis. The upper half-space is insulating, we impose a Neumann boundary condition in <span class="math inline">\(z=0\)</span>.</p>
 <p><strong>Goal</strong>: Find the potential inside and outside of the semi-sphere.</p>
-<p><img src="images/RWA-semisphere.excalidraw.svg" class="img-fluid" style="width:40.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RWA-semisphere.excalidraw.svg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Vertical cross-section through the center of a semi-sphere embedded in a homogeneous half-space.</figcaption>
+</figure>
+</div>
 <p>We make the ansatz:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -630,7 +635,7 @@ U_{2}(r) &amp; = \frac{\rho_{2}I}{2 \pi r}
 </section>
 <section id="visualization" class="level3" data-number="32.2.3">
 <h3 data-number="32.2.3" class="anchored" data-anchor-id="visualization"><span class="header-section-number">32.2.3</span> Visualization</h3>
-<div id="82fc958d" class="cell" data-execution_count="1">
+<div id="82fc958d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -664,7 +669,7 @@ U_{2}(r) &amp; = \frac{\rho_{2}I}{2 \pi r}
 </div>
 </div>
 <p>We observe that the potential is continuous in <span class="math inline">\(r=a\)</span>.</p>
-<div id="79bac125" class="cell" data-execution_count="2">
+<div id="79bac125" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.plot(R1, [<span class="dv">1</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>) <span class="cf">for</span> r <span class="kw">in</span> R1])</span>
@@ -681,7 +686,7 @@ U_{2}(r) &amp; = \frac{\rho_{2}I}{2 \pi r}
 </div>
 </div>
 </div>
-<div id="e724b07d" class="cell" data-execution_count="3">
+<div id="e724b07d" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(R1, [rho1 <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>) <span class="cf">for</span> r <span class="kw">in</span> R1])</span>

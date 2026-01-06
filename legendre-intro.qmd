@@ -16,6 +16,14 @@ from IPython.display import display, Math
 mydisplay = lambda pre, ex, post: display(Math(pre + latex(ex) + post))
 ```
 
+::: {.callout-tip title="Learning objectives"}
+
+- Numerical calculation of Legendre polynomials
+- Derivation using `SymPy`
+- Visualization
+
+:::
+
 
 The Legendre polynomials were first introduced in 1782 by _Adrian-Marie Legendre_ as the coefficients in the expansion of the _Newtonian potential_. 
 

@@ -122,7 +122,7 @@ The upper half-space is insulating, we impose a Neumann boundary condition in $z
 
 **Goal**: Find the potential inside and outside of the semi-sphere.
 
-![](images/RWA-semisphere.excalidraw.svg){width=40%}
+![Vertical cross-section through the center of a semi-sphere embedded in a homogeneous half-space.](images/RWA-semisphere.excalidraw.svg){width=40%}
 
 We make the ansatz:
 

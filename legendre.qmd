@@ -2,6 +2,14 @@
 title: "Legendre Polynomials"
 ---
 
+::: {.callout-tip title="Learning objectives"} 
+
+- Axial-symmetric problems
+- Series expansion of the reciprocal distance
+- Simple applications
+
+:::
+
 Legendre Polynomials are an important tool for modelling dipole and multi-pole potentials with **axial-symmetric symmetry**. In this chapter, we introduce some examples of their usefulness.
 
 Key applications include modeling the Earth’s oblateness, gravitational potential, tidal effects, satellite orbit perturbations, global circulation patterns, and large-scale geomagnetic and seismic phenomena. The simplification to axisymmetric phenomena is particularly useful when longitudinal variations are negligible or when studying global-scale effects.
@@ -52,18 +60,21 @@ Since they are independent of the azimuthal angle $\varphi$, they have constant 
 
 ::: {.callout-note title="Legendre polynomials"}
 The Legendre polynomials can also be defined as the coefficients in a formal expansion in powers of 
-$t$ of the generating function
+$t$ of the generating function $G(x,t)$
 
 $$
-\frac{1}{\sqrt{1 - 2tx + t^2}} = \sum\limits_{n=0}^\infty
-P_n(x)t^n.
+G(x,t) = \frac{1}{\sqrt{1 - 2tx + t^2}} = \sum\limits_{n=0}^\infty
+P_n(x) t^{n}.
 $$
 The coefficient of $t^n$ is a polynomial in $x$ of degree $n$ with $|x| \le 1$.
+
+The entire family $P_{n}(x)$ is **generated** by a single closed-form expression.
+Differentiation, algebraic manipulation, or expansion of $G(x,t)$ produces identities involving all $P_n$ simultaneously.
 
 The first Legendre polynomials are
 
 | $n$ | $P_n(x)$                |
-| --- |:---------------------- |
+| -- |:----------------- |
 | $0$ | $1$                     |
 | $1$ | $x$                     |
 | $2$ | $\dfrac{1}{2}(3x^2 -1)$ |
@@ -78,14 +89,14 @@ $$
 
 
 ### Description of Latitudinal Variations in Potential
-The superposition of Legendre polynomials can describe the latitude-dependent variations in potential.
+The superposition of Legendre polynomials describe the latitude-dependent variations of the potential.
 
 For $r \ll s$, a similar result is obtained by factoring out $1/s$
 $$
 f(r, \theta) =
 \begin{cases}
-\dfrac{1}{s} \sum_{n=0}^\infty \left(\dfrac{r}{s}\right)^n P_n(\cos \theta), & r \leq s, \\
-\dfrac{1}{r} \sum_{n=0}^\infty \left(\dfrac{s}{r}\right)^{n+1} P_n(\cos \theta), & r \geq s.
+\dfrac{1}{s} \sum\limits_{n=0}^\infty \left(\dfrac{r}{s}\right)^n P_n(\cos \theta), & r \leq s, \\
+\dfrac{1}{r} \sum\limits_{n=0}^\infty \left(\dfrac{s}{r}\right)^{n} P_n(\cos \theta), & r \geq s.
 \end{cases}
 $$
 
