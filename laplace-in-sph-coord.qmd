@@ -110,7 +110,7 @@ At this point, we introduce the
 
 :::{.callout-note title="Homogeneous function"}
 
-We call a function _homogeneous of degree $\lambda$_, if under a proportional scaling of the variables $x$ by a factor $t$ the function scales with a factor $t^\lambda$:
+We call a function _homogeneous of degree $\lambda$_, if under a proportional scaling of the variables $\mathbf{x}$ by a factor $t$ the function scales with a factor $t^\lambda$:
 
 $$
 f(t \mathbf x ) = t^\lambda f(\mathbf x)
@@ -130,7 +130,8 @@ and recognize that $f(x,y)$ is a homogeneous function of degree $2$.
 
 Now we make the following ansatz:
 
-We assume that $u$ can be defined as a homogeneous function $u_n$ of degree $n$. This is a valid choice, since homogeneous functions are solutions to Laplace's equation.
+We assume that $u$ can be defined as a homogeneous function $u_n$ of degree $n$.
+This is a valid choice, since homogeneous functions are solutions to Laplace's equation.
 
 We set 
 $$
