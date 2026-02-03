@@ -70,13 +70,13 @@ We obtain $f_i(r)$ from the conditions
 - $f_1(r) \to 0$ for $r \to \infty$
 - $f_2$ finite for $r \le R$
 
-We solve the problem using the method of separation of variables and obtain
+We solve the problem using the method of separation of variables and obtain the general radial solution 
 
 $$
-f_1(r) = a_1 r + b r^{-2}
+f_{i}(r) = a r + b r^{-2}
 $$
 
-The conditions are fulfilled with $a_1 = 0$ in the exterior and $b=0$ in the interior of the sphere.
+The conditions are fulfilled with $a = 0$ in the exterior and $b=0$ in the interior of the sphere.
 
 
 We get from the conditions of continuity the following system
@@ -88,7 +88,7 @@ $$
 \end{align}
 $$
 
-with the solutions
+with the coefficients
 $$
 a = \frac{3 \sigma_1}{2 \sigma_1 + \sigma_2} E_0 ,
 \qquad b = \frac{\sigma_2 - \sigma_1}{2 \sigma_1 + \sigma_2} R^3 E_0
@@ -103,3 +103,42 @@ U_{in} & = -E_0 r\cos\theta \frac{3  \sigma_1 }{2\sigma_1 + \sigma_2}
 \end{align}
 $$
 
+## Key findings
+
+- The potential in the exterior of the sphere is the superposition of $U_{0}$ and a dipole potential $U_{0} \sim r^{-2}$.
+- The potential in the interior of the sphere is a linear function, the electric field is uniform. The current lines inside the sphere are parallel.
+
+The uniform electric field causes an accumulation of electric charges along the surface of the sphere.
+
+This charge density can be calculated:
+
+::: {.callout-tip title="Charge accumulation"}
+
+For the current density outside of the sources holds
+$$
+\nabla \cdot \mathbf{j} = 0
+$$
+With Ohm's and Gauss' laws
+$$
+\begin{align}
+\mathbf{j} & = \sigma \mathbf{E} \\
+\nabla \cdot \mathbf{E} & = \frac{\rho_{E}}{\epsilon_{0}}
+\end{align}
+$$
+we find
+$$
+\nabla \cdot \mathbf{j} = \nabla \cdot  (\sigma \mathbf{E}) = \nabla \sigma \cdot  \mathbf{E} + \sigma \nabla \cdot \mathbf{E}
+$$
+
+Charge accumulation:
+$$
+\rho_{E} = - \frac{\epsilon_{0}}{\sigma} \nabla \sigma \cdot  \mathbf{E}
+$$
+
+The charges density has its maximum when the direction of the changes in the conductivity is aligned with the direction of the electric field.
+
+When $\nabla \sigma$ and $\mathbf{E}$ are perpendicular to each other, the charge accumulation is zero.
+
+This is the case when the field is tangential to the disontinuity.
+
+:::

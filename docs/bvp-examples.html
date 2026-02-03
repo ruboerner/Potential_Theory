@@ -447,6 +447,7 @@ window.Quarto = {
   <ul>
   <li><a href="#conductive-sphere-in-homogeneous-field" id="toc-conductive-sphere-in-homogeneous-field" class="nav-link active" data-scroll-target="#conductive-sphere-in-homogeneous-field"><span class="header-section-number">30.1</span> Conductive sphere in homogeneous field</a></li>
   <li><a href="#choice-of-expansion-degree-n1" id="toc-choice-of-expansion-degree-n1" class="nav-link" data-scroll-target="#choice-of-expansion-degree-n1"><span class="header-section-number">30.2</span> Choice of expansion degree <span class="math inline">\(n=1\)</span></a></li>
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings"><span class="header-section-number">30.3</span> Key findings</a></li>
   </ul>
 </nav>
     </div>
@@ -519,11 +520,11 @@ U_{i}(r, \theta) = \sum_{n=0}^\infty f_i(r) P_n(\cos\theta), \quad i=1,2
 <li><span class="math inline">\(f_1(r) \to 0\)</span> for <span class="math inline">\(r \to \infty\)</span></li>
 <li><span class="math inline">\(f_2\)</span> finite for <span class="math inline">\(r \le R\)</span></li>
 </ul>
-<p>We solve the problem using the method of separation of variables and obtain</p>
+<p>We solve the problem using the method of separation of variables and obtain the general radial solution</p>
 <p><span class="math display">\[
-f_1(r) = a_1 r + b r^{-2}
+f_{i}(r) = a r + b r^{-2}
 \]</span></p>
-<p>The conditions are fulfilled with <span class="math inline">\(a_1 = 0\)</span> in the exterior and <span class="math inline">\(b=0\)</span> in the interior of the sphere.</p>
+<p>The conditions are fulfilled with <span class="math inline">\(a = 0\)</span> in the exterior and <span class="math inline">\(b=0\)</span> in the interior of the sphere.</p>
 <p>We get from the conditions of continuity the following system</p>
 <p><span class="math display">\[
 \begin{align}
@@ -531,7 +532,7 @@ f_1(r) = a_1 r + b r^{-2}
 -\sigma_1 (E_0 + 2 b R^{-3}) &amp; = \sigma_2 a
 \end{align}
 \]</span></p>
-<p>with the solutions <span class="math display">\[
+<p>with the coefficients <span class="math display">\[
 a = \frac{3 \sigma_1}{2 \sigma_1 + \sigma_2} E_0 ,
 \qquad b = \frac{\sigma_2 - \sigma_1}{2 \sigma_1 + \sigma_2} R^3 E_0
 \]</span></p>
@@ -542,6 +543,43 @@ U_{ex} &amp; = \left(- E_{0} r + \frac{E_{0} R^{3} \left(\sigma_{2} - \sigma_{1}
 U_{in} &amp; = -E_0 r\cos\theta \frac{3  \sigma_1 }{2\sigma_1 + \sigma_2}
 \end{align}
 \]</span></p>
+</section>
+<section id="key-findings" class="level2" data-number="30.3">
+<h2 data-number="30.3" class="anchored" data-anchor-id="key-findings"><span class="header-section-number">30.3</span> Key findings</h2>
+<ul>
+<li>The potential in the exterior of the sphere is the superposition of <span class="math inline">\(U_{0}\)</span> and a dipole potential <span class="math inline">\(U_{0} \sim r^{-2}\)</span>.</li>
+<li>The potential in the interior of the sphere is a linear function, the electric field is uniform. The current lines inside the sphere are parallel.</li>
+</ul>
+<p>The uniform electric field causes an accumulation of electric charges along the surface of the sphere.</p>
+<p>This charge density can be calculated:</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Charge accumulation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Charge accumulation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the current density outside of the sources holds <span class="math display">\[
+\nabla \cdot \mathbf{j} = 0
+\]</span> With Ohm’s and Gauss’ laws <span class="math display">\[
+\begin{align}
+\mathbf{j} &amp; = \sigma \mathbf{E} \\
+\nabla \cdot \mathbf{E} &amp; = \frac{\rho_{E}}{\epsilon_{0}}
+\end{align}
+\]</span> we find <span class="math display">\[
+\nabla \cdot \mathbf{j} = \nabla \cdot  (\sigma \mathbf{E}) = \nabla \sigma \cdot  \mathbf{E} + \sigma \nabla \cdot \mathbf{E}
+\]</span></p>
+<p>Charge accumulation: <span class="math display">\[
+\rho_{E} = - \frac{\epsilon_{0}}{\sigma} \nabla \sigma \cdot  \mathbf{E}
+\]</span></p>
+<p>The charges density has its maximum when the direction of the changes in the conductivity is aligned with the direction of the electric field.</p>
+<p>When <span class="math inline">\(\nabla \sigma\)</span> and <span class="math inline">\(\mathbf{E}\)</span> are perpendicular to each other, the charge accumulation is zero.</p>
+<p>This is the case when the field is tangential to the disontinuity.</p>
+</div>
+</div>
 
 
 </section>
