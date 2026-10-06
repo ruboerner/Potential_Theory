@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: docs
+  
 
 lang: en
 
@@ -106,3 +107,4 @@ editor:
 execute:
   freeze: auto
   cache: true
+  engine: marimo
