@@ -4,7 +4,7 @@ jupyter: "python3"
 
 ## Prerequisites {.unnumbered}
 
-Here are the lecture notes for the 2025/2026 module covering the **Theory of Potential Field Methods.** These notes are tailored for Master's students of Geophysics and Geoinformatics at the [Institute of Geophysics and Geoinformatics, TU Bergakademie Freiberg](https://tu-freiberg.de/geophysik).
+Here are the lecture notes for the 2026/2027 module covering the **Theory of Potential Field Methods.** These notes are tailored for Master's students of Geophysics and Geoinformatics at the [Institute of Geophysics and Geoinformatics, TU Bergakademie Freiberg](https://tu-freiberg.de/geophysik).
 
 You can access all the materials on the GitHub repository <https://github.com/ruboerner/Potential_Theory>.
 

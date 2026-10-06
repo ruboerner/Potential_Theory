@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>31&nbsp; Green’s identities – Theory of Potential Field Methods in Geophysics</title>
+<title>32&nbsp; Green’s identities – Theory of Potential Field Methods in Geophysics</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -34,15 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./bvp-examples.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8f98f10561429121e561e8555150e459.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a64dc35aab21b41e415ca1946024e1fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +87,7 @@ window.MathJax = {
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -123,7 +128,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-green.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-green.html"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,38 +193,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./gravpotential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The gravity potential function</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -236,37 +247,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./complex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Complex Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Introduction to Complex Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hilbert.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,7 +294,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -300,19 +311,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,31 +340,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spherical-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./igrf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
   </div>
 </li>
       </ul>
@@ -370,55 +381,55 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-dirichlet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Dirichlet problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Dirichlet problems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-neumann.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Neumann problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Neumann problems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-robin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Robin problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Robin problems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-uniqueness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">The uniqueness theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The uniqueness theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-domains.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Domains</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Domains</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Examples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Examples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-green.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
   </div>
 </li>
       </ul>
@@ -445,36 +456,36 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#divergence-theorem" id="toc-divergence-theorem" class="nav-link active" data-scroll-target="#divergence-theorem"><span class="header-section-number">31.1</span> Divergence theorem</a>
+  <li><a href="#divergence-theorem" id="toc-divergence-theorem" class="nav-link active" data-scroll-target="#divergence-theorem"><span class="header-section-number">32.1</span> Divergence theorem</a>
   <ul class="collapse">
-  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">31.1.1</span> Explanation</a></li>
-  <li><a href="#implications" id="toc-implications" class="nav-link" data-scroll-target="#implications"><span class="header-section-number">31.1.2</span> Implications</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">32.1.1</span> Explanation</a></li>
+  <li><a href="#implications" id="toc-implications" class="nav-link" data-scroll-target="#implications"><span class="header-section-number">32.1.2</span> Implications</a></li>
   </ul></li>
-  <li><a href="#greens-identity" id="toc-greens-identity" class="nav-link" data-scroll-target="#greens-identity"><span class="header-section-number">31.2</span> Green’s identity</a>
+  <li><a href="#greens-identity" id="toc-greens-identity" class="nav-link" data-scroll-target="#greens-identity"><span class="header-section-number">32.2</span> Green’s identity</a>
   <ul class="collapse">
-  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points"><span class="header-section-number">31.2.1</span> Key points</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points"><span class="header-section-number">32.2.1</span> Key points</a></li>
   </ul></li>
-  <li><a href="#mean-value-theorem" id="toc-mean-value-theorem" class="nav-link" data-scroll-target="#mean-value-theorem"><span class="header-section-number">31.3</span> Mean value theorem</a>
+  <li><a href="#mean-value-theorem" id="toc-mean-value-theorem" class="nav-link" data-scroll-target="#mean-value-theorem"><span class="header-section-number">32.3</span> Mean value theorem</a>
   <ul class="collapse">
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">31.3.1</span> Interpretation</a></li>
-  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences"><span class="header-section-number">31.3.2</span> Consequences</a></li>
-  <li><a href="#uniqueness" id="toc-uniqueness" class="nav-link" data-scroll-target="#uniqueness"><span class="header-section-number">31.3.3</span> Uniqueness</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">32.3.1</span> Interpretation</a></li>
+  <li><a href="#consequences" id="toc-consequences" class="nav-link" data-scroll-target="#consequences"><span class="header-section-number">32.3.2</span> Consequences</a></li>
+  <li><a href="#uniqueness" id="toc-uniqueness" class="nav-link" data-scroll-target="#uniqueness"><span class="header-section-number">32.3.3</span> Uniqueness</a></li>
   </ul></li>
-  <li><a href="#first-boundary-value-problem" id="toc-first-boundary-value-problem" class="nav-link" data-scroll-target="#first-boundary-value-problem"><span class="header-section-number">31.4</span> First boundary value problem</a>
+  <li><a href="#first-boundary-value-problem" id="toc-first-boundary-value-problem" class="nav-link" data-scroll-target="#first-boundary-value-problem"><span class="header-section-number">32.4</span> First boundary value problem</a>
   <ul class="collapse">
-  <li><a href="#how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity" id="toc-how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity" class="nav-link" data-scroll-target="#how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity"><span class="header-section-number">31.4.1</span> How can we eliminate the Neumann term in the Green’s third identity?</a></li>
+  <li><a href="#how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity" id="toc-how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity" class="nav-link" data-scroll-target="#how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity"><span class="header-section-number">32.4.1</span> How can we eliminate the Neumann term in the Green’s third identity?</a></li>
   </ul></li>
-  <li><a href="#second-exterior-boundary-value-problem" id="toc-second-exterior-boundary-value-problem" class="nav-link" data-scroll-target="#second-exterior-boundary-value-problem"><span class="header-section-number">31.5</span> Second (exterior) boundary value problem</a></li>
-  <li><a href="#second-interior-bvp" id="toc-second-interior-bvp" class="nav-link" data-scroll-target="#second-interior-bvp"><span class="header-section-number">31.6</span> Second (interior) BVP</a></li>
+  <li><a href="#second-exterior-boundary-value-problem" id="toc-second-exterior-boundary-value-problem" class="nav-link" data-scroll-target="#second-exterior-boundary-value-problem"><span class="header-section-number">32.5</span> Second (exterior) boundary value problem</a></li>
+  <li><a href="#second-interior-bvp" id="toc-second-interior-bvp" class="nav-link" data-scroll-target="#second-interior-bvp"><span class="header-section-number">32.6</span> Second (interior) BVP</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-green.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-green.html"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></h1>
+<h1 class="title"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></h1>
 </div>
 
 
@@ -491,24 +502,24 @@ window.Quarto = {
 </header>
 
 
-<section id="divergence-theorem" class="level2" data-number="31.1">
-<h2 data-number="31.1" class="anchored" data-anchor-id="divergence-theorem"><span class="header-section-number">31.1</span> Divergence theorem</h2>
+<section id="divergence-theorem" class="level2" data-number="32.1">
+<h2 data-number="32.1" class="anchored" data-anchor-id="divergence-theorem"><span class="header-section-number">32.1</span> Divergence theorem</h2>
 <p>If <span class="math inline">\(U\)</span> is harmonic in a domain <span class="math inline">\(\Omega\)</span>, i.e., <span class="math inline">\(U\)</span> satisfies Laplace’s equation <span class="math display">\[
 \nabla^{2}U = 0
 \]</span> then the surface integral of the normal derivative of&nbsp; <span class="math inline">\(U\)</span> over the boundary of&nbsp;<span class="math inline">\(\Omega\)</span> has a special property. Specifically, this integral evaluates to zero under certain conditions.</p>
 <p>For a harmonic function <span class="math inline">\(U\)</span>, the surface integral of its normal derivative over the boundary&nbsp; <span class="math inline">\(\partial\Omega\)</span>&nbsp; is <span class="math display">\[
 \int _{\partial\Omega} \frac{ \partial U }{ \partial n }  \, \dd S = 0
 \]</span></p>
-<section id="explanation" class="level3" data-number="31.1.1">
-<h3 data-number="31.1.1" class="anchored" data-anchor-id="explanation"><span class="header-section-number">31.1.1</span> Explanation</h3>
+<section id="explanation" class="level3" data-number="32.1.1">
+<h3 data-number="32.1.1" class="anchored" data-anchor-id="explanation"><span class="header-section-number">32.1.1</span> Explanation</h3>
 <p>This results follows from the <em>divergence theorem</em> (or Gauss’ theorem), from which we obtain <span class="math display">\[
 \int_{\Omega} \nabla^{2}U \, \dd V = \int_{\partial \Omega} \nabla U \cdot \vb{n} \, \dd S
 \]</span> Since <span class="math inline">\(U\)</span> is harmonic, the volume integral on the left-hand side vanishes. Therefore <span class="math display">\[
 \int _{\partial\Omega} \frac{ \partial U }{ \partial n }  \, \dd S = 0
 \]</span></p>
 </section>
-<section id="implications" class="level3" data-number="31.1.2">
-<h3 data-number="31.1.2" class="anchored" data-anchor-id="implications"><span class="header-section-number">31.1.2</span> Implications</h3>
+<section id="implications" class="level3" data-number="32.1.2">
+<h3 data-number="32.1.2" class="anchored" data-anchor-id="implications"><span class="header-section-number">32.1.2</span> Implications</h3>
 <p>This result has important consequences in potential theory and physics:</p>
 <ol type="1">
 <li><strong>Mass Conservation Analogy</strong>: The integral represents the net “flux” of&nbsp; <span class="math inline">\(U\)</span>&nbsp; through the boundary. For a harmonic function, the flux is zero, analogous to conservation laws.</li>
@@ -517,8 +528,8 @@ window.Quarto = {
 <p>This property is a fundamental characteristic of harmonic functions and is widely used in solving boundary value problems.</p>
 </section>
 </section>
-<section id="greens-identity" class="level2" data-number="31.2">
-<h2 data-number="31.2" class="anchored" data-anchor-id="greens-identity"><span class="header-section-number">31.2</span> Green’s identity</h2>
+<section id="greens-identity" class="level2" data-number="32.2">
+<h2 data-number="32.2" class="anchored" data-anchor-id="greens-identity"><span class="header-section-number">32.2</span> Green’s identity</h2>
 <p>Green’s identity can be used to evaluate the value of a potential&nbsp; <span class="math inline">\(U\)</span>&nbsp; at a point&nbsp; <span class="math inline">\(\mathbf{r}_0\)</span>&nbsp; in terms of a surface integral over the boundary of a domain. This is commonly referred to as <strong>Green’s third identity</strong>, which relates the potential&nbsp; <span class="math inline">\(U\)</span>&nbsp; at&nbsp; <span class="math inline">\(\mathbf{r}_0\)</span>&nbsp; to its values and normal derivatives on the boundary surface.</p>
 <p>Green’s third identity is expressed as: <span class="math display">\[
 U(\mathbf{r}_0) = \frac{1}{4\pi} \int_{\partial\Omega} \left[ U(\mathbf{r}) \frac{\partial G(\mathbf{r}, \mathbf{r}_0)}{\partial n} - G(\mathbf{r}, \mathbf{r}_0) \frac{\partial U(\mathbf{r})}{\partial n} \right] \, \dd S
@@ -530,8 +541,8 @@ U(\mathbf{r}_0) = \frac{1}{4\pi} \int_{\partial\Omega} \left[ U(\mathbf{r}) \fra
 <li><span class="math inline">\(\frac{\partial}{\partial n}\)</span> denotes the derivative in the direction of the outward normal to the surface <span class="math inline">\(\partial\Omega\)</span></li>
 <li><span class="math inline">\(\dd{S}\)</span> is the infinitesimal surface element</li>
 </ul>
-<section id="key-points" class="level3" data-number="31.2.1">
-<h3 data-number="31.2.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">31.2.1</span> Key points</h3>
+<section id="key-points" class="level3" data-number="32.2.1">
+<h3 data-number="32.2.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">32.2.1</span> Key points</h3>
 <p><strong>Green’s function:</strong> For the Laplace equation, <span class="math inline">\(G(\mathbf{r}, \mathbf{r}_0)\)</span> is typically chosen as:</p>
 <p><span class="math display">\[
 G(\mathbf{r}, \mathbf{r}_0) = \frac{1}{|\mathbf{r} - \mathbf{r}_0|}.
@@ -540,8 +551,8 @@ G(\mathbf{r}, \mathbf{r}_0) = \frac{1}{|\mathbf{r} - \mathbf{r}_0|}.
 <p>This identity is particularly useful in solving boundary value problems in electrostatics, fluid mechanics, and other fields where the Laplace equation governs the potential.</p>
 </section>
 </section>
-<section id="mean-value-theorem" class="level2" data-number="31.3">
-<h2 data-number="31.3" class="anchored" data-anchor-id="mean-value-theorem"><span class="header-section-number">31.3</span> Mean value theorem</h2>
+<section id="mean-value-theorem" class="level2" data-number="32.3">
+<h2 data-number="32.3" class="anchored" data-anchor-id="mean-value-theorem"><span class="header-section-number">32.3</span> Mean value theorem</h2>
 <p>Gauss’ mean value theorem is a fundamental result in potential theory and the study of harmonic functions. It states that the value of a harmonic function at a point is equal to the average of its values over the surface of a sphere centered at that point.</p>
 <p>Let <span class="math inline">\(U\)</span> be a harmonic function in a domain <span class="math inline">\(\Omega\)</span>. For any point <span class="math inline">\(\mathbf{r}_0\)</span> in <span class="math inline">\(\Omega\)</span> and any sphere <span class="math inline">\(S\)</span> of radius <span class="math inline">\(R\)</span> centered at <span class="math inline">\(\mathbf{r}_0\)</span> (with the sphere lying entirely within <span class="math inline">\(\Omega\)</span>), we have:</p>
 <p><span class="math display">\[
@@ -555,23 +566,23 @@ U(\mathbf{r}_0) = \frac{1}{4\pi R^2} \int_{\partial\Omega} U(\mathbf{r}) \, \dd{
 <li><span class="math inline">\(\dd{S}\)</span> is the surface area element on <span class="math inline">\(\partial \Omega\)</span>,</li>
 <li><span class="math inline">\(U(\mathbf{r})\)</span> is the harmonic function.</li>
 </ul>
-<section id="interpretation" class="level3" data-number="31.3.1">
-<h3 data-number="31.3.1" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">31.3.1</span> Interpretation</h3>
+<section id="interpretation" class="level3" data-number="32.3.1">
+<h3 data-number="32.3.1" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">32.3.1</span> Interpretation</h3>
 <ul>
 <li>The theorem says that the value of a harmonic function at the center of a sphere equals the average value of the function over the sphere’s surface.</li>
 <li>This property characterizes harmonic functions and is often used to prove uniqueness and regularity results for solutions to Laplace’s equation.</li>
 </ul>
 </section>
-<section id="consequences" class="level3" data-number="31.3.2">
-<h3 data-number="31.3.2" class="anchored" data-anchor-id="consequences"><span class="header-section-number">31.3.2</span> Consequences</h3>
+<section id="consequences" class="level3" data-number="32.3.2">
+<h3 data-number="32.3.2" class="anchored" data-anchor-id="consequences"><span class="header-section-number">32.3.2</span> Consequences</h3>
 <ul>
 <li><strong>Maximum Principle:</strong> Since the value at the center of the sphere is an average, a harmonic function cannot have a maximum or minimum inside a domain unless it is constant.</li>
 <li><strong>Uniqueness:</strong> If two harmonic functions agree on the boundary of a domain, they must agree throughout the domain.</li>
 <li><strong>Physical Interpretation:</strong> In electrostatics, the theorem reflects the fact that the potential at a point inside a charge-free region depends only on its surrounding values, not on interior contributions.</li>
 </ul>
 </section>
-<section id="uniqueness" class="level3" data-number="31.3.3">
-<h3 data-number="31.3.3" class="anchored" data-anchor-id="uniqueness"><span class="header-section-number">31.3.3</span> Uniqueness</h3>
+<section id="uniqueness" class="level3" data-number="32.3.3">
+<h3 data-number="32.3.3" class="anchored" data-anchor-id="uniqueness"><span class="header-section-number">32.3.3</span> Uniqueness</h3>
 <p>We consider a sphere <span class="math inline">\(\Omega\)</span> of radius <span class="math inline">\(a\)</span> and a homogeneous charge density <span class="math inline">\(\rho_{E}\)</span>. For any point inside <span class="math inline">\(\Omega\)</span> the Poisson equation holds <span class="math display">\[
 \nabla^{2} U(r) = -\frac{\rho_{E}}{\varepsilon_{0}}, \quad r \le a
 \]</span> On the surface <span class="math inline">\(\partial\Omega\)</span> we fix the potential and its normal derivative, such that <span class="math display">\[
@@ -587,10 +598,10 @@ U(a) = \frac{\rho_{E}}{3\varepsilon_{0}}a^{2} \qquad \frac{ \partial U }{ \parti
 \]</span> which is not consistent with the assumption. It follows that the values at the boundary are determined by <span class="math inline">\(\nabla^{2}U\)</span> alone. A simultaneous choice of <span class="math inline">\(U\)</span> and <span class="math inline">\(\frac{ \partial U }{ \partial n }\)</span> at the boundary overdetermines the problem and typically leaves no room for a solution. Imposing both Dirichlet and Neumann conditions on the same boundary can result in inconsistencies.</p>
 </section>
 </section>
-<section id="first-boundary-value-problem" class="level2" data-number="31.4">
-<h2 data-number="31.4" class="anchored" data-anchor-id="first-boundary-value-problem"><span class="header-section-number">31.4</span> First boundary value problem</h2>
-<section id="how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity" class="level3" data-number="31.4.1">
-<h3 data-number="31.4.1" class="anchored" data-anchor-id="how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity"><span class="header-section-number">31.4.1</span> How can we eliminate the Neumann term in the Green’s third identity?</h3>
+<section id="first-boundary-value-problem" class="level2" data-number="32.4">
+<h2 data-number="32.4" class="anchored" data-anchor-id="first-boundary-value-problem"><span class="header-section-number">32.4</span> First boundary value problem</h2>
+<section id="how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity" class="level3" data-number="32.4.1">
+<h3 data-number="32.4.1" class="anchored" data-anchor-id="how-can-we-eliminate-the-neumann-term-in-the-greens-third-identity"><span class="header-section-number">32.4.1</span> How can we eliminate the Neumann term in the Green’s third identity?</h3>
 <p>We consider the function <span class="math inline">\(U\)</span> defined on an open domain <span class="math inline">\(\Omega \subset \mathbb{R}^{3}\)</span> <span class="math display">\[
 \nabla^{2} U(r) = 0
 \]</span> The goal is to eliminate the term <span class="math inline">\(\dfrac{\partial U}{\partial n}\)</span> from Green’s third identity. <span class="math display">\[
@@ -625,8 +636,8 @@ G_{1} &amp; = 0 \text{ on } \partial\Omega
 <p>Note that for <span class="math inline">\(\vb{r}=\vb{r_{0}}\)</span>, the Green’s function <span class="math inline">\(G_{1}\)</span> has a singularity.</p>
 </section>
 </section>
-<section id="second-exterior-boundary-value-problem" class="level2" data-number="31.5">
-<h2 data-number="31.5" class="anchored" data-anchor-id="second-exterior-boundary-value-problem"><span class="header-section-number">31.5</span> Second (exterior) boundary value problem</h2>
+<section id="second-exterior-boundary-value-problem" class="level2" data-number="32.5">
+<h2 data-number="32.5" class="anchored" data-anchor-id="second-exterior-boundary-value-problem"><span class="header-section-number">32.5</span> Second (exterior) boundary value problem</h2>
 <p>We restrict <span class="math inline">\(\dfrac{\partial U}{\partial n}\)</span> at the boundary <span class="math inline">\(\partial\Omega\)</span>. With the Green’s third identity, we are able to find a solution <span class="math inline">\(U\)</span> in the exterior of <span class="math inline">\(\Omega\)</span> by construction of an auxiliary function <span class="math display">\[
 G_{2} = g - \frac{1}{r}
 \]</span> such that <span class="math display">\[
@@ -639,8 +650,8 @@ G_{2} = g - \frac{1}{r}
 U(\vb{r_{0}}) = \frac{1}{4 \pi} \int _{\partial\Omega } G_{2}(\vb{r, \vb{r_{0}}}) \frac{\partial U}{\partial n}  \, \dd S
 \]</span></p>
 </section>
-<section id="second-interior-bvp" class="level2" data-number="31.6">
-<h2 data-number="31.6" class="anchored" data-anchor-id="second-interior-bvp"><span class="header-section-number">31.6</span> Second (interior) BVP</h2>
+<section id="second-interior-bvp" class="level2" data-number="32.6">
+<h2 data-number="32.6" class="anchored" data-anchor-id="second-interior-bvp"><span class="header-section-number">32.6</span> Second (interior) BVP</h2>
 <p>For the interior BVP the derivative at the boundary cannot be defined arbitrarily, since both <span class="math display">\[
 \nabla^{2}U = 0 \text{ in } \Omega
 \]</span> and <span class="math display">\[
@@ -1080,12 +1091,12 @@ G_{2}(\vb{r, \vb{r_{0}}}) = g_{2}(\vb{r, \vb{r_{0}}})-\frac{1}{r}
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./bvp-examples.html" class="pagination-link" aria-label="Examples">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Examples</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Examples</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./bvp-applications.html" class="pagination-link" aria-label="Applications">
-        <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

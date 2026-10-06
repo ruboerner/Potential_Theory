@@ -24,6 +24,7 @@ book:
 #        - pde_example.qmd
     - part: "Newton potential"
       chapters: 
+        - gravpotential.qmd
         - pointmass.qmd
 #        - poisson_equation.qmd
         - mass_distribution.qmd

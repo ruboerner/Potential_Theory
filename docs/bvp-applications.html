@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>32&nbsp; Applications – Theory of Potential Field Methods in Geophysics</title>
+<title>33&nbsp; Applications – Theory of Potential Field Methods in Geophysics</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -69,15 +75,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./bvp-green.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8f98f10561429121e561e8555150e459.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a64dc35aab21b41e415ca1946024e1fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,7 +122,7 @@ window.MathJax = {
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -158,7 +163,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-applications.html"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-applications.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -223,38 +228,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./gravpotential.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The gravity potential function</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
   </div>
 </li>
       </ul>
@@ -271,37 +282,37 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./talwani.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./complex.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Complex Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Introduction to Complex Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hilbert.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,7 +329,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
   </div>
 </li>
       </ul>
@@ -335,19 +346,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
   </div>
 </li>
       </ul>
@@ -364,31 +375,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spherical-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./igrf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
   </div>
 </li>
       </ul>
@@ -405,55 +416,55 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-dirichlet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Dirichlet problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Dirichlet problems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-neumann.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Neumann problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Neumann problems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-robin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Robin problems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Robin problems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-uniqueness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">The uniqueness theorem</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The uniqueness theorem</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-domains.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Domains</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Domains</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Examples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Examples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-green.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bvp-applications.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
   </div>
 </li>
       </ul>
@@ -480,17 +491,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#method-of-mirrors" id="toc-method-of-mirrors" class="nav-link active" data-scroll-target="#method-of-mirrors"><span class="header-section-number">32.1</span> Method of mirrors</a></li>
-  <li><a href="#a-conducting-semi-sphere-as-an-electrode" id="toc-a-conducting-semi-sphere-as-an-electrode" class="nav-link" data-scroll-target="#a-conducting-semi-sphere-as-an-electrode"><span class="header-section-number">32.2</span> A conducting semi-sphere as an electrode</a>
+  <li><a href="#method-of-mirrors" id="toc-method-of-mirrors" class="nav-link active" data-scroll-target="#method-of-mirrors"><span class="header-section-number">33.1</span> Method of mirrors</a></li>
+  <li><a href="#a-conducting-semi-sphere-as-an-electrode" id="toc-a-conducting-semi-sphere-as-an-electrode" class="nav-link" data-scroll-target="#a-conducting-semi-sphere-as-an-electrode"><span class="header-section-number">33.2</span> A conducting semi-sphere as an electrode</a>
   <ul class="collapse">
-  <li><a href="#summary-of-the-result" id="toc-summary-of-the-result" class="nav-link" data-scroll-target="#summary-of-the-result"><span class="header-section-number">32.2.1</span> Summary of the result</a></li>
-  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">32.2.2</span> Explanation</a></li>
-  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="header-section-number">32.2.3</span> Visualization</a></li>
+  <li><a href="#summary-of-the-result" id="toc-summary-of-the-result" class="nav-link" data-scroll-target="#summary-of-the-result"><span class="header-section-number">33.2.1</span> Summary of the result</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation"><span class="header-section-number">33.2.2</span> Explanation</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="header-section-number">33.2.3</span> Visualization</a></li>
   </ul></li>
-  <li><a href="#the-two-layer-case" id="toc-the-two-layer-case" class="nav-link" data-scroll-target="#the-two-layer-case"><span class="header-section-number">32.3</span> The two-layer case</a></li>
-  <li><a href="#resistivity-sounding-over-an-n-layered-half-space" id="toc-resistivity-sounding-over-an-n-layered-half-space" class="nav-link" data-scroll-target="#resistivity-sounding-over-an-n-layered-half-space"><span class="header-section-number">32.4</span> Resistivity sounding over an <span class="math inline">\(N\)</span>-layered half-space</a>
+  <li><a href="#the-two-layer-case" id="toc-the-two-layer-case" class="nav-link" data-scroll-target="#the-two-layer-case"><span class="header-section-number">33.3</span> The two-layer case</a></li>
+  <li><a href="#resistivity-sounding-over-an-n-layered-half-space" id="toc-resistivity-sounding-over-an-n-layered-half-space" class="nav-link" data-scroll-target="#resistivity-sounding-over-an-n-layered-half-space"><span class="header-section-number">33.4</span> Resistivity sounding over an <span class="math inline">\(N\)</span>-layered half-space</a>
   <ul class="collapse">
-  <li><a href="#apparent-resistivity" id="toc-apparent-resistivity" class="nav-link" data-scroll-target="#apparent-resistivity"><span class="header-section-number">32.4.1</span> Apparent resistivity</a></li>
+  <li><a href="#apparent-resistivity" id="toc-apparent-resistivity" class="nav-link" data-scroll-target="#apparent-resistivity"><span class="header-section-number">33.4.1</span> Apparent resistivity</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -498,9 +509,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-applications.html"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bvp-intro.html">Boundary value problems</a></li><li class="breadcrumb-item"><a href="./bvp-applications.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Applications</span></h1>
+<h1 class="title"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></h1>
 </div>
 
 
@@ -517,8 +528,8 @@ window.Quarto = {
 </header>
 
 
-<section id="method-of-mirrors" class="level2" data-number="32.1">
-<h2 data-number="32.1" class="anchored" data-anchor-id="method-of-mirrors"><span class="header-section-number">32.1</span> Method of mirrors</h2>
+<section id="method-of-mirrors" class="level2" data-number="33.1">
+<h2 data-number="33.1" class="anchored" data-anchor-id="method-of-mirrors"><span class="header-section-number">33.1</span> Method of mirrors</h2>
 <p>We consider the second BVP (Neumann problem) for the half-space. Because of <span class="math inline">\(\sigma_{air} \approx 0\)</span> we set at <span class="math inline">\(z=0\)</span> (Air-Earth interface) <span class="math display">\[
 \frac{\partial U}{\partial n} = 0
 \]</span> A point electrode carrying a current of <span class="math inline">\(I\)</span> located at the point <span class="math inline">\(\vb{r_{0}}=(x_{0}, y_{0}, 0)^\top\)</span> causes a potential at point <span class="math inline">\(\vb{r}\)</span> <span class="math display">\[
@@ -580,8 +591,8 @@ U_{2} &amp; = \frac{\rho_{2}I}{4 \pi R_{3}} \frac{2 \rho_{1}}{\rho_{1}+\rho_{2}}
 \rho_{m} = \frac{2 \rho_{1} \rho_{2}}{\rho_{1} + \rho_{2}} = \left[ \frac{\sigma_{1}+\sigma_{2}}{2}  \right] ^{-1}
 \]</span> The potential in the upper half-space is that of a homogeneous full-space with a resistivity <span class="math inline">\(\rho_{m}\)</span>.</p>
 </section>
-<section id="a-conducting-semi-sphere-as-an-electrode" class="level2" data-number="32.2">
-<h2 data-number="32.2" class="anchored" data-anchor-id="a-conducting-semi-sphere-as-an-electrode"><span class="header-section-number">32.2</span> A conducting semi-sphere as an electrode</h2>
+<section id="a-conducting-semi-sphere-as-an-electrode" class="level2" data-number="33.2">
+<h2 data-number="33.2" class="anchored" data-anchor-id="a-conducting-semi-sphere-as-an-electrode"><span class="header-section-number">33.2</span> A conducting semi-sphere as an electrode</h2>
 <p>We consider a uniform halfspace with resistivity <span class="math inline">\(\rho_2\)</span>. There is a point source <span class="math inline">\(I\)</span> located at the origin. The semi-sphere of radius <span class="math inline">\(a\)</span> has a resistivity of <span class="math inline">\(\rho_1\)</span>. The semi-sphere is aligned with the <span class="math inline">\(z\)</span>-axis. The upper half-space is insulating, we impose a Neumann boundary condition in <span class="math inline">\(z=0\)</span>.</p>
 <p><strong>Goal</strong>: Find the potential inside and outside of the semi-sphere.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -615,8 +626,8 @@ I' = I
 \]</span> and <span class="math display">\[
 U_{0} = \frac{(\rho_{2}-\rho_{1})I}{2 \pi a}
 \]</span></p>
-<section id="summary-of-the-result" class="level3" data-number="32.2.1">
-<h3 data-number="32.2.1" class="anchored" data-anchor-id="summary-of-the-result"><span class="header-section-number">32.2.1</span> Summary of the result</h3>
+<section id="summary-of-the-result" class="level3" data-number="33.2.1">
+<h3 data-number="33.2.1" class="anchored" data-anchor-id="summary-of-the-result"><span class="header-section-number">33.2.1</span> Summary of the result</h3>
 <p><span class="math display">\[
 \begin{align}
 U_{1}(r)  &amp; = \frac{\rho_{1}I}{2 \pi r} + \frac{(\rho_{2}-\rho_{1})I}{2 \pi a} \\
@@ -624,8 +635,8 @@ U_{2}(r) &amp; = \frac{\rho_{2}I}{2 \pi r}
 \end{align}
 \]</span></p>
 </section>
-<section id="explanation" class="level3" data-number="32.2.2">
-<h3 data-number="32.2.2" class="anchored" data-anchor-id="explanation"><span class="header-section-number">32.2.2</span> Explanation</h3>
+<section id="explanation" class="level3" data-number="33.2.2">
+<h3 data-number="33.2.2" class="anchored" data-anchor-id="explanation"><span class="header-section-number">33.2.2</span> Explanation</h3>
 <p>The potential inside the semi-sphere is composed of two contributions:</p>
 <ul>
 <li>the potential due to the point source</li>
@@ -633,8 +644,8 @@ U_{2}(r) &amp; = \frac{\rho_{2}I}{2 \pi r}
 </ul>
 <p>The latter is constant.</p>
 </section>
-<section id="visualization" class="level3" data-number="32.2.3">
-<h3 data-number="32.2.3" class="anchored" data-anchor-id="visualization"><span class="header-section-number">32.2.3</span> Visualization</h3>
+<section id="visualization" class="level3" data-number="33.2.3">
+<h3 data-number="33.2.3" class="anchored" data-anchor-id="visualization"><span class="header-section-number">33.2.3</span> Visualization</h3>
 <div id="82fc958d" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -706,8 +717,8 @@ U_{2}(r) &amp; = \frac{\rho_{2}I}{2 \pi r}
 <p>The field only has a normal component w.r.t. the surface of the semi-sphere. Therefore, we observe a discontinuity in the order of the jump in resistivities.</p>
 </section>
 </section>
-<section id="the-two-layer-case" class="level2" data-number="32.3">
-<h2 data-number="32.3" class="anchored" data-anchor-id="the-two-layer-case"><span class="header-section-number">32.3</span> The two-layer case</h2>
+<section id="the-two-layer-case" class="level2" data-number="33.3">
+<h2 data-number="33.3" class="anchored" data-anchor-id="the-two-layer-case"><span class="header-section-number">33.3</span> The two-layer case</h2>
 <p>We consider the case when the half-space is composed of two layers with distinct resistivities <span class="math inline">\(\rho_1\)</span> and <span class="math inline">\(\rho_2\)</span>. The thickness of layer 1 is <span class="math inline">\(h\)</span>.</p>
 <p><img src="images/RWA-twolayer.excalidraw.svg" class="img-fluid"></p>
 <p>We calculate the potential <span class="math inline">\(V\)</span> at the surface of the half-space.</p>
@@ -765,8 +776,8 @@ V = \frac{I \rho_{1}}{2 \pi} \left( \frac{1}{r} + 2 \sum_{m=1}^{\infty} \frac{k_
 <p>Further, the denominator increases with increasing <span class="math inline">\(m\)</span>.</p>
 <p><strong>Numerical implementation:</strong> The amount of terms in the summation depends on <span class="math inline">\(k_{12}\)</span> and <span class="math inline">\(z/r\)</span>.</p>
 </section>
-<section id="resistivity-sounding-over-an-n-layered-half-space" class="level2" data-number="32.4">
-<h2 data-number="32.4" class="anchored" data-anchor-id="resistivity-sounding-over-an-n-layered-half-space"><span class="header-section-number">32.4</span> Resistivity sounding over an <span class="math inline">\(N\)</span>-layered half-space</h2>
+<section id="resistivity-sounding-over-an-n-layered-half-space" class="level2" data-number="33.4">
+<h2 data-number="33.4" class="anchored" data-anchor-id="resistivity-sounding-over-an-n-layered-half-space"><span class="header-section-number">33.4</span> Resistivity sounding over an <span class="math inline">\(N\)</span>-layered half-space</h2>
 <p>We consider the <span class="math inline">\(N\)</span>-layered case for DC resistivity applications.</p>
 <p>For the solution of the problem, the method of mirrors seems tedious due to the vast amount of mirror sources to be considered.</p>
 <p>A more practical method is based on the solution of the Laplace equation in an appropriate coordinate system. We choose a cylindrical coordinate system.</p>
@@ -780,13 +791,13 @@ U \to 0 \text{ for } R \to \infty
 \]</span> where <span class="math inline">\(R^{2} = r^{2} + z^{2}\)</span>.</p>
 <p>Inserting into the Laplace equation yields <span id="eq-laplace-sep"><span class="math display">\[
 \underbrace{ \frac{1}{rF} \frac{ \mathrm d }{ \mathrm dr }  \left( r \frac{ \mathrm dF }{ \mathrm dr }   \right) }_{ =-\lambda^{2} } + \underbrace{ \frac{1}{Z}  \frac{ \mathrm d^{2} Z }{ \mathrm dz^{2} } }_{ =+\lambda^{2} } = 0
-\tag{32.1}\]</span></span></p>
+\tag{33.1}\]</span></span></p>
 <p>with the <em>separation parameter</em> <span class="math inline">\(\lambda\)</span>. The first term is <span class="math display">\[
 F'' + \frac{1}{r} F' + \lambda^{2} F = 0
 \]</span> which is referred to as <em>Bessel differential equation</em>, which has the solution <span class="math display">\[
 F(r, \lambda) = C(\lambda)J_{0}(\lambda r) + D(\lambda)N_{0}(\lambda r)
 \]</span> Since <span class="math inline">\(N_{0}(\lambda r)\)</span> has a singularity at <span class="math inline">\(r=0\)</span>, we discard it by setting <span class="math inline">\(D(\lambda)=0\)</span> for all <span class="math inline">\(\lambda\)</span>.</p>
-<p>The second term in <a href="#eq-laplace-sep" class="quarto-xref"><span>32.1</span></a> describes an exponential decay: <span class="math display">\[
+<p>The second term in <a href="#eq-laplace-sep" class="quarto-xref"><span>33.1</span></a> describes an exponential decay: <span class="math display">\[
 Z'' - \lambda^{2}Z = 0
 \]</span> Its solution is <span class="math display">\[
 Z(z, \lambda) = A(\lambda) e^{ -\lambda z } + B(\lambda) e^{ +\lambda z }
@@ -866,13 +877,13 @@ d_{i} &amp; = z_{i} - z_{i-1}
 \end{align}
 \]</span> It follows <span id="eq-pot-u1"><span class="math display">\[
 U_{1}(r,0) = \frac{I}{2 \pi} \int_{0}^{\infty} T_{1}(\lambda) J_{0}(\lambda r)\, \dd \lambda
-\tag{32.2}\]</span></span></p>
-<section id="apparent-resistivity" class="level3" data-number="32.4.1">
-<h3 data-number="32.4.1" class="anchored" data-anchor-id="apparent-resistivity"><span class="header-section-number">32.4.1</span> Apparent resistivity</h3>
+\tag{33.2}\]</span></span></p>
+<section id="apparent-resistivity" class="level3" data-number="33.4.1">
+<h3 data-number="33.4.1" class="anchored" data-anchor-id="apparent-resistivity"><span class="header-section-number">33.4.1</span> Apparent resistivity</h3>
 <p>In the Schlumberger array we have <span id="eq-rhoa"><span class="math display">\[
 \rho_{a} = -\frac{2\pi r^{2}}{I} \frac{ \mathrm dU }{ \mathrm dr } \bigg|_{r=s}
-\tag{32.3}\]</span></span></p>
-<p>where <span class="math inline">\(s = \dfrac{L}{2}\)</span> is the half electrode spacing. Obtaining the gradient from <a href="#eq-pot-u1" class="quarto-xref"><span>32.2</span></a> and substituting in <a href="#eq-rhoa" class="quarto-xref"><span>32.3</span></a> we have <span class="math display">\[
+\tag{33.3}\]</span></span></p>
+<p>where <span class="math inline">\(s = \dfrac{L}{2}\)</span> is the half electrode spacing. Obtaining the gradient from <a href="#eq-pot-u1" class="quarto-xref"><span>33.2</span></a> and substituting in <a href="#eq-rhoa" class="quarto-xref"><span>33.3</span></a> we have <span class="math display">\[
 \rho_{a} = s^{2} \int_{0}^{\infty} T_{1}J_{1}(\lambda s) \lambda \, \dd \lambda
 \]</span></p>
 <p>This integral can be evaluated after applying a transformation of the variables <span class="math display">\[
@@ -1295,7 +1306,7 @@ r &amp; = r_{0}e^{ x } \\
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./bvp-green.html" class="pagination-link" aria-label="Green's identities">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Green’s identities</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

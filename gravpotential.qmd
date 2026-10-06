@@ -1,0 +1,273 @@
+---
+# jupyter: python3
+engine: marimo
+---
+
+## The gravity potential function
+
+For two point masses $M$ and $m$, separated by
+$$
+r = \lVert \mathbf r\rVert ,
+$$
+the gravitational potential energy is
+$$
+V(r)=-\frac{f M m}{r}.
+$$
+If the Earth generates the gravitational potential
+$$
+\Phi(\mathbf{r}) = -\frac{f M}{r},
+$$
+then simply
+$$
+V(\mathbf{r}) = m \Phi(\mathbf{r}).
+$$
+Thus the potential $\Phi$ is a property of the gravitational field, whereas $V$ depends additionally on the test mass.
+
+Assuming for the moment that the Earth is fixed at the origin, the particle has kinetic energy
+
+$$
+T=\frac12 m\dot{\mathbf r}^{\,2}.
+$$
+Hence, the _Lagrangian_ is
+$$
+L=T-V
+=
+\frac12m\dot{\mathbf r}^{\,2}
++\frac{f M m}{r}.
+$$
+
+The Euler–Lagrange equation in vector form is
+
+$$
+\frac{\mathrm d}{\mathrm dt}
+\frac{\partial L}{\partial\dot{\mathbf r}}
+-
+\frac{\partial L}{\partial\mathbf r}
+=0.
+$$
+
+The first term is simply
+$$
+\frac{\partial L}{\partial\dot{\mathbf r}}
+=
+m\dot{\mathbf r},
+$$
+
+and therefore
+$$
+\frac{\mathrm d}{\mathrm dt}
+\frac{\partial L}{\partial\dot{\mathbf r}}
+=
+m\ddot{\mathbf r}.
+$$
+For the spatial derivative we use
+$$
+\nabla\frac{1}{r}
+=
+-\frac{\mathbf r}{r^3}.
+$$
+Consequently,
+$$
+\frac{\partial L}{\partial\mathbf r}
+=
+fMm\nabla\frac1r
+=
+-fMm\frac{\mathbf r}{r^3}.
+$$
+The Euler–Lagrange equation therefore gives
+$$
+m\ddot{\mathbf r}
+=
+-fMm\frac{\mathbf r}{r^3}.
+$$
+After cancelling m,
+$$
+\boxed{
+\ddot{\mathbf r}
+=
+-fM\frac{\mathbf r}{r^3}
+}
+$$
+
+and hence
+$$
+\boxed{
+\mathbf F
+=
+-f\frac{Mm}{r^3}\mathbf r
+}.
+$$
+The magnitude is Newton’s familiar inverse-square law.
+
+We rewrite the Lagrangian as
+$$
+L
+=
+\frac{1}{2} m \dot{\mathbf r}^{\,2}
+-
+m\Phi(\mathbf r).
+$$
+Then Euler–Lagrange immediately produces
+$$
+m\ddot{\mathbf r}
+=
+-m\nabla\Phi,
+$$
+or
+$$
+\boxed{
+\ddot{\mathbf r}
+=
+-\nabla\Phi
+}.
+$$
+Thus the gravitational acceleration is
+$$
+\boxed{
+\mathbf g=-\nabla\Phi
+}.
+$$
+
+## What happens when the Earth is not stationary?
+
+We define Earth and particle positions as $\mathbf r_M$ and $\mathbf r_m$.
+The Lagrangian is now
+$$
+L
+=
+\frac12M\dot{\mathbf r}_M^2
++
+\frac12m\dot{\mathbf r}_m^2
++
+\frac{f M m}
+{\lVert\mathbf r_m-\mathbf r_M\rVert}.
+$$
+We introduce the centre-of-mass and relative coordinates
+$$
+\mathbf R
+=
+\frac{M\mathbf r_M+m\mathbf r_m}{M+m},
+\qquad
+\mathbf r
+=
+\mathbf r_m-\mathbf r_M.
+$$
+
+
+
+
+
+Then the Lagrangian separates:
+$$
+L
+=
+\frac12(M+m)\dot{\mathbf R}^{\,2}
++
+\frac12\mu\dot{\mathbf r}^{\,2}
++
+\frac{fMm}{r},
+$$
+where
+$$
+\mu=\frac{Mm}{M+m}
+$$
+is the **reduced mass**.
+
+The centre of mass moves uniformly,
+$$
+\ddot{\mathbf R}=0,
+$$
+while the relative motion satisfies
+$$
+\mu\ddot{\mathbf r}
+=
+-fMm\frac{\mathbf r}{r^3}.
+$$
+Since
+$$
+\frac{Mm}{\mu}=M+m,
+$$
+we obtain
+$$
+\boxed{
+\ddot{\mathbf r}
+=
+-f(M+m)\frac{\mathbf r}{r^3}
+}.
+$$
+From the usual geophysical approximation
+$$
+M \gg m
+$$
+we obtain
+$$
+M + m \approx M, \qquad \mu \approx m
+$$
+
+
+::: {.callout-tip title="Centre-of-mass"}
+
+We put the two masses with variable $M$ and fixed $m=1$ at $x_{M}=0$ and $x_{m}=50$, resp.
+
+Move the slider to change the value of the mass $M$. Observe the change of the centre-of-mass and the reduced mass.
+
+
+```python {.marimo}
+import marimo as mo
+rM = 0.0
+rm = 50.0
+M = mo.ui.slider(-2, 3, value=0, step=0.1, label="log(M)", show_value=True)
+M
+```
+
+```python {.marimo}
+m = 1.0
+mass = 10.0**(M.value)
+R = (mass * rM + m * rm) / (mass + m)
+mo.md(f'''
+Centre-of-mass at R = {R:.2f}
+
+$m$ = {m:.2f} kg
+
+$M$ = {mass:.2f} kg
+
+Reduced mass $\mu$ = {mass * m / (mass + m):.2f} kg''')
+```
+
+The reduced mass $\mu$ approaches the value of $m$ when $M \gg m$.
+
+:::
+
+::: {.callout-note}
+
+Geophysical potential theory often jumps directly to the potential per unit mass, while the mechanical derivation naturally starts with the potential energy. Introducing the reduced mass explicitly makes the transition much cleaner.
+
+:::
+
+
+
+::: {.list-table}
+
+- - Quantity
+  - Symbol
+  - Definition
+  - Unit
+
+- - Potential energy
+  - $U$
+  - $-f\dfrac{M m}{r}$
+  - $\text{J}=\text{kg}\text{m}^{2}\text{s}^{-2}$
+
+- - Gravitational potential
+  - $V$
+  - $\dfrac{U}{m} = -f \dfrac{M}{r}$
+  - $\text{J} \text{kg}^{-1} = \text{m}^{2} \text{s}^{-2}$
+
+- - Gravitational acceleration
+  - $\mathbf{g}$
+  - $-\nabla V$
+  - $\text{m}\text{s}^{-2}$
+
+:::
+
+
