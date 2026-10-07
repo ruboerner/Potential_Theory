@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; The gravity potential function – Theory of Potential Field Methods in Geophysics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./pointmass.html" rel="next">
+<link href="./fields.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a64dc35aab21b41e415ca1946024e1fa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style data-marimo-islands="">:where(.marimo-island-host){margin-block:var(--_marimo-island-margin-block);color:var(--_marimo-island-foreground);--_marimo-island-background: var(--marimo-island-background, #fff);--_marimo-island-foreground: var(--marimo-island-foreground, #0f172a);--_marimo-island-surface: var(--marimo-island-surface, #fff);--_marimo-island-muted-surface: var(--marimo-island-muted-surface, #f1f5f9);--_marimo-island-raised-surface: color-mix(in srgb, var(--_marimo-island-foreground) 3%, var(--_marimo-island-background));--_marimo-island-muted-foreground: var(--marimo-island-muted-foreground, #64748b);--_marimo-island-border: var(--marimo-island-border, #e2e8f0);--_marimo-island-link: var(--marimo-island-accent, #0b68cb);--_marimo-island-accent: var(--marimo-island-accent, #0880ea);--_marimo-island-accent-foreground: var(--marimo-island-accent-foreground, #f8fafc);--_marimo-island-focus-ring: var(--marimo-island-focus-ring, var(--_marimo-island-accent));--_marimo-island-code-background: var(--marimo-island-code-background, var(--_marimo-island-muted-surface));--_marimo-island-code-foreground: var(--marimo-island-code-foreground, var(--_marimo-island-foreground));--_marimo-island-code-border: var(--_marimo-island-border);--_marimo-island-hover-background: color-mix(in srgb, var(--_marimo-island-foreground) 8%, transparent);--_marimo-island-error-background: var(--marimo-island-error-background, color-mix(in srgb, #dc2626 6%, var(--_marimo-island-background)));--_marimo-island-error-border: var(--marimo-island-error-border, color-mix(in srgb, #dc2626 42%, var(--_marimo-island-border)));--_marimo-island-error-foreground: var(--marimo-island-error-foreground, var(--_marimo-island-foreground));--_marimo-island-error-accent: var(--marimo-island-error-accent, #dc2626);--_marimo-island-radius: var(--marimo-island-radius, .5rem);--_marimo-island-margin-block: var(--marimo-island-margin-block, 1rem)}:where(.marimo-island-host[data-marimo-theme=dark]){--_marimo-island-background: var(--marimo-island-background, #181c1a);--_marimo-island-foreground: var(--marimo-island-foreground, #eceeed);--_marimo-island-surface: var(--marimo-island-surface, #252927);--_marimo-island-muted-surface: var(--marimo-island-muted-surface, #020303);--_marimo-island-border: var(--marimo-island-border, #3b403e);--_marimo-island-muted-foreground: var(--marimo-island-muted-foreground, #aab2af);--_marimo-island-code-background: var(--marimo-island-code-background, #282c34);--_marimo-island-code-foreground: var(--marimo-island-code-foreground, #abb2bf);--_marimo-island-error-background: var(--marimo-island-error-background, color-mix(in srgb, #f87171 8%, var(--_marimo-island-background)));--_marimo-island-error-border: var(--marimo-island-error-border, color-mix(in srgb, #f87171 42%, var(--_marimo-island-border)));--_marimo-island-error-accent: var(--marimo-island-error-accent, #fca5a5);--_marimo-island-error-foreground: var(--marimo-island-error-foreground, var(--_marimo-island-foreground))}:where(.marimo-island-host){box-sizing:border-box;margin-block:var(--_marimo-island-margin-block);min-width:0;max-width:100%;display:block;overflow-x:auto}:where(.marimo-island-host)>:first-child{margin-top:0}:where(.marimo-island-host)>:last-child{margin-bottom:0}:where(.marimo-island-host) :where(marimo-island,marimo-cell-output){min-width:0;max-width:100%;overflow-x:auto}:where(.marimo-island-host)>marimo-island.marimo{display:contents}:where(.marimo-island-host) :where(pre){background:var(--_marimo-island-code-background)!important;border-color:var(--_marimo-island-code-border)!important;color:var(--_marimo-island-code-foreground)!important}:where(.marimo-island-host) :where(p,li) code,:where(.marimo-island-host) :where(p,li) code *{overflow-wrap:anywhere;word-break:break-word;white-space:normal!important}:where(.marimo-island-host[data-marimo-theme=dark]) :where(.admonition,[class*=admonition],.callout,.markdown.prose,.markdown.prose *,.codehilite,.codehilite *,.highlight,.highlight *,pre,pre *,code,code *,marimo-accordion,marimo-accordion *,table,thead,tbody,tr,th,td,.marimo-json-output,.marimo-json-output *,.json-viewer-theme-light,.json-viewer-theme-light *,label,input,output,[role=cell],[role=columnheader],[role=rowheader]){color:var(--_marimo-island-foreground)!important}:where(.marimo-island-host[data-marimo-theme=dark]) :where(.admonition,[class*=admonition],.callout){background:var(--_marimo-island-muted-surface)!important;border-color:var(--_marimo-island-border)!important}:where(.marimo-island-host[data-marimo-theme=dark]) :where(input,textarea,select){background:var(--_marimo-island-surface)!important;border-color:var(--_marimo-island-border)!important;color:var(--_marimo-island-foreground)!important}.marimo-island-error{border:1px solid var(--_marimo-island-error-border);border-radius:var(--_marimo-island-radius);color:var(--_marimo-island-error-foreground);padding:.75rem}.marimo-island-error summary{color:var(--_marimo-island-error-accent)}.marimo-island-error pre{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+<script type="module" data-marimo-islands="">// Generated by `make browser-build` from src/browser and the mdx-marimo bridge.
+// Do not edit this file directly.
+// npm:@marimo-team/mdx-marimo@0.0.5/dist/island-BDwgwD5F.js
+var runtimeStateSymbol = Symbol.for("@marimo-team/islands-bridge/runtime-state");
+var safeSessionHandoffVersion = [
+  0,
+  23,
+  16
+];
+var appRevisions = /* @__PURE__ */ new WeakMap();
+function hasConfirmedSoftNavigationAssets(app) {
+  if (!matchesRuntime(app.assets)) return false;
+  const modules = [];
+  for (const src of app.assets.moduleScripts) {
+    const runtimeModule = runtimeDocumentState().resolvedModules.get(moduleHref(src));
+    if (!runtimeModule) return false;
+    modules.push(runtimeModule);
+  }
+  return supportsSoftNavigation(app, modules);
+}
+function acquireAssets(app, host) {
+  const reload = claimRuntime(app.assets);
+  if (reload) return {
+    activate: () => reload,
+    ready: reload,
+    release: () => {
+    }
+  };
+  ensureMountConfig(app.assets);
+  ensureHeadTags(app.assets.headTags ?? []);
+  ensureLinks(app.assets.links);
+  const documentState = runtimeDocumentState();
+  const state = documentState.appAssets.get(app.id) ?? {
+    leases: /* @__PURE__ */ new Set()
+  };
+  const lease = {
+    host,
+    revision: appRevision(app)
+  };
+  state.leases.add(lease);
+  documentState.appAssets.set(app.id, state);
+  let released = false;
+  const release = () => {
+    if (released) return;
+    released = true;
+    state.leases.delete(lease);
+    enqueueRuntimeActivation(async () => {
+      if (liveHosts(state).length > 0) return;
+      const activeApp = runtimeDocumentState().activeApp;
+      if (activeApp?.state === state) {
+        if (activeApp.replaceable) await deactivateApp(activeApp);
+        return;
+      }
+      cleanupAppState(app.id, state);
+    });
+  };
+  const activate = () => activateApp(app, state).then((modules) => supportsSoftNavigation(app, modules));
+  return {
+    activate,
+    ready: activate().catch((error) => {
+      release();
+      throw error;
+    }),
+    release
+  };
+}
+function runtimeDocumentState() {
+  const target = window;
+  return target[runtimeStateSymbol] ??= {
+    appAssets: /* @__PURE__ */ new Map(),
+    loadedModules: /* @__PURE__ */ new Map(),
+    resolvedModules: /* @__PURE__ */ new Map()
+  };
+}
+function runtimeKey(assets) {
+  return JSON.stringify([
+    assets.version ?? null,
+    assets.moduleScripts.map(moduleHref)
+  ]);
+}
+function matchesRuntime(assets) {
+  const state = runtimeDocumentState();
+  return !state.reload && state.key !== void 0 && state.key === runtimeKey(assets);
+}
+function claimRuntime(assets) {
+  const state = runtimeDocumentState();
+  if (state.reload) return state.reload;
+  const key = runtimeKey(assets);
+  if (state.key === void 0) {
+    state.key = key;
+    return;
+  }
+  if (state.key === key) return void 0;
+  return reloadDocument();
+}
+function reloadDocument() {
+  const state = runtimeDocumentState();
+  state.reload ??= new Promise(() => {
+  });
+  window.location.reload();
+  return state.reload;
+}
+function moduleHref(src) {
+  return new URL(src, document.baseURI).href;
+}
+async function activateApp(app, state) {
+  const revision = appRevision(app);
+  return enqueueRuntimeActivation(async () => {
+    let hosts = liveHosts(state, revision);
+    if (hosts.length === 0) return state.modules ?? [];
+    const documentState = runtimeDocumentState();
+    const activeApp = documentState.activeApp;
+    if (activeApp?.state === state && activeApp.revision === revision && sameHosts(activeApp.hosts, hosts)) return state.modules ?? [];
+    let modules = state.modules;
+    if (activeApp) {
+      modules ??= await loadModules(app.assets.moduleScripts);
+      state.modules = modules;
+      hosts = liveHosts(state, revision);
+      if (hosts.length === 0) return modules;
+      if (!supportsSoftNavigation(app, modules)) return await reloadDocument();
+      await deactivateApp(activeApp);
+      hosts = liveHosts(state, revision);
+      if (hosts.length === 0) {
+        cleanupAppState(app.id, state);
+        return modules;
+      }
+    }
+    const isFirstApp = documentState.firstInitializedAppId === void 0;
+    documentState.firstInitializedAppId ??= app.id;
+    ensureExportContext(app.notebookCode);
+    try {
+      modules ??= await loadModules(app.assets.moduleScripts);
+    } catch (error) {
+      cleanupInactiveApp(app.id, state);
+      throw error;
+    }
+    state.modules = modules;
+    hosts = liveHosts(state, revision);
+    const softNavigation = supportsSoftNavigation(app, modules);
+    if (hosts.length === 0) {
+      if (isFirstApp) {
+        if (!softNavigation) return await reloadDocument();
+        await stopAppOrReload(modules);
+      }
+      cleanupInactiveApp(app.id, state);
+      return modules;
+    }
+    const activationHosts = hosts;
+    try {
+      if (!isFirstApp || softNavigation) await Promise.all(modules.map(async (runtimeModule) => runtimeModule.initialize?.()));
+    } catch (error) {
+      if (softNavigation) await stopAppOrReload(modules);
+      cleanupInactiveApp(app.id, state);
+      throw error;
+    }
+    if (liveHosts(state, revision).length === 0) {
+      if (!softNavigation) return await reloadDocument();
+      await stopAppOrReload(modules);
+      cleanupInactiveApp(app.id, state);
+      return modules;
+    }
+    documentState.activeApp = {
+      app,
+      hosts: activationHosts,
+      replaceable: softNavigation,
+      revision,
+      state
+    };
+    return modules;
+  });
+}
+function enqueueRuntimeActivation(operation) {
+  const state = runtimeDocumentState();
+  const activation = (state.activation ?? Promise.resolve()).then(operation);
+  const tail = activation.then(() => void 0, () => void 0);
+  state.activation = tail;
+  tail.then(() => {
+    if (state.activation === tail) delete state.activation;
+  });
+  return activation;
+}
+function appRevision(app) {
+  const existing = appRevisions.get(app);
+  if (existing?.runtimeCellCount === app.runtimeCellCount && existing.notebookCode === app.notebookCode) return existing.revision;
+  const revision = JSON.stringify([
+    app.runtimeCellCount,
+    app.notebookCode ?? null
+  ]);
+  const cached = {
+    notebookCode: app.notebookCode,
+    revision,
+    runtimeCellCount: app.runtimeCellCount
+  };
+  appRevisions.set(app, cached);
+  queueMicrotask(() => {
+    if (appRevisions.get(app) === cached) appRevisions.delete(app);
+  });
+  return revision;
+}
+function liveHosts(state, revision) {
+  const hosts = /* @__PURE__ */ new Set();
+  for (const lease of state.leases) {
+    if (revision !== void 0 && lease.revision !== revision) continue;
+    if (lease.host.isConnected === false) continue;
+    hosts.add(lease.host);
+  }
+  return [
+    ...hosts
+  ];
+}
+function sameHosts(left, right) {
+  if (left.length !== right.length) return false;
+  const rightHosts = new Set(right);
+  return left.every((host) => rightHosts.has(host));
+}
+async function deactivateApp(activeApp) {
+  await stopAppOrReload(activeApp.state.modules ?? [], activeApp.app.id);
+  const documentState = runtimeDocumentState();
+  if (documentState.activeApp === activeApp) delete documentState.activeApp;
+  cleanupAppState(activeApp.app.id, activeApp.state);
+  if (!documentState.activeApp) delete window.__MARIMO_EXPORT_CONTEXT__;
+}
+async function stopAppOrReload(modules, appId) {
+  try {
+    await Promise.all(modules.map(async (runtimeModule) => runtimeModule.stopApp?.(appId)));
+  } catch (error) {
+    console.error(`Failed to stop marimo app${appId ? ` ${appId}` : ""}`, error);
+    return await reloadDocument();
+  }
+}
+function cleanupInactiveApp(appId, state) {
+  if (!runtimeDocumentState().activeApp) delete window.__MARIMO_EXPORT_CONTEXT__;
+  cleanupAppState(appId, state);
+}
+function cleanupAppState(appId, state) {
+  const documentState = runtimeDocumentState();
+  if (state.leases.size === 0 && documentState.activeApp?.state !== state && documentState.appAssets.get(appId) === state) documentState.appAssets.delete(appId);
+}
+function supportsSoftNavigation(app, modules) {
+  if (!hasSafeSessionHandoff(app.assets.version)) return false;
+  const runtimes = modules.filter((runtimeModule) => runtimeModule.initialize);
+  return runtimes.length > 0 && runtimes.every((runtimeModule) => runtimeModule.canReplaceApp?.() === true && typeof runtimeModule.stopApp === "function");
+}
+function hasSafeSessionHandoff(version) {
+  const match = /^(\d+)\.(\d+)\.(\d+)(?:\.post\d+)?(?:\+\S+)?$/.exec(version ?? "");
+  if (!match) return false;
+  const current = match.slice(1, 4).map(Number);
+  for (let index = 0; index < safeSessionHandoffVersion.length; index += 1) {
+    const difference = (current[index] ?? 0) - (safeSessionHandoffVersion[index] ?? 0);
+    if (difference !== 0) return difference > 0;
+  }
+  return true;
+}
+function ensureMountConfig(assets) {
+  if (!assets.version) return;
+  const mountConfig = window.__MARIMO_MOUNT_CONFIG__;
+  if (mountConfig && typeof mountConfig === "object") mountConfig.version ??= assets.version;
+  else window.__MARIMO_MOUNT_CONFIG__ = {
+    version: assets.version
+  };
+}
+function ensureExportContext(notebookCode) {
+  if (window.__MARIMO_EXPORT_CONTEXT__?.trusted === true && window.__MARIMO_EXPORT_CONTEXT__.notebookCode === notebookCode) return;
+  window.__MARIMO_EXPORT_CONTEXT__ = {
+    trusted: true,
+    ...notebookCode ? {
+      notebookCode
+    } : {}
+  };
+}
+function ensureHeadTags(tags) {
+  for (const tag of tags) {
+    if (!tag.tag) continue;
+    if (Array.from(document.head.querySelectorAll(tag.tag)).find((element2) => headTagMatches(element2, tag))) continue;
+    const element = document.createElement(tag.tag);
+    for (const [key, value] of Object.entries(tag.attrs)) element.setAttribute(key, value);
+    if (tag.text) element.textContent = tag.text;
+    document.head.append(element);
+  }
+}
+function ensureLinks(links) {
+  for (const attrs of links) {
+    if (!attrs.href) continue;
+    const href = new URL(attrs.href, document.baseURI).href;
+    const rel = attrs.rel ?? "";
+    if (Array.from(document.head.querySelectorAll("link[href]")).find((link2) => link2 instanceof HTMLLinkElement && link2.href === href && (link2.getAttribute("rel") || "") === rel)) continue;
+    const link = document.createElement("link");
+    for (const [key, value] of Object.entries(attrs)) link.setAttribute(key, value);
+    link.href = href;
+    document.head.append(link);
+  }
+}
+function headTagMatches(element, tag) {
+  if (!Object.entries(tag.attrs).every(([key, value]) => (element.getAttribute(key) || "") === value)) return false;
+  return !tag.text || element.textContent === tag.text;
+}
+function loadModules(sources) {
+  return Promise.all(sources.map(ensureModule));
+}
+function ensureModule(src) {
+  const href = moduleHref(src);
+  const state = runtimeDocumentState();
+  const existing = state.loadedModules.get(href);
+  if (existing) return existing;
+  const promise = import(
+    /* webpackIgnore: true */
+    /* @vite-ignore */
+    href
+  );
+  promise.then((runtimeModule) => {
+    state.resolvedModules.set(href, runtimeModule);
+  }, () => {
+    state.loadedModules.delete(href);
+  });
+  state.loadedModules.set(href, promise);
+  return promise;
+}
+var navigationStateSymbol = Symbol.for("@marimo-team/islands-bridge/navigation-state");
+function retainDocumentNavigation() {
+  if (typeof document === "undefined" || typeof history === "undefined") return () => {
+  };
+  const documentState = navigationDocumentState();
+  if (documentState.lease) {
+    documentState.lease.references += 1;
+    return releaseOnce(documentState.lease);
+  }
+  const originalPushState = history.pushState.bind(history);
+  const originalReplaceState = history.replaceState.bind(history);
+  const click = (event) => {
+    const anchor = closestAnchor(event.target);
+    if (!anchor || !shouldUseDocumentNavigation(event, anchor)) return;
+    event.preventDefault();
+    window.location.assign(anchor.href);
+  };
+  const pushState = function(...args) {
+    const url = documentNavigationUrl(args[2]);
+    if (url) {
+      window.location.assign(url.href);
+      return;
+    }
+    return originalPushState(...args);
+  };
+  const replaceState = function(...args) {
+    const url = documentNavigationUrl(args[2]);
+    if (url) {
+      window.location.replace(url.href);
+      return;
+    }
+    return originalReplaceState(...args);
+  };
+  const popstate = (event) => {
+    event.stopImmediatePropagation();
+    window.location.reload();
+  };
+  const lease = {
+    click,
+    originalPushState,
+    originalReplaceState,
+    popstate,
+    pushState,
+    references: 1,
+    replaceState
+  };
+  documentState.lease = lease;
+  history.pushState = pushState;
+  history.replaceState = replaceState;
+  document.addEventListener("click", click, true);
+  window.addEventListener("popstate", popstate, true);
+  return releaseOnce(lease);
+}
+function navigationDocumentState() {
+  const target = window;
+  return target[navigationStateSymbol] ??= {};
+}
+function releaseOnce(lease) {
+  let released = false;
+  return () => {
+    const documentState = navigationDocumentState();
+    if (released || documentState.lease !== lease) return;
+    released = true;
+    lease.references -= 1;
+    if (lease.references > 0) return;
+    document.removeEventListener("click", lease.click, true);
+    window.removeEventListener("popstate", lease.popstate, true);
+    if (history.pushState === lease.pushState) history.pushState = lease.originalPushState;
+    if (history.replaceState === lease.replaceState) history.replaceState = lease.originalReplaceState;
+    delete documentState.lease;
+  };
+}
+function closestAnchor(target) {
+  if (!(target instanceof Element)) return null;
+  const anchor = target.closest("a[href]");
+  return anchor instanceof HTMLAnchorElement ? anchor : null;
+}
+function shouldUseDocumentNavigation(event, anchor) {
+  if (event.defaultPrevented || event.button !== 0) return false;
+  if (event.metaKey || event.altKey || event.ctrlKey || event.shiftKey) return false;
+  if (anchor.target && anchor.target !== "_self") return false;
+  if (anchor.hasAttribute("download")) return false;
+  return documentNavigationUrl(anchor.href) !== void 0;
+}
+function documentNavigationUrl(href) {
+  if (href === void 0 || href === null) return void 0;
+  let url;
+  try {
+    url = new URL(href, document.baseURI);
+  } catch {
+    return;
+  }
+  if (url.origin !== window.location.origin) return void 0;
+  if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+  return url;
+}
+var themeDataAttributes = [
+  "data-theme",
+  "data-color-mode",
+  "data-mode"
+];
+var themeAttributeFilter = [
+  "class",
+  "style",
+  "data-marimo-theme-mode",
+  ...themeDataAttributes
+];
+function themeModeFromHost(host) {
+  return normalizeThemeMode(host.getAttribute("data-marimo-theme-mode")) ?? "auto";
+}
+function resolveTheme(themeMode, host, themeResolver) {
+  if (themeMode !== "auto") return themeMode;
+  if (host) {
+    const resolved = themeResolver?.(host);
+    if (resolved) return resolved;
+  }
+  return currentTheme(host);
+}
+function currentTheme(host) {
+  for (const element of themeAncestors(host)) {
+    const explicitTheme = themeFromClasses(element) ?? themeFromAttributes(element);
+    if (explicitTheme) return explicitTheme;
+  }
+  if (host && typeof getComputedStyle === "function") {
+    const schemes = getComputedStyle(host).colorScheme.split(/\s+/);
+    if (schemes.length === 1 && schemes[0] === "dark") return "dark";
+    if (schemes.length === 1 && schemes[0] === "light") return "light";
+    if (schemes.includes("dark") && schemes.includes("light")) return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  return "light";
+}
+function themeAncestors(host) {
+  const elements = [];
+  let element = host ?? document.body;
+  while (element) {
+    elements.push(element);
+    element = element.parentElement;
+  }
+  return elements;
+}
+function themeFromClasses(element) {
+  if (element.classList.contains("dark") || element.classList.contains("dark-theme")) return "dark";
+  if (element.classList.contains("light") || element.classList.contains("light-theme")) return "light";
+}
+function themeFromAttributes(element) {
+  for (const attribute of themeDataAttributes) {
+    const theme = normalizeThemeMode(element.getAttribute(attribute));
+    if (theme === "light" || theme === "dark") return theme;
+  }
+}
+function normalizeThemeMode(value) {
+  if (value === "auto" || value === "light" || value === "dark") return value;
+}
+var SHADOW_THEME_STYLE_ID = "marimo-island-shadow-theme";
+var SHADOW_THEME_CSS = `
+:host {
+  color-scheme: inherit;
+  --_marimo-island-shadow-background: var(--marimo-island-background, #ffffff);
+  --_marimo-island-shadow-foreground: var(--marimo-island-foreground, #0f172a);
+  --_marimo-island-shadow-card: var(--marimo-island-surface, #ffffff);
+  --_marimo-island-shadow-primary: var(--marimo-island-accent, #0880ea);
+  --_marimo-island-shadow-primary-foreground: var(
+    --marimo-island-accent-foreground,
+    #f8fafc
+  );
+  --_marimo-island-shadow-muted: var(
+    --marimo-island-muted-surface,
+    #f1f5f9
+  );
+  --_marimo-island-shadow-muted-foreground: var(
+    --marimo-island-muted-foreground,
+    #64748b
+  );
+  --_marimo-island-shadow-border: var(--marimo-island-border, #e2e8f0);
+  --_marimo-island-shadow-input: var(--marimo-island-border, #a3a3a3);
+  --_marimo-island-shadow-code-background: var(
+    --marimo-island-code-background,
+    var(--_marimo-island-shadow-background)
+  );
+  --_marimo-island-shadow-code-foreground: var(
+    --marimo-island-code-foreground,
+    var(--_marimo-island-shadow-foreground)
+  );
+  --background: var(--marimo-island-background, #ffffff);
+  --foreground: var(--marimo-island-foreground, #0f172a);
+  --card: var(--marimo-island-surface, #ffffff);
+  --card-foreground: var(--foreground);
+  --popover: var(--marimo-island-surface, #ffffff);
+  --popover-foreground: var(--foreground);
+  --primary: var(--marimo-island-accent, #0880ea);
+  --primary-foreground: var(--marimo-island-accent-foreground, #f8fafc);
+  --secondary: var(
+    --marimo-island-muted-surface,
+    #f1f5f9
+  );
+  --secondary-foreground: var(--foreground);
+  --muted: var(
+    --marimo-island-muted-surface,
+    #f1f5f9
+  );
+  --muted-foreground: var(
+    --marimo-island-muted-foreground,
+    #64748b
+  );
+  --accent: var(--marimo-island-accent, #0880ea);
+  --accent-foreground: var(--marimo-island-accent-foreground, #f8fafc);
+  --border: var(--marimo-island-border, #e2e8f0);
+  --input: var(--marimo-island-border, #a3a3a3);
+  --ring: var(--marimo-island-focus-ring, var(--primary));
+  --cm-background: var(--marimo-island-code-background, var(--background));
+  --cm-foreground: var(--marimo-island-code-foreground, var(--foreground));
+  --cm-comment: var(--marimo-island-muted-foreground, var(--muted-foreground));
+  --radius: var(--marimo-island-radius, 0.5rem);
+  --_marimo-island-shadow-hover-background: color-mix(
+    in srgb,
+    var(--_marimo-island-shadow-foreground) 8%,
+    transparent
+  );
+  --_marimo-island-shadow-error-background: var(
+    --marimo-island-error-background,
+    color-mix(in srgb, #dc2626 6%, var(--_marimo-island-shadow-background))
+  );
+  --_marimo-island-shadow-error-border: var(
+    --marimo-island-error-border,
+    color-mix(in srgb, #dc2626 42%, var(--_marimo-island-shadow-border))
+  );
+  --_marimo-island-shadow-error-foreground: var(
+    --marimo-island-error-foreground,
+    var(--_marimo-island-shadow-foreground)
+  );
+  --_marimo-island-shadow-error-title: var(--marimo-island-error-accent, #dc2626);
+}
+
+:host([data-marimo-theme="dark"]) {
+  color-scheme: dark;
+  --_marimo-island-shadow-background: var(--marimo-island-background, #181c1a);
+  --_marimo-island-shadow-foreground: var(--marimo-island-foreground, #eceeed);
+  --_marimo-island-shadow-card: var(--marimo-island-surface, #252927);
+  --_marimo-island-shadow-muted: var(
+    --marimo-island-muted-surface,
+    #020303
+  );
+  --_marimo-island-shadow-muted-foreground: var(
+    --marimo-island-muted-foreground,
+    #aab2af
+  );
+  --_marimo-island-shadow-border: var(--marimo-island-border, #3b403e);
+  --_marimo-island-shadow-input: var(--marimo-island-border, #474c4a);
+  --_marimo-island-shadow-code-background: var(--marimo-island-code-background, #282c34);
+  --_marimo-island-shadow-code-foreground: var(
+    --marimo-island-code-foreground,
+    var(--_marimo-island-shadow-foreground)
+  );
+  --background: var(--marimo-island-background, #181c1a);
+  --foreground: var(--marimo-island-foreground, #eceeed);
+  --card: var(--marimo-island-surface, #252927);
+  --card-foreground: var(--foreground);
+  --popover: var(--marimo-island-surface, #252927);
+  --popover-foreground: var(--foreground);
+  --secondary: var(
+    --marimo-island-muted-surface,
+    #020303
+  );
+  --secondary-foreground: var(--foreground);
+  --muted: var(
+    --marimo-island-muted-surface,
+    #020303
+  );
+  --muted-foreground: var(
+    --marimo-island-muted-foreground,
+    #aab2af
+  );
+  --border: var(--marimo-island-border, #3b403e);
+  --input: var(--marimo-island-border, #474c4a);
+  --cm-background: var(--marimo-island-code-background, #282c34);
+  --cm-foreground: var(--marimo-island-code-foreground, var(--foreground));
+  --cm-comment: var(--marimo-island-muted-foreground, var(--muted-foreground));
+  --_marimo-island-shadow-hover-background: rgba(255, 255, 255, 0.08);
+  --_marimo-island-shadow-error-background: var(
+    --marimo-island-error-background,
+    color-mix(in srgb, #f87171 8%, var(--_marimo-island-shadow-background))
+  );
+  --_marimo-island-shadow-error-border: var(
+    --marimo-island-error-border,
+    color-mix(in srgb, #f87171 42%, var(--_marimo-island-shadow-border))
+  );
+  --_marimo-island-shadow-error-foreground: var(
+    --marimo-island-error-foreground,
+    var(--_marimo-island-shadow-foreground)
+  );
+  --_marimo-island-shadow-error-title: var(--marimo-island-error-accent, #fca5a5);
+}
+
+:host([data-marimo-theme="light"]) {
+  color-scheme: light;
+}
+
+:host([data-marimo-theme="dark"]) :where(.contents) {
+  color-scheme: dark !important;
+}
+
+:host([data-marimo-theme="light"]) :where(.contents) {
+  color-scheme: light !important;
+}
+
+:host(:not([data-min-height])) :where(.cm-editor) {
+  min-height: 0 !important;
+}
+
+:host :where(.marimo .h-3) {
+  height: calc(var(--spacing, 0.25rem) * 3) !important;
+}
+
+:host :where(.marimo .w-3) {
+  width: calc(var(--spacing, 0.25rem) * 3) !important;
+}
+
+:host :where(.marimo .h-4) {
+  height: calc(var(--spacing, 0.25rem) * 4) !important;
+  min-height: calc(var(--spacing, 0.25rem) * 4) !important;
+}
+
+:host :where(.marimo .w-4) {
+  width: calc(var(--spacing, 0.25rem) * 4) !important;
+}
+
+:host :where(.marimo .h-6) {
+  height: calc(var(--spacing, 0.25rem) * 6) !important;
+  min-height: calc(var(--spacing, 0.25rem) * 6) !important;
+}
+
+:host :where(.marimo .h-px) {
+  height: 1px !important;
+}
+
+:host :where(.marimo .border-input) {
+  border-color: var(--_marimo-island-shadow-input, #a3a3a3) !important;
+}
+
+:host :where(.marimo .border-primary) {
+  border-color: var(--_marimo-island-shadow-primary, #0880ea) !important;
+}
+
+:host :where(.marimo .bg-background) {
+  background-color: var(--_marimo-island-shadow-background, #ffffff) !important;
+}
+
+:host :where(.marimo .bg-border) {
+  background-color: var(--_marimo-island-shadow-border, #e2e8f0) !important;
+}
+
+:host :where(.marimo .text-muted-foreground) {
+  color: var(--_marimo-island-shadow-muted-foreground, #64748b) !important;
+}
+
+:host :where(.marimo .placeholder\\:text-muted-foreground)::placeholder {
+  color: var(--_marimo-island-shadow-muted-foreground, #64748b) !important;
+}
+
+:host :where(.marimo [data-testid="marimo-plugin-number-input"] input) {
+  min-height: calc(var(--spacing, 0.25rem) * 6) !important;
+}
+
+:host :where(.marimo [data-testid="marimo-plugin-number-input"] button) {
+  align-items: center !important;
+  display: flex !important;
+  height: auto !important;
+  justify-content: center !important;
+  min-height: 0 !important;
+}
+
+:host([data-marimo-theme="dark"]) :where(.marimo) {
+  background: transparent !important;
+  color: var(--_marimo-island-shadow-foreground, #eceeed) !important;
+}
+
+:host([data-marimo-theme="dark"])
+  :where(
+    .admonition,
+    [class*="admonition"],
+    .callout,
+    .marimo *:not(.cm-editor):not(.cm-editor *),
+    .markdown.prose,
+    .markdown.prose *,
+    .codehilite,
+    .codehilite *,
+    .highlight,
+    .highlight *,
+    pre,
+    pre *,
+    code,
+    code *,
+    marimo-accordion,
+    marimo-accordion *,
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td,
+    .marimo-json-output,
+    .marimo-json-output *,
+    .json-viewer-theme-light,
+    .json-viewer-theme-light *,
+    label,
+    input,
+    output,
+    [role="cell"],
+    [role="columnheader"],
+    [role="rowheader"]
+  ) {
+  color: var(--_marimo-island-shadow-foreground, #eceeed) !important;
+}
+
+:host([data-marimo-theme="dark"])
+  :where(.admonition, [class*="admonition"], .callout) {
+  background: var(--_marimo-island-shadow-muted, #020303) !important;
+  border-color: var(--_marimo-island-shadow-border, #3b403e) !important;
+}
+
+:host([data-marimo-theme="dark"])
+  :where(
+    .bg-background,
+    .bg-card,
+    .bg-muted,
+    .bg-secondary,
+    .bg-white,
+    [class*="bg-background"],
+    [class*="bg-card"],
+    [class*="bg-muted"],
+    [class*="bg-secondary"],
+    [class*="bg-white"]
+  ) {
+  background: var(--_marimo-island-shadow-card, #252927) !important;
+  color: var(--_marimo-island-shadow-foreground, #eceeed) !important;
+}
+
+:host([data-marimo-theme="dark"]) :where(input, textarea, select) {
+  background: var(--_marimo-island-shadow-card, #252927) !important;
+  border-color: var(--_marimo-island-shadow-border, #3b403e) !important;
+  color: var(--_marimo-island-shadow-foreground, #eceeed) !important;
+  color-scheme: dark !important;
+}
+
+:host([data-marimo-theme="dark"]) :where(input, textarea)::placeholder {
+  color: var(--_marimo-island-shadow-muted-foreground, #aab2af) !important;
+}
+
+:host([data-marimo-theme="dark"])
+  :where(.cm-editor, .cm-scroller, .cm-content) {
+  background: var(--_marimo-island-shadow-code-background, #282c34) !important;
+  color: var(--_marimo-island-shadow-code-foreground, #abb2bf) !important;
+  --cm-background: var(--_marimo-island-shadow-code-background, #282c34) !important;
+  --cm-foreground: var(--_marimo-island-shadow-code-foreground, #abb2bf) !important;
+}
+
+:host([data-marimo-theme="dark"]) :where(.cm-gutters) {
+  background: var(--_marimo-island-shadow-background, #181c1a) !important;
+  border-color: var(--_marimo-island-shadow-border, #3b403e) !important;
+  color: var(--_marimo-island-shadow-muted-foreground, #aab2af) !important;
+}
+
+:host([data-marimo-theme="dark"]) :where(.cm-activeLine, .cm-activeLineGutter) {
+  background: var(--_marimo-island-shadow-hover-background, rgba(255, 255, 255, 0.08)) !important;
+}
+
+:host([data-marimo-theme="dark"]) :where([role="alert"]) {
+  background: var(--_marimo-island-shadow-error-background, #241b1b) !important;
+  border-color: var(--_marimo-island-shadow-error-border, rgba(248, 113, 113, 0.42)) !important;
+  color: var(--_marimo-island-shadow-error-foreground, #eceeed) !important;
+}
+
+:host([data-marimo-theme="dark"])
+  :where([role="alert"])
+  :where(h1, h2, h3, h4, h5, h6, .text-destructive) {
+  color: var(--_marimo-island-shadow-error-title, #fca5a5) !important;
+}
+`;
+function installMarimoShadowThemeBridge(host, resolveTheme2) {
+  const observers = /* @__PURE__ */ new Map();
+  const ownerDocument = host.ownerDocument ?? document;
+  const sync = () => {
+    applyMarimoShadowTheme(host, resolveTheme2());
+    const roots = new Set(shadowHostsIn(host, ownerDocument).map((element) => element.shadowRoot));
+    for (const [root, observer] of observers) {
+      if (roots.has(root)) continue;
+      observer.disconnect();
+      observers.delete(root);
+    }
+    for (const root of roots) {
+      if (observers.has(root)) continue;
+      const observer = new MutationObserver(sync);
+      observer.observe(root, {
+        childList: true,
+        subtree: true
+      });
+      observers.set(root, observer);
+    }
+  };
+  const hostObserver = new MutationObserver(sync);
+  hostObserver.observe(host, {
+    childList: true,
+    subtree: true
+  });
+  sync();
+  const timers = [
+    0,
+    50,
+    250,
+    1e3
+  ].map((delay) => window.setTimeout(sync, delay));
+  return () => {
+    hostObserver.disconnect();
+    for (const observer of observers.values()) observer.disconnect();
+    observers.clear();
+    for (const timer of timers) window.clearTimeout(timer);
+  };
+}
+function applyMarimoShadowTheme(host, theme) {
+  const ownerDocument = host.ownerDocument ?? document;
+  for (const element of shadowHostsIn(host, ownerDocument)) {
+    if (element.getAttribute("data-marimo-theme") !== theme) element.setAttribute("data-marimo-theme", theme);
+    if (element instanceof HTMLElement) element.style.colorScheme = theme;
+    ensureShadowThemeStyle(element.shadowRoot);
+    applyShadowTheme(element.shadowRoot, theme);
+  }
+}
+function shadowHostsIn(root, document2) {
+  const hosts = [];
+  const walker = document2.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+  let node = walker.nextNode();
+  while (node) {
+    const element = node;
+    if (element.shadowRoot) {
+      hosts.push(element);
+      hosts.push(...shadowHostsIn(element.shadowRoot, document2));
+    }
+    node = walker.nextNode();
+  }
+  return hosts;
+}
+function ensureShadowThemeStyle(root) {
+  const existing = root.querySelector(`style#${SHADOW_THEME_STYLE_ID}`);
+  if (existing) {
+    if (existing.nextSibling) root.append(existing);
+    return;
+  }
+  const style = root.ownerDocument.createElement("style");
+  style.id = SHADOW_THEME_STYLE_ID;
+  style.textContent = SHADOW_THEME_CSS;
+  root.append(style);
+}
+function applyShadowTheme(root, theme) {
+  const opposite = theme === "dark" ? "light" : "dark";
+  for (const element of root.querySelectorAll(".contents, .markdown.prose")) {
+    element.classList.add(theme);
+    element.classList.remove(opposite);
+    if (element.getAttribute("data-marimo-theme") !== theme) element.setAttribute("data-marimo-theme", theme);
+  }
+}
+var themeBridges = /* @__PURE__ */ new WeakMap();
+function installMarimoThemeBridge(host, options = {}) {
+  const themeMode = () => options.theme === void 0 || options.theme === "auto" ? themeModeFromHost(host) : options.theme;
+  const cleanupShadowTheme = installMarimoShadowThemeBridge(host, () => resolveTheme(themeMode(), host, options.themeResolver));
+  const update = () => applyMarimoTheme(host, themeMode(), options.themeResolver);
+  const ancestorObserver = new MutationObserver(update);
+  const refresh = () => {
+    ancestorObserver.disconnect();
+    let ancestor = host;
+    while (ancestor) {
+      ancestorObserver.observe(ancestor, {
+        attributes: true,
+        attributeFilter: themeAttributeFilter
+      });
+      ancestor = ancestor.parentElement;
+    }
+    update();
+  };
+  refresh();
+  const bridge = {
+    refresh
+  };
+  themeBridges.set(host, bridge);
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  media.addEventListener("change", update);
+  const timers = [
+    0,
+    50,
+    250,
+    1e3
+  ].map((delay) => window.setTimeout(update, delay));
+  return () => {
+    const registered = themeBridges.get(host) === bridge;
+    if (registered) themeBridges.delete(host);
+    ancestorObserver.disconnect();
+    media.removeEventListener("change", update);
+    for (const timer of timers) window.clearTimeout(timer);
+    cleanupShadowTheme();
+    if (registered) delete host.dataset.marimoTheme;
+  };
+}
+function refreshMarimoThemeBridge(host) {
+  themeBridges.get(host)?.refresh();
+}
+function applyMarimoTheme(host, themeMode = themeModeFromHost(host), themeResolver) {
+  const theme = resolveTheme(themeMode, host, themeResolver);
+  host.dataset.marimoTheme = theme;
+  applyMarimoShadowTheme(host, theme);
+}
+var reconnectors = /* @__PURE__ */ new WeakMap();
+function assertCurrentDocument(host) {
+  if (typeof document !== "undefined" && host.ownerDocument !== document) throw new Error("Marimo islands must be mounted in the current document");
+}
+function reconnectMarimoIsland(host) {
+  reconnectors.get(host)?.();
+}
+function mountMarimoIsland(host, payload, options = {}) {
+  assertCurrentDocument(host);
+  const initialTheme = options.theme ?? themeModeFromHost(host);
+  const currentTheme2 = () => options.theme === void 0 || options.theme === "auto" ? themeModeFromHost(host) : options.theme;
+  let active = true;
+  let activateAssets;
+  let releaseAssets;
+  let releaseNavigation;
+  host.classList.add("marimo-island-host");
+  if (options.host) host.dataset.marimoHost = options.host;
+  host.dataset.marimoThemeMode = initialTheme;
+  if (payload.app) host.dataset.marimoAppId = payload.app.id;
+  else delete host.dataset.marimoAppId;
+  host.dataset.marimoCellIndex = String(payload.cell.index);
+  host.innerHTML = payload.cell.html;
+  if (!payload.app || !hasConfirmedSoftNavigationAssets(payload.app)) releaseNavigation = retainDocumentNavigation();
+  const cleanupTheme = installMarimoThemeBridge(host, {
+    ...options.theme !== void 0 ? {
+      theme: options.theme
+    } : {},
+    ...options.themeResolver ? {
+      themeResolver: options.themeResolver
+    } : {}
+  });
+  const handleActivation = (supportsSoftNavigation2) => {
+    if (!active) return;
+    if (supportsSoftNavigation2) {
+      releaseNavigation?.();
+      releaseNavigation = void 0;
+    } else releaseNavigation ??= retainDocumentNavigation();
+    applyMarimoTheme(host, currentTheme2(), options.themeResolver);
+  };
+  if (payload.app) try {
+    const lease = acquireAssets(payload.app, host);
+    activateAssets = lease.activate;
+    releaseAssets = lease.release;
+    lease.ready.then(handleActivation).catch((error) => {
+      if (active) renderMarimoIslandError(host, error);
+    });
+  } catch (error) {
+    renderMarimoIslandError(host, error);
+  }
+  else applyMarimoTheme(host, currentTheme2(), options.themeResolver);
+  const reconnect = () => {
+    if (!active) return;
+    refreshMarimoThemeBridge(host);
+    activateAssets?.().then(handleActivation).catch((error) => {
+      if (active) renderMarimoIslandError(host, error);
+    });
+  };
+  reconnectors.set(host, reconnect);
+  return () => {
+    active = false;
+    if (reconnectors.get(host) === reconnect) reconnectors.delete(host);
+    releaseAssets?.();
+    cleanupTheme();
+    releaseNavigation?.();
+    host.replaceChildren();
+  };
+}
+function renderMarimoIslandError(host, error) {
+  const details = document.createElement("details");
+  details.open = true;
+  details.className = "marimo-island-error";
+  const summary = document.createElement("summary");
+  summary.textContent = "Failed to load marimo runtime";
+  const pre = document.createElement("pre");
+  pre.textContent = error instanceof Error ? error.message : String(error);
+  details.append(summary, pre);
+  host.append(details);
+}
+
+// npm:@marimo-team/mdx-marimo@0.0.5/dist/bridge/protocol/index.js
+function isMarimoPageCellPayload(value) {
+  if (!isRecord(value) || value.protocolVersion !== 2) return false;
+  if (!isPageCell(value.cell)) return false;
+  return value.app === null || isPageRuntime(value.app);
+}
+function isMarimoPageCellReferencePayload(value) {
+  return isRecord(value) && value.protocolVersion === 2 && typeof value.appId === "string" && value.appId.length > 0 && isPageCell(value.cell);
+}
+function isPageCell(value) {
+  return isRecord(value) && isFiniteNumber(value.index) && typeof value.html === "string" && isCellOptions(value.options) && (value.diagnostics === void 0 || isArrayOf(value.diagnostics, isDiagnostic));
+}
+function isPageRuntime(value) {
+  return isRecord(value) && typeof value.id === "string" && value.id.length > 0 && isFiniteNumber(value.runtimeCellCount) && isRuntimeAssets(value.assets) && (value.notebookCode === void 0 || typeof value.notebookCode === "string");
+}
+function isRuntimeAssets(value) {
+  return isRecord(value) && isArrayOf(value.moduleScripts, isString) && isArrayOf(value.links, isStringRecord) && (value.headTags === void 0 || isArrayOf(value.headTags, isHeadTag)) && (value.version === void 0 || typeof value.version === "string");
+}
+function isHeadTag(value) {
+  return isRecord(value) && typeof value.tag === "string" && isStringRecord(value.attrs) && (value.text === void 0 || typeof value.text === "string");
+}
+function isCellOptions(value) {
+  return isRecord(value) && (value.language === "python" || value.language === "sql" || value.language === "markdown") && isRenderOptions(value.render) && isRecord(value.execution) && typeof value.execution.enabled === "boolean" && isRecord(value.marimo) && typeof value.marimo.disabled === "boolean" && typeof value.marimo.unparsable === "boolean" && (value.sql === void 0 || isRecord(value.sql) && (value.sql.outputName === void 0 || typeof value.sql.outputName === "string") && (value.sql.engine === void 0 || typeof value.sql.engine === "string")) && (value.name === void 0 || typeof value.name === "string") && (value.column === void 0 || isFiniteNumber(value.column));
+}
+function isRenderOptions(value) {
+  return isRecord(value) && typeof value.source === "boolean" && typeof value.output === "boolean" && typeof value.include === "boolean" && typeof value.editor === "boolean" && typeof value.error === "boolean" && typeof value.serverOutput === "boolean";
+}
+function isDiagnostic(value) {
+  return isRecord(value) && (value.severity === "warning" || value.severity === "error") && typeof value.message === "string" && (value.cellIndex === void 0 || isFiniteNumber(value.cellIndex)) && (value.line === void 0 || isFiniteNumber(value.line));
+}
+function isStringRecord(value) {
+  return isRecord(value) && Object.values(value).every(isString);
+}
+function isArrayOf(value, guard) {
+  return Array.isArray(value) && Array.from(value).every(guard);
+}
+function isString(value) {
+  return typeof value === "string";
+}
+function isFiniteNumber(value) {
+  return typeof value === "number" && Number.isFinite(value);
+}
+function isRecord(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+// npm:@marimo-team/mdx-marimo@0.0.5/dist/bridge/element/index.js
+var elementMountSymbol = Symbol.for("@marimo-team/islands-bridge/element-mount");
+var elementMountRegistrySymbol = Symbol.for("@marimo-team/islands-bridge/element-mount-registry");
+var pageAppRegistrySymbol = Symbol.for("@marimo-team/islands-bridge/page-app-registry");
+var elementRetentionSymbol = Symbol.for("@marimo-team/islands-bridge/element-retention");
+var finishRetainedReleaseSymbol = Symbol.for("@marimo-team/islands-bridge/finish-retained-release");
+function defineMarimoIslandElement({ name, host, themeResolver }) {
+  if (typeof customElements === "undefined" || typeof HTMLElement === "undefined") return void 0;
+  const existing = customElements.get(name);
+  if (existing) return existing;
+  const constructor = createMarimoIslandElementConstructor(host, themeResolver);
+  customElements.define(name, constructor);
+  return constructor;
+}
+function createMarimoIslandElementConstructor(hostKind, themeResolver) {
+  function MarimoElementBase() {
+    return Reflect.construct(HTMLElement, [], this.constructor);
+  }
+  Object.setPrototypeOf(MarimoElementBase, HTMLElement);
+  MarimoElementBase.prototype = HTMLElement.prototype;
+  const ElementBase = MarimoElementBase;
+  return class MarimoIslandElement extends ElementBase {
+    #cleanup;
+    #appRegistration;
+    #cleanupAppWait;
+    #disconnectTimer;
+    #mountQueued = false;
+    #payload;
+    #payloadObserver;
+    #retainedDisconnect = false;
+    #serializedPayload;
+    get payload() {
+      return this.#serializedPayload;
+    }
+    set payload(payload) {
+      if (payload !== void 0 && !isMarimoPageCellPayload(payload) && !isMarimoPageCellReferencePayload(payload)) throw new TypeError("Invalid marimo page cell payload");
+      if (payload === this.#serializedPayload) return;
+      this.#cleanup?.();
+      this.#cleanup = void 0;
+      this.#stopAppRegistration();
+      this.#stopAppWait();
+      this.#stopPayloadWait();
+      this.#serializedPayload = payload;
+      this.#payload = void 0;
+      if (this.isConnected && payload) this.#queueMount();
+    }
+    connectedCallback() {
+      const retainedMount = this.#disconnectTimer !== void 0 || this.#retainedDisconnect;
+      if (this.#disconnectTimer !== void 0) {
+        clearTimeout(this.#disconnectTimer);
+        this.#disconnectTimer = void 0;
+      }
+      this.#retainedDisconnect = false;
+      if (retainedMount && this.#cleanup) reconnectMarimoIsland(this);
+      else this.#queueMount();
+    }
+    disconnectedCallback() {
+      if (this.#disconnectTimer !== void 0) clearTimeout(this.#disconnectTimer);
+      this.#disconnectTimer = setTimeout(() => {
+        this.#disconnectTimer = void 0;
+        if (this[elementRetentionSymbol]?.cancelRelease) {
+          this.#retainedDisconnect = true;
+          return;
+        }
+        this.#teardown();
+      }, 0);
+    }
+    [finishRetainedReleaseSymbol]() {
+      if (this.isConnected) return;
+      if (this.#disconnectTimer !== void 0) {
+        clearTimeout(this.#disconnectTimer);
+        this.#disconnectTimer = void 0;
+      }
+      this.#retainedDisconnect = false;
+      this.#teardown();
+    }
+    #queueMount() {
+      if (this.#mountQueued) return;
+      this.#mountQueued = true;
+      queueMicrotask(() => {
+        this.#mountQueued = false;
+        if (this.isConnected) this.#mount();
+      });
+    }
+    #mount() {
+      try {
+        this.#serializedPayload = this.#serializedPayload ?? readPayload(this);
+        if (!this.#serializedPayload) {
+          this.#waitForPayload();
+          return;
+        }
+        this.#payload = this.#payload ?? resolvePayload(this.ownerDocument, this.#serializedPayload);
+        if (!this.#payload) {
+          const reference = this.#serializedPayload;
+          if (!isMarimoPageCellReferencePayload(reference)) throw new Error("Invalid marimo page cell reference");
+          this.#cleanup ??= mountMarimoIsland(this, staticPayload(reference), {
+            ...hostKind ? {
+              host: hostKind
+            } : {},
+            ...themeResolver ? {
+              themeResolver
+            } : {}
+          });
+          this.#waitForApp(reference.appId);
+          return;
+        }
+        if (this.#payload.app) this.#registerApp(this.#payload.app);
+        this.#stopAppWait();
+        this.#stopPayloadWait();
+        this.#cleanup?.();
+        this.#cleanup = mountMarimoIsland(this, this.#payload, {
+          ...hostKind ? {
+            host: hostKind
+          } : {},
+          ...themeResolver ? {
+            themeResolver
+          } : {}
+        });
+      } catch (error) {
+        this.#cleanup?.();
+        this.#cleanup = void 0;
+        this.#stopAppRegistration();
+        this.#stopAppWait();
+        this.#stopPayloadWait();
+        this.classList.add("marimo-island-host");
+        if (hostKind) this.dataset.marimoHost = hostKind;
+        this.innerHTML = "";
+        renderMarimoIslandError(this, error);
+      }
+    }
+    #waitForPayload() {
+      if (this.#payloadObserver || typeof MutationObserver === "undefined") return;
+      this.#payloadObserver = new MutationObserver(() => {
+        if (readPayloadSource(this)) this.#queueMount();
+      });
+      this.#payloadObserver.observe(this, {
+        childList: true,
+        subtree: true
+      });
+    }
+    #waitForApp(appId) {
+      if (this.#cleanupAppWait) return;
+      this.#cleanupAppWait = waitForPageApp(this.ownerDocument, appId, () => {
+        this.#cleanupAppWait = void 0;
+        this.#queueMount();
+      });
+    }
+    #registerApp(app) {
+      if (this.#appRegistration?.app === app) return;
+      this.#stopAppRegistration();
+      this.#appRegistration = {
+        app,
+        release: registerPageApp(this.ownerDocument, app, this)
+      };
+    }
+    #stopAppRegistration() {
+      this.#appRegistration?.release();
+      this.#appRegistration = void 0;
+    }
+    #stopAppWait() {
+      this.#cleanupAppWait?.();
+      this.#cleanupAppWait = void 0;
+    }
+    #stopPayloadWait() {
+      this.#payloadObserver?.disconnect();
+      this.#payloadObserver = void 0;
+    }
+    #teardown() {
+      this.#cleanup?.();
+      this.#cleanup = void 0;
+      this.#stopAppRegistration();
+      this.#stopAppWait();
+      this.#stopPayloadWait();
+      if (this.#serializedPayload && isMarimoPageCellReferencePayload(this.#serializedPayload)) this.#payload = void 0;
+    }
+  };
+}
+function readPayload(host) {
+  const source = readPayloadSource(host);
+  if (!source) return void 0;
+  const payload = JSON.parse(source);
+  if (isMarimoPageCellPayload(payload) || isMarimoPageCellReferencePayload(payload)) return payload;
+  throw new Error("Invalid marimo page cell payload");
+}
+function resolvePayload(document2, payload) {
+  if (isMarimoPageCellPayload(payload)) return payload;
+  const registration = pageAppDocumentState(document2).apps.get(payload.appId);
+  if (!registration) return void 0;
+  return {
+    protocolVersion: payload.protocolVersion,
+    app: registration.app,
+    cell: payload.cell
+  };
+}
+function staticPayload(payload) {
+  return {
+    protocolVersion: payload.protocolVersion,
+    app: null,
+    cell: payload.cell
+  };
+}
+function registerPageApp(document2, app, owner) {
+  const state = pageAppDocumentState(document2);
+  let registration = state.apps.get(app.id);
+  if (!registration || registration.app !== app) {
+    registration = {
+      app,
+      owners: /* @__PURE__ */ new Set()
+    };
+    state.apps.set(app.id, registration);
+  }
+  registration.owners.add(owner);
+  const waiters = state.waiters.get(app.id);
+  if (waiters) {
+    state.waiters.delete(app.id);
+    for (const waiter of waiters) waiter();
+  }
+  return () => {
+    if (state.apps.get(app.id) !== registration) return;
+    registration.owners.delete(owner);
+    if (registration.owners.size === 0) state.apps.delete(app.id);
+  };
+}
+function waitForPageApp(document2, appId, mount) {
+  const state = pageAppDocumentState(document2);
+  const waiters = state.waiters.get(appId) ?? /* @__PURE__ */ new Set();
+  waiters.add(mount);
+  state.waiters.set(appId, waiters);
+  return () => {
+    waiters.delete(mount);
+    if (waiters.size === 0) state.waiters.delete(appId);
+  };
+}
+function readPayloadSource(host) {
+  const attribute = host.getAttribute("data-marimo-payload");
+  if (attribute) return host.getAttribute("data-marimo-payload-encoding") === "base64url" ? decodeBase64Url(attribute) : attribute;
+  const template = host.querySelector("template[data-marimo-payload]");
+  const templateAttribute = template?.getAttribute("data-marimo-payload");
+  if (templateAttribute) return templateAttribute;
+  return (template instanceof HTMLTemplateElement ? template.content.textContent : template?.textContent) || void 0;
+}
+function decodeBase64Url(value) {
+  const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+  const binary = atob(padded);
+  const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+function pageAppDocumentState(document2) {
+  const owner = document2;
+  return owner[pageAppRegistrySymbol] ??= {
+    apps: /* @__PURE__ */ new Map(),
+    waiters: /* @__PURE__ */ new Map()
+  };
+}
+
+// src/island-element.ts
+var MARIMO_ELEMENT_NAME = "marimo-quarto-island";
+
+// src/browser/index.ts
+defineMarimoIslandElement({
+  name: MARIMO_ELEMENT_NAME,
+  host: "quarto",
+  themeResolver: resolveQuartoTheme
+});
+function resolveQuartoTheme(host) {
+  let element = host;
+  while (element) {
+    if (element.classList.contains("quarto-dark")) return "dark";
+    if (element.classList.contains("quarto-light")) return "light";
+    element = element.parentElement;
+  }
+  return void 0;
+}
+</script>
+<script>
+window.MathJax = {
+  loader: {
+    load: ['[tex]/physics']
+  },
+  tex: {
+    packages: {'[+]': ['physics']}
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gravpotential.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./gravpotential.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The gravity potential function</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Theory of Potential Field Methods in Geophysics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prerequisites</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mathematical foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fields.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Newton potential</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./gravpotential.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The gravity potential function</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pointmass.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Point mass</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mass_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Mass distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spherical_shells.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Newton’s shell theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PREM_.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">PREM - Preliminary Reference Earth Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Sphere_Potential_and_Attraction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Potential and gravitational attraction of a sphere</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./circular_disc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Circular Disc</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Two-dimensional problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./line_of_mass.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">2-D mass distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./talwani.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Gravitational attraction of a prism</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Talwani-Implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Implementation of the TALWANI approach</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./complex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Introduction to Complex Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hilbert.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Hilbert Transform</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hilbert_implementation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Implementation of the Hilbert transform</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Three-dimensional problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./three-dimensional-problems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Gravitational Field Caused by a Density Distribution in <span class="math inline">\(\mathbb{R}^3\)</span></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Dipole potential</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./electricaldipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Potential of an electrical dipole</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./magneticdipole.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Potential of a magnetic dipole</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fieldline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Equation of a dipole field line</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Spherical harmonics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spherical-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Introduction to Spherical Harmonic Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Legendre Polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./legendre-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Numerical computation of Legendre polynomials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./laplace-in-sph-coord.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Solution of the Laplace equation in spherical coordinates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./igrf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Mathematical description of the Earth’s global magnetic field</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Boundary value problems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-dirichlet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Dirichlet problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-neumann.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Neumann problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-robin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Robin problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-uniqueness.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The uniqueness theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-domains.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Domains</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Examples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-green.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Green’s identities</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bvp-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Applications</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-happens-when-the-earth-is-not-stationary" id="toc-what-happens-when-the-earth-is-not-stationary" class="nav-link active" data-scroll-target="#what-happens-when-the-earth-is-not-stationary"><span class="header-section-number">3.1</span> What happens when the Earth is not stationary?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./gravpotential.html">Newton potential</a></li><li class="breadcrumb-item"><a href="./gravpotential.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The gravity potential function</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The gravity potential function</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>For two point masses <span class="math inline">\(M\)</span> and <span class="math inline">\(m\)</span>, separated by <span class="math display">\[
+r = \lVert \mathbf r\rVert ,
+\]</span> the gravitational potential energy is <span class="math display">\[
+V(r)=-\frac{f M m}{r}.
+\]</span> If the Earth generates the gravitational potential <span class="math display">\[
+\Phi(\mathbf{r}) = -\frac{f M}{r},
+\]</span> then simply <span class="math display">\[
+V(\mathbf{r}) = m \Phi(\mathbf{r}).
+\]</span> Thus the potential <span class="math inline">\(\Phi\)</span> is a property of the gravitational field, whereas <span class="math inline">\(V\)</span> depends additionally on the test mass.</p>
+<p>Assuming for the moment that the Earth is fixed at the origin, the particle has kinetic energy</p>
+<p><span class="math display">\[
+T=\frac12 m\dot{\mathbf r}^{\,2}.
+\]</span> Hence, the <em>Lagrangian</em> is <span class="math display">\[
+L=T-V
+=
+\frac12m\dot{\mathbf r}^{\,2}
++\frac{f M m}{r}.
+\]</span></p>
+<p>The Euler–Lagrange equation in vector form is</p>
+<p><span class="math display">\[
+\frac{\mathrm d}{\mathrm dt}
+\frac{\partial L}{\partial\dot{\mathbf r}}
+-
+\frac{\partial L}{\partial\mathbf r}
+=0.
+\]</span></p>
+<p>The first term is simply <span class="math display">\[
+\frac{\partial L}{\partial\dot{\mathbf r}}
+=
+m\dot{\mathbf r},
+\]</span></p>
+<p>and therefore <span class="math display">\[
+\frac{\mathrm d}{\mathrm dt}
+\frac{\partial L}{\partial\dot{\mathbf r}}
+=
+m\ddot{\mathbf r}.
+\]</span> For the spatial derivative we use <span class="math display">\[
+\nabla\frac{1}{r}
+=
+-\frac{\mathbf r}{r^3}.
+\]</span> Consequently, <span class="math display">\[
+\frac{\partial L}{\partial\mathbf r}
+=
+fMm\nabla\frac1r
+=
+-fMm\frac{\mathbf r}{r^3}.
+\]</span> The Euler–Lagrange equation therefore gives <span class="math display">\[
+m\ddot{\mathbf r}
+=
+-fMm\frac{\mathbf r}{r^3}.
+\]</span> After cancelling m, <span class="math display">\[
+\boxed{
+\ddot{\mathbf r}
+=
+-fM\frac{\mathbf r}{r^3}
+}
+\]</span></p>
+<p>and hence <span class="math display">\[
+\boxed{
+\mathbf F
+=
+-f\frac{Mm}{r^3}\mathbf r
+}.
+\]</span> The magnitude is Newton’s familiar inverse-square law.</p>
+<p>We rewrite the Lagrangian as <span class="math display">\[
+L
+=
+\frac{1}{2} m \dot{\mathbf r}^{\,2}
+-
+m\Phi(\mathbf r).
+\]</span> Then Euler–Lagrange immediately produces <span class="math display">\[
+m\ddot{\mathbf r}
+=
+-m\nabla\Phi,
+\]</span> or <span class="math display">\[
+\boxed{
+\ddot{\mathbf r}
+=
+-\nabla\Phi
+}.
+\]</span> Thus the gravitational acceleration is <span class="math display">\[
+\boxed{
+\mathbf g=-\nabla\Phi
+}.
+\]</span></p>
+<section id="what-happens-when-the-earth-is-not-stationary" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="what-happens-when-the-earth-is-not-stationary"><span class="header-section-number">3.1</span> What happens when the Earth is not stationary?</h2>
+<p>We define Earth and particle positions as <span class="math inline">\(\mathbf r_M\)</span> and <span class="math inline">\(\mathbf r_m\)</span>. The Lagrangian is now <span class="math display">\[
+L
+=
+\frac12M\dot{\mathbf r}_M^2
++
+\frac12m\dot{\mathbf r}_m^2
++
+\frac{f M m}
+{\lVert\mathbf r_m-\mathbf r_M\rVert}.
+\]</span> We introduce the centre-of-mass and relative coordinates <span class="math display">\[
+\mathbf R
+=
+\frac{M\mathbf r_M+m\mathbf r_m}{M+m},
+\qquad
+\mathbf r
+=
+\mathbf r_m-\mathbf r_M.
+\]</span></p>
+<p>Then the Lagrangian separates: <span class="math display">\[
+L
+=
+\frac12(M+m)\dot{\mathbf R}^{\,2}
++
+\frac12\mu\dot{\mathbf r}^{\,2}
++
+\frac{fMm}{r},
+\]</span> where <span class="math display">\[
+\mu=\frac{Mm}{M+m}
+\]</span> is the <strong>reduced mass</strong>.</p>
+<p>The centre of mass moves uniformly, <span class="math display">\[
+\ddot{\mathbf R}=0,
+\]</span> while the relative motion satisfies <span class="math display">\[
+\mu\ddot{\mathbf r}
+=
+-fMm\frac{\mathbf r}{r^3}.
+\]</span> Since <span class="math display">\[
+\frac{Mm}{\mu}=M+m,
+\]</span> we obtain <span class="math display">\[
+\boxed{
+\ddot{\mathbf r}
+=
+-f(M+m)\frac{\mathbf r}{r^3}
+}.
+\]</span> From the usual geophysical approximation <span class="math display">\[
+M \gg m
+\]</span> we obtain <span class="math display">\[
+M + m \approx M, \qquad \mu \approx m
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Centre-of-mass">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Centre-of-mass
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We put the two masses with variable <span class="math inline">\(M\)</span> and fixed <span class="math inline">\(m=1\)</span> at <span class="math inline">\(x_{M}=0\)</span> and <span class="math inline">\(x_{m}=50\)</span>, resp.</p>
+<p>Move the slider to change the value of the mass <span class="math inline">\(M\)</span>. Observe the change of the centre-of-mass and the reduced mass.</p>
+<marimo-quarto-island data-marimo-payload="eyJwcm90b2NvbFZlcnNpb24iOjIsImFwcCI6eyJpZCI6Im1hcmltby1kMmJjZjg5ZTYzNzQiLCJydW50aW1lQ2VsbENvdW50IjoyLCJhc3NldHMiOnsibW9kdWxlU2NyaXB0cyI6WyJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL0BtYXJpbW8tdGVhbS9pc2xhbmRzQDAuMjUuMS9kaXN0L21haW4uanMiXSwibGlua3MiOlt7ImhyZWYiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL0BtYXJpbW8tdGVhbS9pc2xhbmRzQDAuMjUuMS9kaXN0L3N0eWxlLmNzcyIsInJlbCI6InN0eWxlc2hlZXQiLCJ0aXRsZSI6Im1hcmltby1pc2xhbmRzIiwiY3Jvc3NvcmlnaW4iOiJhbm9ueW1vdXMifSx7InJlbCI6InByZWNvbm5lY3QiLCJocmVmIjoiaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbSJ9LHsicmVsIjoicHJlY29ubmVjdCIsImhyZWYiOiJodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tIiwiY3Jvc3NvcmlnaW4iOiIifSx7ImhyZWYiOiJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI_ZmFtaWx5PUZpcmErTW9ubzp3Z2h0QDQwMDs1MDA7NzAwJmZhbWlseT1Mb3JhJmZhbWlseT1QVCtTYW5zOndnaHRANDAwOzcwMCZkaXNwbGF5PXN3YXAiLCJyZWwiOiJzdHlsZXNoZWV0In0seyJyZWwiOiJzdHlsZXNoZWV0IiwiaHJlZiI6Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0va2F0ZXhAMC4xOC41L2Rpc3Qva2F0ZXgubWluLmNzcyIsImludGVncml0eSI6InNoYTM4NC0yZE5pL202SnRTaXZpem5yT0laNWZUaVo1QXMwSW4yUXdrdVhTZ29xY1F0Q05wbHZKQWJ0K2p2ZWVOKzhlbjczIiwiY3Jvc3NvcmlnaW4iOiJhbm9ueW1vdXMifV0sImhlYWRUYWdzIjpbeyJ0YWciOiJtYXJpbW8tZmlsZW5hbWUiLCJhdHRycyI6eyJoaWRkZW4iOiIifSwidGV4dCI6ImdyYXZwb3RlbnRpYWwucW1kIn1dLCJ2ZXJzaW9uIjoiMC4yNS4xIn0sIm5vdGVib29rQ29kZSI6ImltcG9ydCBtYXJpbW9cblxuX19nZW5lcmF0ZWRfd2l0aCA9IFwiMC4yNS4xXCJcbmFwcCA9IG1hcmltby5BcHAoKVxuXG5cbkBhcHAuY2VsbFxuZGVmIF8oKTpcbiAgICBpbXBvcnQgbWFyaW1vIGFzIG1vXG4gICAgck0gPSAwLjBcbiAgICBybSA9IDUwLjBcbiAgICBNID0gbW8udWkuc2xpZGVyKC0yLCAzLCB2YWx1ZT0wLCBzdGVwPTAuMSwgbGFiZWw9XCJsb2coTSlcIiwgc2hvd192YWx1ZT1UcnVlKVxuICAgIE1cbiAgICByZXR1cm4gTSwgbW8sIHJNLCBybVxuXG5cbkBhcHAuY2VsbFxuZGVmIF8oTSwgbW8sIHJNLCBybSk6XG4gICAgbSA9IDEuMFxuICAgIG1hc3MgPSAxMC4wKiooTS52YWx1ZSlcbiAgICBSID0gKG1hc3MgKiByTSArIG0gKiBybSkgLyAobWFzcyArIG0pXG4gICAgbW8ubWQoZicnJ1xuICAgIENlbnRyZS1vZi1tYXNzIGF0IFIgPSB7UjouMmZ9XG5cbiAgICAkbSQgPSB7bTouMmZ9IGtnXG5cbiAgICAkTSQgPSB7bWFzczouMmZ9IGtnXG5cbiAgICBSZWR1Y2VkIG1hc3MgJFxcbXUkID0ge21hc3MgKiBtIC8gKG1hc3MgKyBtKTouMmZ9IGtnJycnKVxuICAgIHJldHVyblxuXG5cbmlmIF9fbmFtZV9fID09IFwiX19tYWluX19cIjpcbiAgICBhcHAucnVuKCkifSwiY2VsbCI6eyJpbmRleCI6MCwiaHRtbCI6IjxtYXJpbW8taXNsYW5kXG4gICAgZGF0YS1hcHAtaWQ9XCJtYXJpbW8tZDJiY2Y4OWU2Mzc0XCJcbiAgICBkYXRhLWNlbGwtaWQ9XCJIYm9sXCJcbiAgICBkYXRhLXJlYWN0aXZlPVwidHJ1ZVwiXG4-XG4gICAgPG1hcmltby1jZWxsLW91dHB1dD5cbiAgICA8bWFyaW1vLXVpLWVsZW1lbnQgb2JqZWN0LWlkPSdIYm9sLTAnIHJhbmRvbS1pZD0nMTU1ZjQ3OWItZDRlNS1mMDA0LTNjMWUtYWZjNmIwYzM1ZjIxJz48bWFyaW1vLXNsaWRlciBkYXRhLWluaXRpYWwtdmFsdWU9JzAnIGRhdGEtbGFiZWw9JyZxdW90OyYjOTI7dTAwM2NzcGFuIGNsYXNzPSYjOTI7JnF1b3Q7bWFya2Rvd24gcHJvc2UgZGFyazpwcm9zZS1pbnZlcnQgY29udGVudHMmIzkyOyZxdW90OyYjOTI7dTAwM2UmIzkyO3UwMDNjc3BhbiBjbGFzcz0mIzkyOyZxdW90O3BhcmFncmFwaCYjOTI7JnF1b3Q7JiM5Mjt1MDAzZWxvZyhNKSYjOTI7dTAwM2Mvc3BhbiYjOTI7dTAwM2UmIzkyO3UwMDNjL3NwYW4mIzkyO3UwMDNlJnF1b3Q7JyBkYXRhLXN0YXJ0PSctMicgZGF0YS1zdG9wPSczJyBkYXRhLXN0ZXA9JzAuMScgZGF0YS1zdGVwcz0nW10nIGRhdGEtZGVib3VuY2U9J2ZhbHNlJyBkYXRhLWRpc2FibGVkPSdmYWxzZScgZGF0YS1vcmllbnRhdGlvbj0nJnF1b3Q7aG9yaXpvbnRhbCZxdW90OycgZGF0YS1zaG93LXZhbHVlPSd0cnVlJyBkYXRhLWluY2x1ZGUtaW5wdXQ9J2ZhbHNlJyBkYXRhLWZ1bGwtd2lkdGg9J2ZhbHNlJz48L21hcmltby1zbGlkZXI-PC9tYXJpbW8tdWktZWxlbWVudD5cbiAgICA8L21hcmltby1jZWxsLW91dHB1dD5cbiAgICA8bWFyaW1vLWNlbGwtY29kZSBoaWRkZW4-aW1wb3J0JTIwbWFyaW1vJTIwYXMlMjBtbyUwQXJNJTIwJTNEJTIwMC4wJTBBcm0lMjAlM0QlMjA1MC4wJTBBTSUyMCUzRCUyMG1vLnVpLnNsaWRlcigtMiUyQyUyMDMlMkMlMjB2YWx1ZSUzRDAlMkMlMjBzdGVwJTNEMC4xJTJDJTIwbGFiZWwlM0QlMjJsb2coTSklMjIlMkMlMjBzaG93X3ZhbHVlJTNEVHJ1ZSklMEFNPC9tYXJpbW8tY2VsbC1jb2RlPlxuPC9tYXJpbW8taXNsYW5kPiIsIm9wdGlvbnMiOnsibGFuZ3VhZ2UiOiJweXRob24iLCJyZW5kZXIiOnsic291cmNlIjpmYWxzZSwib3V0cHV0Ijp0cnVlLCJpbmNsdWRlIjp0cnVlLCJlZGl0b3IiOmZhbHNlLCJlcnJvciI6dHJ1ZSwic2VydmVyT3V0cHV0Ijp0cnVlfSwiZXhlY3V0aW9uIjp7ImVuYWJsZWQiOnRydWV9LCJtYXJpbW8iOnsiZGlzYWJsZWQiOmZhbHNlLCJ1bnBhcnNhYmxlIjpmYWxzZX19fX0" data-marimo-payload-encoding="base64url" data-marimo-theme-mode="auto"></marimo-quarto-island>
+<marimo-quarto-island data-marimo-payload="eyJwcm90b2NvbFZlcnNpb24iOjIsImFwcElkIjoibWFyaW1vLWQyYmNmODllNjM3NCIsImNlbGwiOnsiaW5kZXgiOjEsImh0bWwiOiI8bWFyaW1vLWlzbGFuZFxuICAgIGRhdGEtYXBwLWlkPVwibWFyaW1vLWQyYmNmODllNjM3NFwiXG4gICAgZGF0YS1jZWxsLWlkPVwiTUpVZVwiXG4gICAgZGF0YS1yZWFjdGl2ZT1cInRydWVcIlxuPlxuICAgIDxtYXJpbW8tY2VsbC1vdXRwdXQ-XG4gICAgPG1hcmltby1taW1lLXJlbmRlcmVyIGRhdGEtbWltZT0nJnF1b3Q7dGV4dC9tYXJrZG93biZxdW90OycgZGF0YS1kYXRhPScmcXVvdDsmIzkyO3UwMDNjc3BhbiBjbGFzcz0mIzkyOyZxdW90O21hcmtkb3duIHByb3NlIGRhcms6cHJvc2UtaW52ZXJ0IGNvbnRlbnRzJiM5MjsmcXVvdDsmIzkyO3UwMDNlJiM5Mjt1MDAzY3NwYW4gY2xhc3M9JiM5MjsmcXVvdDtwYXJhZ3JhcGgmIzkyOyZxdW90OyYjOTI7dTAwM2VDZW50cmUtb2YtbWFzcyBhdCBSID0gMjUuMDAmIzkyO3UwMDNjL3NwYW4mIzkyO3UwMDNlJiM5MjtuJiM5Mjt1MDAzY3NwYW4gY2xhc3M9JiM5MjsmcXVvdDtwYXJhZ3JhcGgmIzkyOyZxdW90OyYjOTI7dTAwM2UmIzkyO3UwMDNjbWFyaW1vLXRleCBjbGFzcz0mIzkyOyZxdW90O2FyaXRobWF0ZXgmIzkyOyZxdW90OyYjOTI7dTAwM2V8fChtfHwpJiM5Mjt1MDAzYy9tYXJpbW8tdGV4JiM5Mjt1MDAzZSA9IDEuMDAga2cmIzkyO3UwMDNjL3NwYW4mIzkyO3UwMDNlJiM5MjtuJiM5Mjt1MDAzY3NwYW4gY2xhc3M9JiM5MjsmcXVvdDtwYXJhZ3JhcGgmIzkyOyZxdW90OyYjOTI7dTAwM2UmIzkyO3UwMDNjbWFyaW1vLXRleCBjbGFzcz0mIzkyOyZxdW90O2FyaXRobWF0ZXgmIzkyOyZxdW90OyYjOTI7dTAwM2V8fChNfHwpJiM5Mjt1MDAzYy9tYXJpbW8tdGV4JiM5Mjt1MDAzZSA9IDEuMDAga2cmIzkyO3UwMDNjL3NwYW4mIzkyO3UwMDNlJiM5MjtuJiM5Mjt1MDAzY3NwYW4gY2xhc3M9JiM5MjsmcXVvdDtwYXJhZ3JhcGgmIzkyOyZxdW90OyYjOTI7dTAwM2VSZWR1Y2VkIG1hc3MgJiM5Mjt1MDAzY21hcmltby10ZXggY2xhc3M9JiM5MjsmcXVvdDthcml0aG1hdGV4JiM5MjsmcXVvdDsmIzkyO3UwMDNlfHwoJiM5MjsmIzkyO211fHwpJiM5Mjt1MDAzYy9tYXJpbW8tdGV4JiM5Mjt1MDAzZSA9IDAuNTAga2cmIzkyO3UwMDNjL3NwYW4mIzkyO3UwMDNlJiM5Mjt1MDAzYy9zcGFuJiM5Mjt1MDAzZSZxdW90Oyc-PC9tYXJpbW8tbWltZS1yZW5kZXJlcj5cbiAgICA8L21hcmltby1jZWxsLW91dHB1dD5cbiAgICA8bWFyaW1vLWNlbGwtY29kZSBoaWRkZW4-bSUyMCUzRCUyMDEuMCUwQW1hc3MlMjAlM0QlMjAxMC4wKiooTS52YWx1ZSklMEFSJTIwJTNEJTIwKG1hc3MlMjAqJTIwck0lMjAlMkIlMjBtJTIwKiUyMHJtKSUyMCUyRiUyMChtYXNzJTIwJTJCJTIwbSklMEFtby5tZChmJycnJTBBQ2VudHJlLW9mLW1hc3MlMjBhdCUyMFIlMjAlM0QlMjAlN0JSJTNBLjJmJTdEJTBBJTBBJTI0bSUyNCUyMCUzRCUyMCU3Qm0lM0EuMmYlN0QlMjBrZyUwQSUwQSUyNE0lMjQlMjAlM0QlMjAlN0JtYXNzJTNBLjJmJTdEJTIwa2clMEElMEFSZWR1Y2VkJTIwbWFzcyUyMCUyNCU1Q211JTI0JTIwJTNEJTIwJTdCbWFzcyUyMColMjBtJTIwJTJGJTIwKG1hc3MlMjAlMkIlMjBtKSUzQS4yZiU3RCUyMGtnJycnKTwvbWFyaW1vLWNlbGwtY29kZT5cbjwvbWFyaW1vLWlzbGFuZD4iLCJvcHRpb25zIjp7Imxhbmd1YWdlIjoicHl0aG9uIiwicmVuZGVyIjp7InNvdXJjZSI6ZmFsc2UsIm91dHB1dCI6dHJ1ZSwiaW5jbHVkZSI6dHJ1ZSwiZWRpdG9yIjpmYWxzZSwiZXJyb3IiOnRydWUsInNlcnZlck91dHB1dCI6dHJ1ZX0sImV4ZWN1dGlvbiI6eyJlbmFibGVkIjp0cnVlfSwibWFyaW1vIjp7ImRpc2FibGVkIjpmYWxzZSwidW5wYXJzYWJsZSI6ZmFsc2V9fX19" data-marimo-payload-encoding="base64url" data-marimo-theme-mode="auto"></marimo-quarto-island>
+<p>The reduced mass <span class="math inline">\(\mu\)</span> approaches the value of <span class="math inline">\(m\)</span> when <span class="math inline">\(M \gg m\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Geophysical potential theory often jumps directly to the potential per unit mass, while the mechanical derivation naturally starts with the potential energy. Introducing the reduced mass explicitly makes the transition much cleaner.</p>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Symbol</th>
+<th>Definition</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Potential energy</td>
+<td><span class="math inline">\(U\)</span></td>
+<td><span class="math inline">\(-f\dfrac{M m}{r}\)</span></td>
+<td><span class="math inline">\(\text{J}=\text{kg}\text{m}^{2}\text{s}^{-2}\)</span></td>
+</tr>
+<tr class="even">
+<td>Gravitational potential</td>
+<td><span class="math inline">\(V\)</span></td>
+<td><span class="math inline">\(\dfrac{U}{m} = -f \dfrac{M}{r}\)</span></td>
+<td><span class="math inline">\(\text{J} \text{kg}^{-1} = \text{m}^{2} \text{s}^{-2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Gravitational acceleration</td>
+<td><span class="math inline">\(\mathbf{g}\)</span></td>
+<td><span class="math inline">\(-\nabla V\)</span></td>
+<td><span class="math inline">\(\text{m}\text{s}^{-2}\)</span></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./fields.html" class="pagination-link" aria-label="Fields">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fields</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./pointmass.html" class="pagination-link" aria-label="Point mass">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Point mass</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
